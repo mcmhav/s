@@ -1,0 +1,69 @@
+own_window yes
+own_window_type normal
+own_window_argb_visual true
+#own_window_transparent true
+own_window_argb_value 100
+own_window_hints below,sticky,skip_taskbar,skip_pager
+
+double_buffer yes
+background true
+
+use_spacer left
+use_xft yes
+
+#max_user_text = 32000
+#max_specials = 1024
+#text_buffer_size = 2400
+text_buffer_size 1024
+
+update_interval 600.0
+
+draw_shades no
+
+draw_outline no
+draw_borders no
+font ubuntu
+uppercase no
+xftfont ubuntu:size=8
+
+stippled_borders 3
+
+border_outer_margin 9
+
+border_width 10
+
+default_color 792500
+
+own_window_colour brown
+own_window_transparent true
+
+#display
+#135b71
+#1b89a0
+
+gap_y -60
+
+alignment tl
+gap_x 1520
+
+show_graph_scale
+minimum_size 380 200
+
+
+TEXT
+#${color black}
+${if_match ""!="${execi 600 curl -s 'www.google.com'}"}${color black}WEATHER - ${execi 600 conkyForecast --location=NOXX0039 --datatype=HM} - ${execi 600 conkyForecast --location=NOXX0039 --datatype=WS -M} - ${execi 600 conkyForecast --location=NOXX0039 --datatype=UI} ${hr 2}$color
+
+${font Weather:size=35}${color 135b71}y${font}   ${voffset -30}${font Trebuchet MS:size=30}${if_match 0<=${execi 600 conkyForecast --location=NOXX0039 --datatype=HT --hideunits --hidedegreesymbol}}${color red}${execi 600 conkyForecast --location=NOXX0039 --datatype=HT}${color}${else}${color 4EA9F3}${execi 600 conkyForecast --location=NOXX0039 --datatype=HT}${endif}${color black}/${if_match 0<=${execi 600 conkyForecast --location=NOXX0039 --datatype=LT --hideunits --hidedegreesymbol}}${color red}${execi 600 conkyForecast --location=NOXX0039 --datatype=LT}${color}${else}${color 4EA9F3}${execi 600 conkyForecast --location=NOXX0039 --datatype=LT}${color}${endif}${font}${color}${voffset -25}${alignr 56}${font ConkyWeather:style=Bold:size=40}${color 135b71}${execi 600 conkyForecast --location=NOXX0039 --datatype=WF}${font}${color}
+${voffset -50}${alignr 90}${color green}${execi 600 conkyForecast --location=NOXX0039 --datatype=SR}
+${alignr 90}${color red}${execi 600 conkyForecast --location=NOXX0039 --datatype=SS}
+${alignr 85}${color 135b71}(${execi 600 conkyForecast --location=NOXX0039 --datatype=DL})
+
+${color black}MAIL ${hr 2}$color
+${if_match "no"=="${execi 600 python ~/.scripts/gmail.py}"}${color red}No$color ${color 135b71}C${color 792500}mail${else}${color green}${execi 600 python ~/.scripts/gmail.py}${color} ${color 135b71}C${color 792500}mail${if_match 2<=${texeci 600 python ~/.scripts/gmail.py}}s${endif}${endif}${alignc}${if_match "no"=="${execi 600 python ~/.scripts/gmail2.py}"}${color red}No$color ${color 135b71}A${color 792500}mail${else}${color green}${execi 600 python ~/.scripts/gmail2.py}${color} ${color 135b71}A${color 792500}mail${if_match 2<=${texeci 600 python ~/.scripts/gmail2.py}}s${endif}${endif}${alignr}${if_match "no"=="${execi 600 python ~/.scripts/gmail3.py}"}${color red}No$color ${color 135b71}S${color 792500}mail${else}${color green}${execi 600 python ~/.scripts/gmail3.py}${color} ${color 135b71}S${color 792500}mail${if_match 2<=${texeci 600 python ~/.scripts/gmail3.py}}s${endif}${endif}${if_match "0"!="${execi 600 perl ~/.scripts/gmail.pl s}"}
+
+${execi 600 perl ~/.scripts/gmail.pl s}${else}${if_match "0"!="${execi 600 perl ~/.scripts/gmail2.pl s}"}
+
+${alignc}${execi 600 perl ~/.scripts/gmail2.pl s}${else}${if_match "0"!="${execi 600 perl ~/.scripts/gmail3.pl s}"}
+
+${alignr}${execi 600 perl ~/.scripts/gmail3.pl s}${endif}${endif}${endif}${endif}

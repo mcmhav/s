@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+mcmhavConnect() {
+INIT_PWD=$PWD
+
+cd ~/r/mcmhav/ || exit
+
+npm run dist
+
+cd dist/assets/ || exit
+
+ftp -i mcmhavcom@ftp.mcmhav.com <<+
+    cd  public_html
+    cd  assets
+    mput *
+    bye
++
+
+cd "$INIT_PWD" || exit
+}

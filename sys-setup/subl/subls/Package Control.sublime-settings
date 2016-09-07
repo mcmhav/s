@@ -1,0 +1,38 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Babel",
+		"Babel Snippets",
+		"Compare Side-By-Side",
+		"DocBlockr",
+		"EditorConfig",
+		"Emmet",
+		"FormatLua",
+		"GitGutter",
+		"GitSavvy",
+		"Handlebars",
+		"HTML-CSS-JS Prettify",
+		"jsfmt",
+		"LESS",
+		"LiveStyle",
+		"Markdown Preview",
+		"Markmon real-time markdown preview",
+		"Neon Color Scheme",
+		"Open URL",
+		"Package Control",
+		"PlainTasks",
+		"RESTer HTTP Client",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-contrib-eslint",
+		"SublimeLinter-jscs",
+		"SublimeLinter-jshint",
+		"SublimeLinter-shellcheck",
+		"Theme - Afterglow",
+		"WordCount"
+	]
+}

@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+# SB1-related:
+
+alias gkort='cd /git/lo-kort';
+alias awhelp='cat ~/Documents/awesomewmshortcuts.txt';
+
+alias dnsStart='bob docker dnsgen start';
+
+# === pm-kort ===
+alias initPMCards='bob docker dnsgen start && cd /git/pm-kort && ./build.sh -c'
+alias initMPMCards='bob docker dnsgen start && cd /git/pm-kort && bob docker image build && bob compose up'
+
+# === lo-kort ===
+alias initLOCards='bob docker dnsgen start && cd /git/lo-kort && ./build.sh -c'
+alias b='cd /git/lo-kort/frontend && npm run build:dev'
+
+# === fitnesse ===
+alias goToTests='cd /git/lo-kort/test'
+alias startFitnesseDockers='goToTests && bob compose mock up && bob compose mock-autologon up && bob compose record up'
+alias startFitnesseServer='goToTests && mvn -Pinteractive clean install'
+alias initFitnesse='cd /git/lo-kort && ./build.sh -c && cd test && startFitnesseDockers && notify-send -u critical "Starting fitnesse!" && startFitnesseServer'
+alias cleanRecords='goToTests && docker rm -f wiremock_recorder && docker rm -f wiremock_recorder_ccints && bob compose record up'
+
+# === docker ===
+alias doARestart='docker restart $(docker ps -q)'
+alias doAKill='docker kill $(docker ps -q) && bob docker clean'
+alias doAStart='cd /git/lo-kort && && bob compose up && startFitnesseDockers'
+alias doAList='docker ps | grep | less -S'
+
+
+alias doScratch='doAKill && initPMCards && goToTests && startFitnesseDockers && mvn clean install && startFitnesseServer'
+
+alias doCScratch='initPMCards && goToTests && startFitnesseDockers && mvn clean install && startFitnesseServer'
+alias doMScratch='initMPMCards && goToTests && mvn clean install'
+
+gcm(){
+    JIRA_TASK=$(git rev-parse --abbrev-ref HEAD | awk '{split($1,pkname,"-"); print pkname[2]}')
+    if [[ ! -z "$JIRA_TASK" ]]; then
+        JIRA_TASK="DIG-$JIRA_TASK"
+    fi
+    git commit -am "$JIRA_TASK $1"
+}
+
+connectToDocker(){
+    docker exec -it "$1" bash
+}

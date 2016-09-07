@@ -1,0 +1,50 @@
+"*":
+  "atom-lint":
+    ignoredNames: [
+      "tmp/**"
+    ]
+    jshint:
+      path: "/usr/local/bin/jshint"
+  autosave:
+    enabled: true
+  core:
+    closeEmptyWindows: false
+    disabledPackages: [
+      "sync-settings"
+    ]
+  editor:
+    fontSize: 12
+    invisibles: {}
+    preferredLineLength: 120
+    showIndentGuide: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+    softWrapped: true
+    tabLength: 4
+  "exception-reporting":
+    userId: "85431bba-3ca2-ef1d-b5e4-6a0f8b663938"
+  jsformat: {}
+  linter: {}
+  "linter-eslint": {}
+  "linter-shellcheck": {}
+  metrics:
+    userId: "9e5dc7485d86e12ba08406e6b0aaec97fea23e08"
+  minimap: {}
+  "one-dark-ui": {}
+  pigments: {}
+  react: {}
+  "sync-settings":
+    _analyticsUserId: "aeb5392b-25ea-4f17-9308-6eaa1d4e746f"
+    _lastBackupHash: "46a20677e4a424f18c7853dc66a3d47e9d757096"
+    gistId: "0323e6afb2f6a98a44be"
+    personalAccessToken: "773f6cfad58844fe55c5bc94fca7635b5df67222"
+  "travis-ci-status": {}
+  welcome:
+    showOnStartup: false
+".coffee.jsx.source":
+  editor:
+    preferredLineLength: 120
+".js.jsx.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4

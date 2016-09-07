@@ -1,0 +1,36 @@
+[{
+    "id": "view",
+    "children": [{
+        "id": "layout",
+        "children": [
+            {
+                 "command": "set_layout",
+                 "caption" : "Custom: 3 Pane (2L 1R)",
+                 "mnemonic": "C",
+                 "args": {
+                    "cols": [0.0, 0.5, 1.0],
+                    "rows": [0.0, 0.8, 1.0],
+                    "cells": [
+                        [0, 0, 1, 1],
+                        [1, 0, 2, 2],
+                        [0, 1, 1, 2]
+                    ]
+                }
+            },{
+                 "command": "set_layout",
+                 "caption" : "Custom: 4 Pane (3C 2R)",
+                 "mnemonic": "C",
+                 "args": {
+                    "cols": [0.0, 0.33, 0.66, 1.0],
+                    "rows": [0.0, 0.83, 1.0],
+                    "cells": [
+                        [0, 0, 1, 1],
+                        [1, 0, 2, 1],
+                        [2, 0, 3, 2],
+                        [0, 1, 2, 2]
+                    ]
+                }
+            }
+        ]
+    }]
+}]

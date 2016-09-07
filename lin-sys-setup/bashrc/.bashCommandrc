@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+if [ "$(uname -s)" == "Linux" ]; then
+    alias ls='ls --color=auto'
+elif [ "$(uname -s)" == "Darwin" ]; then
+    alias ls='ls -G'
+else
+    alias ls='ls --color=auto'
+fi
+
+# alias mcwd="echo $PWD | tr / '\n' | xargs -I X sh -c 'echo X | head -c 1; echo' | tr '\n' /"
+
+unset PROMPT_COMMAND
+
+function timer_start {
+    timer=${timer:-$SECONDS}
+}
+
+function timer_stop {
+    timer_show=$((SECONDS - timer))
+
+    if [ "$timer_show" -gt "500" ]; then
+        notify-send -u critical "Done !!!"
+        tput bel
+    fi
+    unset timer
+}
+
+trap 'timer_start' DEBUG
+PROMPT_COMMAND=timer_stop
+export PS1='[\[\e[1;35m\]${timer_show}\[\e[0m\]][\[\e[1;32m\]\W\[\e[0m\]]\[\e[0;31m\]$\[\e[0m\] '

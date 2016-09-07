@@ -1,0 +1,61 @@
+loadkeys no
+wifi-menu
+lsblk
+cfdisk /dev/xxx
+mount /dev/xxxx /mnt
+pacstrap -i /mnt base
+genfstab -U -p /mnt >> /mnt/etc/fstab
+
+arch-chroot /mnt
+nano /etc/vconsole.conf
+	KEYMAP=no-latin1
+ln -s /usr/share/zoneinfo/Europe/Oslo /etc/localtime
+echo cake > /etc/hostname
+
+nano /etc/pacman.conf
+	[archlinuxfr]
+	SigLevel = Never
+	Server = http://repo.archlinux.fr/x86_64
+	[multilib]
+	Include = /etc/pacman.d/mirrorlist
+
+pacman -Syyu
+pacman -S alsa-utils xorg-server xorg-server-utils xorg-xinit sudo xf86-input-synaptics syslinux git openssh base-devel yaourt ttf-dejavu intellij-idea-community-edition strace wget file-roller p7zip zip unzip unrar audacity bash-completion conky nodejs ttf-symbola steam flashplugin dialog openvpn awesome iw wpa_supplicant wpa_actiond xcompmgr python-basemap mysql cmake boost bless transset-df nemo
+
+	graphics:
+		mesa
+		intel-dri
+		xf86-video-intel
+		bumblebee
+		nvidia
+
+gem install
+	compass
+	sass
+
+git config --global user.name "mcmhav"
+git config --global user.email "mcmhav@gmail.com"
+git config --global color.ui true
+
+syslinux-install_update -i -a -m
+nano /boot/syslinux/syslinux.cfg
+	fix sda3 to xxxx
+
+passwd
+
+useradd -m -g users -G wheel,storage,power,scanner -s /bin/bash m
+passwd m
+EDITOR=nano visudo
+	%wheel ALL=(ALL) ALL
+
+systemctl enable netctl-auto@wlp3s0.service (depending on the wlan-thingy)
+systemctl enable cronie
+
+yaourt -S
+	sumblime-text
+	google-musicmanager
+	utserver
+	nuvolaplayer
+	google-chrome-stable
+	ttf-google-fonts-hg
+	powerpill

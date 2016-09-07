@@ -1,0 +1,107 @@
+own_window yes
+own_window_type normal
+own_window_argb_visual true
+#own_window_transparent true
+#own_window_argb_value 20
+own_window_hints below,sticky,skip_taskbar,skip_pager
+
+double_buffer yes
+background true
+
+use_spacer left
+use_xft yes
+
+#max_user_text = 32000
+#max_specials = 1024
+#text_buffer_size = 2400
+text_buffer_size 4000
+
+update_interval 1.0
+
+draw_shades no
+
+draw_outline no
+draw_borders no
+font ubuntu
+uppercase no
+xftfont ubuntu:size=8
+
+stippled_borders 3
+
+border_outer_margin 9
+
+border_width 10
+
+#default_color 1b89a0
+default_color A8BDDE
+#792500
+
+#e2a04a
+#135b71
+
+own_window_color brown
+own_window_transparent true
+
+#display
+
+#gap_y -40
+
+alignment tl
+
+show_graph_scale
+minimum_size 320 500
+
+TEXT
+#${color DBDBDB}${color 82A8E0}${color}
+#
+#
+#
+${font Radiofb:size=35}${time %H:%M}${voffset -26}${font Trebuchet MS:bold:size=10}${alignr}${time %d %b %Y}
+${font Trebuchet MS:bold:size=8}${alignr}${time %A} ${time %W}
+${alignr}$uptime${if_match "F"!="${battery_short}"}${if_match "U"!="${battery_short}"}${if_match "AC"!="${battery_short}"}
+${color 82A8E0}BATTERY ${battery_short} ${hr 2}$color
+${battery_bar}${endif}${endif}${endif}
+#
+#
+#
+#
+${color 82A8E0}CPU ${cpu cpu0}% ${hr 2}$color
+Load: ${loadavg}${alignr}CPU: ${acpitemp}° HD: ${hddtemp}°
+${color 70A4F1}${cpubar cpu0}$color
+${top name 1}${goto 120}${top pid 1}${goto 150}${top cpu 1}${goto 180}${top mem 1}
+${top name 2}${goto 120}${top pid 2}${goto 150}${top cpu 2}${goto 180}${top mem 2}
+${top name 3}${goto 120}${top pid 3}${goto 150}${top cpu 3}${goto 180}${top mem 3}
+${top name 4}${goto 120}${top pid 4}${goto 150}${top cpu 4}${goto 180}${top mem 4}
+${top name 5}${goto 120}${top pid 5}${goto 150}${top cpu 5}${goto 180}${top mem 5}
+${voffset -68}${alignr}${cpugraph cpu0 60, 120 000000 70A4F1}
+${cpugraph cpu1 25, 155 000000 70A4F1}
+${cpugraph cpu3 25, 155 000000 70A4F1}
+${cpugraph cpu5 25, 155 000000 70A4F1}
+${cpugraph cpu7 25, 155 000000 70A4F1}
+${voffset -152}${alignr}${cpugraph cpu2 25, 155 000000 70A4F1}
+${alignr}${cpugraph cpu4 25, 155 000000 70A4F1}
+${alignr}${cpugraph cpu6 25, 155 000000 70A4F1}
+${alignr}${cpugraph cpu8 25, 155 000000 70A4F1}
+#
+#
+#
+#
+${color 82A8E0}MEMORY $memperc% / DISK ${fs_used_perc /}% ${hr 2}$color
+RAM: ${goto 50}$mem/$memmax - $memeasyfree ${color 70A4F1}${membar 6}$color
+Root: ${goto 50}${fs_used /}/$fs_size -${fs_free} ${color 70A4F1}${fs_bar /}$color${if_mounted /media/^^}$color${endif}${if_match ""!="${execi 300 curl -s 'www.google.com'}"}
+#${execi 2000 curl -s 'www.whatismyip.com/automation/n09230945.asp'}${execi 1300 sh .conky4s.sh}
+#
+#
+#
+#
+${color 82A8E0}NETWORK (${execi 2000 curl -s 'http://automation.whatismyip.com/n09230945.asp'}) ${hr 2}$color${if_match "No Address"!="${addr eth0}"}
+Ethernet: (${addr eth0})${if_match 1<=${tcp_portmon 1 61000 count}}${alignr} Ports: ${tcp_portmon 1 61000 count}${if_match 1<=${tcp_portmon 1 32767 count}} In: ${tcp_portmon 1 32767 count}${endif}${if_match 1<=${tcp_portmon 32768 61000 count}} Out: ${tcp_portmon 32768 61000 count}${endif}${endif}
+Down: $color${downspeed eth0}/s ${alignr}Up: ${upspeed eth0}/s
+${downspeedgraph eth0 25,159 000000 00ff00} ${alignr}${upspeedgraph eth0
+25,159 000000 ff0000}$color
+Total: ${totaldown eth0} ${alignr}Total: ${totalup eth0}${endif}${if_match "No Address"!="${addr wlan0}"}
+WiFi: (${addr wlan0})${wireless_link_qual_perc wlan0}%${if_match 1<=${tcp_portmon 1 61000 count}}${alignr} Ports: ${tcp_portmon 1 61000 count}${if_match 1<=${tcp_portmon 1 32767 count}} In: ${tcp_portmon 1 32767 count}${endif}${if_match 1<=${tcp_portmon 32768 61000 count}} Out: ${tcp_portmon 32768 61000 count}${endif}${endif}
+Down: $color${downspeed wlan0}/s ${alignr}Up: ${upspeed wlan0}/s
+${downspeedgraph wlan0 25,159 000000 00ff00} ${alignr}${upspeedgraph wlan0
+25,159 000000 ff0000}$color
+Total: ${totaldown wlan0} ${alignr}Total: ${totalup wlan0}${endif}${endif}
