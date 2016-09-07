@@ -48,7 +48,7 @@ alias gg='git grep'
 alias gmv='git mv'
 
 alias gdl='git pull --no-edit'
-# alias gcm='git commit -am'
+alias gcm='git commit -am'
 alias gup='git push'
 
 makeNewRemoteAAndLocalBranch() {
