@@ -9,9 +9,27 @@
     enabled: true
   core:
     closeEmptyWindows: false
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".hgrc"
+        ".flowconfig"
+      ]
+      "source.json": [
+        ".arcconfig"
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
     disabledPackages: [
       "sync-settings"
+      "tree-view"
+      "welcome"
+      "react"
+      "pretty-json"
     ]
+    telemetryConsent: "limited"
   editor:
     fontSize: 12
     invisibles: {}
@@ -20,18 +38,29 @@
     softWrap: true
     softWrapAtPreferredLineLength: true
     softWrapped: true
-    tabLength: 4
+    tabType: "soft"
   "exception-reporting":
     userId: "85431bba-3ca2-ef1d-b5e4-6a0f8b663938"
   jsformat: {}
+  "language-babel": {}
   linter: {}
   "linter-eslint": {}
   "linter-shellcheck": {}
   metrics:
     userId: "9e5dc7485d86e12ba08406e6b0aaec97fea23e08"
   minimap: {}
+  nuclide:
+    "nuclide-file-tree":
+      showOpenFiles: false
+      showUncommittedChanges: false
+    "nuclide-flow":
+      warnOnNotInstalled: false
+    "nuclide-home":
+      showHome: false
   "one-dark-ui": {}
   pigments: {}
+  "pretty-json":
+    prettifyOnSaveJSON: false
   react: {}
   "sync-settings":
     _analyticsUserId: "aeb5392b-25ea-4f17-9308-6eaa1d4e746f"
@@ -41,10 +70,16 @@
   "travis-ci-status": {}
   welcome:
     showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnlyLines: true
 ".coffee.jsx.source":
   editor:
     preferredLineLength: 120
+".java.source":
+  editor:
+    tabLength: 4
 ".js.jsx.source":
   editor:
+    autoIndent: true
     preferredLineLength: 120
-    tabLength: 4
+    tabLength: 2

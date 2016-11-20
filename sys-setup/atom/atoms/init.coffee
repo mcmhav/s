@@ -12,7 +12,7 @@
 #   editor = editorView.getEditor()
 #   if path.extname(editor.getPath()) is '.md'
 #     editor.setSoftWrapped(true)
-atom.workspace.observeTextEditors (editor) ->
-  editor.buffer.onWillSave ->
-    return if editor?.getGrammar()?.scopeName is 'source.coffee'
-    editor.autoIndentBufferRows 0, editor.getBuffer().getLineCount() - 1
+# atom.workspace.observeTextEditors (editor) ->
+#   editor.buffer.onWillSave ->
+#     return if editor?.getGrammar()?.scopeName is 'source.coffee'
+#     editor.autoIndentBufferRows 0, editor.getBuffer().getLineCount() - 1
