@@ -146,6 +146,7 @@
 	"smart_indent": true,
 	"spell_check": true,
 	"tab_completion": true,
+	"tab_size": 2,
 	"tabs_small": true,
 	"theme": "Afterglow.sublime-theme",
 	"translate_tabs_to_spaces": true,
