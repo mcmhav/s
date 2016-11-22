@@ -7,7 +7,7 @@
 [ -f /etc/shrc ] && . /etc/shrc
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+  . $(brew --prefix)/etc/bash_completion
 fi
 
 if [ -f ~/.git-completion.bash ]; then
@@ -31,11 +31,11 @@ source "$bashCWD"/bashrc/.bashWebrc;
 source ~/.bashZepprc;
 
 connectToPie(){
-    piIp='10.0.0.14'
-    if [ ! -z "$1" ]; then
-        piIp="$1"
-    fi
-    ssh root@"$piIp"
+  piIp='10.0.0.14'
+  if [ ! -z "$1" ]; then
+    piIp="$1"
+  fi
+  ssh root@"$piIp"
 }
 
 alias pieConnect='connectToPie';
@@ -47,7 +47,8 @@ alias scron="sudo EDITOR=nano crontab -u $USER -e"
 alias xterm="xterm & sleep 0.8s && transset-df -a"
 
 export PATH="/git/tools/bin:${PATH}:$(ruby -rubygems -e "puts Gem.user_dir")/bin:/git/bob"
-export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
+# export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
+export NODE_PATH="/usr/local/lib/node_modules"
 # export EDITOR=subl3
 # export VISUAL=subl3
 # export HISTFILESIZE=
@@ -55,21 +56,32 @@ export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
 # export CLASSPATH=.:$CLASSPATH:/home/m/repos/suchBazar/mahout/jars/mahout-mrlegacy-1.0-job.jar
 
 lineCount() {
-    find . -name "*.$1" | xargs wc -l
+  find . -name "*.$1" | xargs wc -l
 }
 calcWork(){
-    cwd=$(PWD)
-    cd "$bashCWD/../bash/timeLogging" || exit
-    ./findStartEnd.sh
-    cd "$cwd" || exit
+  cwd=$(PWD)
+  cd "$bashCWD/../bash/timeLogging" || exit
+  ./findStartEnd.sh
+  cd "$cwd" || exit
 }
 
 updateBashRC(){
-    source ~/.bashrc;
+  source ~/.bashrc;
 }
 
 setScreens() {
-    xrandr --output VGA-0 --left-of VGA-1
+  xrandr --output VGA-0 --left-of VGA-1
+}
+
+updateTrakt() {
+  if [ "$(uname -s)" == "Linux" ]; then
+    echo "todo"
+  elif [ "$(uname -s)" == "Darwin" ]; then
+    cd ~/Library/Application\ Support/Plex\ Media\ Server/Plug-ins/Plex-Trakt-Scrobbler/;
+    git pull;
+  elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+    echo "todo"
+  fi
 }
 
 alias http='python -m SimpleHTTPServer 8009'

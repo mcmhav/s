@@ -93,7 +93,7 @@
 		"node_modules",
 		"CVS"
 	],
-	"font_size": 13,
+	"font_size": 15,
 	"gpu_window_buffer": "auto",
 	"gutter": true,
 	"highlight_line": true,
@@ -101,6 +101,7 @@
 	"hot_exit": true,
 	"ignored_packages":
 	[
+		"SideBarEnhancements",
 		"Vintage"
 	],
 	"indent_guide_options":
