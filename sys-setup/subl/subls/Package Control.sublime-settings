@@ -8,6 +8,7 @@
 		"Babel",
 		"Babel Snippets",
 		"Compare Side-By-Side",
+		"DashDoc",
 		"DocBlockr",
 		"EditorConfig",
 		"Emmet",
@@ -29,9 +30,12 @@
 		"SideBarEnhancements",
 		"SublimeLinter",
 		"SublimeLinter-contrib-eslint",
+		"SublimeLinter-javac",
 		"SublimeLinter-jscs",
 		"SublimeLinter-jshint",
+		"SublimeLinter-pep8",
 		"SublimeLinter-shellcheck",
+		"TabsExtra",
 		"Theme - Afterglow",
 		"WordCount"
 	]

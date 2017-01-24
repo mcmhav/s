@@ -26,10 +26,9 @@ bashCWD="$HOME/r/s/lin-sys-setup"
 source "$bashCWD"/bashrc/.bashCommandrc;
 source "$bashCWD"/bashrc/.bashAwesomerc;
 source "$bashCWD"/bashrc/.bashSetuprc;
-
 source "$bashCWD"/bashrc/.bashGitrc;
-
 source "$bashCWD"/bashrc/.bashWebrc;
+source ~/.bashZepprc;
 
 connectToPie(){
   piIp='10.0.0.14'
@@ -96,3 +95,13 @@ alias click='shutter -s'
 alias probeNetwork='arp -a'
 
 alias aptUpgrade='sudo apt-get update && sudo apt-get upgrade'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /Users/mcmhav/Downloads/google-cloud-sdk/path.bash.inc ]; then
+  source '/Users/mcmhav/Downloads/google-cloud-sdk/path.bash.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/mcmhav/Downloads/google-cloud-sdk/completion.bash.inc ]; then
+  source '/Users/mcmhav/Downloads/google-cloud-sdk/completion.bash.inc'
+fi
