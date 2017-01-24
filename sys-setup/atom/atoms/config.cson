@@ -1,4 +1,7 @@
 "*":
+  "activate-power-mode":
+    comboMode:
+      activationThreshold: 75
   "atom-lint":
     ignoredNames: [
       "tmp/**"
@@ -38,21 +41,20 @@
         "BUCK"
       ]
     disabledPackages: [
-      "sync-settings"
       "tree-view"
       "welcome"
       "react"
-      "pretty-json"
     ]
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
-      "solarized-dark-syntax"
+      "afterglow-monokai-syntax"
     ]
   editor:
     fontSize: 12
     invisibles: {}
     preferredLineLength: 120
+    scrollPastEnd: true
     showIndentGuide: true
     softWrap: true
     softWrapAtPreferredLineLength: true
@@ -62,12 +64,17 @@
     userId: "85431bba-3ca2-ef1d-b5e4-6a0f8b663938"
   jsformat: {}
   "language-babel": {}
-  linter: {}
+  linter:
+    gutterEnabled: false
+    showErrorInline: false
   "linter-eslint": {}
   "linter-shellcheck": {}
   metrics:
     userId: "9e5dc7485d86e12ba08406e6b0aaec97fea23e08"
-  minimap: {}
+  minimap:
+    plugins:
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
   nuclide:
     "nuclide-file-tree":
       showOpenFiles: false
