@@ -48,6 +48,8 @@ alias scron="sudo EDITOR=nano crontab -u $USER -e"
 alias xterm="xterm & sleep 0.8s && transset-df -a"
 
 export PATH="/git/tools/bin:${PATH}:$(ruby -rubygems -e "puts Gem.user_dir")/bin:/git/bob"
+export PATH="$PATH:`yarn global bin`"
+
 # export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
 export NODE_PATH="/usr/local/lib/node_modules"
 # export EDITOR=subl3

@@ -5,6 +5,21 @@
     ]
     jshint:
       path: "/usr/local/bin/jshint"
+  "atom-material-ui":
+    colors:
+      abaseColor: "#ef5350"
+      accentColor: "#59fcff"
+      genAccent: true
+      paintCursor: true
+      predefinedColor: "Red"
+    fonts: {}
+    tabs:
+      compactTabs: true
+    treeView:
+      compactList: true
+    ui:
+      panelContrast: true
+      panelShadows: true
   autosave:
     enabled: true
   core:
@@ -30,6 +45,10 @@
       "pretty-json"
     ]
     telemetryConsent: "limited"
+    themes: [
+      "atom-material-ui"
+      "solarized-dark-syntax"
+    ]
   editor:
     fontSize: 12
     invisibles: {}
@@ -71,7 +90,7 @@
   welcome:
     showOnStartup: false
   whitespace:
-    ignoreWhitespaceOnlyLines: true
+    ignoreWhitespaceOnCurrentLine: false
 ".coffee.jsx.source":
   editor:
     preferredLineLength: 120
