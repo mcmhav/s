@@ -1,20 +1,20 @@
+activate-power-mode
+afterglow-monokai-syntax
+atom-material-ui
 auto-indent
 color-picker
 file-icons
 fixmyjs
 highlight-selected
+language-babel
 linter
 linter-eslint
 linter-shellcheck
 merge-conflicts
 minimap
-monokai-seti
+minimap-highlight-selected
 nuclide
-package-sync
 pigments
 react
 script
-seti-ui
-sync-settings
-
 
