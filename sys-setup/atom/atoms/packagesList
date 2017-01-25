@@ -1,14 +1,15 @@
 activate-power-mode
 afterglow-monokai-syntax
+anodyne-dark-syntax
+ariake-dark-syntax
 atom-beautify
-atom-material-syntax
 atom-material-ui
 atom-react-native-autocomplete
-babel-react-syntax
 color-picker
 file-icons
 highlight-selected
 language-babel
+language-javascript-jsx
 linter
 linter-eslint
 linter-shellcheck
@@ -17,6 +18,8 @@ minimap
 minimap-highlight-selected
 minimap-linter
 nuclide
+one-dark-mini-ui
+pacific-dark
 pigments
 prettier-atom
 

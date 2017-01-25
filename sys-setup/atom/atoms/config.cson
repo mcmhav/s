@@ -55,15 +55,16 @@
     disabledPackages: [
       "welcome"
       "pretty-json"
-      "tree-view"
       "exception-reporting"
       "prettier-atom"
+      "activate-power-mode"
+      "nuclide"
     ]
     openEmptyEditorOnStart: false
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
-      "afterglow-monokai-syntax"
+      "pacific-dark"
     ]
   editor:
     fontSize: 13
@@ -91,6 +92,7 @@
   minimap:
     displayPluginsControls: false
   nuclide:
+    "nuclide-buck": {}
     "nuclide-code-format":
       formatOnSave: true
     "nuclide-file-tree":
