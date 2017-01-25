@@ -57,6 +57,7 @@
       "pretty-json"
       "tree-view"
       "exception-reporting"
+      "prettier-atom"
     ]
     openEmptyEditorOnStart: false
     telemetryConsent: "limited"
@@ -102,7 +103,19 @@
   "nuclide-format-js":
     requiresAddMissingRequires: false
   "one-dark-ui": {}
-  pigments: {}
+  pigments:
+    autocompleteScopes: [
+      ".source.css"
+      ".source.css.less"
+      ".source.sass"
+      ".source.css.scss"
+      ".source.stylus"
+      "source.js"
+    ]
+    autocompleteSuggestionsFromValue: true
+    extendAutocompleteToColorValue: true
+    extendAutocompleteToVariables: true
+    traverseIntoSymlinkDirectories: true
   "prettier-atom":
     singleQuote: true
     trailingComma: true
