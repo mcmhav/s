@@ -13,18 +13,12 @@
     colors:
       abaseColor: "#ef5350"
       accentColor: "#59fcff"
-      genAccent: true
-      paintCursor: true
       predefinedColor: "Red"
     tabs:
       compactTabs: true
       noTabMinWidth: true
-    fonts: {}
     treeView:
       compactList: true
-    ui:
-      panelContrast: true
-      panelShadows: true
   autosave:
     enabled: true
   core:
@@ -82,11 +76,7 @@
   metrics:
     userId: "9e5dc7485d86e12ba08406e6b0aaec97fea23e08"
   minimap:
-    absoluteMode: true
     displayPluginsControls: false
-    plugins:
-      "highlight-selected": true
-      "highlight-selectedDecorationsZIndex": 0
   nuclide:
     "nuclide-file-tree":
       showOpenFiles: false
