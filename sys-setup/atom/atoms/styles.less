@@ -15,9 +15,28 @@
 }
 
 .editor {
-    
+
+}
+
+// Styling Error Types
+atom-text-editor.editor .linter-highlight, .linter-highlight{
+  &.error {
+    .region {
+      border: 2px solid @background-color-error;
+    }
+  }
+  &.warning {
+    .region {
+      border: 2px solid @background-color-warning;
+    }
+  }
+  &.trace, &.info {
+    .region {
+      border: 2px solid @background-color-info;
+    }
+  }
 }
 
 .editor .cursor {
-    
+
 }

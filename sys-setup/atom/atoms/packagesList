@@ -1,7 +1,12 @@
 activate-power-mode
 afterglow-monokai-syntax
+atom-beautify
+atom-material-syntax
 atom-material-ui
+atom-react-native-autocomplete
 auto-indent
+auto-reveal-in-sidebar
+babel-react-syntax
 color-picker
 file-icons
 fixmyjs
@@ -13,8 +18,8 @@ linter-shellcheck
 merge-conflicts
 minimap
 minimap-highlight-selected
+minimap-linter
 nuclide
 pigments
-react
-script
+prettier-atom
 

@@ -3,6 +3,20 @@
     comboMode:
       activationThreshold: 75
     screenShake: {}
+  "atom-beautify":
+    general:
+      _analyticsUserId: "86fce66d-6c81-4542-8ad9-9c5cf8c7f547"
+    js:
+      brace_style: "expand"
+      break_chained_methods: true
+      end_with_comma: true
+      jslint_happy: true
+      keep_array_indentation: true
+    json:
+      break_chained_methods: true
+    jsx:
+      default_beautifier: "JS Beautify"
+      end_with_comma: true
   "atom-lint":
     ignoredNames: [
       "tmp/**"
@@ -13,6 +27,7 @@
     colors:
       abaseColor: "#ef5350"
       accentColor: "#59fcff"
+      paintCursor: true
       predefinedColor: "Red"
     tabs:
       compactTabs: true
@@ -38,15 +53,12 @@
       ]
     destroyEmptyPanes: false
     disabledPackages: [
-      "sync-settings"
       "welcome"
-      "react"
       "pretty-json"
-      "package-sync"
-      "script"
       "tree-view"
       "exception-reporting"
     ]
+    openEmptyEditorOnStart: false
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
@@ -78,6 +90,8 @@
   minimap:
     displayPluginsControls: false
   nuclide:
+    "nuclide-code-format":
+      formatOnSave: true
     "nuclide-file-tree":
       showOpenFiles: false
       showUncommittedChanges: false
@@ -85,8 +99,13 @@
       warnOnNotInstalled: false
     "nuclide-home":
       showHome: false
+  "nuclide-format-js":
+    requiresAddMissingRequires: false
   "one-dark-ui": {}
   pigments: {}
+  "prettier-atom":
+    singleQuote: true
+    trailingComma: true
   "pretty-json":
     prettifyOnSaveJSON: false
   react: {}
