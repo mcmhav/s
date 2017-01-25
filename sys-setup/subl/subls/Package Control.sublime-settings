@@ -2,12 +2,12 @@
 	"bootstrapped": true,
 	"in_process_packages":
 	[
-		"SideBarEnhancements"
 	],
 	"installed_packages":
 	[
 		"Babel",
 		"Babel Snippets",
+		"Color Highlighter",
 		"Compare Side-By-Side",
 		"DashDoc",
 		"DocBlockr",

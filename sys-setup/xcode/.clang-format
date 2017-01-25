@@ -1,0 +1,19 @@
+---
+BasedOnStyle: LLVM
+IndentWidth: 4
+PointerBindsToType: false
+ObjCSpaceAfterProperty: true
+AlwaysBreakAfterReturnType: All
+SortIncludes: false
+ColumnLimit: 160
+---
+Language: Cpp
+DerivePointerAlignment: false
+PointerAlignment: Left
+---
+Language: JavaScript
+ColumnLimit: 100
+---
+Language: Proto
+DisableFormat: true
+...

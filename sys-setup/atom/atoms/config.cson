@@ -1,10 +1,24 @@
 "*":
+  "activate-power-mode":
+    comboMode:
+      activationThreshold: 75
+    screenShake: {}
   "atom-lint":
     ignoredNames: [
       "tmp/**"
     ]
     jshint:
       path: "/usr/local/bin/jshint"
+  "atom-material-ui":
+    colors:
+      abaseColor: "#ef5350"
+      accentColor: "#59fcff"
+      predefinedColor: "Red"
+    tabs:
+      compactTabs: true
+      noTabMinWidth: true
+    treeView:
+      compactList: true
   autosave:
     enabled: true
   core:
@@ -22,18 +36,27 @@
       "source.python": [
         "BUCK"
       ]
+    destroyEmptyPanes: false
     disabledPackages: [
       "sync-settings"
-      "tree-view"
       "welcome"
       "react"
       "pretty-json"
+      "package-sync"
+      "script"
+      "tree-view"
+      "exception-reporting"
     ]
     telemetryConsent: "limited"
+    themes: [
+      "atom-material-ui"
+      "afterglow-monokai-syntax"
+    ]
   editor:
-    fontSize: 12
+    fontSize: 13
     invisibles: {}
     preferredLineLength: 120
+    scrollPastEnd: true
     showIndentGuide: true
     softWrap: true
     softWrapAtPreferredLineLength: true
@@ -43,12 +66,18 @@
     userId: "85431bba-3ca2-ef1d-b5e4-6a0f8b663938"
   jsformat: {}
   "language-babel": {}
-  linter: {}
+  linter:
+    gutterEnabled: false
+    showErrorInline: false
+    showErrorPanel: false
+    showErrorTabLine: true
   "linter-eslint": {}
   "linter-shellcheck": {}
   metrics:
     userId: "9e5dc7485d86e12ba08406e6b0aaec97fea23e08"
-  minimap: {}
+  minimap:
+    absoluteMode: true
+    displayPluginsControls: false
   nuclide:
     "nuclide-file-tree":
       showOpenFiles: false
@@ -71,13 +100,13 @@
   welcome:
     showOnStartup: false
   whitespace:
-    ignoreWhitespaceOnlyLines: true
+    ignoreWhitespaceOnCurrentLine: false
 ".coffee.jsx.source":
   editor:
     preferredLineLength: 120
 ".java.source":
   editor:
-    tabLength: 4
+    tabLength: 2
 ".js.jsx.source":
   editor:
     autoIndent: true
