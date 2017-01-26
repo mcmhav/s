@@ -64,7 +64,7 @@
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
-      "pacific-dark"
+      "anodyne-dark-syntax"
     ]
   editor:
     fontSize: 13
@@ -81,7 +81,7 @@
   jsformat: {}
   "language-babel": {}
   linter:
-    gutterEnabled: false
+    gutterPosition: "Left"
     showErrorInline: false
     showErrorPanel: false
     showErrorTabLine: true
