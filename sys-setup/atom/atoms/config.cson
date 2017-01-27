@@ -59,6 +59,7 @@
       "prettier-atom"
       "activate-power-mode"
       "nuclide"
+      "linter-pylint"
     ]
     openEmptyEditorOnStart: false
     telemetryConsent: "limited"
@@ -83,9 +84,9 @@
   linter:
     gutterPosition: "Left"
     showErrorInline: false
-    showErrorPanel: false
     showErrorTabLine: true
-  "linter-eslint": {}
+  "linter-eslint":
+    showRuleIdInMessage: false
   "linter-shellcheck": {}
   metrics:
     userId: "9e5dc7485d86e12ba08406e6b0aaec97fea23e08"
