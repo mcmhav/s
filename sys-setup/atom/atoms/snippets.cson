@@ -13,3 +13,137 @@
 #     'prefix': 'log'
 #     'body': 'console.log $1'
 #
+
+'.source.js':
+  'React Class':
+    'prefix': 'rClass'
+    'body': """
+      import React, { Component, PropTypes } from 'react';
+      import {
+        View,
+        Text,
+        ScrollView,
+      } from 'react-native';
+
+      import styles from './styles';
+
+      class ${1:ClassName} extends Component {
+        static propTypes = {
+          ${2:prop}: PropTypes.${3:propType},
+        }
+
+        constructor(props) {
+          super(props);
+
+          this.state = {
+            ${4:stateKey}: ${5:stateKValue},
+          };
+        }
+
+        render() {
+          const {
+            ${2:prop},
+          } = this.props;
+
+          console.log(${2:prop});
+
+          return (
+            <ScrollView>
+              <View style={styles.container}>
+                <Text>
+                  COMPONENT!!
+                </Text>
+              </View>
+            </ScrollView>
+          );
+        }
+      }
+
+      export default ${1:ClassName};
+
+    """
+  'React Stateless':
+    'prefix': 'rStateLess'
+    'body': """
+      import React, { PropTypes } from 'react';
+      import { ScrollView, Text } from 'react-native';
+
+      import styles from './styles';
+
+      const ${1:StateLessName} = ({ ${2:PropName} }) => {
+        console.log(${2:PropName});
+
+        return (
+          <ScrollView>
+            <Text>
+              Stateless!!!
+            </Text>
+          </ScrollView>
+        );
+      };
+
+      ${1:StateLessName}.propTypes = {
+        ${2:PropName}: PropTypes.${3:PropType},
+      };
+
+      export default ${1:StateLessName};
+
+    """
+  'Redux dux':
+    'prefix': 'rDux'
+    'body': """
+      import { Map } from 'immutable';
+
+      export const ${1:ActionConst} = '${2:ReducerName}/${1:ActionConst}';
+
+      // Initial state
+      const initialState = Map({
+        ${3:actionValue}: null,
+      });
+
+      export function ${4:ActionName}(${3:actionValue}) {
+        return {
+          type: ${1:ActionConst},
+          ${3:actionValue},
+        };
+      }
+
+      // Reducer
+      export default function ${2:ReducerName}Reducer(state = initialState, action = {}) {
+        switch (action.type) {
+          case ${1:ActionConst}:
+            return state
+              .set('${3:actionValue}', action.${3:actionValue});
+          default:
+            return state;
+        }
+      }
+
+    """
+  'React styles':
+    'prefix': 'rStyles'
+    'body': """
+      import { StyleSheet } from 'react-native';
+      import { layout, typography, theme } from '${1:depth}/style';
+
+      const styles = StyleSheet.create({
+        container: {
+          flex: 1,
+        },
+      });
+
+      export default styles;
+
+    """
+  'React add props to children':
+    'prefix': 'rChildrenProps'
+    'body': """
+      const childrenWithProps = React.Children.map(children,
+        (child) => React.cloneElement(child, {
+          style: [
+            child.style,
+            { aspectRatio: ratio },
+          ],
+        })
+      );
+    """

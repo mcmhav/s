@@ -19,21 +19,39 @@
 }
 
 // Styling Error Types
-atom-text-editor.editor .linter-highlight, .linter-highlight{
-  &.error {
+atom-text-editor.editor .highlights .linter-highlight, .linter-highlight {
+  &.linter-error {
     .region {
       border: 2px solid @background-color-error;
     }
   }
-  &.warning {
+  &.linter-warning {
     .region {
       border: 2px solid @background-color-warning;
     }
   }
-  &.trace, &.info {
+  &.linter-trace, &.info {
     .region {
       border: 2px solid @background-color-info;
     }
+  }
+}
+
+atom-panel .file linter-decoration {
+  &.linter-error {
+    border: 2px solid @background-color-error;
+    left: 1.3rem;
+    width: calc(100% - 15rem);
+  }
+  &.linter-warning {
+    border: 2px solid @background-color-warning;
+    left: 1.3rem;
+    width: calc(100% - 15rem);
+  }
+  &.linter-trace {
+    border: 2px solid @background-color-info;
+    left: 1.3rem;
+    width: calc(100% - 15rem);
   }
 }
 
@@ -42,8 +60,18 @@ atom-text-editor.editor .gutter {
 }
 
 atom-text-editor.editor .linter-gutter {
-  width: 0.2em;
-  height: 0.75em !important;
+  width: 0.3em;
+  height: 2em !important;
+
+  &.icon-primitive-dot {
+    &.linter-error {
+      color: red;
+    }
+  }
+
+  &.icon:before {
+    font-size: 2em;
+  }
 }
 
 .editor .cursor {

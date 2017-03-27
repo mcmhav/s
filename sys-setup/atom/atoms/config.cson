@@ -37,6 +37,7 @@
   autosave:
     enabled: true
   core:
+    closeDeletedFileTabs: true
     closeEmptyWindows: false
     customFileTypes:
       "source.ini": [
@@ -56,12 +57,15 @@
       "welcome"
       "pretty-json"
       "exception-reporting"
-      "prettier-atom"
       "activate-power-mode"
-      "nuclide"
       "linter-pylint"
+      "prettier-atom"
+      "color-picker"
+      "svg-preview"
+      "atom-beautify"
     ]
     openEmptyEditorOnStart: false
+    projectHome: "/Users/mcmhav/r"
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
@@ -74,19 +78,14 @@
     scrollPastEnd: true
     showIndentGuide: true
     softWrap: true
-    softWrapAtPreferredLineLength: true
     softWrapped: true
     tabType: "soft"
   "exception-reporting":
     userId: "85431bba-3ca2-ef1d-b5e4-6a0f8b663938"
   jsformat: {}
   "language-babel": {}
-  linter:
-    gutterPosition: "Left"
-    showErrorInline: false
-    showErrorTabLine: true
-  "linter-eslint":
-    showRuleIdInMessage: false
+  linter: {}
+  "linter-eslint": {}
   "linter-shellcheck": {}
   metrics:
     userId: "9e5dc7485d86e12ba08406e6b0aaec97fea23e08"
@@ -131,6 +130,10 @@
     gistId: "0323e6afb2f6a98a44be"
     personalAccessToken: "773f6cfad58844fe55c5bc94fca7635b5df67222"
   "travis-ci-status": {}
+  "tree-view":
+    alwaysOpenExisting: true
+    autoReveal: true
+    squashDirectoryNames: true
   welcome:
     showOnStartup: false
   whitespace:
