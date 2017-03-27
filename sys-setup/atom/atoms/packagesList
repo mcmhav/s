@@ -7,10 +7,12 @@ atom-material-syntax
 atom-material-ui
 atom-react-native-autocomplete
 babel-react-syntax
+busy-signal
 color-picker
 file-icons
 fold-functions
 highlight-selected
+intentions
 language-babel
 language-javascript-jsx
 linter
@@ -18,13 +20,13 @@ linter-eslint
 linter-pycodestyle
 linter-pylint
 linter-shellcheck
-merge-conflicts
+linter-ui-default
 minimap
 minimap-highlight-selected
 minimap-linter
-nuclide
 one-dark-mini-ui
 pacific-dark
 pigments
 prettier-atom
+svg-preview
 
