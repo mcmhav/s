@@ -105,3 +105,6 @@ fi
 if [ -f /Users/mcmhav/Downloads/google-cloud-sdk/completion.bash.inc ]; then
   source '/Users/mcmhav/Downloads/google-cloud-sdk/completion.bash.inc'
 fi
+
+
+. /Users/mcmhav/torch/install/bin/torch-activate

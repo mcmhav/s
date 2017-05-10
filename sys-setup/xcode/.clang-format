@@ -4,8 +4,13 @@ IndentWidth: 4
 PointerBindsToType: false
 ObjCSpaceAfterProperty: true
 AlwaysBreakAfterReturnType: All
+AlwaysBreakAfterDefinitionReturnType: All
 SortIncludes: false
-ColumnLimit: 160
+ColumnLimit: 140
+AlignAfterOpenBracket: AlwaysBreak
+KeepEmptyLinesAtTheStartOfBlocks: false
+AlignTrailingComments: true
+IndentCaseLabels: true
 ---
 Language: Cpp
 DerivePointerAlignment: false

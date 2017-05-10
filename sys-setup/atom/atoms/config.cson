@@ -69,7 +69,7 @@
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
-      "anodyne-dark-syntax"
+      "base16-tomorrow-dark-theme"
     ]
   editor:
     fontSize: 13
@@ -82,6 +82,9 @@
     tabType: "soft"
   "exception-reporting":
     userId: "85431bba-3ca2-ef1d-b5e4-6a0f8b663938"
+  "go-plus":
+    panel:
+      currentHeight: "0.8526764566556134vh"
   jsformat: {}
   "language-babel": {}
   linter: {}
