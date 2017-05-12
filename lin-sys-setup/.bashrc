@@ -46,8 +46,13 @@ alias http='python -m http.server'
 alias scron="sudo EDITOR=nano crontab -u $USER -e"
 alias xterm="xterm & sleep 0.8s && transset-df -a"
 
+# path shit
 export PATH="/git/tools/bin:${PATH}:$(ruby -rubygems -e "puts Gem.user_dir")/bin:/git/bob"
 export PATH="$PATH:`yarn global bin`"
+export PATH="$PATH:/Users/mcmhav/work/bin/protoc-gen-go"
+
+# go sgit
+export GOPATH="$GOPATH:/Users/mcmhav/r/motione/go"
 
 # export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
 export NODE_PATH="/usr/local/lib/node_modules"
@@ -79,7 +84,7 @@ updateTrakt() {
   if [ "$(uname -s)" == "Linux" ]; then
     echo "todo"
   elif [ "$(uname -s)" == "Darwin" ]; then
-    cd ~/Library/Application\ Support/Plex\ Media\ Server/Plug-ins/Plex-Trakt-Scrobbler/;
+    cd ~/Library/Application\ Support/Plex\ Media\ Server/Plug-ins/Plex-Trakt-Scrobbler/ || exit;
     git pull;
   elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
     echo "todo"
@@ -95,6 +100,16 @@ alias click='shutter -s'
 alias probeNetwork='arp -a'
 
 alias aptUpgrade='sudo apt-get update && sudo apt-get upgrade'
+
+c() {
+  if [ "$(uname -s)" == "Linux" ]; then
+    echo "todo"
+  elif [ "$(uname -s)" == "Darwin" ]; then
+    "$1" | pbcopy
+  elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+    echo "todo"
+  fi
+}
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f /Users/mcmhav/Downloads/google-cloud-sdk/path.bash.inc ]; then
