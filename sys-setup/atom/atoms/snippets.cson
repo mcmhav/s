@@ -32,6 +32,10 @@
           ${2:prop}: PropTypes.${3:propType},
         }
 
+        static defaultProps = {
+          ${2:prop}: null,
+        }
+
         constructor(props) {
           super(props);
 

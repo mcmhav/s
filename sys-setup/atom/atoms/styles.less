@@ -3,9 +3,6 @@
 *
 * This stylesheet is loaded when Atom starts up and is reloaded automatically
 * when it is changed.
-*
-* If you are unfamiliar with LESS, you can read more about it here:
-* http://www.lesscss.org
 */
 
 .tree-view {
@@ -16,6 +13,24 @@
 
 .editor {
 
+}
+
+atom-panel .file linter-decoration {
+  &.linter-error {
+    border: 2px solid @background-color-error;
+    left: 1.3rem;
+    width: calc(100% - 15rem);
+  }
+  &.linter-warning {
+    border: 2px solid @background-color-warning;
+    left: 1.3rem;
+    width: calc(100% - 15rem);
+  }
+  &.linter-trace {
+    border: 2px solid @background-color-info;
+    left: 1.3rem;
+    width: calc(100% - 15rem);
+  }
 }
 
 // Styling Error Types
@@ -37,24 +52,6 @@ atom-text-editor.editor .highlights .linter-highlight, .linter-highlight {
   }
 }
 
-atom-panel .file linter-decoration {
-  &.linter-error {
-    border: 2px solid @background-color-error;
-    left: 1.3rem;
-    width: calc(100% - 15rem);
-  }
-  &.linter-warning {
-    border: 2px solid @background-color-warning;
-    left: 1.3rem;
-    width: calc(100% - 15rem);
-  }
-  &.linter-trace {
-    border: 2px solid @background-color-info;
-    left: 1.3rem;
-    width: calc(100% - 15rem);
-  }
-}
-
 atom-text-editor.editor .gutter {
   min-width: 0.2em;
 }
@@ -72,6 +69,10 @@ atom-text-editor.editor .linter-gutter {
   &.icon:before {
     font-size: 2em;
   }
+}
+
+atom-text-editor .indent-guide {
+  color: #353535;
 }
 
 .editor .cursor {
