@@ -96,6 +96,11 @@ alias probeNetwork='arp -a'
 
 alias aptUpgrade='sudo apt-get update && sudo apt-get upgrade'
 
+export GOPATH=$HOME/.go
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f /Users/mcmhav/Downloads/google-cloud-sdk/path.bash.inc ]; then
   source '/Users/mcmhav/Downloads/google-cloud-sdk/path.bash.inc'

@@ -63,6 +63,7 @@
       "color-picker"
       "svg-preview"
       "atom-beautify"
+      "tree-view"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/mcmhav/r"
