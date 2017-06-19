@@ -1,7 +1,9 @@
 "*":
   "activate-power-mode":
-    comboMode:
-      activationThreshold: 75
+    comboMode: {}
+    plugins:
+      playAudio: true
+      screenShake: true
     screenShake: {}
   "atom-beautify":
     general:
@@ -34,6 +36,8 @@
       noTabMinWidth: true
     treeView:
       compactList: true
+    ui:
+      panelContrast: true
   autosave:
     enabled: true
   core:
@@ -57,12 +61,15 @@
       "welcome"
       "pretty-json"
       "exception-reporting"
-      "activate-power-mode"
       "linter-pylint"
       "prettier-atom"
       "color-picker"
       "svg-preview"
       "atom-beautify"
+      "flow-ide"
+      "hyperclick"
+      "pigments"
+      "activate-power-mode"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/mcmhav/r"
@@ -85,7 +92,7 @@
   "go-plus":
     config: {}
     panel:
-      currentHeight: "7.958313595452392vh"
+      currentHeight: "23.958333333333336vh"
   jsformat: {}
   "language-babel": {}
   linter: {}
@@ -94,6 +101,7 @@
   metrics:
     userId: "9e5dc7485d86e12ba08406e6b0aaec97fea23e08"
   minimap:
+    adjustMinimapWidthToSoftWrap: false
     displayPluginsControls: false
   nuclide:
     "nuclide-buck": {}
