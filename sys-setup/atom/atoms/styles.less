@@ -9,27 +9,30 @@
     .status-ignored {
         display: none;
     }
+    .list-tree.has-collapsable-children .list-nested-item > .list-tree > li, .list-tree.has-collapsable-children .list-nested-item > .list-group > li {
+      padding-left: 8px;
+    }
 }
 
 .editor {
 
 }
 
-atom-panel .file linter-decoration {
+atom-pane .file linter-decoration {
   &.linter-error {
     border: 2px solid @background-color-error;
-    left: 1.3rem;
-    width: calc(100% - 15rem);
+    left: 1.8rem;
+    width: calc(100% - 25rem);
   }
   &.linter-warning {
     border: 2px solid @background-color-warning;
-    left: 1.3rem;
-    width: calc(100% - 15rem);
+    left: 1.8rem;
+    width: calc(100% - 25rem);
   }
   &.linter-trace {
     border: 2px solid @background-color-info;
-    left: 1.3rem;
-    width: calc(100% - 15rem);
+    left: 1.8rem;
+    width: calc(100% - 25rem);
   }
 }
 
@@ -72,7 +75,7 @@ atom-text-editor.editor .linter-gutter {
 }
 
 atom-text-editor .indent-guide {
-  color: #353535;
+  // color: #353535;
 }
 
 .editor .cursor {
