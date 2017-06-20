@@ -11,6 +11,9 @@ if [ "$(uname -s)" == "Linux" ]; then
 elif [ "$(uname -s)" == "Darwin" ]; then
 	echo "TODO"
 
+  # brew
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 	# brews
 	brew install node
 	brew install watchman
@@ -19,7 +22,6 @@ elif [ "$(uname -s)" == "Darwin" ]; then
 	brew install shellcheck
 
 	# gems
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	sudo gem install cocoapods
 
   # mac setup
