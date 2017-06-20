@@ -10,17 +10,22 @@ if [ "$(uname -s)" == "Linux" ]; then
 	sudo apt-get install nodejs npm ruby
 elif [ "$(uname -s)" == "Darwin" ]; then
 	echo "TODO"
-	
+
 	# brews
 	brew install node
 	brew install watchman
 	brew install git
 	brew install bash-completion
 	brew install shellcheck
-	
+
 	# gems
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	sudo gem install cocoapods
+
+  # mac setup
+  mkdir ~/.screenshots
+  defaults write com.apple.finder AppleShowAllFiles YES ~/.screenshots
+  defaults write com.apple.screencapture location
 elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
 	echo "TODO"
 fi

@@ -70,7 +70,6 @@
       "hyperclick"
       "pigments"
       "activate-power-mode"
-      "nuclide"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/mcmhav/r"

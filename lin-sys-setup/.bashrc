@@ -28,7 +28,7 @@ source "$bashCWD"/bashrc/.bashAwesomerc;
 source "$bashCWD"/bashrc/.bashSetuprc;
 source "$bashCWD"/bashrc/.bashGitrc;
 source "$bashCWD"/bashrc/.bashWebrc;
-source ~/.bashZepprc;
+[ -e ~/.bashZepprc ] && source ~/.bashZepprc;
 
 connectToPie(){
   piIp='10.0.0.14'
