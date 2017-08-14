@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+pieConnect(){
+  piIp='10.0.0.14'
+  if [ ! -z "$1" ]; then
+    piIp="$1"
+  fi
+  ssh root@"$piIp"
+}
+
+lineCount() {
+  find . -name "*.$1" | xargs wc -l
+}
+
+calcWork(){
+  cwd=$(PWD)
+  cd "$bashCWD/../bash/timeLogging" || exit
+  ./findStartEnd.sh
+  cd "$cwd" || exit
+}
+
+updateBashRC(){
+  source ~/.bashrc;
+}
+
+setScreens() {
+  xrandr --output VGA-0 --left-of VGA-1
+}
+
+updateTrakt() {
+  if [ "$(uname -s)" == "Linux" ]; then
+    echo "todo"
+  elif [ "$(uname -s)" == "Darwin" ]; then
+    cd ~/Library/Application\ Support/Plex\ Media\ Server/Plug-ins/Plex-Trakt-Scrobbler/ || exit;
+    git pull;
+  elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+    echo "todo"
+  fi
+}
+
+c() {
+  if [ "$(uname -s)" == "Linux" ]; then
+    echo "todo"
+  elif [ "$(uname -s)" == "Darwin" ]; then
+    "$1" | pbcopy
+  elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+    echo "todo"
+  fi
+}

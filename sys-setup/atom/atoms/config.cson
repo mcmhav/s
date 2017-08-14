@@ -67,7 +67,6 @@
       "svg-preview"
       "atom-beautify"
       "flow-ide"
-      "hyperclick"
       "pigments"
       "activate-power-mode"
     ]
@@ -92,7 +91,9 @@
   "go-plus":
     config: {}
     panel:
-      currentHeight: "23.958333333333336vh"
+      currentHeight: "29.064272211720226vh"
+  hyperclick:
+    darwinTriggerKeys: "altKey,metaKey"
   jsformat: {}
   "language-babel": {}
   linter: {}
