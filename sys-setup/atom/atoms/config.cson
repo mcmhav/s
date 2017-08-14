@@ -66,9 +66,9 @@
       "color-picker"
       "svg-preview"
       "atom-beautify"
-      "flow-ide"
       "pigments"
       "activate-power-mode"
+      "flow-ide"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/mcmhav/r"
@@ -99,6 +99,8 @@
   linter: {}
   "linter-eslint": {}
   "linter-shellcheck": {}
+  "linter-ui-default":
+    panelHeight: 81
   metrics:
     userId: "9e5dc7485d86e12ba08406e6b0aaec97fea23e08"
   minimap:

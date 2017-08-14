@@ -27,7 +27,6 @@ if [ "$(uname -s)" == "Linux" ]; then
   source "$bashCWD"/bashrc/.bashLinrc;
 elif [ "$(uname -s)" == "Darwin" ]; then
   source "$bashCWD"/bashrc/.bashMacrc;
-  git pull;
 elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
   source "$bashCWD"/bashrc/.bashWinrc;
 fi
