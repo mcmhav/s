@@ -6,7 +6,9 @@ atom-beautify
 atom-material-syntax
 atom-material-ui
 atom-panda-syntax
+autocomplete-java-minus
 babel-react-syntax
+busy
 busy-signal
 file-icons
 flow-ide
@@ -18,6 +20,9 @@ gruvbox
 highlight-selected
 hyperclick
 intentions
+java-classpath-registry
+java-import-wiz
+java-plus
 language-babel
 language-gradle
 language-javascript-jsx

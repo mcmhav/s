@@ -14,9 +14,17 @@ cd "$ATOM_HOME" || exit
 makePackagesList(){
   tmp="$PWD"
   cd "$ATOM_SETUP_HOME/atoms" || exit;
-  
-  apm list -ib | awk '{split($1,pkname,"@"); print pkname[1]}' > packagesList
-  
+
+  if ! [ -x "$(command -v apm-beta)" ]; then
+    if ! [ -x "$(command -v apm)" ]; then
+      exit
+    else
+      apm list -ib | awk '{split($1,pkname,"@"); print pkname[1]}' > packagesList
+    fi
+  else
+    apm-beta list -ib | awk '{split($1,pkname,"@"); print pkname[1]}' > packagesList
+  fi
+
   cd "$tmp" || exit
 }
 
@@ -28,7 +36,7 @@ installFromPackagesList() {
       apm install "$line"
     fi
   done < $ATOM_SETUP_HOME/atoms/packagesList
-  
+
   cd "$ATOM_HOME" || exit
 }
 
