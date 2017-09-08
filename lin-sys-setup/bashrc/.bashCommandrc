@@ -12,7 +12,8 @@ notifyDone(){
     if [ "$(uname -s)" == "Linux" ]; then
         notify-send -u critical "Done !!!"
     elif [ "$(uname -s)" == "Darwin" ]; then
-        osascript -e 'display notification "Much time!" with title "DONE!!"'
+        # lol=$(curl -s "http://labs.bible.org/api/?passage=random")
+        osascript -e "display notification \"har\" with title \"God:\""
     else
         echo "todoooo"
     fi

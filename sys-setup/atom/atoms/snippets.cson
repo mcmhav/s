@@ -52,8 +52,8 @@
           console.log(${2:prop});
 
           return (
-            <ScrollView>
-              <View style={styles.container}>
+            <ScrollView style={styles.container}>
+              <View>
                 <Text>
                   COMPONENT!!
                 </Text>

@@ -5,11 +5,11 @@ ln -sf ~/r/s/lin-sys-setup/.vimrc ~/.vimrc;
 ln -sf ~/r/s/lin-sys-setup/.gitconfig ~/.gitconfig;
 
 if [ "$(uname -s)" == "Linux" ]; then
-	echo "TODO"
+	echo "TODO - more"
 	sudo apt-get update
 	sudo apt-get install nodejs npm ruby
 elif [ "$(uname -s)" == "Darwin" ]; then
-	echo "TODO"
+	echo "TODO - more"
 
   # brew
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -24,12 +24,13 @@ elif [ "$(uname -s)" == "Darwin" ]; then
 	# gems
 	sudo gem install cocoapods
 
-  # mac setup
-  mkdir ~/.screenshots
-  defaults write com.apple.finder AppleShowAllFiles YES ~/.screenshots
-  defaults write com.apple.screencapture location
+  # mac-os setup
+  mkdir ~/Pictures/screenshots
+  defaults write com.apple.screencapture location ~/Pictures/screenshots
+
+  defaults write com.apple.finder AppleShowAllFiles YES
 elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
-	echo "TODO"
+	echo "TODO - more"
 fi
 
 atom/setup.sh --install

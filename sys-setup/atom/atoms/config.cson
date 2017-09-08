@@ -62,13 +62,15 @@
       "pretty-json"
       "exception-reporting"
       "linter-pylint"
-      "prettier-atom"
       "color-picker"
       "svg-preview"
       "atom-beautify"
-      "pigments"
       "activate-power-mode"
       "flow-ide"
+      "java-classpath-registry"
+      "java-import-wiz"
+      "java-plus"
+      "autocomplete-java-minus"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/mcmhav/r"
@@ -91,7 +93,7 @@
   "go-plus":
     config: {}
     panel:
-      currentHeight: "29.064272211720226vh"
+      currentHeight: "8.005684509711038vh"
   hyperclick:
     darwinTriggerKeys: "altKey,metaKey"
   jsformat: {}
@@ -101,6 +103,8 @@
   "linter-shellcheck": {}
   "linter-ui-default":
     panelHeight: 81
+  "markdown-preview":
+    openPreviewInSplitPane: false
   metrics:
     userId: "9e5dc7485d86e12ba08406e6b0aaec97fea23e08"
   minimap:
@@ -134,8 +138,12 @@
     extendAutocompleteToVariables: true
     traverseIntoSymlinkDirectories: true
   "prettier-atom":
-    singleQuote: true
-    trailingComma: true
+    formatOnSaveOptions:
+      enabled: true
+    prettierOptions:
+      singleQuote: true
+      trailingComma: "all"
+    useEslint: true
   "pretty-json":
     prettifyOnSaveJSON: false
   react: {}
@@ -148,6 +156,7 @@
   "tree-view":
     alwaysOpenExisting: true
     autoReveal: true
+    hideVcsIgnoredFiles: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
