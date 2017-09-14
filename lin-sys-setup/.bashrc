@@ -30,7 +30,7 @@ elif [ "$(uname -s)" == "Darwin" ]; then
 elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
   source "$bashCWD"/bashrc/.bashWinrc;
 fi
-[ -e ~/.bashZepprc ] && source ~/.bashZepprc;
+[ -e ~/.bashZepprcs ] && source ~/.bashZepprcs/.bashZepprc;
 
 alias cake='sh ~/r/s/lin-sys-setup/.cakeInit.sh'
 # alias scron="su -c $(printf "%q " "crontab -u $USER -e")"
