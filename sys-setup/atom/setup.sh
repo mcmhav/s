@@ -33,7 +33,15 @@ installFromPackagesList() {
   while read line; do
     echo "$line"
     if [ ! -d "$PWD/$line" ]; then
-      apm install "$line"
+      if ! [ -x "$(command -v apm-beta)" ]; then
+        if ! [ -x "$(command -v apm)" ]; then
+          exit
+        else
+          apm install "$line"
+        fi
+      else
+        apm-beta install "$line"
+      fi
     fi
   done < $ATOM_SETUP_HOME/atoms/packagesList
 
