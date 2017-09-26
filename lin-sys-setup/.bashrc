@@ -62,6 +62,8 @@ alias probeNetwork='arp -a'
 
 alias aptUpgrade='sudo apt-get update && sudo apt-get upgrade'
 
+alias space='du -h -d 2 | sort -n'
+
 export GOPATH=$HOME/.go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin

@@ -1,39 +1,41 @@
 /*
-* Your Stylesheet
-*
-* This stylesheet is loaded when Atom starts up and is reloaded automatically
-* when it is changed.
+* Atom Stylesheet
 */
 
 .tree-view {
-    .status-ignored {
-        display: none;
-    }
-    .list-tree.has-collapsable-children .list-nested-item > .list-tree > li,
-    .list-tree.has-collapsable-children .list-nested-item > .list-group > li {
-      padding-left: 12px;
-    }
+  .status-ignored {
+    display: none;
+  }
+  .list-tree.has-collapsable-children .list-nested-item > .list-tree > li,
+  .list-tree.has-collapsable-children .list-nested-item > .list-group > li {
+    padding-left: 12px;
+  }
 
-    .list-tree.has-collapsable-children .list-nested-item > .list-item::before {
-      margin-right: 5px;
-    }
+  .list-tree.has-collapsable-children .list-nested-item > .list-item::before {
+    margin-right: 5px;
+  }
 
-    .list-tree.has-collapsable-children li.list-item {
-      margin-left: 18px;
-    }
+  .list-tree.has-collapsable-children li.list-item {
+    margin-left: 18px;
+  }
 
-    .list-group .icon::before, .list-tree .icon::before {
-      margin-right: 0.5em;
-    }
+  .list-group .icon::before,
+  .list-tree .icon::before {
+    margin-right: 0.5em;
+  }
 
-    .full-menu {
-      padding-left: 10px;
-    }
-
+  .full-menu {
+    padding-left: 10px;
+  }
 }
 
 .editor {
+}
 
+@keyframes blinker {
+  50% {
+    opacity: 0.5;
+  }
 }
 
 atom-pane .file linter-decoration {
@@ -55,21 +57,24 @@ atom-pane .file linter-decoration {
 }
 
 // Styling Error Types
-atom-text-editor.editor .highlights .linter-highlight, .linter-highlight {
+atom-text-editor.editor .linter-highlight,
+.linter-highlight {
   &.linter-error {
-    .region {
-      border: 2px solid @background-color-error;
-    }
+    // border-top: 2px solid @background-color-error;
+    border-bottom: 2px solid @background-color-error;
+    background: none;
   }
   &.linter-warning {
-    .region {
-      border: 2px solid @background-color-warning;
-    }
+    // border-top: 2px solid @background-color-warning;
+    border-bottom: 2px solid @background-color-warning;
+    background: none;
+    // animation: blinker 1s linear infinite;
   }
-  &.linter-trace, &.info {
-    .region {
-      border: 2px solid @background-color-info;
-    }
+  &.linter-trace,
+  &.info {
+    // border-top: 2px solid @background-color-info;
+    border-bottom: 2px solid @background-color-info;
+    background: none;
   }
 }
 
@@ -101,5 +106,4 @@ atom-text-editor .indent-guide {
 }
 
 .editor .cursor {
-
 }

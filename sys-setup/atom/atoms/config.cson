@@ -93,7 +93,7 @@
   "go-plus":
     config: {}
     panel:
-      currentHeight: "7.951289398280801vh"
+      currentHeight: "14.469914040114611vh"
   hyperclick:
     darwinTriggerKeys: "altKey,metaKey"
   jsformat: {}
@@ -101,8 +101,7 @@
   linter: {}
   "linter-eslint": {}
   "linter-shellcheck": {}
-  "linter-ui-default":
-    panelHeight: 81
+  "linter-ui-default": {}
   "markdown-preview":
     openPreviewInSplitPane: false
   metrics:
