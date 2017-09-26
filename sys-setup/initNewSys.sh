@@ -21,6 +21,10 @@ elif [ "$(uname -s)" == "Darwin" ]; then
 	brew install bash-completion
 	brew install shellcheck
 
+  brew cask install java
+  brew cask install android-sdk
+  brew cask install android-ndk
+
 	# gems
 	sudo gem install cocoapods
 
