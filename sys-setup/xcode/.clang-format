@@ -6,7 +6,7 @@ ObjCSpaceAfterProperty: true
 AlwaysBreakAfterReturnType: All
 AlwaysBreakAfterDefinitionReturnType: All
 SortIncludes: false
-ColumnLimit: 140
+ColumnLimit: 120
 AlignAfterOpenBracket: AlwaysBreak
 KeepEmptyLinesAtTheStartOfBlocks: false
 AlignTrailingComments: true

@@ -71,6 +71,7 @@
       "java-import-wiz"
       "java-plus"
       "autocomplete-java-minus"
+      "nuclide"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/mcmhav/r"
@@ -93,7 +94,7 @@
   "go-plus":
     config: {}
     panel:
-      currentHeight: "14.469914040114611vh"
+      currentHeight: "25.236742424242426vh"
   hyperclick:
     darwinTriggerKeys: "altKey,metaKey"
   jsformat: {}
@@ -101,7 +102,8 @@
   linter: {}
   "linter-eslint": {}
   "linter-shellcheck": {}
-  "linter-ui-default": {}
+  "linter-ui-default":
+    panelHeight: 81
   "markdown-preview":
     openPreviewInSplitPane: false
   metrics:
@@ -155,7 +157,6 @@
   "tree-view":
     alwaysOpenExisting: true
     autoReveal: true
-    hideVcsIgnoredFiles: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
