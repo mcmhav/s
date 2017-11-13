@@ -151,3 +151,8 @@
         })
       );
     """
+  'Math.random':
+    'prefix': 'mathRandom'
+    'body': """
+      Math.floor(Math.random() * (${1:max} - ${2:min} + 1)) + ${2:min};
+    """

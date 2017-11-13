@@ -37,6 +37,8 @@ alias cake='sh ~/r/s/lin-sys-setup/.cakeInit.sh'
 alias scron="sudo EDITOR=nano crontab -u $USER -e"
 alias xterm="xterm & sleep 0.8s && transset-df -a"
 
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
 # path shit
 export PATH="/git/tools/bin:${PATH}"
 export PATH="$PATH:$(ruby -rubygems -e "puts Gem.user_dir")/bin"
@@ -44,6 +46,7 @@ export PATH="$PATH:/git/bob"
 export PATH="$PATH:`yarn global bin`"
 export PATH="$PATH:/Users/mcmhav/work/bin/protoc-gen-go"
 export PATH="$PATH:/usr/local/opt/python/libexec/bin"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 # go sgit
 export GOPATH="$GOPATH:/Users/mcmhav/r/motione/go"
@@ -77,4 +80,15 @@ fi
 # The next line enables shell command completion for gcloud.
 if [ -f /Users/mcmhav/Downloads/google-cloud-sdk/completion.bash.inc ]; then
   source '/Users/mcmhav/Downloads/google-cloud-sdk/completion.bash.inc'
+fi
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+if [ -n "$PYENV_COMMAND" ] && [ ! -x "$PYENV_COMMAND_PATH" ]; then
+  versions=($(pyenv-whence "${PYENV_COMMAND}" 2>/dev/null || true))
+  if [ "${#versions[@]}" -eq 1 ]; then
+    PYENV_COMMAND_PATH="${PYENV_ROOT}/versions/${versions[0]}/bin/${PYENV_COMMAND}"
+  fi
 fi

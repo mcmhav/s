@@ -19,11 +19,19 @@ elif [ "$(uname -s)" == "Darwin" ]; then
 	brew install watchman
 	brew install git
 	brew install bash-completion
-	brew install shellcheck
+  brew install shellcheck
+	brew install pyenv
+  brew install readline
+  brew install xz
+  brew install watch
 
   brew cask install java
   brew cask install android-sdk
   brew cask install android-ndk
+
+  CFLAGS="-I$(brew --prefix openssl)/include" \
+  LDFLAGS="-L$(brew --prefix openssl)/lib" \
+  pyenv install -v 3.4.3
 
 	# gems
 	sudo gem install cocoapods
