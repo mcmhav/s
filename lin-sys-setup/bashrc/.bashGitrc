@@ -51,6 +51,7 @@ alias gmv='git mv'
 alias gdl='git pull --no-edit'
 alias gcm='git commit -am'
 alias gup='git push'
+alias gupf='git push -f'
 
 alias gplb='git branch -d $(git branch --merged)'
 

@@ -71,7 +71,6 @@
       "java-import-wiz"
       "java-plus"
       "autocomplete-java-minus"
-      "nuclide"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/mcmhav/r"
