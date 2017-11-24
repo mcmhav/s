@@ -2,9 +2,6 @@
 	"bootstrapped": true,
 	"in_process_packages":
 	[
-		"SideBarEnhancements",
-		"SublimeLinter",
-		"SublimeLinter-shellcheck"
 	],
 	"installed_packages":
 	[

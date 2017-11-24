@@ -101,9 +101,6 @@
 	"hot_exit": true,
 	"ignored_packages":
 	[
-		"SideBarEnhancements",
-		"SublimeLinter",
-		"SublimeLinter-shellcheck",
 		"Vintage"
 	],
 	"indent_guide_options":
