@@ -33,7 +33,6 @@ language-proto
 linter
 linter-eslint
 linter-pycodestyle
-linter-pylint
 linter-shellcheck
 linter-ui-default
 material-monokai-syntax
