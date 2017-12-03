@@ -18,7 +18,8 @@
   'React Class':
     'prefix': 'rClass'
     'body': """
-      import React, { Component, PropTypes } from 'react';
+      import PropTypes from 'prop-types';
+      import React, { Component } from 'react';
       import {
         View,
         Text,
@@ -69,6 +70,7 @@
   'React Stateless':
     'prefix': 'rStateLess'
     'body': """
+      import PropTypes from 'prop-types';
       import React, { PropTypes } from 'react';
       import { ScrollView, Text } from 'react-native';
 
