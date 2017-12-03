@@ -45,9 +45,9 @@ elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
 	echo "TODO - more"
 fi
 
-atom/setup.sh --install
-subl/setup.sh
-vim/setup.sh
+atom/programs/setup.sh --install
+subl/programs/setup.sh
+vim/programs/setup.sh
 
 # Apps:
 #   python
