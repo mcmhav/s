@@ -5,7 +5,7 @@
 # install atom
 
 ATOM_HOME=~/.atom
-ATOM_SETUP_HOME=~/r/s/sys-setup/atom
+ATOM_SETUP_HOME=~/r/s/sys-setup/programs/atom
 
 echo "handle atom setup"
 

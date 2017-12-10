@@ -61,7 +61,6 @@
       "welcome"
       "pretty-json"
       "exception-reporting"
-      "linter-pylint"
       "color-picker"
       "svg-preview"
       "atom-beautify"
