@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 pieConnect(){
-  piIp='10.0.0.14'
+  # piIp='10.0.0.14'
+  piIp='cakePi'
   if [ ! -z "$1" ]; then
     piIp="$1"
   fi
