@@ -28,6 +28,7 @@ elif [ "$(uname -s)" == "Darwin" ]; then
   brew cask install java
   brew cask install android-sdk
   brew cask install android-ndk
+  brew cask install enpass
 
   CFLAGS="-I$(brew --prefix openssl)/include" \
   LDFLAGS="-L$(brew --prefix openssl)/lib" \

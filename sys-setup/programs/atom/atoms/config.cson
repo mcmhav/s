@@ -61,15 +61,8 @@
       "welcome"
       "pretty-json"
       "exception-reporting"
-      "color-picker"
-      "svg-preview"
-      "atom-beautify"
-      "activate-power-mode"
-      "flow-ide"
-      "java-classpath-registry"
-      "java-import-wiz"
-      "java-plus"
-      "autocomplete-java-minus"
+      "atom-ide-ui"
+      "language-javascript-jsx"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/mcmhav/r"
@@ -101,7 +94,7 @@
   "linter-eslint": {}
   "linter-shellcheck": {}
   "linter-ui-default":
-    panelHeight: 81
+    panelHeight: 706
   "markdown-preview":
     openPreviewInSplitPane: false
   metrics:
