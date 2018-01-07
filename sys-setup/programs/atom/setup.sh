@@ -11,7 +11,13 @@ echo "handle atom setup"
 
 cd "$ATOM_HOME" || exit
 
-makePackagesList(){
+makePackagesList() {
+  storeLocation="packagesList"
+
+  if [ -n "$1" ]; then
+    storeLocation="$1"
+  fi
+
   tmp="$PWD"
   cd "$ATOM_SETUP_HOME/atoms" || exit;
 
@@ -19,16 +25,52 @@ makePackagesList(){
     if ! [ -x "$(command -v apm)" ]; then
       exit
     else
-      apm list -ib | awk '{split($1,pkname,"@"); print pkname[1]}' > packagesList
+      apm list -ib | awk '{split($1,pkname,"@"); print pkname[1]}' > "$storeLocation"
     fi
   else
-    apm-beta list -ib | awk '{split($1,pkname,"@"); print pkname[1]}' > packagesList
+    apm-beta list -ib | awk '{split($1,pkname,"@"); print pkname[1]}' > "$storeLocation"
   fi
 
   cd "$tmp" || exit
 }
 
+makeDiff() {
+  diff packagesList $1 | grep ">" | sed 's/> //g' > $2
+}
+
+uninstallAll() {
+  tmpList="packagesListDel"
+  diffList="diff"
+  makePackagesList $tmpList
+
+  makeDiff $tmpList $diffList
+
+  cd "$ATOM_HOME/packages" || mkdir "$ATOM_HOME/packages"
+  while read line; do
+    echo "a line!!"
+    echo "$line"
+    if [ -d "$PWD/$line" ]; then
+      if ! [ -x "$(command -v apm-beta)" ]; then
+        if ! [ -x "$(command -v apm)" ]; then
+          exit
+        else
+          apm uninstall "$line"
+        fi
+      else
+        apm-beta uninstall "$line"
+      fi
+    fi
+  done < $ATOM_SETUP_HOME/atoms/$diffList
+
+  rm $ATOM_SETUP_HOME/atoms/$tmpList
+  rm $ATOM_SETUP_HOME/atoms/$diffList
+
+  cd "$ATOM_HOME" || exit
+}
+
 installFromPackagesList() {
+  uninstallAll
+
   cd "$ATOM_HOME/packages" || mkdir "$ATOM_HOME/packages"
   while read line; do
     echo "$line"
