@@ -19,6 +19,9 @@
     jsx:
       default_beautifier: "JS Beautify"
       end_with_comma: true
+  "atom-ide-ui":
+    use:
+      "atom-ide-diagnostics-ui": false
   "atom-lint":
     ignoredNames: [
       "tmp/**"
@@ -61,7 +64,6 @@
       "welcome"
       "pretty-json"
       "exception-reporting"
-      "atom-ide-ui"
       "language-javascript-jsx"
     ]
     openEmptyEditorOnStart: false

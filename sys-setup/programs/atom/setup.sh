@@ -31,11 +31,16 @@ makePackagesList() {
     apm-beta list -ib | awk '{split($1,pkname,"@"); print pkname[1]}' > "$storeLocation"
   fi
 
+  ls
+
   cd "$tmp" || exit
 }
 
 makeDiff() {
+  tmp="$PWD"
+  cd "$ATOM_SETUP_HOME/atoms" || exit;
   diff packagesList $1 | grep ">" | sed 's/> //g' > $2
+  cd "$tmp" || exit
 }
 
 uninstallAll() {
@@ -44,6 +49,8 @@ uninstallAll() {
   makePackagesList $tmpList
 
   makeDiff $tmpList $diffList
+
+  echo "uninstallAll"
 
   cd "$ATOM_HOME/packages" || mkdir "$ATOM_HOME/packages"
   while read line; do
