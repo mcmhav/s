@@ -14,7 +14,7 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
-bashCWD="$HOME/r/s/lin-sys-setup"
+bashCWD="$HOME/r/s/sys-setup/bash"
 
 # adding extra sources
 source "$bashCWD"/bashrc/.bashCommandrc;
@@ -32,7 +32,7 @@ elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
 fi
 [ -e ~/.bashZepprcs ] && source ~/.bashZepprcs/.bashZepprc;
 
-alias cake='sh ~/r/s/lin-sys-setup/.cakeInit.sh'
+alias cake='sh ~/r/s/sys-setup/.dotfiles/.cakeInit.sh'
 # alias scron="su -c $(printf "%q " "crontab -u $USER -e")"
 alias scron="sudo EDITOR=nano crontab -u $USER -e"
 alias xterm="xterm & sleep 0.8s && transset-df -a"
