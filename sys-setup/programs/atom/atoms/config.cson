@@ -64,7 +64,6 @@
       "welcome"
       "pretty-json"
       "exception-reporting"
-      "language-javascript-jsx"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/mcmhav/r"
@@ -96,7 +95,7 @@
   "linter-eslint": {}
   "linter-shellcheck": {}
   "linter-ui-default":
-    panelHeight: 706
+    panelHeight: 327
   "markdown-preview":
     openPreviewInSplitPane: false
   metrics:

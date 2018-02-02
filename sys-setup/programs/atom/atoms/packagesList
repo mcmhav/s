@@ -1,12 +1,5 @@
-accents-ui
-afterglow-monokai-syntax
-anodyne-dark-syntax
-ariake-dark-syntax
-atom-ide-ui
 atom-material-syntax
 atom-material-ui
-atom-panda-syntax
-babel-react-syntax
 busy
 busy-signal
 file-icons
@@ -16,11 +9,9 @@ go-plus
 go-signature-statusbar
 gruvbox
 highlight-selected
-hyperclick
 intentions
 language-babel
 language-gradle
-language-javascript-jsx
 language-lua
 language-proto
 linter
@@ -29,16 +20,10 @@ linter-pycodestyle
 linter-pylint
 linter-shellcheck
 linter-ui-default
-material-monokai-syntax
 minimap
 minimap-highlight-selected
 minimap-linter
-monokai-slate
-one-dark-mini-ui
-pacific-dark
 pigments
 prettier-atom
-r-exec
-seti-ui
 split-diff
 
