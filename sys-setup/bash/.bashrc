@@ -6,8 +6,10 @@
 
 [ -f /etc/shrc ] && . /etc/shrc
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+if [ -x "$(command -v brew)" ]; then
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
 fi
 
 if [ -f ~/.git-completion.bash ]; then
