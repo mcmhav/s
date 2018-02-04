@@ -48,7 +48,7 @@ uninstallAll() {
 
   makeDiff $tmpList $diffList
 
-  echo "uninstallAll:"
+  echo "uninstall list:"
   cat $ATOM_SETUP_HOME/atoms/$diffList
 
   cd "$ATOM_HOME/packages" || mkdir "$ATOM_HOME/packages"
@@ -77,7 +77,7 @@ installFromPackagesList() {
 
   cd "$ATOM_HOME/packages" || mkdir "$ATOM_HOME/packages"
 
-  echo "installAll:"
+  echo "install list:"
   cat $ATOM_SETUP_HOME/atoms/packagesList
 
   while read line; do
