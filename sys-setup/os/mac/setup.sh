@@ -23,6 +23,7 @@ brew cask install enpass
 
 CFLAGS="-I$(brew --prefix openssl)/include" \
 LDFLAGS="-L$(brew --prefix openssl)/lib" \
+
 pyenv install -v 3.4.3
 
 # gems

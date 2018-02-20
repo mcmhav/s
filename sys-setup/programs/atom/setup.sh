@@ -31,8 +31,6 @@ makePackagesList() {
     apm-beta list -ib | awk '{split($1,pkname,"@"); print pkname[1]}' > "$storeLocation"
   fi
 
-  ls
-
   cd "$tmp" || exit
 }
 
@@ -50,12 +48,11 @@ uninstallAll() {
 
   makeDiff $tmpList $diffList
 
-  echo "uninstallAll"
+  echo "uninstall list:"
+  cat $ATOM_SETUP_HOME/atoms/$diffList
 
   cd "$ATOM_HOME/packages" || mkdir "$ATOM_HOME/packages"
   while read line; do
-    echo "a line!!"
-    echo "$line"
     if [ -d "$PWD/$line" ]; then
       if ! [ -x "$(command -v apm-beta)" ]; then
         if ! [ -x "$(command -v apm)" ]; then
@@ -79,8 +76,11 @@ installFromPackagesList() {
   uninstallAll
 
   cd "$ATOM_HOME/packages" || mkdir "$ATOM_HOME/packages"
+
+  echo "install list:"
+  cat $ATOM_SETUP_HOME/atoms/packagesList
+
   while read line; do
-    echo "$line"
     if [ ! -d "$PWD/$line" ]; then
       if ! [ -x "$(command -v apm-beta)" ]; then
         if ! [ -x "$(command -v apm)" ]; then
