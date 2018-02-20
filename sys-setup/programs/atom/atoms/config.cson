@@ -30,8 +30,16 @@
       path: "/usr/local/bin/jshint"
   "atom-material-ui":
     colors:
-      abaseColor: "#ef5350"
-      accentColor: "#59fcff"
+      abaseColor:
+        _alpha: 1
+        _blue: 80
+        _green: 83
+        _red: 239
+      accentColor:
+        _alpha: 1
+        _blue: 255
+        _green: 252
+        _red: 89
       paintCursor: true
       predefinedColor: "Red"
     tabs:
@@ -95,7 +103,7 @@
   "linter-eslint": {}
   "linter-shellcheck": {}
   "linter-ui-default":
-    panelHeight: 327
+    panelHeight: 103
   "markdown-preview":
     openPreviewInSplitPane: false
   metrics:
