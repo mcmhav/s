@@ -30,16 +30,6 @@
       path: "/usr/local/bin/jshint"
   "atom-material-ui":
     colors:
-      abaseColor:
-        _alpha: 1
-        _blue: 80
-        _green: 83
-        _red: 239
-      accentColor:
-        _alpha: 1
-        _blue: 255
-        _green: 252
-        _red: 89
       paintCursor: true
       predefinedColor: "Red"
     tabs:
@@ -77,7 +67,7 @@
     projectHome: "/Users/mcmhav/r"
     telemetryConsent: "limited"
     themes: [
-      "atom-material-ui"
+      "one-dark-ui"
       "gruvbox"
     ]
   editor:
