@@ -92,8 +92,7 @@
   linter: {}
   "linter-eslint": {}
   "linter-shellcheck": {}
-  "linter-ui-default":
-    panelHeight: 103
+  "linter-ui-default": {}
   "markdown-preview":
     openPreviewInSplitPane: false
   metrics:
@@ -147,6 +146,7 @@
   "tree-view":
     alwaysOpenExisting: true
     autoReveal: true
+    hideIgnoredNames: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
