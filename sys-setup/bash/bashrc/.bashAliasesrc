@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+alias cake='sh ~/r/s/sys-setup/.dotfiles/.cakeInit.sh'
+# alias scron="su -c $(printf "%q " "crontab -u $USER -e")"
+alias scron="sudo EDITOR=nano crontab -u $USER -e"
+alias xterm="xterm & sleep 0.8s && transset-df -a"
+
+alias http='python -m http.server'
+alias http='python -m SimpleHTTPServer 8009'
+alias click='shutter -s'
+
+alias probeNetwork='arp -a'
+
+alias aptUpgrade='sudo apt-get update && sudo apt-get upgrade'
+
+alias space='du -h -d 2 | sort -n'

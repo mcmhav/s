@@ -92,7 +92,8 @@
   linter: {}
   "linter-eslint": {}
   "linter-shellcheck": {}
-  "linter-ui-default": {}
+  "linter-ui-default":
+    panelHeight: 360
   "markdown-preview":
     openPreviewInSplitPane: false
   metrics:
@@ -133,6 +134,7 @@
     prettierOptions:
       singleQuote: true
       trailingComma: "all"
+    useEditorConfig: false
     useEslint: true
   "pretty-json":
     prettifyOnSaveJSON: false
