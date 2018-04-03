@@ -40,6 +40,11 @@ function timer_stop {
         notifyDone
         tput bel
     fi
+
+    # arr=( "hore" "sau" "jesus" "abdullah" "bannan" "pottit" "SWAG!!" "YOLO!!" )
+    # rand=$[ $RANDOM % ${#arr[@]} ]
+    # timer_show=${arr[$rand]}
+
     unset timer
 }
 
