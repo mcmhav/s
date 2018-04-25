@@ -40,3 +40,6 @@ mkdir ~/Pictures/screenshots
 defaults write com.apple.screencapture location ~/Pictures/screenshots
 
 defaults write com.apple.finder AppleShowAllFiles YES
+
+# app configs
+ln -sf ~/r/s/sys-setup/os/mac/configs ~/Library/Preferences/com.apple.Terminal.plist
