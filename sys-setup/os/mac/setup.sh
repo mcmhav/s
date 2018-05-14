@@ -26,6 +26,11 @@ brew cask install java
 brew cask install android-sdk
 brew cask install android-ndk
 brew cask install enpass
+brew cask install avibrazil-rdm
+brew cask install station
+brew cask install amethyst
+brew cask install geektool
+brew cask install spectacle
 
 CFLAGS="-I$(brew --prefix openssl)/include" \
 LDFLAGS="-L$(brew --prefix openssl)/lib" \
