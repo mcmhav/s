@@ -31,6 +31,7 @@ brew cask install station
 brew cask install amethyst
 brew cask install geektool
 brew cask install spectacle
+brew cask install menumeters
 
 CFLAGS="-I$(brew --prefix openssl)/include" \
 LDFLAGS="-L$(brew --prefix openssl)/lib" \
