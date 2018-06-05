@@ -21,6 +21,7 @@ brew install pyenv
 brew install readline
 brew install xz
 brew install watch
+brew install ack
 
 brew cask install java
 brew cask install android-sdk
