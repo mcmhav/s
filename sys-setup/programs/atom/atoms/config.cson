@@ -93,7 +93,7 @@
   "linter-eslint": {}
   "linter-shellcheck": {}
   "linter-ui-default":
-    panelHeight: 451
+    panelHeight: 261
   "markdown-preview":
     openPreviewInSplitPane: false
   metrics:
