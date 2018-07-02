@@ -7,6 +7,8 @@ if ! [ -x "$(command -v brew)" ]; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
+xcode-select --install
+
 brew update
 brew upgrade
 brew cask upgrade
@@ -22,6 +24,7 @@ brew install readline
 brew install xz
 brew install watch
 brew install ack
+brew install zlib
 
 brew cask install java
 brew cask install android-sdk
@@ -43,10 +46,13 @@ pyenv install -v 3.4.3
 sudo gem install cocoapods
 
 # mac-os setup
-mkdir ~/Pictures/screenshots
+if [ ! -d ~/Pictures/screenshots ]; then
+  mkdir ~/Pictures/screenshots
+fi
+
 defaults write com.apple.screencapture location ~/Pictures/screenshots
 
 defaults write com.apple.finder AppleShowAllFiles YES
 
 # app configs
-ln -sf ~/r/s/sys-setup/os/mac/configs ~/Library/Preferences/com.apple.Terminal.plist
+ln -sf ~/r/s/sys-setup/os/mac/configs/com.apple.Terminal.plist ~/Library/Preferences/com.apple.Terminal.plist
