@@ -25,6 +25,7 @@ brew install xz
 brew install watch
 brew install ack
 brew install zlib
+brew install yarn
 
 brew cask install java
 brew cask install android-sdk
