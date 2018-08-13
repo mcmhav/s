@@ -32,18 +32,19 @@ elif [ "$(uname -s)" == "Darwin" ]; then
 elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
   source "$bashCWD"/bashrc/.bashWinrc;
 fi
-[ -e ~/.bashZepprcs ] && source ~/.bashZepprcs/.bashZepprc;
+[ -e ~/.bashAkerrcs ] && source ~/.bashAkerrcs/.bashAkerrc;
 source "$bashCWD"/bashrc/.bashExportsrc;
 source "$bashCWD"/bashrc/.bashAliasesrc;
 
+G_CLOUD_SDK_PATH="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f /Users/mcmhav/Downloads/google-cloud-sdk/path.bash.inc ]; then
-  source '/Users/mcmhav/Downloads/google-cloud-sdk/path.bash.inc'
+if [ -f $G_CLOUD_SDK_PATH/path.bash.inc ]; then
+  source $G_CLOUD_SDK_PATH/path.bash.inc
 fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f /Users/mcmhav/Downloads/google-cloud-sdk/completion.bash.inc ]; then
-  source '/Users/mcmhav/Downloads/google-cloud-sdk/completion.bash.inc'
+if [ -f $G_CLOUD_SDK_PATH/completion.bash.inc ]; then
+  source $G_CLOUD_SDK_PATH/completion.bash.inc
 fi
 
 if command -v pyenv 1>/dev/null 2>&1; then
