@@ -1,0 +1,12 @@
+node
+watchman
+git
+bash-completion
+shellcheck
+pyenv
+readline
+xz
+watch
+ack
+zlib
+yarn
