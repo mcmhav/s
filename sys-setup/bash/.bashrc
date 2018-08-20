@@ -16,6 +16,10 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
+HISTSIZE=2000
+HISTFILESIZE=2000
+export HISTFILE=~/.bash_eternal_ish_history
+
 bashCWD="$HOME/r/s/sys-setup/bash"
 
 # adding extra sources
