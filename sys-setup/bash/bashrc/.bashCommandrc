@@ -36,7 +36,7 @@ function timer_start {
 function timer_stop {
     timer_show=$((SECONDS - timer))
 
-    if [ "$timer_show" -gt "500" ]; then
+    if [ "$timer_show" -gt "900" ]; then
         notifyDone
         tput bel
     fi
