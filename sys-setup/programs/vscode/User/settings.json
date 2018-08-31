@@ -1,0 +1,13 @@
+{
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "files.autoSave": "onFocusChange",
+    "editor.wordWrap": "on",
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.editor.closeOnFileDelete": false,
+    "workbench.enableExperiments": false,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.wrappingIndent": "indent",
+    "workbench.statusBar.feedback.visible": false
+}
