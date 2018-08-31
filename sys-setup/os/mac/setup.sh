@@ -25,6 +25,9 @@ installStuff() {
   # gems
   sudo gem install cocoapods
 
+  # gos
+  installGos
+
   # mac-os setup
   if [ ! -d ~/Pictures/screenshots ]; then
     mkdir ~/Pictures/screenshots
@@ -51,6 +54,12 @@ installBrews() {
   while read l; do
     brew cask install $l
   done < configs/casks
+}
+
+installGos() {
+  while read l; do
+    go get -u $l
+  done < configs/gos
 }
 
 installStuff
