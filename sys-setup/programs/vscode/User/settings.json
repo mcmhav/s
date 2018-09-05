@@ -9,5 +9,8 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "editor.wrappingIndent": "indent",
-    "workbench.statusBar.feedback.visible": false
+    "workbench.statusBar.feedback.visible": false,
+    "prettier.tslintIntegration": true,
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "es5"
 }

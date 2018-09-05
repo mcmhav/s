@@ -47,3 +47,7 @@ c() {
     echo "todo"
   fi
 }
+
+tcpp() {
+  netstat -vanp tcp | grep $1
+}

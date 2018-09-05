@@ -1,4 +1,4 @@
-node
+nvm
 watchman
 git
 bash-completion
@@ -9,4 +9,4 @@ xz
 watch
 ack
 zlib
-yarn
+yarn --without-node
