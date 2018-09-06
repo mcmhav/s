@@ -3,9 +3,7 @@ kitematic
 java
 android-sdk
 android-ndk
-enpass
 avibrazil-rdm
-station
 amethyst
 geektool
 spectacle
@@ -14,4 +12,7 @@ google-chrome
 google-backup-and-sync
 google-cloud-sdk
 visual-studio-code
+atom-beta
+enpass
+station
 signal
