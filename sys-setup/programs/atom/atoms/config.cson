@@ -85,6 +85,7 @@
     config: {}
     panel:
       currentHeight: "25.236742424242426vh"
+      fontSize: "1em"
   hyperclick:
     darwinTriggerKeys: "altKey,metaKey"
   jsformat: {}
