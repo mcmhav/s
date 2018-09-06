@@ -12,5 +12,11 @@
     "workbench.statusBar.feedback.visible": false,
     "prettier.tslintIntegration": true,
     "prettier.singleQuote": true,
-    "prettier.trailingComma": "es5"
+    "prettier.trailingComma": "es5",
+    "workbench.editor.revealIfOpen": true,
+    "editor.formatOnSave": true,
+    "html.format.wrapLineLength": 90,
+    "[yaml]": {
+        "editor.formatOnSave": false
+    }
 }

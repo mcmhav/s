@@ -1,3 +1,5 @@
+docker
+kitematic
 java
 android-sdk
 android-ndk
@@ -8,6 +10,7 @@ amethyst
 geektool
 spectacle
 yujitach-menumeters
+google-chrome
 google-backup-and-sync
 google-cloud-sdk
 visual-studio-code
