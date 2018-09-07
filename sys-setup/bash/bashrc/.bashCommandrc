@@ -8,6 +8,10 @@ else
     alias ls='ls --color=auto'
 fi
 
+HISTSIZE=2000
+HISTFILESIZE=2000
+export HISTFILE=~/.bash_eternal_ish_history
+
 nukeDockers() {
   docker rm $(docker ps -a -q)
   docker rmi $(docker images -q)

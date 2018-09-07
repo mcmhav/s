@@ -51,3 +51,17 @@ c() {
 tcpp() {
   netstat -vanp tcp | grep $1
 }
+
+http() {
+  PYTHON_MAJOR_VERSION=$(python -c 'import sys; print(sys.version_info[:])'[0])
+
+  if [ "$PYTHON_MAJOR_VERSION" -gt 2 ]; then
+    python -m http.server $1
+  else
+    python -m SimpleHTTPServer $1
+  fi
+}
+
+cpIterm2Plist() {
+  cp ~/Library/Preferences/com.googlecode.iterm2.plist ~/r/s/sys-setup/os/mac/configs/
+}

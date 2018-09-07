@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+bashCWD="$HOME/r/s/sys-setup/bash"
+
+# adding extra sources
+source "$bashCWD"/bashrc/.bashCommandrc;
+source "$bashCWD"/bashrc/.bashAwesomerc;
+source "$bashCWD"/bashrc/.bashSetuprc;
+source "$bashCWD"/bashrc/.bashGitrc;
+source "$bashCWD"/bashrc/.bashHelperFuncsrc;
+if [ "$(uname -s)" == "Linux" ]; then
+  source "$bashCWD"/bashrc/.bashLinrc;
+elif [ "$(uname -s)" == "Darwin" ]; then
+  source "$bashCWD"/bashrc/.bashMacrc;
+elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+  source "$bashCWD"/bashrc/.bashWinrc;
+fi
+source "$bashCWD"/bashrc/.bashExportsrc;
+source "$bashCWD"/bashrc/.bashAliasesrc;
+
+G_CLOUD_SDK_PATH="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f $G_CLOUD_SDK_PATH/path.bash.inc ]; then
+  source $G_CLOUD_SDK_PATH/path.bash.inc
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f $G_CLOUD_SDK_PATH/completion.bash.inc ]; then
+  source $G_CLOUD_SDK_PATH/completion.bash.inc
+fi
+
+#
+[ -e ~/.bashAkerrcs ] && source ~/.bashAkerrcs/.bashAkerrc;

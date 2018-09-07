@@ -39,6 +39,7 @@ installStuff() {
 
   # app configs
   ln -sf ~/r/s/sys-setup/os/mac/configs/com.apple.Terminal.plist ~/Library/Preferences/com.apple.Terminal.plist
+  ln -sf ~/r/s/sys-setup/os/mac/configs/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
 
   # stop mouse from accelerating
   defaults write .GlobalPreferences com.apple.mouse.scaling -1
@@ -60,6 +61,12 @@ installGos() {
   while read l; do
     go get -u $l
   done < configs/gos
+}
+
+installPys() {
+  while read l; do
+    pip install $l
+  done < configs/pys
 }
 
 installStuff

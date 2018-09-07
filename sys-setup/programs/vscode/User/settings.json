@@ -18,5 +18,6 @@
     "html.format.wrapLineLength": 90,
     "[yaml]": {
         "editor.formatOnSave": false
-    }
+    },
+    "java.format.settings.url": "~/r/s/sys-setup/.dotfiles/.settings/org.eclipse.jdt.core.prefs"
 }
