@@ -65,3 +65,7 @@ http() {
 cpIterm2Plist() {
   cp ~/Library/Preferences/com.googlecode.iterm2.plist ~/r/s/sys-setup/os/mac/configs/
 }
+
+lc() {
+  colorls $@ 2> /dev/null
+}

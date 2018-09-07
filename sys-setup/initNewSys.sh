@@ -16,6 +16,7 @@ fi
 programs/atom/setup.sh --install
 programs/subl/setup.sh
 programs/vim/setup.sh
+programs/vscode/setup.sh --install
 
 # Apps:
 #   python
