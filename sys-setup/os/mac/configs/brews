@@ -11,3 +11,4 @@ ack
 zlib
 yarn --without-node
 go
+shfmt
