@@ -67,5 +67,5 @@ cpIterm2Plist() {
 }
 
 lc() {
-  colorls $@ 2> /dev/null
+  colorls "$@" 2> /dev/null
 }

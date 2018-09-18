@@ -19,5 +19,8 @@
     "[yaml]": {
         "editor.formatOnSave": false
     },
-    "java.format.settings.url": "~/r/s/sys-setup/.dotfiles/.settings/org.eclipse.jdt.core.prefs"
+    "java.format.settings.url": "~/r/s/sys-setup/.dotfiles/.settings/org.eclipse.jdt.core.prefs",
+    "workbench.activityBar.visible": false,
+    "zenMode.centerLayout": false,
+    "workbench.startupEditor": "newUntitledFile"
 }

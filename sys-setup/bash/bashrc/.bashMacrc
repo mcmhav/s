@@ -3,3 +3,7 @@
 installDmg() {
   hdiutil attach $1
 }
+
+cb() {
+  clear && printf '\e[3J' && "$@"
+}
