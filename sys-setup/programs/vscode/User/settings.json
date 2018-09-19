@@ -22,7 +22,7 @@
     "java.format.settings.url": "~/r/s/sys-setup/.dotfiles/.settings/org.eclipse.jdt.core.prefs",
     "workbench.activityBar.visible": false,
     "zenMode.centerLayout": false,
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
     "editor.tabSize": 2,
     "editor.rulers": [
         80,
@@ -31,5 +31,6 @@
     ],
     "editor.minimap.renderCharacters": false,
     "editor.minimap.showSlider": "always",
-    "workbench.tree.horizontalScrolling": true
+    "workbench.tree.horizontalScrolling": true,
+    "go.autocompleteUnimportedPackages": true
 }

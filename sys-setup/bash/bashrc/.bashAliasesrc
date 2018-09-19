@@ -12,3 +12,5 @@ alias probeNetwork='arp -a'
 alias aptUpgrade='sudo apt-get update && sudo apt-get upgrade'
 
 alias space='du -h -d 2 | sort -n'
+
+alias topCpu='top -F -R -o cpu'
