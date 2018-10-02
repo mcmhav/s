@@ -15,8 +15,8 @@ elif [ "$(uname -s)" == "Darwin" ]; then
 elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
   source "$bashCWD"/bashrc/.bashWinrc;
 fi
-source "$bashCWD"/bashrc/.bashExportsrc;
 source "$bashCWD"/bashrc/.bashAliasesrc;
+source "$bashCWD"/bashrc/.bashExportsrc;
 
 G_CLOUD_SDK_PATH="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
 # The next line updates PATH for the Google Cloud SDK.

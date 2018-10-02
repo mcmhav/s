@@ -12,23 +12,6 @@ HISTSIZE=10000
 HISTFILESIZE=2000
 export HISTFILE=~/.bash_eternal_ish_history
 
-nukeDockers() {
-  docker rm $(docker ps -a -q)
-  docker rmi $(docker images -q)
-  docker volume rm $(docker volume ls -qf dangling=true)
-}
-
-notifyDone(){
-    if [ "$(uname -s)" == "Linux" ]; then
-        notify-send -u critical "Done !!!"
-    elif [ "$(uname -s)" == "Darwin" ]; then
-        # lol=$(curl -s "http://labs.bible.org/api/?passage=random")
-        osascript -e "display notification \"har\" with title \"God:\""
-    else
-        echo "todoooo"
-    fi
-}
-
 # alias mcwd="echo $PWD | tr / '\n' | xargs -I X sh -c 'echo X | head -c 1; echo' | tr '\n' /"
 
 unset PROMPT_COMMAND
@@ -41,7 +24,7 @@ function timer_stop {
     timer_show=$((SECONDS - timer))
 
     if [ "$timer_show" -gt "900" ]; then
-        notifyDone
+        notifyer "Done!!!"
         tput bel
     fi
 

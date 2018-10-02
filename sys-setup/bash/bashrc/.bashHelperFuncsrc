@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: should probably move some of these to separate .sh-files?!?!?
+
 pieConnect(){
   piIp='cakePi'
   if [ ! -z "$1" ]; then
@@ -68,4 +70,81 @@ cpIterm2Plist() {
 
 lc() {
   colorls "$@" 2> /dev/null
+}
+
+nukeDockers() {
+  docker rm $(docker ps -a -q)
+  docker rmi $(docker images -q)
+  docker volume rm $(docker volume ls -qf dangling=true)
+}
+
+notifyer() {
+  if [ "$(uname -s)" == "Linux" ]; then
+      notify-send -u critical "$@"
+  elif [ "$(uname -s)" == "Darwin" ]; then
+      # lol=$(curl -s "http://labs.bible.org/api/?passage=random")
+      osascript -e "display notification \"$*\" with title \"God:\""
+  else
+      echo "todoooo"
+  fi
+}
+
+alarmIn() {
+  SLEEP_TIME=""
+  ALARM_MESSAGE="Done!!1"
+  if [ ! -z "$2" ]; then
+    ALARM_MESSAGE="$2"
+  fi
+
+  alarmInInternal() {
+    sleep $SLEEP_TIME;
+
+    notifyer $ALARM_MESSAGE
+  }
+
+  while [ "$1" != "" ]; do
+    case $1 in
+      -s | --seconds )
+        shift
+        if test $# -gt 0; then
+          SLEEP_TIME=$1
+        else
+          echo "no seconds arg specified"
+          exit 1
+        fi
+        ;;
+      -m | --minutes )
+        shift
+        if test $# -gt 0; then
+          SLEEP_TIME=$(($1 * 60))
+        else
+          echo "no minutes arg specified"
+          exit 1
+        fi
+        ;;
+      -h | --hours )
+        shift
+        if test $# -gt 0; then
+          SLEEP_TIME=$(($1 * 60 * 60))
+        else
+          echo "no hours arg specified"
+          exit 1
+        fi
+        ;;
+      -msg | --message )
+        shift
+        if test $# -gt 0; then
+          ALARM_MESSAGE="$1"
+        else
+          echo "no minutes arg specified"
+          exit 1
+        fi
+        ;;
+      * )
+        echo "Time plz"
+    esac
+    shift
+  done
+
+  alarmInInternal &
 }

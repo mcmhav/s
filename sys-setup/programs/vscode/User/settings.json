@@ -32,5 +32,9 @@
     "editor.minimap.renderCharacters": false,
     "editor.minimap.showSlider": "always",
     "workbench.tree.horizontalScrolling": true,
-    "go.autocompleteUnimportedPackages": true
+    "go.autocompleteUnimportedPackages": true,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home",
+    "explorer.autoReveal": false
 }
