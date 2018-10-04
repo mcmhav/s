@@ -90,7 +90,7 @@ notifyer() {
 }
 
 alarmIn() {
-  SLEEP_TIME=""
+  SLEEP_TIME="$1"
   ALARM_MESSAGE="Done!!1"
   if [ ! -z "$2" ]; then
     ALARM_MESSAGE="$2"

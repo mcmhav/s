@@ -3,11 +3,11 @@
 bashCWD="$HOME/r/s/sys-setup/bash"
 
 # adding extra sources
+source "$bashCWD"/bashrc/.bashHelperFuncsrc;
 source "$bashCWD"/bashrc/.bashCommandrc;
 source "$bashCWD"/bashrc/.bashAwesomerc;
 source "$bashCWD"/bashrc/.bashSetuprc;
 source "$bashCWD"/bashrc/.bashGitrc;
-source "$bashCWD"/bashrc/.bashHelperFuncsrc;
 if [ "$(uname -s)" == "Linux" ]; then
   source "$bashCWD"/bashrc/.bashLinrc;
 elif [ "$(uname -s)" == "Darwin" ]; then

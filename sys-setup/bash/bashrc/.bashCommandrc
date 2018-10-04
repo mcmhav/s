@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 if [ "$(uname -s)" == "Linux" ]; then
-    alias ls='ls --color=auto'
+  alias ls='ls --color=auto'
 elif [ "$(uname -s)" == "Darwin" ]; then
-    alias ls='ls -G'
+  alias ls='ls -G'
 else
-    alias ls='ls --color=auto'
+  alias ls='ls --color=auto'
 fi
 
 HISTSIZE=10000
@@ -17,22 +17,22 @@ export HISTFILE=~/.bash_eternal_ish_history
 unset PROMPT_COMMAND
 
 function timer_start {
-    timer=${timer:-$SECONDS}
+  timer=${timer:-$SECONDS}
 }
 
 function timer_stop {
-    timer_show=$((SECONDS - timer))
+  timer_show=$((SECONDS - timer))
 
-    if [ "$timer_show" -gt "900" ]; then
-        notifyer "Done!!!"
-        tput bel
-    fi
+  if [ "$timer_show" -gt "900" ]; then
+    notifyer "Done!!!"
+    tput bel
+  fi
 
-    # arr=( "hore" "sau" "jesus" "abdullah" "bannan" "pottit" "SWAG!!" "YOLO!!" )
-    # rand=$[ $RANDOM % ${#arr[@]} ]
-    # timer_show=${arr[$rand]}
+  # arr=( "hore" "sau" "jesus" "abdullah" "bannan" "pottit" "SWAG!!" "YOLO!!" )
+  # rand=$[ $RANDOM % ${#arr[@]} ]
+  # timer_show=${arr[$rand]}
 
-    unset timer
+  unset timer
 }
 
 trap 'timer_start' DEBUG
