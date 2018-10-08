@@ -16,4 +16,4 @@ alias j10="export JAVA_HOME=`/usr/libexec/java_home -v 10`; java -version"
 alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
 
 # Set java 8 as default
-export JAVA_HOME=`/usr/libexec/java_home -v 10`
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`

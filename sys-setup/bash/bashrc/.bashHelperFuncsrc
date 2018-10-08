@@ -50,6 +50,45 @@ c() {
   fi
 }
 
+updateSystem() {
+  if [ "$(uname -s)" == "Linux" ]; then
+    echo "todo"
+  elif [ "$(uname -s)" == "Darwin" ]; then
+    "$1" | pbcopy
+  elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+    echo "todo"
+  fi
+}
+
+uploadSystem() {
+  CONFIG_HOME="$HOME/r/s"
+  RETURN_TO=$(pwd)
+
+  cd $CONFIG_HOME || exit
+
+  if [ "$(uname -s)" == "Linux" ]; then
+    echo "todo"
+  elif [ "$(uname -s)" == "Darwin" ]; then
+    echo "updating vscode config"
+    ./sys-setup/programs/vscode/setup.sh --makePackagesList
+    echo "updating atom config"
+    ./sys-setup/programs/atom/setup.sh --makePackagesList
+
+    echo "adding to git"
+    git add --all
+
+    echo "commiting to git"
+    git commit -am "AUTO: update system configs"
+
+    echo "pushing to git"
+    git push
+  elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+    echo "todo"
+  fi
+
+  cd $RETURN_TO || exit
+}
+
 tcpp() {
   netstat -vanp tcp | grep $1
 }

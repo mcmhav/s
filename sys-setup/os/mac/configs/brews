@@ -12,3 +12,4 @@ zlib
 yarn --without-node
 go
 shfmt
+mitmproxy
