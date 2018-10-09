@@ -21,13 +21,17 @@ installStuff() {
   # brews
   installBrews
 
-  CFLAGS="-I$(brew --prefix openssl)/include" \
-  LDFLAGS="-L$(brew --prefix openssl)/lib" \
+  CFLAGS="-I$(brew --prefix openssl)/include"
+  LDFLAGS="-L$(brew --prefix openssl)/lib"
 
-  pyenv install -s -v 3.4.3
+  if [ -z "$(pyenv versions | grep 3.4.3)" ]; then
+    pyenv install -s -v 3.4.3
+  fi
 
   # gems
-  sudo gem install cocoapods
+  if ! [ -x "$(command -v pod)" ]; then
+    sudo gem install cocoapods
+  fi
 
   # gos
   installGos
