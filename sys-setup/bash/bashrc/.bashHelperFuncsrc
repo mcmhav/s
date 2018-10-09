@@ -16,7 +16,7 @@ lineCount() {
 
 calcWork(){
   cwd=$(PWD)
-  cd "$bashCWD/../bash/timeLogging" || exit
+  cd "$bashWD/../bash/timeLogging" || exit
   ./findStartEnd.sh
   cd "$cwd" || exit
 }
