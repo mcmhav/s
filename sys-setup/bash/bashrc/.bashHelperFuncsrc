@@ -50,7 +50,7 @@ c() {
   fi
 }
 
-updateSystem() {
+csysUpdate() {
   CONFIG_HOME="$HOME/r/s"
   RETURN_TO=$(pwd)
 
@@ -69,7 +69,7 @@ updateSystem() {
   cd $RETURN_TO || exit
 }
 
-uploadSystem() {
+csysUpload() {
   CONFIG_HOME="$HOME/r/s"
   RETURN_TO=$(pwd)
 
@@ -94,6 +94,17 @@ uploadSystem() {
   elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
     echo "todo"
   fi
+
+  cd $RETURN_TO || exit
+}
+
+csysStatus() {
+  CONFIG_HOME="$HOME/r/s"
+  RETURN_TO=$(pwd)
+
+  cd $CONFIG_HOME || exit
+
+  git status
 
   cd $RETURN_TO || exit
 }
