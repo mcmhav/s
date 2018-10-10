@@ -208,17 +208,6 @@ alarmIn() {
   alarmInInternal &
 }
 
-
-tmpFunc() {
-  if ! [ -z "$(pyenv versions | grep 3.4.3)" ]; then
-    echo "got"
-  else
-    echo "not got"
-  fi
-
-  if ! [ -z "$(pyenv versions | grep 3.4.2)" ]; then
-    echo "got"
-  else
-    echo "not got"
-  fi
+findfile() {
+  find . -type f -name "$1"
 }
