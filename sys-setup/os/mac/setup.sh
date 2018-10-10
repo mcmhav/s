@@ -87,4 +87,11 @@ installGems() {
   done < configs/gems
 }
 
+CONFIG_HOME="$HOME/r/s/sys-setup/os/mac"
+RETURN_TO=$(pwd)
+
+cd $CONFIG_HOME || exit
+
 installStuff
+
+cd $RETURN_TO || exit
