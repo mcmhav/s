@@ -129,7 +129,11 @@ csys() {
 }
 
 tcpp() {
-  netstat -vanp tcp | grep $1
+  netstat -vanp tcp | grep -e $1 -e pid
+}
+
+getProcessName() {
+  ps -p $1 -o comm=
 }
 
 http() {
