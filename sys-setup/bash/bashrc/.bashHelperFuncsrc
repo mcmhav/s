@@ -50,63 +50,82 @@ c() {
   fi
 }
 
-csysUpdate() {
-  CONFIG_HOME="$HOME/r/s"
-  RETURN_TO=$(pwd)
+csys() {
+  csysUpdate() {
+    CONFIG_HOME="$HOME/r/s"
+    RETURN_TO=$(pwd)
 
-  cd $CONFIG_HOME || exit
+    cd $CONFIG_HOME || exit
 
-  if [ "$(uname -s)" == "Linux" ]; then
-    echo "todo"
-  elif [ "$(uname -s)" == "Darwin" ]; then
-    git pull
+    if [ "$(uname -s)" == "Linux" ]; then
+      echo "todo"
+    elif [ "$(uname -s)" == "Darwin" ]; then
+      git pull
 
-    ./sys-setup/initNewSys.sh
-  elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
-    echo "todo"
-  fi
+      ./sys-setup/initNewSys.sh
+    elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+      echo "todo"
+    fi
 
-  cd $RETURN_TO || exit
-}
+    cd $RETURN_TO || exit
+  }
 
-csysUpload() {
-  CONFIG_HOME="$HOME/r/s"
-  RETURN_TO=$(pwd)
+  csysUpload() {
+    CONFIG_HOME="$HOME/r/s"
+    RETURN_TO=$(pwd)
 
-  cd $CONFIG_HOME || exit
+    cd $CONFIG_HOME || exit
 
-  if [ "$(uname -s)" == "Linux" ]; then
-    echo "todo"
-  elif [ "$(uname -s)" == "Darwin" ]; then
-    echo "updating vscode config"
-    ./sys-setup/programs/vscode/setup.sh --makePackagesList
-    echo "updating atom config"
-    ./sys-setup/programs/atom/setup.sh --makePackagesList
+    if [ "$(uname -s)" == "Linux" ]; then
+      echo "todo"
+    elif [ "$(uname -s)" == "Darwin" ]; then
+      echo "updating vscode config"
+      ./sys-setup/programs/vscode/setup.sh --makePackagesList
+      echo "updating atom config"
+      ./sys-setup/programs/atom/setup.sh --makePackagesList
 
-    echo "adding to git"
-    git add --all
+      echo "adding to git"
+      git add --all
 
-    echo "commiting to git"
-    git commit -am "AUTO: update system configs"
+      echo "commiting to git"
+      git commit -am "AUTO: update system configs"
 
-    echo "pushing to git"
-    git push
-  elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
-    echo "todo"
-  fi
+      echo "pushing to git"
+      git push
+    elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+      echo "todo"
+    fi
 
-  cd $RETURN_TO || exit
-}
+    cd $RETURN_TO || exit
+  }
 
-csysStatus() {
-  CONFIG_HOME="$HOME/r/s"
-  RETURN_TO=$(pwd)
+  csysStatus() {
+    CONFIG_HOME="$HOME/r/s"
+    RETURN_TO=$(pwd)
 
-  cd $CONFIG_HOME || exit
+    cd $CONFIG_HOME || exit
 
-  git status
+    git status
 
-  cd $RETURN_TO || exit
+    cd $RETURN_TO || exit
+  }
+
+  while [ "$1" != "" ]; do
+    case $1 in
+      -s | --status )
+        csysStatus
+        ;;
+      -u | --upload )
+        csysUpload
+        ;;
+      -d | --download )
+        csysUpdate
+        ;;
+      * )
+        echo "Time plz"
+    esac
+    shift
+  done
 }
 
 tcpp() {
@@ -210,4 +229,14 @@ alarmIn() {
 
 findfile() {
   find . -type f -name "$1"
+}
+
+decodeBase64() {
+  TO_DECODE=$1
+
+  if [ -z $TO_DECODE ]; then
+    TO_DECODE=$(pbpaste)
+  fi
+
+  echo "$TO_DECODE" | base64 --decode
 }
