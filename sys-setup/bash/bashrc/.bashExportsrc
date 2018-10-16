@@ -3,8 +3,6 @@
 # old stuff
 # export EDITOR=subl3
 # export VISUAL=subl3
-# export HISTFILESIZE=
-# export HISTSIZE=
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -33,13 +31,16 @@ export PATH=$PATH
 
 # node
 export NVM_DIR="$HOME/.nvm"
+# lazyloading of nvm since . "/usr/local/opt/nvm/nvm.sh"
+# is hellaslow
 # https://gist.github.com/fl0w/07ce79bd44788f647deab307c94d6922
 NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
 NODE_GLOBALS+=("node")
 NODE_GLOBALS+=("nvm")
+NODE_GLOBALS+=("yarn")
 
 # Lazy-loading nvm + npm on node globals call
-load_nvm () {
+load_nvm() {
   # [ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
 }
