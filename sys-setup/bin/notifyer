@@ -1,0 +1,14 @@
+#!/bin/bash
+
+notifyer() {
+  if [ "$(uname -s)" == "Linux" ]; then
+      notify-send -u critical "$@"
+  elif [ "$(uname -s)" == "Darwin" ]; then
+      # lol=$(curl -s "http://labs.bible.org/api/?passage=random")
+      osascript -e "display notification \"$*\" with title \"God:\""
+  else
+      echo "todoooo"
+  fi
+}
+
+notifyer "$@"

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+setUpAwesome(){
+  mkdir ~/.config/awesome;
+  ln -s ~/r/s/lin-sys-setup/awesome/ ~/.config/awesome
+}
+
+setUpAwesome

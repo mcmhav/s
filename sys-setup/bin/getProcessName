@@ -1,0 +1,7 @@
+#!/bin/bash
+
+getProcessName() {
+  ps -p $1 -o comm=
+}
+
+getProcessName $1

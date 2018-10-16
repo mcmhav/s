@@ -22,7 +22,7 @@ alias gco='git checkout'
 
 alias ga='git add'
 alias gaa='git add --all'
-alias gs='git status'
+alias gs='git status --short --branch'
 alias gst='git stash'
 alias gsta='git stash apply'
 alias gstp='git stash --patch'

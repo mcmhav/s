@@ -1,18 +1,8 @@
 #!/usr/bin/env bash
 
-if [ "$(uname -s)" == "Linux" ]; then
-  alias ls='ls --color=auto'
-elif [ "$(uname -s)" == "Darwin" ]; then
-  alias ls='ls -G'
-else
-  alias ls='ls --color=auto'
-fi
-
 HISTSIZE=10000
 HISTFILESIZE=2000
 export HISTFILE=~/.bash_eternal_ish_history
-
-# alias mcwd="echo $PWD | tr / '\n' | xargs -I X sh -c 'echo X | head -c 1; echo' | tr '\n' /"
 
 unset PROMPT_COMMAND
 

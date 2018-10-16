@@ -1,0 +1,38 @@
+#!/bin/bash
+
+simpleProxy() {
+  REVERSE_URL="http://localhost:3000"
+  PORT="8080"
+
+  while [ "$1" != "" ]; do
+    case $1 in
+      -ru | --reverse-url )
+        shift
+        if test $# -gt 0; then
+          REVERSE_URL=$1
+        else
+          echo "no reverse url arg specified"
+          exit 1
+        fi
+        ;;
+      -p | --port )
+        shift
+        if test $# -gt 0; then
+          PORT=$1
+        else
+          echo "no port arg specified"
+          exit 1
+        fi
+        ;;
+      * )
+        echo "Time plz"
+    esac
+    shift
+  done
+
+  echo "$REVERSE_URL can be reached on $(ipconfig getifaddr en0):$PORT"
+
+  mitmproxy -p $PORT --mode reverse:$REVERSE_URL --showhost
+}
+
+simpleProxy "$@"

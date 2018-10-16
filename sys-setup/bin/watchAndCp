@@ -1,0 +1,58 @@
+#!/bin/bash
+
+WATCH_LOCATION=""
+CP_FROM=""
+CP_TO=""
+# EXPRESSION=".*.ts$"
+EXPRESSION=".*.(ts|html|css|scss)$"
+
+while [ "$1" != "" ]; do
+  case $1 in
+    -wl | --watchLocation )
+      shift
+      if test $# -gt 0; then
+        WATCH_LOCATION=$1
+      else
+        echo "no watchLocation arg specified"
+        exit 1
+      fi
+      ;;
+    -cf | --copyFrom )
+      shift
+      if test $# -gt 0; then
+        CP_FROM=$1
+      else
+        echo "no copyFrom arg specified"
+        exit 1
+      fi
+      ;;
+    -ct | --copyTo )
+      shift
+      if test $# -gt 0; then
+        CP_TO=$1
+      else
+        echo "no copyTo arg specified"
+        exit 1
+      fi
+      ;;
+    * )
+      echo "Time plz"
+  esac
+  shift
+done
+
+watchman watch-del "$WATCH_LOCATION"
+watchman watch "$WATCH_LOCATION"
+
+watchman -j <<-EOT
+["trigger", "$WATCH_LOCATION", {
+  "name": "cpJob",
+  "expression": ["pcre", "$EXPRESSION"],
+  "command": [
+  "cp",
+  "-Rf",
+  "$CP_FROM",
+  "$CP_TO"
+  ]
+}]
+EOT
