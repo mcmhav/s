@@ -2,11 +2,6 @@
 
 csys() {
   csysUpdate() {
-    CONFIG_HOME="$HOME/r/s"
-    RETURN_TO=$(pwd)
-
-    cd $CONFIG_HOME || exit
-
     if [ "$(uname -s)" == "Linux" ]; then
       echo "todo"
     elif [ "$(uname -s)" == "Darwin" ]; then
@@ -16,16 +11,9 @@ csys() {
     elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
       echo "todo"
     fi
-
-    cd $RETURN_TO || exit
   }
 
   csysUpload() {
-    CONFIG_HOME="$HOME/r/s"
-    RETURN_TO=$(pwd)
-
-    cd $CONFIG_HOME || exit
-
     if [ "$(uname -s)" == "Linux" ]; then
       echo "todo"
     elif [ "$(uname -s)" == "Darwin" ]; then
@@ -45,19 +33,14 @@ csys() {
     elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
       echo "todo"
     fi
-
-    cd $RETURN_TO || exit
   }
 
   csysStatus() {
-    CONFIG_HOME="$HOME/r/s"
-    RETURN_TO=$(pwd)
-
-    cd $CONFIG_HOME || exit
-
     git status --short --branch
+  }
 
-    cd $RETURN_TO || exit
+  csysDiff() {
+    git diff
   }
 
   while [ "$1" != "" ]; do
@@ -71,6 +54,9 @@ csys() {
       -d | --download )
         csysUpdate
         ;;
+      --diff )
+        csysDiff
+        ;;
       * )
         echo "Time plz"
     esac
@@ -78,4 +64,11 @@ csys() {
   done
 }
 
+CONFIG_HOME="$HOME/r/s"
+RETURN_TO=$(pwd)
+
+cd $CONFIG_HOME || exit
+
 csys "$@"
+
+cd $RETURN_TO || exit

@@ -28,3 +28,4 @@ function timer_stop {
 trap 'timer_start' DEBUG
 PROMPT_COMMAND=timer_stop
 export PS1='[\[\e[1;35m\]${timer_show}\[\e[0m\]][\[\e[1;32m\]\W\[\e[0m\]]\[\e[0;31m\]$\[\e[0m\] '
+export PS2='> '

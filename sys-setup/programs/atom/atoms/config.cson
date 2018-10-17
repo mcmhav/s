@@ -70,6 +70,7 @@
       "one-dark-ui"
       "gruvbox"
     ]
+    titleBar: "custom"
   editor:
     fontSize: 12
     invisibles: {}

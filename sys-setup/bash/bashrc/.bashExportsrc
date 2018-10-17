@@ -15,18 +15,19 @@ export GOROOT=/usr/local/opt/go/libexec
 export ANDROID_HOME=/usr/local/share/android-sdk
 
 # path stuff
-PATH="/git/tools/bin:${PATH}"
-PATH="$PATH:$(ruby -rubygems -e "puts Gem.user_dir")/bin"
-PATH="$PATH:/git/bob"
-# PATH="$PATH:`yarn global bin`"
-PATH="$PATH:/usr/local/bin"
-PATH="$PATH:/Users/mcmhav/work/bin/protoc-gen-go"
-PATH="$PATH:/usr/local/opt/python/libexec/bin"
-PATH="$PYENV_ROOT/bin:$PATH"
-PATH=$PATH:$GOPATH/bin
-PATH=$PATH:$GOROOT/bin
-PATH=$PATH:$HOME/r/s/sys-setup/bin
-
+PATHS=(
+  "$PYENV_ROOT/bin"
+  "/git/tools/bin"
+  "$PATH"
+  "$(ruby -rubygems -e "puts Gem.user_dir")/bin"
+  "/git/bob"
+  "/usr/local/bin"
+  "/usr/local/opt/python/libexec/bin"
+  "$GOPATH/bin"
+  "$GOROOT/bin"
+  "$HOME/r/s/sys-setup/bin"
+)
+PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
 export PATH=$PATH
 
 # node
