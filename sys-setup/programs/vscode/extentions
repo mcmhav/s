@@ -1,9 +1,14 @@
+anseki.vscode-color
+bierner.color-info
 dbaeumer.vscode-eslint
 eg2.tslint
 esbenp.prettier-vscode
+foxundermoon.shell-format
 georgewfraser.vscode-javac
+lihui.vs-color-picker
 ms-vscode.Go
 naco-siren.gradle-language
+naumovs.color-highlight
 PeterJausovec.vscode-docker
 Pivotal.vscode-boot-dev-pack
 Pivotal.vscode-concourse
@@ -18,3 +23,4 @@ vscjava.vscode-java-test
 vscjava.vscode-maven
 vscjava.vscode-spring-boot-dashboard
 vscjava.vscode-spring-initializr
+xabikos.ReactSnippets
