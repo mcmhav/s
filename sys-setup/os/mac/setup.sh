@@ -56,17 +56,30 @@ installStuff() {
 
   # stop mouse from accelerating
   defaults write .GlobalPreferences com.apple.mouse.scaling -1
+
+  # remove white line
+  defaults write -app Visual\ Studio\ Code NSRequiresAquaSystemAppearance -bool No
+  defaults write -app Hyper NSRequiresAquaSystemAppearance -bool No
+  defaults write -app Google\ Chrome NSRequiresAquaSystemAppearance -bool No
+  defaults write -app Atom\ Beta NSRequiresAquaSystemAppearance -bool No
+  defaults write -app Station NSRequiresAquaSystemAppearance -bool No
 }
 
 installBrews() {
   echo "Installing brews"
 
   while read l; do
-    brew install $l
+    read -ra BREW_PACKAGE <<< $l
+    if ! brew ls --versions "${BREW_PACKAGE[0]}" > /dev/null; then
+      brew install $l
+    fi
   done < configs/brews
 
   while read l; do
-    brew cask install $l
+    read -ra BREW_PACKAGE <<< $l
+    if ! brew cask ls --versions "${BREW_PACKAGE[0]}" 2> /dev/null; then
+      brew cask install $l
+    fi
   done < configs/casks
 }
 
