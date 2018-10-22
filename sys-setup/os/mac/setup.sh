@@ -104,8 +104,8 @@ installGems() {
 CONFIG_HOME="$HOME/r/s/sys-setup/os/mac"
 RETURN_TO=$(pwd)
 
-cd $CONFIG_HOME || exit
+cd "$CONFIG_HOME" || exit
 
 installStuff
 
-cd $RETURN_TO || exit
+cd "$RETURN_TO" || exit
