@@ -118,7 +118,8 @@
       showHome: false
   "nuclide-format-js":
     requiresAddMissingRequires: false
-  "one-dark-ui": {}
+  "one-dark-ui":
+    stickyHeaders: true
   pigments:
     autocompleteScopes: [
       ".source.css"

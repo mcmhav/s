@@ -35,7 +35,7 @@
     "go.autocompleteUnimportedPackages": true,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
-    "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home",
+    "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home",
     "explorer.autoReveal": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
     "prettier.eslintIntegration": true
