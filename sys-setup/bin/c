@@ -2,11 +2,11 @@
 
 c() {
   if [ "$(uname -s)" == "Linux" ]; then
-    echo "todo"
+    loggit "todo"
   elif [ "$(uname -s)" == "Darwin" ]; then
     "$1" | pbcopy
   elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
-    echo "todo"
+    loggit "todo"
   fi
 }
 

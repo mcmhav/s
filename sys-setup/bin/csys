@@ -3,35 +3,35 @@
 csys() {
 	csysUpdate() {
 		if [ "$(uname -s)" == "Linux" ]; then
-			echo "todo"
+			loggit "todo"
 		elif [ "$(uname -s)" == "Darwin" ]; then
 			git pull
 
 			./sys-setup/initNewSys.sh
 		elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
-			echo "todo"
+			loggit "todo"
 		fi
 	}
 
 	csysUpload() {
 		if [ "$(uname -s)" == "Linux" ]; then
-			echo "todo"
+			loggit "todo"
 		elif [ "$(uname -s)" == "Darwin" ]; then
-			echo "updating vscode config"
+			loggit "updating vscode config"
 			./sys-setup/programs/vscode/setup.sh --makePackagesList
-			echo "updating atom config"
+			loggit "updating atom config"
 			./sys-setup/programs/atom/setup.sh --makePackagesList
 
-			echo "adding to git"
+			loggit "adding to git"
 			git add --all
 
-			echo "commiting to git"
+			loggit "commiting to git"
 			git commit -am "AUTO: update system configs" --quiet
 
-			echo "pushing to git"
+			loggit "pushing to git"
 			git push --quiet
 		elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
-			echo "todo"
+			loggit "todo"
 		fi
 	}
 
@@ -58,7 +58,7 @@ csys() {
 			csysDiff
 			;;
 		*)
-			echo "Time plz"
+			loggit "lol"
 			;;
 		esac
 		shift

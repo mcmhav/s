@@ -13,7 +13,7 @@ while [ "$1" != "" ]; do
       if test $# -gt 0; then
         WATCH_LOCATION=$1
       else
-        echo "no watchLocation arg specified"
+        loggit "no watchLocation arg specified"
         exit 1
       fi
       ;;
@@ -22,7 +22,7 @@ while [ "$1" != "" ]; do
       if test $# -gt 0; then
         CP_FROM=$1
       else
-        echo "no copyFrom arg specified"
+        loggit "no copyFrom arg specified"
         exit 1
       fi
       ;;
@@ -31,12 +31,12 @@ while [ "$1" != "" ]; do
       if test $# -gt 0; then
         CP_TO=$1
       else
-        echo "no copyTo arg specified"
+        loggit "no copyTo arg specified"
         exit 1
       fi
       ;;
     * )
-      echo "Time plz"
+      loggit "Time plz"
   esac
   shift
 done

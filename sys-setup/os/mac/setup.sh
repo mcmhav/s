@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-echo "TODO - more"
-
 installStuff() {
 	# brew
 	if ! [ -x "$(command -v brew)" ]; then
@@ -66,7 +64,7 @@ installStuff() {
 }
 
 installBrews() {
-	echo "Installing brews"
+	loggit "Installing brews"
 
 	while read l; do
 		read -ra BREW_PACKAGE <<<$l
@@ -75,9 +73,11 @@ installBrews() {
 		fi
 	done <configs/brews
 
+  loggit "Installing brews casks"
+
 	while read l; do
 		read -ra BREW_PACKAGE <<<$l
-		if ! brew cask ls --versions "${BREW_PACKAGE[0]}" 2>/dev/null; then
+		if ! brew cask ls --versions "${BREW_PACKAGE[0]}" >/dev/null; then
 			brew cask install $l
 		fi
 	done <configs/casks

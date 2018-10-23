@@ -11,7 +11,7 @@ simpleProxy() {
         if test $# -gt 0; then
           REVERSE_URL=$1
         else
-          echo "no reverse url arg specified"
+          loggit "no reverse url arg specified"
           exit 1
         fi
         ;;
@@ -20,17 +20,17 @@ simpleProxy() {
         if test $# -gt 0; then
           PORT=$1
         else
-          echo "no port arg specified"
+          loggit "no port arg specified"
           exit 1
         fi
         ;;
       * )
-        echo "Time plz"
+        loggit "Time plz"
     esac
     shift
   done
 
-  echo "$REVERSE_URL can be reached on $(ipconfig getifaddr en0):$PORT"
+  loggit "$REVERSE_URL can be reached on $(ipconfig getifaddr en0):$PORT"
 
   mitmproxy -p $PORT --mode reverse:$REVERSE_URL --showhost
 }

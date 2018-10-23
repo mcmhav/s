@@ -7,7 +7,7 @@ notifyer() {
       # lol=$(curl -s "http://labs.bible.org/api/?passage=random")
       osascript -e "display notification \"$*\" with title \"God:\""
   else
-      echo "todoooo"
+      loggit "todoooo"
   fi
 }
 

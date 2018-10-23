@@ -5,15 +5,15 @@ VS_CODE_HOME_USER=""
 # VS_CODE_HOME=""
 
 if [ "$(uname -s)" == "Linux" ]; then
-  echo "TODO"
+  loggit "TODO"
   exit 1
 elif [ "$(uname -s)" == "Darwin" ]; then
   VS_CODE_SETUP_HOME="$HOME/r/s/sys-setup/programs/vscode"
   VS_CODE_HOME_USER="$HOME/Library/Application Support/Code/User"
   # VS_CODE_HOME=~/.vscode
-  echo "TODO"
+  loggit "TODO"
 elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
-  echo "TODO"
+  loggit "TODO"
   exit 1
 fi
 
@@ -27,14 +27,17 @@ storeExtentions() {
 }
 
 installExtentions() {
+  loggit "Installing vs-code extentions"
+
   while read l; do
-    echo "installing $l"
-    code --install-extension $l
+    if ! code --list-extensions | grep $l >/dev/null; then
+      code --install-extension $l
+    fi
   done < "$VS_CODE_SETUP_HOME"/extentions
 }
 
 usage() {
-  echo "lol"
+  loggit "lol"
 }
 
 verbose="";

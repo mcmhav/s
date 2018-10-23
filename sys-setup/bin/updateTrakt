@@ -2,12 +2,12 @@
 
 updateTrakt() {
   if [ "$(uname -s)" == "Linux" ]; then
-    echo "todo"
+    loggit "todo"
   elif [ "$(uname -s)" == "Darwin" ]; then
     cd ~/Library/Application\ Support/Plex\ Media\ Server/Plug-ins/Plex-Trakt-Scrobbler/ || exit;
     git pull;
   elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
-    echo "todo"
+    loggit "todo"
   fi
 }
 
