@@ -4,6 +4,7 @@ ln -sf ~/r/s/sys-setup/bash/.bashrc ~/.bashrc;
 ln -sf ~/r/s/sys-setup/bash/.bashrc ~/.bash_profile;
 ln -sf ~/r/s/sys-setup/.dotfiles/.vimrc ~/.vimrc;
 ln -sf ~/r/s/sys-setup/.dotfiles/.gitconfig ~/.gitconfig;
+ln -sf ~/r/s/sys-setup/.dotfiles/.gitignore ~/.gitignore;
 
 CONFIG_HOME="$HOME/r/s/sys-setup"
 RETURN_TO=$(pwd)

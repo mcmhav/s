@@ -14,7 +14,6 @@
     "prettier.singleQuote": true,
     "prettier.trailingComma": "all",
     "workbench.editor.revealIfOpen": true,
-    "editor.formatOnSave": true,
     "html.format.wrapLineLength": 90,
     "[yaml]": {
         "editor.formatOnSave": false
@@ -38,5 +37,9 @@
     "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home",
     "explorer.autoReveal": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "prettier.eslintIntegration": true
+    "prettier.eslintIntegration": true,
+    "workbench.colorTheme": "Kary Pro Colors － Dark",
+    "window.zoomLevel": 0,
+    "eslint.packageManager": "yarn",
+    "npm.packageManager": "yarn"
 }

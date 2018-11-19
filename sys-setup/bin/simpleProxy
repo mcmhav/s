@@ -1,5 +1,10 @@
 #!/bin/bash
 
+help() {
+  loggit "-p | --port for incomming port"
+  loggit "-ru | --reverse-url for outgoing url"
+}
+
 simpleProxy() {
   REVERSE_URL="http://localhost:3000"
   PORT="8080"
@@ -23,6 +28,10 @@ simpleProxy() {
           loggit "no port arg specified"
           exit 1
         fi
+        ;;
+      -h | --help )
+        help
+        exit
         ;;
       * )
         loggit "Time plz"

@@ -39,6 +39,7 @@ NODE_GLOBALS=($(find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/
 NODE_GLOBALS+=("node")
 NODE_GLOBALS+=("nvm")
 NODE_GLOBALS+=("yarn")
+NODE_GLOBALS+=("yalc")
 
 # Lazy-loading nvm + npm on node globals call
 load_nvm() {
