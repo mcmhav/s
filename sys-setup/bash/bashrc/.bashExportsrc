@@ -25,7 +25,7 @@ PATHS=(
 	"/usr/local/opt/python/libexec/bin"
 	"$GOPATH/bin"
 	"$GOROOT/bin"
-	"$HOME/r/s/sys-setup/bin"
+	"$CSYS_HOME/sys-setup/bin"
 )
 PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
 export PATH=$PATH

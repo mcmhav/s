@@ -2,7 +2,7 @@
 
 setUpAwesome(){
   mkdir ~/.config/awesome;
-  ln -s ~/r/s/lin-sys-setup/awesome/ ~/.config/awesome
+  ln -s $CSYS_HOME/lin-sys-setup/awesome/ ~/.config/awesome
 }
 
 setUpAwesome

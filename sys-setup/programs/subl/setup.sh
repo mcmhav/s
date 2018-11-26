@@ -2,8 +2,8 @@
 
 # TODO: install sublime
 
-SUBL_SETUP_HOME=~/r/s/sys-setup/programs/subl/subls
-SUBL_SNIPPETS_HOME=~/r/s/sys-setup/programs/subl/snippets
+SUBL_SETUP_HOME=$CSYS_HOME/sys-setup/programs/subl/subls
+SUBL_SNIPPETS_HOME=$CSYS_HOME/sys-setup/programs/subl/snippets
 
 if [ "$(uname -s)" == "Linux" ]; then
     SUBL_HOME=~/.config/sublime-text-3/Packages/User

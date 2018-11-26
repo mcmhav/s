@@ -8,7 +8,7 @@ if [ "$(uname -s)" == "Linux" ]; then
   loggit "TODO"
   exit 1
 elif [ "$(uname -s)" == "Darwin" ]; then
-  VS_CODE_SETUP_HOME="$HOME/r/s/sys-setup/programs/vscode"
+  VS_CODE_SETUP_HOME="$CSYS_HOME/sys-setup/programs/vscode"
   VS_CODE_HOME_USER="$HOME/Library/Application Support/Code/User"
   # VS_CODE_HOME=~/.vscode
   loggit "TODO"

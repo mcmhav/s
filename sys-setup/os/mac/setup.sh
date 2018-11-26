@@ -47,10 +47,10 @@ installStuff() {
 	defaults write com.apple.finder AppleShowAllFiles YES
 
 	# app configs
-	ln -sf ~/r/s/sys-setup/os/mac/configs/com.apple.Terminal.plist ~/Library/Preferences/com.apple.Terminal.plist
-	ln -sf ~/r/s/sys-setup/os/mac/configs/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
-	# ln -sf ~/r/s/sys-setup/os/mac/configs/com.apple.dock.plist ~/Library/Preferences/com.apple.dock.plist
-	ln -sf ~/r/s/sys-setup/os/mac/configs/.hyper.js ~/.hyper.js
+	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.apple.Terminal.plist ~/Library/Preferences/com.apple.Terminal.plist
+	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
+	# ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.apple.dock.plist ~/Library/Preferences/com.apple.dock.plist
+	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/.hyper.js ~/.hyper.js
 
 	# stop mouse from accelerating
 	defaults write .GlobalPreferences com.apple.mouse.scaling -1
@@ -101,7 +101,7 @@ installGems() {
 	done <configs/gems
 }
 
-CONFIG_HOME="$HOME/r/s/sys-setup/os/mac"
+CONFIG_HOME="$CSYS_HOME/sys-setup/os/mac"
 RETURN_TO=$(pwd)
 
 cd "$CONFIG_HOME" || exit

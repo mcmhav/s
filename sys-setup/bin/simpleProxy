@@ -1,9 +1,13 @@
 #!/bin/bash
 
-help() {
-  loggit "-p | --port for incomming port"
-  loggit "-ru | --reverse-url for outgoing url"
-}
+display_help="
+$(basename "$0") [-h] [-r] [-d] -- starts simple proxy
+
+where:
+  -ru, --reverse-url    sets reverse url
+  -p, --port            sets proxy port
+  -h, --help            show this help text
+"
 
 simpleProxy() {
   REVERSE_URL="http://localhost:3000"
@@ -30,7 +34,7 @@ simpleProxy() {
         fi
         ;;
       -h | --help )
-        help
+        echo "$display_help"
         exit
         ;;
       * )

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# bash_completion
+# https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
 csys() {
 	csysUpdate() {
 		if [ "$(uname -s)" == "Linux" ]; then
@@ -65,7 +67,7 @@ csys() {
 	done
 }
 
-CONFIG_HOME="$HOME/r/s"
+CONFIG_HOME="$CSYS_HOME"
 RETURN_TO=$(pwd)
 
 cd $CONFIG_HOME || exit

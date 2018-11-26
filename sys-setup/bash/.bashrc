@@ -6,7 +6,10 @@
 
 [ -f /etc/shrc ] && . /etc/shrc
 
-source "$HOME/r/s/sys-setup/bash/bashrc/.bashSourcerc"
+# DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+# unset DIR
+export CSYS_HOME="$HOME/r/s"
+source "$CSYS_HOME/sys-setup/bash/bashrc/.bashSourcerc"
 
 if [ -x "$(command -v brew)" ]; then
   if [ -f $(brew --prefix)/etc/bash_completion ]; then

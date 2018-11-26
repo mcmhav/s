@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
-ln -sf ~/r/s/sys-setup/bash/.bashrc ~/.bashrc;
-ln -sf ~/r/s/sys-setup/bash/.bashrc ~/.bash_profile;
-ln -sf ~/r/s/sys-setup/.dotfiles/.vimrc ~/.vimrc;
-ln -sf ~/r/s/sys-setup/.dotfiles/.gitconfig ~/.gitconfig;
-ln -sf ~/r/s/sys-setup/.dotfiles/.gitignore ~/.gitignore;
+export CSYS_HOME="$HOME/r/s"
 
-CONFIG_HOME="$HOME/r/s/sys-setup"
+ln -sf $CSYS_HOME/sys-setup/bash/.bashrc ~/.bashrc;
+ln -sf $CSYS_HOME/sys-setup/bash/.bashrc ~/.bash_profile;
+ln -sf $CSYS_HOME/sys-setup/.dotfiles/.vimrc ~/.vimrc;
+ln -sf $CSYS_HOME/sys-setup/.dotfiles/.gitconfig ~/.gitconfig;
+ln -sf $CSYS_HOME/sys-setup/.dotfiles/.gitignore ~/.gitignore;
+
+CONFIG_HOME="$CSYS_HOME/sys-setup"
 RETURN_TO=$(pwd)
 
 cd $CONFIG_HOME || exit

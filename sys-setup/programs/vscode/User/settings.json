@@ -41,5 +41,6 @@
     "workbench.colorTheme": "Kary Pro Colors － Dark",
     "window.zoomLevel": 0,
     "eslint.packageManager": "yarn",
-    "npm.packageManager": "yarn"
+    "npm.packageManager": "yarn",
+    "editor.formatOnSave": true
 }

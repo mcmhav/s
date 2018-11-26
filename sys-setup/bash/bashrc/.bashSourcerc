@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bashWD="$HOME/r/s/sys-setup/bash"
+bashWD="$CSYS_HOME/sys-setup/bash"
 
 # adding extra sources
 source "$bashWD"/bashrc/.bashCommandrc

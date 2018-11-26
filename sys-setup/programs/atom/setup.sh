@@ -5,7 +5,7 @@
 # install atom
 
 ATOM_HOME=~/.atom
-ATOM_SETUP_HOME=~/r/s/sys-setup/programs/atom
+ATOM_SETUP_HOME=$CSYS_HOME/sys-setup/programs/atom
 
 cd "$ATOM_HOME" || exit
 
