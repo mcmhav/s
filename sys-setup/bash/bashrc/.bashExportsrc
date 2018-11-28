@@ -26,6 +26,7 @@ PATHS=(
 	"$GOPATH/bin"
 	"$GOROOT/bin"
 	"$CSYS_HOME/sys-setup/bin"
+	"/usr/local/miniconda3/bin"
 )
 PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
 export PATH=$PATH

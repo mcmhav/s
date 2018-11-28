@@ -15,7 +15,6 @@ language-lua
 language-proto
 linter
 linter-eslint
-linter-jenkins
 linter-pycodestyle
 linter-pylint
 linter-shellcheck
