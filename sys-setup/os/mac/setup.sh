@@ -15,6 +15,7 @@ installStuff() {
 	brew update
 	brew upgrade
 	brew cask upgrade
+  brew tap homebrew/services
 
 	# brews
 	installBrews
@@ -25,6 +26,8 @@ installStuff() {
 	if [ -z "$(pyenv versions | grep 3.4.3)" ]; then
 		pyenv install -s -v 3.4.3
 	fi
+
+  $CSYS_HOME/sys-setup/programs/pip/setup.sh
 
 	# gems
 	if ! [ -x "$(command -v pod)" ]; then
@@ -87,12 +90,6 @@ installGos() {
 	while read l; do
 		go get -u $l
 	done <configs/gos
-}
-
-installPys() {
-	while read l; do
-		pip install $l
-	done <configs/pys
 }
 
 installGems() {

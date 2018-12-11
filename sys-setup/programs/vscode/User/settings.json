@@ -39,5 +39,6 @@
     "explorer.autoReveal": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
     "prettier.eslintIntegration": true,
-    "eslint.packageManager": "yarn"
+    "eslint.packageManager": "yarn",
+    "workbench.colorTheme": "Kary Pro Colors － Dark"
 }
