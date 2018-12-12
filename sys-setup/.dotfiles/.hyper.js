@@ -9,8 +9,7 @@ module.exports = {
 
     fontSize: 11,
 
-    fontFamily:
-      'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     fontWeight: 'normal',
 
@@ -56,6 +55,7 @@ module.exports = {
       magenta: '#C839C5',
       cyan: '#20C5C6',
       white: '#C7C7C7',
+
       lightBlack: '#686868',
       lightRed: '#FD6F6B',
       lightGreen: '#67F86F',

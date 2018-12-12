@@ -31,8 +31,13 @@ function error_log {
   prompt_command__isnewline__curr="$(history 1 | grep -Eo '^\ [0-9]+')"
 
   promt_message=""
-  if [[ $1 != 0 && "$prompt_command__isnewline__curr" != "$prompt_command__isnewline__last" ]]; then
-    promt_message="$(printf \\xf0\\x9f\\x92\\xa9) |"
+  if [[
+    # http://www.tldp.org/LDP/abs/html/exitcodes.html
+    $1 != 0 && # no error
+    $1 != 130 && # Ctrl + C - exit
+    "$prompt_command__isnewline__curr" != "$prompt_command__isnewline__last"
+  ]]; then
+    promt_message="$(printf \\xf0\\x9f\\x92\\xa9) ~$1|"
   else
     printf ""
   fi
