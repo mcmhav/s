@@ -40,5 +40,6 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "prettier.eslintIntegration": true,
     "eslint.packageManager": "yarn",
-    "workbench.colorTheme": "Kary Pro Colors － Dark"
+    "window.zoomLevel": 0,
+    "shellcheck.customArgs": ["-x"]
 }
