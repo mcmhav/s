@@ -203,6 +203,7 @@
       "welcome"
       "pretty-json"
       "exception-reporting"
+      "teletype"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/mcmhav/r"
@@ -236,6 +237,8 @@
   "language-babel": {}
   linter: {}
   "linter-eslint": {}
+  "linter-pylint":
+    disableTimeout: true
   "linter-shellcheck": {}
   "linter-ui-default":
     panelHeight: 261

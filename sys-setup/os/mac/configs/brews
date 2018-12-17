@@ -4,6 +4,7 @@ git
 bash-completion
 shellcheck
 pyenv
+pipenv
 readline
 xz
 watch
