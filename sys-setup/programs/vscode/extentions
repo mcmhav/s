@@ -1,19 +1,12 @@
-akamud.vscode-theme-onedark
-alexkrechik.cucumberautocomplete
 anseki.vscode-color
-arcticicestudio.nord-visual-studio-code
 azemoh.one-monokai
-bierner.color-info
 dbaeumer.vscode-eslint
-dracula-theme.theme-dracula
 eg2.tslint
 Equinusocio.vsc-material-theme
 esbenp.prettier-vscode
 foxundermoon.shell-format
 georgewfraser.vscode-javac
 idleberg.hopscotch
-jprestidge.theme-material-theme
-karyfoundation.theme-karyfoundation-themes
 lihui.vs-color-picker
 liviuschera.noctis
 monokai.theme-monokai-pro-vscode
@@ -27,7 +20,6 @@ Pivotal.vscode-boot-dev-pack
 Pivotal.vscode-spring-boot
 redhat.java
 secanis.jenkinsfile-support
-SolarLiner.linux-themes
 teabyii.ayu
 timonwong.shellcheck
 tinkertrain.theme-panda

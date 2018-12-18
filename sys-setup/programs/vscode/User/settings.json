@@ -69,73 +69,75 @@
         "menubar.selectionForeground": "#00BCD4"
     },
     "editor.tokenColorCustomizations": {
-        "[Material Theme Ocean]": {
-            // https://github.com/Binaryify/OneDark-Pro
-            // https://github.com/equinusocio/vsc-material-theme
-            // https://github.com/liviuschera/noctis/blob/master/themes/Noctis.json
-            "textMateRules": [
-                {
-                    "scope": [
-                        "punctuation.definition.comment",
-                        "comment.block",
-                        "comment.line",
-                        "comment.block.documentation"
-                    ],
-                    "settings": {
-                        // "foreground": "#FF0000"
-                    }
-                },{
-                    "scope": [
-                        "variable.other.constant",
-                        "variable.other",
-                        "variable.other.python",
-                        "variable.parameter.function.language.python",
-                        "constant.character.format.placeholder.other.python",
-                        "meta.function-call.arguments.python",
-                        "meta.definition.variable.name.python",
-                        "variable",
-
-                        "variable.object",
-                        "variable.parameter",
-                        "support",
-                        "string constant.other.placeholder",
-                        "source.css.scss variable",
-                        "entity.name.module",
-                        "variable.import.parameter",
-                        "variable.other.class",
-                        "meta.toc-list.id.html",
-                        // "source.json meta.structure.dictionary.json support.type.property-name.json",
-                        "markup.list",
-                        "meta.var.clojure",
-                        "source.cs entity.name.variable",
-                        "source.java meta.class.body.java",
-                        "entity.name.package.go",
-                        "source.c",
-                        "source.cpp",
-                        "source.go",
-                        "source.python",
-                        // "meta.function-call.arguments.python",
-                        // "source.ruby",
-                        // "source.coffee.embedded.source",
-                        // "source.coffee",
-                        // "storage.modifier.import",
-                        // "storage.modifier.package",
-                        // "storage.type.annotation",
-                        // "punctuation.definition.annotation",
-                        // "source.groovy.embedded.source",
-                        // "punctuation.definition.variable",
-                        // "source.powershell",
-                        // "variable.other.readwrite.global.ruby punctuation.definition.variable.ruby",
-                        // "string.quoted.interpolated.vala constant.character.escape.vala",
-                        // "source.apacheconf"
-                    ],
-                    "settings": {
-                        "foreground": "#f03f3f",
-                        "fontStyle": "bold"
-                    }
+        // https://github.com/Binaryify/OneDark-Pro
+        // https://github.com/equinusocio/vsc-material-theme
+        // https://github.com/liviuschera/noctis/blob/master/themes/Noctis.json
+        "textMateRules": [
+            {
+                "scope": [
+                    "punctuation.definition.comment",
+                    "comment.block",
+                    "comment.line",
+                    "comment.block.documentation"
+                ],
+                "settings": {
+                    // "foreground": "#FF0000"
                 }
+            }, {
+                "scope": [
+                    "variable.other.constant",
+                    "variable.other",
+                    "variable.other.python",
+                    "variable.parameter.function.language.python",
+                    "constant.character.format.placeholder.other.python",
+                    "meta.function-call.arguments.python",
+                    "meta.definition.variable.name.python",
+                    "variable",
 
-            ]
+                    "variable.object",
+                    "variable.parameter",
+                    "support",
+                    "string constant.other.placeholder",
+                    "source.css.scss variable",
+                    "entity.name.module",
+                    "variable.import.parameter",
+                    "variable.other.class",
+                    "meta.toc-list.id.html",
+                    // "source.json meta.structure.dictionary.json support.type.property-name.json",
+                    "markup.list",
+                    "meta.var.clojure",
+                    "source.cs entity.name.variable",
+                    "source.java meta.class.body.java",
+                    "entity.name.package.go",
+                    "source.c",
+                    "source.cpp",
+                    "source.go",
+                    "source.python",
+                    // "meta.function-call.arguments.python",
+                    // "source.ruby",
+                    // "source.coffee.embedded.source",
+                    // "source.coffee",
+                    // "storage.modifier.import",
+                    // "storage.modifier.package",
+                    // "storage.type.annotation",
+                    // "punctuation.definition.annotation",
+                    // "source.groovy.embedded.source",
+                    // "punctuation.definition.variable",
+                    // "source.powershell",
+                    // "variable.other.readwrite.global.ruby punctuation.definition.variable.ruby",
+                    // "string.quoted.interpolated.vala constant.character.escape.vala",
+                    // "source.apacheconf"
+                ],
+                "settings": {
+                    "foreground": "#f75959",
+                    "fontStyle": "bold"
+                }
+            }
+        ],
+        "[Material Theme Ocean]": {
+            "textMateRules": []
         },
     },
+    "explorer.openEditors.visible": 0,
+    "python.venvPath": "~/.pyenv",
 }
