@@ -4,10 +4,10 @@ SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 
 installPys() {
 	while read l; do
-		pip install $l
+    pip install $l --quiet
 	done <"$SCRIPT_DIR/pips"
 }
 
-pip install --upgrade pip
+pip install --upgrade pip --quiet
 
 installPys
