@@ -1,15 +1,24 @@
 [user]
-    name = mcmhav
-    email = mcmhav@gmail.com
+  name = mcmhav
+  email = mcmhav@gmail.com
 [push]
-    default = simple
+  default = simple
 [color]
-    ui = true
+  ui = true
 [core]
-    editor = vim
+  editor = vim
+	excludesfile = /Users/mch/.gitignore
 [fetch]
-    prune = true
+  prune = true
 [filter "lfs"]
-    clean = git-lfs clean %f
-    smudge = git-lfs smudge %f
-    required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[credential]
+	helper = osxkeychain
+[alias]
+  ignore = update-index --assume-unchanged
+  unignore = update-index --no-assume-unchanged
+  ignored = !git ls-files -v | grep "^[[:lower:]]"

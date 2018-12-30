@@ -5,9 +5,7 @@
 # install atom
 
 ATOM_HOME=~/.atom
-ATOM_SETUP_HOME=~/r/s/sys-setup/programs/atom
-
-echo "handle atom setup"
+ATOM_SETUP_HOME=$CSYS_HOME/sys-setup/programs/atom
 
 cd "$ATOM_HOME" || exit
 
@@ -48,7 +46,7 @@ uninstallAll() {
 
   makeDiff $tmpList $diffList
 
-  echo "uninstall list:"
+  loggit "uninstall list:"
   cat $ATOM_SETUP_HOME/atoms/$diffList
 
   cd "$ATOM_HOME/packages" || mkdir "$ATOM_HOME/packages"
@@ -77,8 +75,7 @@ installFromPackagesList() {
 
   cd "$ATOM_HOME/packages" || mkdir "$ATOM_HOME/packages"
 
-  echo "install list:"
-  cat $ATOM_SETUP_HOME/atoms/packagesList
+  loggit "Installing  atoms"
 
   while read line; do
     if [ ! -d "$PWD/$line" ]; then
@@ -102,15 +99,15 @@ linkFiledToAtom() {
 }
 
 usage() {
-  echo "lol"
+  loggit "lol"
 }
 
 if [ "$(uname -s)" == "Linux" ]; then
-  echo "TODO"
+  loggit "TODO"
 elif [ "$(uname -s)" == "Darwin" ]; then
-  echo "TODO"
+  loggit "TODO"
 elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
-  echo "TODO"
+  loggit "TODO"
 fi
 
 verbose="";

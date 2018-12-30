@@ -1,0 +1,7 @@
+#!/bin/bash
+
+loggit() {
+  printf "=== %s \n" "$@"
+}
+
+loggit "$@"

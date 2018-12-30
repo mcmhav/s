@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# bash_completion
+# https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
+csys() {
+	csysUpdate() {
+		if [ "$(uname -s)" == "Linux" ]; then
+			loggit "todo"
+		elif [ "$(uname -s)" == "Darwin" ]; then
+			git pull
+
+			./sys-setup/initNewSys.sh
+		elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+			loggit "todo"
+		fi
+	}
+
+	csysUpload() {
+		if [ "$(uname -s)" == "Linux" ]; then
+			loggit "todo"
+		elif [ "$(uname -s)" == "Darwin" ]; then
+			loggit "updating vscode config"
+			./sys-setup/programs/vscode/setup.sh --makePackagesList
+			loggit "updating atom config"
+			./sys-setup/programs/atom/setup.sh --makePackagesList
+
+			loggit "adding to git"
+			git add --all
+
+			loggit "commiting to git"
+			git commit -am "AUTO: update system configs" --quiet
+
+			loggit "pushing to git"
+			git push --quiet
+		elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+			loggit "todo"
+		fi
+	}
+
+	csysStatus() {
+		git status --short --branch
+	}
+
+	csysDiff() {
+		git diff
+	}
+
+	while [ "$1" != "" ]; do
+		case $1 in
+		-s | --status)
+			csysStatus
+			;;
+		-u | --upload)
+			csysUpload
+			;;
+		-d | --download)
+			csysUpdate
+			;;
+		--diff)
+			csysDiff
+			;;
+		*)
+			loggit "lol"
+			;;
+		esac
+		shift
+	done
+}
+
+CONFIG_HOME="$CSYS_HOME"
+RETURN_TO=$(pwd)
+
+cd $CONFIG_HOME || exit
+
+csys "$@"
+
+cd $RETURN_TO || exit

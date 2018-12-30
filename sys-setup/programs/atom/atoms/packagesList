@@ -1,3 +1,4 @@
+atom-beautify
 atom-material-ui
 busy
 busy-signal
@@ -15,6 +16,7 @@ language-lua
 language-proto
 linter
 linter-eslint
+linter-jenkins
 linter-pycodestyle
 linter-pylint
 linter-shellcheck
@@ -25,4 +27,5 @@ minimap-linter
 pigments
 prettier-atom
 split-diff
+teletype
 

@@ -1,48 +1,64 @@
 #!/usr/bin/env bash
 
-if [ "$(uname -s)" == "Linux" ]; then
-    alias ls='ls --color=auto'
-elif [ "$(uname -s)" == "Darwin" ]; then
-    alias ls='ls -G'
-else
-    alias ls='ls --color=auto'
-fi
-
-nukeDockers() {
-  docker rm $(docker ps -a -q)
-  docker rmi $(docker images -q)
-  docker volume rm $(docker volume ls -qf dangling=true)
-}
-
-notifyDone(){
-    if [ "$(uname -s)" == "Linux" ]; then
-        notify-send -u critical "Done !!!"
-    elif [ "$(uname -s)" == "Darwin" ]; then
-        # lol=$(curl -s "http://labs.bible.org/api/?passage=random")
-        osascript -e "display notification \"har\" with title \"God:\""
-    else
-        echo "todoooo"
-    fi
-}
-
-# alias mcwd="echo $PWD | tr / '\n' | xargs -I X sh -c 'echo X | head -c 1; echo' | tr '\n' /"
+HISTSIZE=10000
+HISTFILESIZE=2000
+export HISTFILE=~/.bash_eternal_ish_history
 
 unset PROMPT_COMMAND
 
 function timer_start {
-    timer=${timer:-$SECONDS}
+  timer=${timer:-$SECONDS}
 }
 
 function timer_stop {
-    timer_show=$((SECONDS - timer))
+  timer_show=$((SECONDS - timer))
 
-    if [ "$timer_show" -gt "500" ]; then
-        notifyDone
-        tput bel
-    fi
-    unset timer
+  if [ "$timer_show" -gt "900" ]; then
+    notifyer "Done!!!"
+    tput bel
+  fi
+
+  # arr=( "sau" )
+  # rand=$[ $RANDOM % ${#arr[@]} ]
+  # timer_show=${arr[$rand]}
+
+  unset timer
+}
+trap 'timer_start' DEBUG
+
+function error_log {
+  prompt_command__isnewline__last="$prompt_command__isnewline__curr"
+  prompt_command__isnewline__curr="$(history 1 | grep -Eo '^\ [0-9]+')"
+
+  promt_message=""
+  if [[
+    # http://www.tldp.org/LDP/abs/html/exitcodes.html
+    $1 != 0 && # no error
+    $1 != 130 && # Ctrl + C - exit
+    "$prompt_command__isnewline__curr" != "$prompt_command__isnewline__last"
+  ]]; then
+    promt_message="$(printf \\xf0\\x9f\\x92\\xa9) ~$1|"
+  else
+    printf ""
+  fi
 }
 
-trap 'timer_start' DEBUG
-PROMPT_COMMAND=timer_stop
-export PS1='[\[\e[1;35m\]${timer_show}\[\e[0m\]][\[\e[1;32m\]\W\[\e[0m\]]\[\e[0;31m\]$\[\e[0m\] '
+function rairai {
+  local curr_exit="$?"
+
+  timer_stop
+  error_log $curr_exit
+}
+
+PROMPT_COMMAND=rairai
+export PS1='${promt_message}\[\e[1;35m\]${timer_show}\[\e[m\]|\[\e[1;32m\]\W\[\e[m\]\[\e[0;31m\]$\[\e[m\] '
+# export PS1='$(error_log)$ '
+# export PS1='[\[\e[1;35m\]${timer_show}\[\e[m\]][\[\e[1;32m\]\W\[\e[m\]]\[\e[0;31m\]$\[\e[m\] '
+export PS2='> '
+
+# '\e[x;ym $PS1 \e[m' Where:
+
+# \e[ : Start color scheme.
+# x;y : Color pair to use (x;y)
+# $PS1 : Your shell prompt variable.
+# \e[m : Stop color scheme.

@@ -1,0 +1,63 @@
+#!/bin/bash
+
+alarmIn() {
+  SLEEP_TIME="$1"
+  ALARM_MESSAGE="Done!!1"
+  if [ ! -z "$2" ]; then
+    ALARM_MESSAGE="$2"
+  fi
+
+  alarmInInternal() {
+    sleep $SLEEP_TIME;
+
+    notifyer $ALARM_MESSAGE
+  }
+
+  while [ "$1" != "" ]; do
+    case $1 in
+      -s | --seconds )
+        shift
+        if test $# -gt 0; then
+          SLEEP_TIME=$1
+        else
+          loggit "no seconds arg specified"
+          exit 1
+        fi
+        ;;
+      -m | --minutes )
+        shift
+        if test $# -gt 0; then
+          SLEEP_TIME=$(($1 * 60))
+        else
+          loggit "no minutes arg specified"
+          exit 1
+        fi
+        ;;
+      -h | --hours )
+        shift
+        if test $# -gt 0; then
+          SLEEP_TIME=$(($1 * 60 * 60))
+        else
+          loggit "no hours arg specified"
+          exit 1
+        fi
+        ;;
+      -msg | --message )
+        shift
+        if test $# -gt 0; then
+          ALARM_MESSAGE="$1"
+        else
+          loggit "no minutes arg specified"
+          exit 1
+        fi
+        ;;
+      * )
+        loggit "Time plz"
+    esac
+    shift
+  done
+
+  alarmInInternal &
+}
+
+alarmIn "$@"

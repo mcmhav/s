@@ -133,7 +133,7 @@
     'prefix': 'rStyles'
     'body': """
       import { StyleSheet } from 'react-native';
-      import { layout, typography, theme } from '${1:depth}/style';
+      import { layout, typography, theme } from '~/style';
 
       const styles = StyleSheet.create({
         container: {

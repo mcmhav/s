@@ -1,36 +1,108 @@
 #!/usr/bin/env bash
 
-echo "TODO - more"
+installStuff() {
+	# brew
+	if ! [ -x "$(command -v brew)" ]; then
+		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	fi
 
-# brew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	if ! brew tap | grep -q 'homebrew/cask-fonts'; then
+		brew tap caskroom/fonts
+	fi
 
-# brews
-brew install node
-brew install watchman
-brew install git
-brew install bash-completion
-brew install shellcheck
-brew install pyenv
-brew install readline
-brew install xz
-brew install watch
+	xcode-select --install 2>/dev/null
 
-brew cask install java
-brew cask install android-sdk
-brew cask install android-ndk
-brew cask install enpass
+	brew update
+	brew upgrade
+	brew cask upgrade
+  brew tap homebrew/services
 
-CFLAGS="-I$(brew --prefix openssl)/include" \
-LDFLAGS="-L$(brew --prefix openssl)/lib" \
+	# brews
+	installBrews
 
-pyenv install -v 3.4.3
+	CFLAGS="-I$(brew --prefix openssl)/include"
+	LDFLAGS="-L$(brew --prefix openssl)/lib"
 
-# gems
-sudo gem install cocoapods
+	if [ -z "$(pyenv versions | grep 3.4.3)" ]; then
+		pyenv install -s -v 3.4.3
+	fi
 
-# mac-os setup
-mkdir ~/Pictures/screenshots
-defaults write com.apple.screencapture location ~/Pictures/screenshots
+  $CSYS_HOME/sys-setup/programs/pip/setup.sh
 
-defaults write com.apple.finder AppleShowAllFiles YES
+	# gems
+	if ! [ -x "$(command -v pod)" ]; then
+		sudo gem install cocoapods
+	fi
+
+	# gos
+	installGos
+
+	# mac-os setup
+	if [ ! -d ~/Pictures/screenshots ]; then
+		mkdir ~/Pictures/screenshots
+	fi
+	if [ ! -d ~/.nvm ]; then
+		mkdir ~/.nvm
+	fi
+
+	defaults write com.apple.screencapture location ~/Pictures/screenshots
+
+	defaults write com.apple.finder AppleShowAllFiles YES
+
+	# app configs
+	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.apple.Terminal.plist ~/Library/Preferences/com.apple.Terminal.plist
+	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
+	# ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.apple.dock.plist ~/Library/Preferences/com.apple.dock.plist
+	# ln -sf $CSYS_HOME/sys-setup/os/mac/configs/.hyper.js ~/.hyper.js
+
+	# stop mouse from accelerating
+	defaults write .GlobalPreferences com.apple.mouse.scaling -1
+
+	# remove white line
+	defaults write -app Visual\ Studio\ Code NSRequiresAquaSystemAppearance -bool No
+	defaults write -app Hyper NSRequiresAquaSystemAppearance -bool No
+	defaults write -app Google\ Chrome NSRequiresAquaSystemAppearance -bool No
+	defaults write -app Atom\ Beta NSRequiresAquaSystemAppearance -bool No
+	defaults write -app Station NSRequiresAquaSystemAppearance -bool No
+}
+
+installBrews() {
+	loggit "Installing brews"
+
+	while read l; do
+		read -ra BREW_PACKAGE <<<$l
+		if ! brew ls --versions "${BREW_PACKAGE[0]}" >/dev/null; then
+			brew install $l
+		fi
+	done <configs/brews
+
+  loggit "Installing brews casks"
+
+	while read l; do
+		read -ra BREW_PACKAGE <<<$l
+		if ! brew cask ls --versions "${BREW_PACKAGE[0]}" >/dev/null; then
+			brew cask install $l
+		fi
+	done <configs/casks
+}
+
+installGos() {
+	while read l; do
+		go get -u $l
+	done <configs/gos
+}
+
+installGems() {
+	while read l; do
+		gem install $l
+	done <configs/gems
+}
+
+CONFIG_HOME="$CSYS_HOME/sys-setup/os/mac"
+RETURN_TO=$(pwd)
+
+cd "$CONFIG_HOME" || exit
+
+installStuff
+
+cd "$RETURN_TO" || exit

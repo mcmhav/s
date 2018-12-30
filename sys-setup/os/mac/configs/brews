@@ -1,0 +1,17 @@
+nvm
+watchman
+git
+bash-completion
+shellcheck
+pyenv
+pipenv
+readline
+xz
+watch
+ack
+zlib
+yarn --without-node
+go
+shfmt
+mitmproxy
+jq

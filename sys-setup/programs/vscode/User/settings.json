@@ -1,0 +1,143 @@
+{
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "files.autoSave": "onFocusChange",
+    "editor.wordWrap": "on",
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.editor.closeOnFileDelete": false,
+    "workbench.enableExperiments": false,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.wrappingIndent": "indent",
+    "workbench.statusBar.feedback.visible": false,
+    "prettier.tslintIntegration": true,
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "all",
+    "workbench.editor.revealIfOpen": true,
+    "editor.formatOnSave": true,
+    "html.format.wrapLineLength": 90,
+    "[yaml]": {
+        "editor.formatOnSave": false
+    },
+    "java.format.settings.url": "~/r/s/sys-setup/.dotfiles/.settings/org.eclipse.jdt.core.prefs",
+    "workbench.activityBar.visible": false,
+    "zenMode.centerLayout": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.tabSize": 2,
+    "editor.rulers": [
+        80,
+        100,
+        120
+    ],
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.showSlider": "always",
+    "workbench.tree.horizontalScrolling": true,
+    "go.autocompleteUnimportedPackages": true,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home",
+    "explorer.autoReveal": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "prettier.eslintIntegration": true,
+    "eslint.packageManager": "yarn",
+    "window.zoomLevel": 0,
+    "shellcheck.customArgs": [
+        "-x"
+    ],
+    "workbench.colorTheme": "Material Theme Ocean",
+    "workbench.iconTheme": "eq-material-theme-icons-ocean",
+    "materialTheme.accent": "Cyan",
+    "workbench.colorCustomizations": {
+        "activityBarBadge.background": "#00BCD4",
+        "list.activeSelectionForeground": "#00BCD4",
+        "list.inactiveSelectionForeground": "#00BCD4",
+        "list.highlightForeground": "#00BCD4",
+        "scrollbarSlider.activeBackground": "#00BCD450",
+        "editorSuggestWidget.highlightForeground": "#00BCD4",
+        "textLink.foreground": "#00BCD4",
+        "progressBar.background": "#00BCD4",
+        "pickerGroup.foreground": "#00BCD4",
+        "tab.activeBorder": "#00BCD4",
+        "notificationLink.foreground": "#00BCD4",
+        "editorWidget.resizeBorder": "#00BCD4",
+        "editorWidget.border": "#00BCD4",
+        "settings.modifiedItemIndicator": "#00BCD4",
+        "settings.headerForeground": "#00BCD4",
+        "panelTitle.activeBorder": "#00BCD4",
+        "breadcrumb.activeSelectionForeground": "#00BCD4",
+        "menu.selectionForeground": "#00BCD4",
+        "menubar.selectionForeground": "#00BCD4"
+    },
+    "editor.tokenColorCustomizations": {
+        // https://github.com/Binaryify/OneDark-Pro
+        // https://github.com/equinusocio/vsc-material-theme
+        // https://github.com/liviuschera/noctis/blob/master/themes/Noctis.json
+        "textMateRules": [
+            {
+                "scope": [
+                    "punctuation.definition.comment",
+                    "comment.block",
+                    "comment.line",
+                    "comment.block.documentation"
+                ],
+                "settings": {
+                    // "foreground": "#FF0000"
+                }
+            }, {
+                "scope": [
+                    "variable.other.constant",
+                    "variable.other",
+                    "variable.other.python",
+                    "variable.parameter.function.language.python",
+                    "constant.character.format.placeholder.other.python",
+                    "meta.function-call.arguments.python",
+                    "meta.definition.variable.name.python",
+                    "variable",
+
+                    "variable.object",
+                    "variable.parameter",
+                    "support",
+                    "string constant.other.placeholder",
+                    "source.css.scss variable",
+                    "entity.name.module",
+                    "variable.import.parameter",
+                    "variable.other.class",
+                    "meta.toc-list.id.html",
+                    // "source.json meta.structure.dictionary.json support.type.property-name.json",
+                    "markup.list",
+                    "meta.var.clojure",
+                    "source.cs entity.name.variable",
+                    "source.java meta.class.body.java",
+                    "entity.name.package.go",
+                    "source.c",
+                    "source.cpp",
+                    "source.go",
+                    "source.python",
+                    // "meta.function-call.arguments.python",
+                    // "source.ruby",
+                    // "source.coffee.embedded.source",
+                    // "source.coffee",
+                    // "storage.modifier.import",
+                    // "storage.modifier.package",
+                    // "storage.type.annotation",
+                    // "punctuation.definition.annotation",
+                    // "source.groovy.embedded.source",
+                    // "punctuation.definition.variable",
+                    // "source.powershell",
+                    // "variable.other.readwrite.global.ruby punctuation.definition.variable.ruby",
+                    // "string.quoted.interpolated.vala constant.character.escape.vala",
+                    // "source.apacheconf"
+                ],
+                "settings": {
+                    "foreground": "#f75959",
+                    "fontStyle": "bold"
+                }
+            }
+        ],
+        "[Material Theme Ocean]": {
+            "textMateRules": []
+        },
+    },
+    "explorer.openEditors.visible": 0,
+    "python.venvPath": "~/.pyenv",
+}

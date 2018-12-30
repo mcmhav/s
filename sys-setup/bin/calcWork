@@ -1,0 +1,10 @@
+#!/bin/bash
+
+calcWork() {
+  cwd=$(PWD)
+  cd "$bashWD/../bash/timeLogging" || exit
+  ./findStartEnd.sh
+  cd "$cwd" || exit
+}
+
+calcWork

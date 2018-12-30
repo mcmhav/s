@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+if [ "$(uname -s)" == "Linux" ]; then
+  alias ls='ls --color=auto'
+elif [ "$(uname -s)" == "Darwin" ]; then
+  alias ls='ls -G'
+else
+  alias ls='ls --color=auto'
+fi
+
+# alias mcwd="echo $PWD | tr / '\n' | xargs -I X sh -c 'echo X | head -c 1; echo' | tr '\n' /"
+
+alias cake='sh $CSYS_HOME/sys-setup/.dotfiles/.cakeInit.sh'
+# alias scron="su -c $(printf "%q " "crontab -u $USER -e")"
+alias scron="sudo EDITOR=nano crontab -u $USER -e"
+alias xterm="xterm & sleep 0.8s && transset-df -a"
+
+alias click='shutter -s'
+
+alias probeNetwork='arp -a'
+
+alias aptUpgrade='sudo apt-get update && sudo apt-get upgrade'
+
+alias space='du -h -d 2 | sort -n'
+
+alias topCpu='top -F -R -o cpu'
+
+alias updateBashRC='source ~/.bashrc'

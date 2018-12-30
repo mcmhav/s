@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# old stuff
+# export EDITOR=subl3
+# export VISUAL=subl3
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+
+# go sgit
+export GOPATH="$HOME/.go"
+export GOROOT=/usr/local/opt/go/libexec
+
+# android
+export ANDROID_HOME=/usr/local/share/android-sdk
+
+# path stuff
+PATHS=(
+	"$PYENV_ROOT/bin"
+	"/git/tools/bin"
+	"$PATH"
+	"$(ruby -r rubygems -e "puts Gem.user_dir")/bin"
+	"/git/bob"
+	"/usr/local/bin"
+	"/usr/local/opt/python/libexec/bin"
+	"$GOPATH/bin"
+	"$GOROOT/bin"
+	"$CSYS_HOME/sys-setup/bin"
+	"/usr/local/miniconda3/bin"
+)
+PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
+export PATH=$PATH
+
+# node
+export NVM_DIR="$HOME/.nvm"
+# lazyloading of nvm since . "/usr/local/opt/nvm/nvm.sh"
+# is hellaslow
+# https://gist.github.com/fl0w/07ce79bd44788f647deab307c94d6922
+NODE_GLOBALS=($(find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq))
+NODE_GLOBALS+=("node")
+NODE_GLOBALS+=("nvm")
+NODE_GLOBALS+=("yarn")
+NODE_GLOBALS+=("yalc")
+
+# Lazy-loading nvm + npm on node globals call
+load_nvm() {
+	# [ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
+	[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+}
+
+# Making node global trigger the lazy loading
+for cmd in "${NODE_GLOBALS[@]}"; do
+	eval "${cmd}(){ unset -f ${cmd}; load_nvm; ${cmd} \$@; }"
+done

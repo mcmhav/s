@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
 
-ln -sf ~/r/s/sys-setup/bash/.bashrc ~/.bashrc;
-ln -sf ~/r/s/sys-setup/bash/.bashrc ~/.bash_profile;
-ln -sf ~/r/s/sys-setup/.dotfiles/.vimrc ~/.vimrc;
-ln -sf ~/r/s/sys-setup/.dotfiles/.gitconfig ~/.gitconfig;
+export CSYS_HOME="$HOME/r/s"
+
+ln -sf $CSYS_HOME/sys-setup/bash/.bashrc ~/.bashrc;
+ln -sf $CSYS_HOME/sys-setup/bash/.bashrc ~/.bash_profile;
+
+ln -sf $CSYS_HOME/sys-setup/.dotfiles/.vimrc ~/.vimrc;
+ln -sf $CSYS_HOME/sys-setup/.dotfiles/.gitconfig ~/.gitconfig;
+ln -sf $CSYS_HOME/sys-setup/.dotfiles/.gitignore ~/.gitignore;
+ln -sf $CSYS_HOME/sys-setup/.dotfiles/.hyper.js ~/.hyper.js
+ln -sf $CSYS_HOME/sys-setup/.dotfiles/.eslintrc.js ~/.eslintrc.js
+ln -sf $CSYS_HOME/sys-setup/.dotfiles/.prettierrc.js ~/.prettierrc.js
+
+CONFIG_HOME="$CSYS_HOME/sys-setup"
+RETURN_TO=$(pwd)
+
+cd $CONFIG_HOME || exit
 
 if [ "$(uname -s)" == "Linux" ]; then
 	./os/lin/setup.sh
@@ -14,8 +26,11 @@ elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
 fi
 
 programs/atom/setup.sh --install
-programs/subl/setup.sh
+# programs/subl/setup.sh # not using
 programs/vim/setup.sh
+programs/vscode/setup.sh --install
+
+cd $RETURN_TO || exit
 
 # Apps:
 #   python
