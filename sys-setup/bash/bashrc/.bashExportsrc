@@ -22,11 +22,11 @@ PATHS=(
 	"$(ruby -r rubygems -e "puts Gem.user_dir")/bin"
 	"/git/bob"
 	"/usr/local/bin"
-	"/usr/local/opt/python/libexec/bin"
+  # "/usr/local/go/bin" # pi/linux-golang?? export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 	"$GOPATH/bin"
 	"$GOROOT/bin"
+  "/usr/local/opt/python/libexec/bin"
 	"$CSYS_HOME/sys-setup/bin"
-	"/usr/local/miniconda3/bin"
 )
 PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
 export PATH=$PATH

@@ -7,7 +7,11 @@ source "$bashWD"/bashrc/.bashCommandrc
 source "$bashWD"/bashrc/.bashHelperFuncsrc
 source "$bashWD"/bashrc/.bashGitrc
 if [ "$(uname -s)" == "Linux" ]; then
-  source "$bashWD"/bashrc/.bashLinrc
+  if [ "$(uname -m)" == "armv7l" ]; then
+    source "$bashWD"/bashrc/.bashPirc
+  else
+    source "$bashWD"/bashrc/.bashLinrc
+  fi
 elif [ "$(uname -s)" == "Darwin" ]; then
   source "$bashWD"/bashrc/.bashMacrc
 elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then

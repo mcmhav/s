@@ -1,2 +1,44 @@
 #!/usr/bin/env bash
-pacman -S alsa-utils xorg-server xorg-server-utils xorg-xinit sudo xf86-input-synaptics syslinux git openssh base-devel yaourt ttf-dejavu intellij-idea-community-edition strace wget file-roller p7zip zip unzip unrar audacity bash-completion conky nodejs ttf-symbola steam flashplugin dialog openvpn awesome iw wpa_supplicant wpa_actiond xcompmgr python-basemap mysql cmake boost bless transset-df nemo
+
+pacman -S \
+  alsa-utils \
+  xorg-server \
+  xorg-server-utils \
+  xorg-xinit \
+  sudo \
+  xf86-input-synaptics \
+  syslinux \
+  git \
+  openssh \
+  base-devel \
+  yaourt \
+  ttf-dejavu \
+  intellij-idea-community-edition \
+  strace \
+  wget \
+  file-roller \
+  p7zip \
+  zip \
+  unzip \
+  unrar \
+  audacity \
+  bash-completion \
+  conky \
+  nodejs \
+  ttf-symbola \
+  steam \
+  flashplugin \
+  dialog \
+  openvpn \
+  awesome \
+  iw \
+  wpa_supplicant \
+  wpa_actiond \
+  xcompmgr \
+  python-basemap \
+  mysql \
+  cmake \
+  boost \
+  bless \
+  transset-df \
+  nemo
