@@ -1,0 +1,8 @@
+#!/bin/bash
+
+DISK_NUM="2"
+IMG_FILE=""
+
+diskutil unmountDisk /dev/disk$DISK_NUM
+
+sudo dd bs=1m if=$IMG_FILE of=/dev/rdisk$DISK_NUM conv=sync

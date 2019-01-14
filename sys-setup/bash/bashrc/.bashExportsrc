@@ -9,7 +9,17 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 # go sgit
 export GOPATH="$HOME/.go"
-export GOROOT=/usr/local/opt/go/libexec
+if [ "$(uname -s)" == "Linux" ]; then
+	if [ "$(uname -m)" == "armv7l" ]; then
+		export GOROOT=/usr/lib/go
+	else
+		export GOROOT=/usr/local/opt/go/libexec
+	fi
+elif [ "$(uname -s)" == "Darwin" ]; then
+	export GOROOT=/usr/local/opt/go/libexec
+elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+	export GOROOT=/usr/local/opt/go/libexec
+fi
 
 # android
 export ANDROID_HOME=/usr/local/share/android-sdk
@@ -30,22 +40,22 @@ PATHS=(
 )
 PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
 if [ ! -z "$(which ruby)" ]; then
-  PATH=$PATH:"$(ruby -r rubygems -e "puts Gem.user_dir")/bin"
+	PATH=$PATH:"$(ruby -r rubygems -e "puts Gem.user_dir")/bin"
 fi
 export PATH=$PATH
 
 # node
 export NVM_DIR="$HOME/.nvm"
 if [ "$(uname -s)" == "Linux" ]; then
-  if [ "$(uname -m)" == "armv7l" ]; then
-    NVM_SH="$NVM_DIR/nvm.sh"
-  else
-    echo "todo"
-  fi
+	if [ "$(uname -m)" == "armv7l" ]; then
+		NVM_SH="$NVM_DIR/nvm.sh"
+	else
+		echo "todo"
+	fi
 elif [ "$(uname -s)" == "Darwin" ]; then
-  NVM_SH="/usr/local/opt/nvm/nvm.sh"
+	NVM_SH="/usr/local/opt/nvm/nvm.sh"
 elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
-  echo "todo"
+	echo "todo"
 fi
 
 # lazyloading of nvm since . "/usr/local/opt/nvm/nvm.sh"
