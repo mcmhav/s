@@ -2,6 +2,11 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 syntax on
+set expandtab
+set tabstop=4
+set autoindent
+set cindent
+autocmd BufWritePre * :%s/\s\+$//e
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim

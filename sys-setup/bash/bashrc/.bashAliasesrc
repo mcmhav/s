@@ -1,12 +1,26 @@
 #!/usr/bin/env bash
 
-if [ "$(uname -s)" == "Linux" ]; then
-  alias ls='ls --color=auto'
-elif [ "$(uname -s)" == "Darwin" ]; then
-  alias ls='ls -G'
-else
-  alias ls='ls --color=auto'
+if [ -x /usr/bin/dircolors ] || [ "$(uname -s)" == "Darwin" ]; then
+    if [ "$(uname -s)" == "Linux" ]; then
+      test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+      alias ls='ls --color=auto'
+    elif [ "$(uname -s)" == "Darwin" ]; then
+      alias ls='ls -G'
+    else
+      alias ls='ls --color=auto'
+    fi
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
+
+# some more ls aliases
+#alias ll='ls -l'
+#alias la='ls -A'
+#alias l='ls -CF'
 
 # alias mcwd="echo $PWD | tr / '\n' | xargs -I X sh -c 'echo X | head -c 1; echo' | tr '\n' /"
 

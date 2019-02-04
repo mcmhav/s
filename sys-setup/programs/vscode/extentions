@@ -26,6 +26,7 @@ PeterJausovec.vscode-docker
 Pivotal.vscode-boot-dev-pack
 Pivotal.vscode-spring-boot
 redhat.java
+redhat.vscode-yaml
 secanis.jenkinsfile-support
 SolarLiner.linux-themes
 teabyii.ayu

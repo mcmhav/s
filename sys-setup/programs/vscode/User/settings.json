@@ -140,4 +140,8 @@
     },
     "explorer.openEditors.visible": 0,
     "python.venvPath": "~/.pyenv",
+    "python.linting.pydocstyleEnabled": true,
+    "python.linting.pylintUseMinimalCheckers": false,
+    "yaml.format.enable": true,
+    "yaml.format.singleQuote": true,
 }

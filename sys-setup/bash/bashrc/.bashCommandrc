@@ -3,6 +3,7 @@
 HISTSIZE=10000
 HISTFILESIZE=2000
 export HISTFILE=~/.bash_eternal_ish_history
+HISTCONTROL=ignoreboth
 
 unset PROMPT_COMMAND
 
@@ -43,15 +44,32 @@ function error_log {
   fi
 }
 
-function rairai {
+function promt_commands {
   local curr_exit="$?"
 
   timer_stop
   error_log $curr_exit
 }
 
-PROMPT_COMMAND=rairai
-export PS1='${promt_message}\[\e[1;35m\]${timer_show}\[\e[m\]|\[\e[1;32m\]\W\[\e[m\]\[\e[0;31m\]$\[\e[m\] '
+PROMPT_COMMAND=promt_commands
+
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  IS_SSH_SESSION="yeyaa"
+# else
+#   case $(ps -o comm= -p $PPID) in
+#     sshd|*/sshd) SESSION_TYPE=remote/ssh;;
+#   esac
+fi
+
+PS1='${promt_message}\[\e[1;35m\]${timer_show}\[\e[m\]|\[\e['
+if [ ! -z $IS_SSH_SESSION ]; then
+  PS1=$PS1'1;36m'
+else
+  PS1=$PS1'1;32m'
+fi
+PS1=$PS1'\]\W\[\e[m\]\[\e[0;31m\]$\[\e[m\] '
+
+export PS1=$PS1
 # export PS1='$(error_log)$ '
 # export PS1='[\[\e[1;35m\]${timer_show}\[\e[m\]][\[\e[1;32m\]\W\[\e[m\]]\[\e[0;31m\]$\[\e[m\] '
 export PS2='> '

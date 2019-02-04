@@ -9,34 +9,59 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 # go sgit
 export GOPATH="$HOME/.go"
-export GOROOT=/usr/local/opt/go/libexec
+if [ "$(uname -s)" == "Linux" ]; then
+	if [ "$(uname -m)" == "armv7l" ]; then
+		export GOROOT=/usr/lib/go
+	else
+		export GOROOT=/usr/local/opt/go/libexec
+	fi
+elif [ "$(uname -s)" == "Darwin" ]; then
+	export GOROOT=/usr/local/opt/go/libexec
+elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+	export GOROOT=/usr/local/opt/go/libexec
+fi
 
 # android
 export ANDROID_HOME=/usr/local/share/android-sdk
 
 # path stuff
 PATHS=(
-	"$PYENV_ROOT/bin"
+	# "$PYENV_ROOT/bin"
 	"/git/tools/bin"
 	"$PATH"
-	"$(ruby -r rubygems -e "puts Gem.user_dir")/bin"
 	"/git/bob"
 	"/usr/local/bin"
-	"/usr/local/opt/python/libexec/bin"
+	# "/usr/local/go/bin" # pi/linux-golang?? export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 	"$GOPATH/bin"
 	"$GOROOT/bin"
+	"/usr/local/opt/python/libexec/bin"
+	"$PYENV_ROOT/bin"
 	"$CSYS_HOME/sys-setup/bin"
-	"/usr/local/miniconda3/bin"
 )
 PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
+if [ ! -z "$(which ruby)" ]; then
+	PATH=$PATH:"$(ruby -r rubygems -e "puts Gem.user_dir")/bin"
+fi
 export PATH=$PATH
 
 # node
 export NVM_DIR="$HOME/.nvm"
+if [ "$(uname -s)" == "Linux" ]; then
+	if [ "$(uname -m)" == "armv7l" ]; then
+		NVM_SH="$NVM_DIR/nvm.sh"
+	else
+		echo "todo"
+	fi
+elif [ "$(uname -s)" == "Darwin" ]; then
+	NVM_SH="/usr/local/opt/nvm/nvm.sh"
+elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+	echo "todo"
+fi
+
 # lazyloading of nvm since . "/usr/local/opt/nvm/nvm.sh"
 # is hellaslow
 # https://gist.github.com/fl0w/07ce79bd44788f647deab307c94d6922
-NODE_GLOBALS=($(find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq))
+NODE_GLOBALS=($(find $NVM_DIR/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq))
 NODE_GLOBALS+=("node")
 NODE_GLOBALS+=("nvm")
 NODE_GLOBALS+=("yarn")
@@ -45,7 +70,7 @@ NODE_GLOBALS+=("yalc")
 # Lazy-loading nvm + npm on node globals call
 load_nvm() {
 	# [ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
-	[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+	[ -s "$NVM_SH" ] && . "$NVM_SH"
 }
 
 # Making node global trigger the lazy loading

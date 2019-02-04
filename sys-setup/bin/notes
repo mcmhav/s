@@ -1,0 +1,17 @@
+#!/bin/bash
+
+RETURN_TO=$(pwd)
+NOTES_PATH="$HOME/r/computas/aker/subsense/notes"
+
+cd "$NOTES_PATH" || exit
+
+DATE=`date '+%Y.%m.%d'`
+
+SUB_NAME=""
+if [ -n "$1" ]; then
+  SUB_NAME="-$1"
+fi
+
+vim "$DATE$SUB_NAME"
+
+cd "$RETURN_TO" || exit
