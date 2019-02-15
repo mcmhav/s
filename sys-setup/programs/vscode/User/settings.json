@@ -17,7 +17,7 @@
     "editor.formatOnSave": true,
     "html.format.wrapLineLength": 90,
     "[yaml]": {
-        "editor.formatOnSave": false
+        "editor.formatOnSave": true
     },
     "java.format.settings.url": "~/r/s/sys-setup/.dotfiles/.settings/org.eclipse.jdt.core.prefs",
     "workbench.activityBar.visible": false,
@@ -35,7 +35,7 @@
     "go.autocompleteUnimportedPackages": true,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
-    "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home",
+    "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home",
     "explorer.autoReveal": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
     "prettier.eslintIntegration": true,
@@ -45,7 +45,6 @@
         "-x"
     ],
     "workbench.colorTheme": "Material Theme Ocean",
-    "workbench.iconTheme": "eq-material-theme-icons-ocean",
     "materialTheme.accent": "Cyan",
     "workbench.colorCustomizations": {
         "activityBarBadge.background": "#00BCD4",
