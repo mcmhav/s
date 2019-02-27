@@ -14,6 +14,7 @@ ms-vscode.csharp
 ms-vscode.Go
 naco-siren.gradle-language
 naumovs.color-highlight
+njpwerner.autodocstring
 PeterJausovec.vscode-docker
 Pivotal.vscode-boot-dev-pack
 Pivotal.vscode-spring-boot
@@ -21,6 +22,7 @@ redhat.java
 redhat.vscode-yaml
 secanis.jenkinsfile-support
 timonwong.shellcheck
+VisualStudioExptTeam.vscodeintellicode
 vscjava.vscode-java-debug
 vscjava.vscode-java-dependency
 vscjava.vscode-java-pack

@@ -143,4 +143,7 @@
     "python.linting.pylintUseMinimalCheckers": false,
     "yaml.format.enable": true,
     "yaml.format.singleQuote": true,
+    "python.jediEnabled": false,
+    "autoDocstring.docstringFormat": "numpy",
+    "autoDocstring.newlineBeforeSummary": true,
 }

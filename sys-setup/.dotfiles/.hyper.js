@@ -26,7 +26,7 @@ module.exports = {
 
     foregroundColor: '#5ee39b',
 
-    backgroundColor: '#101010EE',
+    backgroundColor: '#101010',
 
     selectionColor: 'rgba(248,28,229,0.3)',
 
@@ -47,7 +47,7 @@ module.exports = {
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
     colors: {
-      black: '#000000',
+      black: '#313131',
       red: '#ff6262',
       green: '#1DC121',
       yellow: '#C7C329',
@@ -65,6 +65,8 @@ module.exports = {
       lightCyan: '#68FDFE',
       lightWhite: '#FFFFFF',
     },
+
+    opacity: 0.9,
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
     // if left empty, your system's login shell will be used by default
@@ -103,7 +105,7 @@ module.exports = {
     // for advanced config flags please refer to https://hyper.is/#cfg
   },
 
-  plugins: ['hyper-search'],
+  plugins: ['hyper-search', 'hyper-opacity'],
   localPlugins: [],
 
   keymaps: {

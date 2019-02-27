@@ -12,6 +12,7 @@ highlight-selected
 intentions
 language-babel
 language-gradle
+language-groovy
 language-lua
 language-proto
 linter
