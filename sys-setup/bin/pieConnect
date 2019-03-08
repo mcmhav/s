@@ -1,11 +1,12 @@
 #!/bin/bash
 
 pieConnect() {
-  piIp='cakePi'
-  if [ ! -z "$1" ]; then
+  if [ -z "$1" ]; then
+    ssh pi@localhost -p 8765
+  else
     piIp="$1"
+    ssh root@"$piIp"
   fi
-  ssh root@"$piIp"
 }
 
 pieConnect $1
