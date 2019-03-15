@@ -154,4 +154,5 @@
     },
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "markdown-table-formatter.enable": true,
 }

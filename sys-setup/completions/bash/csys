@@ -2,7 +2,7 @@
 
 # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
 # https://www.tldp.org/LDP/abs/html/tabexpansion.html
-_dothis_completions()
+_csys_completions()
 {
   CSYS_FLAGS="--diff --download --upload --status"
 
@@ -20,4 +20,4 @@ _dothis_completions()
   esac
 }
 
-complete -F _dothis_completions csys
+complete -F _csys_completions csys
