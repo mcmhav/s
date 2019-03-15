@@ -1,6 +1,7 @@
 #!/bin/bash
 
 bashWD="$CSYS_HOME/sys-setup/bash"
+completionsWD="$CSYS_HOME/sys-setup/completions"
 
 # adding extra sources
 source "$bashWD"/bashrc/.bashCommandrc
@@ -20,6 +21,7 @@ elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
   source "$bashWD"/bashrc/.bashWinrc
 fi
 
+# completions
 G_CLOUD_SDK_PATH="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f $G_CLOUD_SDK_PATH/path.bash.inc ]; then
@@ -30,6 +32,8 @@ fi
 if [ -f $G_CLOUD_SDK_PATH/completion.bash.inc ]; then
   source $G_CLOUD_SDK_PATH/completion.bash.inc
 fi
+
+source $completionsWD/bash/csys
 
 #
 [ -e ~/.bashAkerrcs ] && source ~/.bashAkerrcs/.bashAkerrc
