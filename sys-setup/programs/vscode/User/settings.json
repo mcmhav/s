@@ -155,4 +155,11 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "markdown-table-formatter.enable": true,
+    "gitlens.settings.mode": "advanced",
+    "gitlens.currentLine.scrollable": false,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.codeLens.scopes": [
+        "containers"
+    ],
 }
