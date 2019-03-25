@@ -84,6 +84,7 @@
         // https://github.com/Binaryify/OneDark-Pro
         // https://github.com/equinusocio/vsc-material-theme
         // https://github.com/liviuschera/noctis/blob/master/themes/Noctis.json
+        // "functions": "#00ff62",
         "textMateRules": [
             {
                 "scope": [
@@ -144,6 +145,38 @@
                     "foreground": "#f75959",
                     "fontStyle": "bold"
                 }
+            }, {
+                "name": "Class, Support",
+                "scope": [
+                    "entity.name",
+                    "support.type",
+                    "support.class",
+                    "support.orther.namespace.use.php",
+                    "meta.use.php",
+                    "support.other.namespace.php",
+                    "markup.changed.git_gutter",
+                    "support.type.sys-types"
+                ],
+                "settings": {
+                    "foreground": "#FF0000",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+              "name": "String, Symbols, Inherited Class, Markup Heading",
+              "scope": [
+                "string",
+                "constant.other.symbol",
+                "constant.other.key",
+                "entity.other.inherited-class",
+                "markup.heading",
+                "markup.inserted.git_gutter",
+                "meta.group.braces.curly constant.other.object.key.js string.unquoted.label.js"
+              ],
+              "settings": {
+                "foreground": "#6cfab3",
+                "fontStyle": ""
+              }
             }
         ],
         "[Material Theme Ocean]": {
