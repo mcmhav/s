@@ -70,8 +70,8 @@ csys() {
 CONFIG_HOME="$CSYS_HOME"
 RETURN_TO=$(pwd)
 
-cd $CONFIG_HOME || exit
+cd "$CONFIG_HOME" || exit
 
 csys "$@"
 
-cd $RETURN_TO || exit
+cd "$RETURN_TO" || exit

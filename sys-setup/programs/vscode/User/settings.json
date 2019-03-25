@@ -31,12 +31,11 @@
     ],
     "editor.minimap.renderCharacters": false,
     "editor.minimap.showSlider": "always",
-    "workbench.tree.horizontalScrolling": true,
+    "workbench.list.horizontalScrolling": true,
     "go.autocompleteUnimportedPackages": true,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
     "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home",
-    "explorer.autoReveal": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
     "prettier.eslintIntegration": true,
     "eslint.packageManager": "yarn",
@@ -47,25 +46,39 @@
     "workbench.colorTheme": "Material Theme Ocean",
     "materialTheme.accent": "Cyan",
     "workbench.colorCustomizations": {
+        "activityBar.border": "#ff0000",
+        "activityBar.foreground": "#ff0000",
         "activityBarBadge.background": "#00BCD4",
-        "list.activeSelectionForeground": "#00BCD4",
-        "list.inactiveSelectionForeground": "#00BCD4",
-        "list.highlightForeground": "#00BCD4",
-        "scrollbarSlider.activeBackground": "#00BCD450",
+        "breadcrumb.activeSelectionForeground": "#00BCD4",
+
+        "editor.selectionBackground": "#721919",
+        "editor.lineHighlightBackground": "#ff260052",
+        // "editorHoverWidget.background": "#ff0000",
+        // "editorSuggestWidget.background": "#ff0000",
+        "editorSuggestWidget.border": "#01cc56",
+        "editorSuggestWidget.selectedBackground": "#721919",
+        "editorSuggestWidget.foreground": "#01cc56",
         "editorSuggestWidget.highlightForeground": "#00BCD4",
-        "textLink.foreground": "#00BCD4",
-        "progressBar.background": "#00BCD4",
-        "pickerGroup.foreground": "#00BCD4",
-        "tab.activeBorder": "#00BCD4",
-        "notificationLink.foreground": "#00BCD4",
         "editorWidget.resizeBorder": "#00BCD4",
         "editorWidget.border": "#00BCD4",
+
+        "list.activeSelectionForeground": "#00ff15",
+        "list.inactiveSelectionForeground": "#00BCD4",
+        "list.highlightForeground": "#00e1ff",
+
+        "statusBar.foreground": "#f75959",
+
+        "menu.selectionForeground": "#00BCD4",
+        "menubar.selectionForeground": "#00BCD4",
+        "notificationLink.foreground": "#00BCD4",
+        "progressBar.background": "#00BCD4",
+        "pickerGroup.foreground": "#00BCD4",
+        "panelTitle.activeBorder": "#00BCD4",
+        "scrollbarSlider.activeBackground": "#d237f1",
         "settings.modifiedItemIndicator": "#00BCD4",
         "settings.headerForeground": "#00BCD4",
-        "panelTitle.activeBorder": "#00BCD4",
-        "breadcrumb.activeSelectionForeground": "#00BCD4",
-        "menu.selectionForeground": "#00BCD4",
-        "menubar.selectionForeground": "#00BCD4"
+        "textLink.foreground": "#00BCD4",
+        "tab.activeBorder": "#00BCD4"
     },
     "editor.tokenColorCustomizations": {
         // https://github.com/Binaryify/OneDark-Pro
@@ -162,4 +175,6 @@
     "gitlens.codeLens.scopes": [
         "containers"
     ],
+    "editor.multiCursorModifier": "ctrlCmd",
+    "explorer.autoReveal": false
 }
