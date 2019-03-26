@@ -51,8 +51,10 @@
         "activityBarBadge.background": "#00BCD4",
         "breadcrumb.activeSelectionForeground": "#00BCD4",
 
-        "editor.selectionBackground": "#721919",
+        "editor.selectionBackground": "#ff260052",
         "editor.lineHighlightBackground": "#ff260052",
+        "editor.selectionHighlightBackground": "#ff260052",
+        // "editor.selectionHighlightBorder": "#ff0000",
         // "editorHoverWidget.background": "#ff0000",
         // "editorSuggestWidget.background": "#ff0000",
         "editorSuggestWidget.border": "#01cc56",
@@ -61,6 +63,7 @@
         "editorSuggestWidget.highlightForeground": "#00BCD4",
         "editorWidget.resizeBorder": "#00BCD4",
         "editorWidget.border": "#00BCD4",
+
 
         "list.activeSelectionForeground": "#00ff15",
         "list.inactiveSelectionForeground": "#00BCD4",
@@ -78,7 +81,12 @@
         "settings.modifiedItemIndicator": "#00BCD4",
         "settings.headerForeground": "#00BCD4",
         "textLink.foreground": "#00BCD4",
-        "tab.activeBorder": "#00BCD4"
+
+        "tab.activeForeground": "#f75959",
+        "tab.inactiveForeground": "#b44b4b",
+        "tab.unfocusedActiveForeground": "#f75959",
+        "tab.unfocusedInactiveForeground": "#ca4646",
+        "tab.activeBorder": "#f75959"
     },
     "editor.tokenColorCustomizations": {
         // https://github.com/Binaryify/OneDark-Pro
