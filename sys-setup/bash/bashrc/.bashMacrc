@@ -11,9 +11,9 @@ cb() {
 alias brewUpdate='brew update && brew upgrade && brew cask upgrade'
 
 # java versions-helpers
-alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
-alias j10="export JAVA_HOME=`/usr/libexec/java_home -v 10`; java -version"
-alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
+alias j8="export JAVA_HOME=$(/usr/libexec/java_home -v 1.8); java -version"
+alias j10="export JAVA_HOME=$(/usr/libexec/java_home -v 10); java -version"
+alias openjdk="export JAVA_HOME=$(/usr/libexec/java_home -v $(/usr/libexec/java_home -X | xmllint --xpath 'string(//array/dict/key[.="JVMVersion"]/following-sibling::*[1])' --format -)); java -version"
 
 # Set java 8 as default
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)

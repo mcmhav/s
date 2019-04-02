@@ -2,3 +2,4 @@ pycodestyle
 pylint
 autopep8
 isort
+google-cloud-vision
