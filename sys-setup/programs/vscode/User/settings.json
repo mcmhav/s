@@ -55,6 +55,9 @@
         "editor.lineHighlightBackground": "#ff260052",
         "editor.selectionHighlightBackground": "#ff260052",
         // "editor.selectionHighlightBorder": "#ff0000",
+
+        "editorLineNumber.activeForeground": "#ff0000",
+        "editorLineNumber.foreground": "#f75959",
         // "editorHoverWidget.background": "#ff0000",
         // "editorSuggestWidget.background": "#ff0000",
         "editorSuggestWidget.border": "#01cc56",
@@ -193,8 +196,6 @@
     },
     "explorer.openEditors.visible": 0,
     "python.venvPath": "~/.pyenv",
-    "python.linting.pydocstyleEnabled": true,
-    "python.linting.pylintUseMinimalCheckers": false,
     "yaml.format.enable": true,
     "yaml.format.singleQuote": true,
     "python.jediEnabled": false,
@@ -217,5 +218,9 @@
         "containers"
     ],
     "editor.multiCursorModifier": "ctrlCmd",
-    "explorer.autoReveal": false
+    "explorer.autoReveal": false,
+    "python.linting.pylintUseMinimalCheckers": false,
+    "python.formatting.autopep8Args": ["--in-place", "--aggressive", "--aggressive", "--aggressive", "--max-line-length=98"],
+    "python.formatting.provider": "autopep8",
+    "python.linting.pep8Args": ["--max-line-length=98"]
 }
