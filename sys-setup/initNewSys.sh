@@ -3,14 +3,16 @@
 export CSYS_HOME="$HOME/r/s"
 
 non_gui_config() {
-  ln -sf $CSYS_HOME/sys-setup/bash/.bashrc ~/.bashrc;
-  ln -sf $CSYS_HOME/sys-setup/bash/.bashrc ~/.bash_profile;
+  ln -sf $CSYS_HOME/sys-setup/bash/.bashrc ~/.bashrc
+  ln -sf $CSYS_HOME/sys-setup/bash/.bashrc ~/.bash_profile
 
-  ln -sf $CSYS_HOME/sys-setup/.dotfiles/.vimrc ~/.vimrc;
-  ln -sf $CSYS_HOME/sys-setup/.dotfiles/.gitconfig ~/.gitconfig;
-  ln -sf $CSYS_HOME/sys-setup/.dotfiles/.gitignore ~/.gitignore;
+  ln -sf $CSYS_HOME/sys-setup/.dotfiles/.vimrc ~/.vimrc
+  ln -sf $CSYS_HOME/sys-setup/.dotfiles/.gitconfig ~/.gitconfig
+  ln -sf $CSYS_HOME/sys-setup/.dotfiles/.gitignore ~/.gitignore
   ln -sf $CSYS_HOME/sys-setup/.dotfiles/.eslintrc.js ~/.eslintrc.js
   ln -sf $CSYS_HOME/sys-setup/.dotfiles/.prettierrc.js ~/.prettierrc.js
+  ln -sf $CSYS_HOME/sys-setup/.dotfiles/.pylintrc ~/.pylintrc
+  ln -sf $CSYS_HOME/sys-setup/.dotfiles/.pydocstylerc ~/.pydocstylerc
 }
 gui_config() {
   ln -sf $CSYS_HOME/sys-setup/.dotfiles/.hyper.js ~/.hyper.js

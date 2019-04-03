@@ -198,7 +198,6 @@
     "python.venvPath": "~/.pyenv",
     "yaml.format.enable": true,
     "yaml.format.singleQuote": true,
-    "python.jediEnabled": false,
     "autoDocstring.docstringFormat": "numpy",
     "autoDocstring.newlineBeforeSummary": true,
     "files.exclude": {
@@ -219,8 +218,13 @@
     ],
     "editor.multiCursorModifier": "ctrlCmd",
     "explorer.autoReveal": false,
+    "python.analysis.openFilesOnly": true,
     "python.linting.pylintUseMinimalCheckers": false,
-    "python.formatting.autopep8Args": ["--in-place", "--aggressive", "--aggressive", "--aggressive", "--max-line-length=98"],
-    "python.formatting.provider": "autopep8",
-    "python.linting.pep8Args": ["--max-line-length=98"]
+    "python.analysis.symbolsHierarchyDepthLimit": 20,
+    "python.globalModuleInstallation": true,
+    "python.analysis.logLevel": "Trace",
+    "python.linting.pylintArgs": ["--rcfile=~/.pylintrc"],
+    "python.linting.pydocstyleArgs": ["--config ~/.pydocstylerc"],
+    "vsintellicode.python.completionsEnabled": false,
+    "python.linting.pydocstyleEnabled": true
 }
