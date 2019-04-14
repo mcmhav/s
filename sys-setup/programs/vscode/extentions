@@ -25,6 +25,7 @@ oderwat.indent-rainbow
 PeterJausovec.vscode-docker
 redhat.java
 redhat.vscode-yaml
+ryanluker.vscode-coverage-gutters
 secanis.jenkinsfile-support
 timonwong.shellcheck
 VisualStudioExptTeam.vscodeintellicode
