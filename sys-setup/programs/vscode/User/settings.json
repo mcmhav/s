@@ -50,12 +50,10 @@
         "activityBar.foreground": "#ff0000",
         "activityBarBadge.background": "#00BCD4",
         "breadcrumb.activeSelectionForeground": "#00BCD4",
-
         "editor.selectionBackground": "#ff260052",
         "editor.lineHighlightBackground": "#ff260052",
         "editor.selectionHighlightBackground": "#ff260052",
         // "editor.selectionHighlightBorder": "#ff0000",
-
         "editorLineNumber.activeForeground": "#ff0000",
         "editorLineNumber.foreground": "#f75959",
         // "editorHoverWidget.background": "#ff0000",
@@ -66,14 +64,10 @@
         "editorSuggestWidget.highlightForeground": "#00BCD4",
         "editorWidget.resizeBorder": "#00BCD4",
         "editorWidget.border": "#00BCD4",
-
-
         "list.activeSelectionForeground": "#00ff15",
         "list.inactiveSelectionForeground": "#00BCD4",
         "list.highlightForeground": "#00e1ff",
-
         "statusBar.foreground": "#f75959",
-
         "menu.selectionForeground": "#00BCD4",
         "menubar.selectionForeground": "#00BCD4",
         "notificationLink.foreground": "#00BCD4",
@@ -84,7 +78,6 @@
         "settings.modifiedItemIndicator": "#00BCD4",
         "settings.headerForeground": "#00BCD4",
         "textLink.foreground": "#00BCD4",
-
         "tab.activeForeground": "#f75959",
         "tab.inactiveForeground": "#b44b4b",
         "tab.unfocusedActiveForeground": "#f75959",
@@ -107,7 +100,8 @@
                 "settings": {
                     // "foreground": "#FF0000"
                 }
-            }, {
+            },
+            {
                 "scope": [
                     "variable.other.constant",
                     "variable.other",
@@ -117,7 +111,6 @@
                     "meta.function-call.arguments.python",
                     "meta.definition.variable.name.python",
                     "variable",
-
                     "variable.object",
                     "variable.parameter",
                     "support",
@@ -156,7 +149,8 @@
                     "foreground": "#f75959",
                     "fontStyle": "bold"
                 }
-            }, {
+            },
+            {
                 "name": "Class, Support",
                 "scope": [
                     "entity.name",
@@ -174,20 +168,20 @@
                 }
             },
             {
-              "name": "String, Symbols, Inherited Class, Markup Heading",
-              "scope": [
-                "string",
-                "constant.other.symbol",
-                "constant.other.key",
-                "entity.other.inherited-class",
-                "markup.heading",
-                "markup.inserted.git_gutter",
-                "meta.group.braces.curly constant.other.object.key.js string.unquoted.label.js"
-              ],
-              "settings": {
-                "foreground": "#6cfab3",
-                "fontStyle": ""
-              }
+                "name": "String, Symbols, Inherited Class, Markup Heading",
+                "scope": [
+                    "string",
+                    "constant.other.symbol",
+                    "constant.other.key",
+                    "entity.other.inherited-class",
+                    "markup.heading",
+                    "markup.inserted.git_gutter",
+                    "meta.group.braces.curly constant.other.object.key.js string.unquoted.label.js"
+                ],
+                "settings": {
+                    "foreground": "#6cfab3",
+                    "fontStyle": ""
+                }
             }
         ],
         "[Material Theme Ocean]": {
@@ -220,11 +214,23 @@
     "python.linting.pylintUseMinimalCheckers": false,
     "python.analysis.symbolsHierarchyDepthLimit": 20,
     "python.globalModuleInstallation": true,
-    "python.formatting.autopep8Args": ["--aggressive"],
+    "python.formatting.autopep8Args": [
+        "--aggressive"
+    ],
     "python.analysis.logLevel": "Trace",
-    "python.linting.pylintArgs": ["--rcfile=~/.pylintrc"],
-    "python.linting.pydocstyleArgs": ["--config ~/.pydocstylerc"],
+    "python.linting.pylintArgs": [
+        "--rcfile=~/.pylintrc"
+    ],
+    "python.linting.pydocstyleArgs": [
+        "--config ~/.pydocstylerc"
+    ],
     "vsintellicode.python.completionsEnabled": false,
     "python.linting.pydocstyleEnabled": true,
-    "coverage-gutters.ignoredPathGlobs": "**/{node_modules,venv,vendor,.tox,.pytest_cache,__pycache__ ,build,.git,dist}/**"
+    "coverage-gutters.ignoredPathGlobs": "**/{node_modules,venv,vendor,.tox,.pytest_cache,__pycache__ ,build,.git,dist}/**",
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
 }

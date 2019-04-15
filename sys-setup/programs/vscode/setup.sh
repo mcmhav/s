@@ -9,7 +9,7 @@ if [ "$(uname -s)" == "Linux" ]; then
   exit 1
 elif [ "$(uname -s)" == "Darwin" ]; then
   VS_CODE_SETUP_HOME="$CSYS_HOME/sys-setup/programs/vscode"
-  VS_CODE_HOME_USER="$HOME/Library/Application Support/Code/User"
+  VS_CODE_HOME_USER="$HOME/Library/Application\ Support/Code/User"
   # VS_CODE_HOME=~/.vscode
   loggit "TODO"
 elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
@@ -28,13 +28,13 @@ storeExtentions() {
     storeLocation="$1"
   fi
 
-  code --list-extensions > "$VS_CODE_SETUP_HOME"/$storeLocation
+  code --list-extensions >"$VS_CODE_SETUP_HOME/$storeLocation"
 }
 
 makeDiff() {
   tmp="$PWD"
-  cd "$VS_CODE_SETUP_HOME" || exit;
-  diff extentions $1 | grep ">" | sed 's/> //g' > $2
+  cd "$VS_CODE_SETUP_HOME" || exit
+  diff extentions $1 | grep ">" | sed 's/> //g' >$2
   cd "$tmp" || exit
 }
 
@@ -51,7 +51,7 @@ uninstallDiff() {
 
   while read l; do
     code --uninstall-extension $l
-  done < "$VS_CODE_SETUP_HOME"/$diffList
+  done <"$VS_CODE_SETUP_HOME"/$diffList
 
   rm $VS_CODE_SETUP_HOME/$tmpList
   rm $VS_CODE_SETUP_HOME/$diffList
@@ -66,35 +66,36 @@ installExtentions() {
     if ! code --list-extensions | grep $l >/dev/null; then
       code --install-extension $l
     fi
-  done < "$VS_CODE_SETUP_HOME"/extentions
+  done <"$VS_CODE_SETUP_HOME"/extentions
 }
 
 usage() {
   loggit "lol"
 }
 
-verbose="";
+verbose=""
 
 while [ "$1" != "" ]; do
   case $1 in
-    -mpl | --makePackagesList )
+  -mpl | --makePackagesList)
     storeExtentions
     exit
     ;;
-    -v | --verbose )
+  -v | --verbose)
     verbose="true"
     ;;
-    -i | --install )
+  -i | --install)
     installExtentions
     handleVSUser
     ;;
-    -h | --help )
+  -h | --help)
     usage
     exit
     ;;
-    * )
+  *)
     usage
     exit 1
+    ;;
   esac
   shift
 done

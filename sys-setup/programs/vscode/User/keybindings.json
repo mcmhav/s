@@ -1,6 +1,19 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-    { "key": "ctrl+shift+alt+cmd+7",  "command": "workbench.action.splitEditor" },
-    { "key": "shift+ctrl+alt+a", "command": "workbench.files.action.showActiveFileInExplorer"}
+    {
+        "key": "ctrl+shift+alt+cmd+7",
+        "command": "workbench.action.splitEditor"
+    },
+    {
+        "key": "shift+ctrl+alt+a",
+        "command": "workbench.files.action.showActiveFileInExplorer",
+    },
+    {
+        "key": "shift+alt+cmd+7",
+        "command": "extension.displayCoverage"
+    },
+    {
+        "key": "shift+cmd+7",
+        "command": "-extension.displayCoverage"
+    }
 ]
-
