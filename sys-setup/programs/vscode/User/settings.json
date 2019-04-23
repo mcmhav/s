@@ -17,7 +17,8 @@
     "editor.formatOnSave": true,
     "html.format.wrapLineLength": 90,
     "[yaml]": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "redhat.vscode-yaml"
     },
     "java.format.settings.url": "~/r/s/sys-setup/.dotfiles/.settings/org.eclipse.jdt.core.prefs",
     "workbench.activityBar.visible": false,
@@ -222,7 +223,11 @@
         "--rcfile=~/.pylintrc"
     ],
     "python.linting.pydocstyleArgs": [
-        "--config ~/.pydocstylerc"
+        // "--verbose",
+        // "--debug",
+        // "--config=/Users/mch/.pydocstylerc"
+        // "--config=$HOME/.pydocstylerc"
+        // "--config=looool"
     ],
     "vsintellicode.python.completionsEnabled": false,
     "python.linting.pydocstyleEnabled": true,
