@@ -3,6 +3,7 @@
 echo "TODO - more"
 
 sudo apt-get update
+sudo apt-get upgrade
 
 # could be shared with pi
 # TODO: should make shared linux-setup with pi, pi and linux have intercecting sys
