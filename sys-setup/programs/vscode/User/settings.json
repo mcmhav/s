@@ -240,5 +240,11 @@
     },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "shellcheck.disableVersionCheck": true,
+    "markdown-table-formatter.markdownGrammarScopes": [
+        "markdown",
+        "python"
+    ],
+    "python.poetryPath": "/home/m/.poetry/bin/poetry"
 }

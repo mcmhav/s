@@ -1,6 +1,7 @@
 aaron-bond.better-comments
 anseki.vscode-color
 bierner.color-info
+bungcip.better-toml
 CoenraadS.bracket-pair-colorizer
 dbaeumer.vscode-eslint
 eamodio.gitlens
@@ -12,7 +13,6 @@ georgewfraser.vscode-javac
 GrapeCity.gc-excelviewer
 idleberg.hopscotch
 jprestidge.theme-material-theme
-kiteco.kite
 lihui.vs-color-picker
 liviuschera.noctis
 ms-python.python
