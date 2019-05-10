@@ -33,3 +33,5 @@ if [ -n "$PYENV_COMMAND" ] && [ ! -x "$PYENV_COMMAND_PATH" ]; then
     PYENV_COMMAND_PATH="${PYENV_ROOT}/versions/${versions[0]}/bin/${PYENV_COMMAND}"
   fi
 fi
+
+export PATH="$HOME/.poetry/bin:$PATH"

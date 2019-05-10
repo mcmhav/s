@@ -37,6 +37,7 @@ PATHS=(
 	"/usr/local/opt/python/libexec/bin"
 	"$PYENV_ROOT/bin"
 	"$CSYS_HOME/sys-setup/bin"
+	"$HOME/.poetry/env"
 )
 PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
 if [ ! -z "$(which ruby)" ]; then

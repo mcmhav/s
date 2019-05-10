@@ -17,3 +17,5 @@ alias openjdk="export JAVA_HOME=$(/usr/libexec/java_home -v $(/usr/libexec/java_
 
 # Set java 8 as default
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
+export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
