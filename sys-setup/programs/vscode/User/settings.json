@@ -237,5 +237,17 @@
     },
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "shellcheck.disableVersionCheck": true,
+    "markdown-table-formatter.markdownGrammarScopes": [
+        "markdown",
+        "python"
+    ],
+    "python.poetryPath": "/home/m/.poetry/bin/poetry",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
     }
 }

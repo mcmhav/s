@@ -4,10 +4,10 @@ http() {
   PYTHON_MAJOR_VERSION=$(python -c 'import sys; print(sys.version_info[0])')
 
   if [ "$PYTHON_MAJOR_VERSION" -gt 2 ]; then
-    python -m http.server $1
+    python -m http.server "$1"
   else
-    python -m SimpleHTTPServer $1
+    python -m SimpleHTTPServer "$1"
   fi
 }
 
-http $1
+http "$1"

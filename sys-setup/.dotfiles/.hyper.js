@@ -28,7 +28,7 @@ module.exports = {
 
     backgroundColor: '#101010',
 
-    selectionColor: 'rgba(248,28,229,0.3)',
+    selectionColor: 'rgb(167, 26, 154, 0.8)',
 
     borderColor: '#333',
 
