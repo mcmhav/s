@@ -246,5 +246,8 @@
         "markdown",
         "python"
     ],
-    "python.poetryPath": "/home/m/.poetry/bin/poetry"
+    "python.poetryPath": "/home/m/.poetry/bin/poetry",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    }
 }
