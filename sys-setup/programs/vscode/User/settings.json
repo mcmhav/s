@@ -1,91 +1,37 @@
 {
-    "java.errors.incompleteClasspath.severity": "ignore",
-    "files.autoSave": "onFocusChange",
-    "editor.wordWrap": "on",
-    "workbench.editor.tabSizing": "shrink",
-    "workbench.editor.closeOnFileDelete": false,
-    "workbench.enableExperiments": false,
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "editor.wrappingIndent": "indent",
-    "workbench.statusBar.feedback.visible": false,
-    "prettier.tslintIntegration": true,
-    "prettier.singleQuote": true,
-    "prettier.trailingComma": "all",
-    "workbench.editor.revealIfOpen": true,
-    "editor.formatOnSave": true,
-    "html.format.wrapLineLength": 90,
-    "[yaml]": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "redhat.vscode-yaml"
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "java.format.settings.url": "~/r/s/sys-setup/.dotfiles/.settings/org.eclipse.jdt.core.prefs",
-    "workbench.activityBar.visible": false,
-    "zenMode.centerLayout": false,
-    "workbench.startupEditor": "newUntitledFile",
-    "editor.tabSize": 2,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml",
+        "editor.formatOnSave": true
+    },
+    "autoDocstring.docstringFormat": "numpy",
+    "autoDocstring.newlineBeforeSummary": true,
+    "coverage-gutters.ignoredPathGlobs": "**/{node_modules,venv,vendor,.tox,.pytest_cache,__pycache__ ,build,.git,dist}/**",
+    "editor.formatOnSave": true,
+    "editor.minimap.showSlider": "always",
+    "editor.multiCursorModifier": "ctrlCmd",
     "editor.rulers": [
         80,
         100,
         120
     ],
-    "editor.minimap.renderCharacters": false,
-    "editor.minimap.showSlider": "always",
-    "workbench.list.horizontalScrolling": true,
-    "go.autocompleteUnimportedPackages": true,
-    "explorer.confirmDragAndDrop": false,
-    "explorer.confirmDelete": false,
-    "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home",
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "prettier.eslintIntegration": true,
-    "eslint.packageManager": "yarn",
-    "window.zoomLevel": 0,
-    "shellcheck.customArgs": [
-        "-x"
-    ],
-    "workbench.colorTheme": "Material Theme Ocean",
-    "materialTheme.accent": "Cyan",
-    "workbench.colorCustomizations": {
-        "activityBar.border": "#ff0000",
-        "activityBar.foreground": "#ff0000",
-        "activityBarBadge.background": "#00BCD4",
-        "breadcrumb.activeSelectionForeground": "#00BCD4",
-        "editor.selectionBackground": "#ff260052",
-        "editor.lineHighlightBackground": "#ff260052",
-        "editor.selectionHighlightBackground": "#ff260052",
-        // "editor.selectionHighlightBorder": "#ff0000",
-        "editorLineNumber.activeForeground": "#ff0000",
-        "editorLineNumber.foreground": "#f75959",
-        // "editorHoverWidget.background": "#ff0000",
-        // "editorSuggestWidget.background": "#ff0000",
-        "editorSuggestWidget.border": "#01cc56",
-        "editorSuggestWidget.selectedBackground": "#721919",
-        "editorSuggestWidget.foreground": "#01cc56",
-        "editorSuggestWidget.highlightForeground": "#00BCD4",
-        "editorWidget.resizeBorder": "#00BCD4",
-        "editorWidget.border": "#00BCD4",
-        "list.activeSelectionForeground": "#00ff15",
-        "list.inactiveSelectionForeground": "#00BCD4",
-        "list.highlightForeground": "#00e1ff",
-        "statusBar.foreground": "#f75959",
-        "menu.selectionForeground": "#00BCD4",
-        "menubar.selectionForeground": "#00BCD4",
-        "notificationLink.foreground": "#00BCD4",
-        "progressBar.background": "#00BCD4",
-        "pickerGroup.foreground": "#00BCD4",
-        "panelTitle.activeBorder": "#00BCD4",
-        "scrollbarSlider.activeBackground": "#d237f1",
-        "settings.modifiedItemIndicator": "#00BCD4",
-        "settings.headerForeground": "#00BCD4",
-        "textLink.foreground": "#00BCD4",
-        "tab.activeForeground": "#f75959",
-        "tab.inactiveForeground": "#b44b4b",
-        "tab.unfocusedActiveForeground": "#f75959",
-        "tab.unfocusedInactiveForeground": "#ca4646",
-        "tab.activeBorder": "#f75959"
-    },
+    "editor.suggestSelection": "first",
+    "editor.tabSize": 2,
     "editor.tokenColorCustomizations": {
+        "[Material Theme Ocean]": {
+            "textMateRules": []
+        },
         // https://github.com/Binaryify/OneDark-Pro
         // https://github.com/equinusocio/vsc-material-theme
         // https://github.com/liviuschera/noctis/blob/master/themes/Noctis.json
@@ -98,8 +44,7 @@
                     "comment.line",
                     "comment.block.documentation"
                 ],
-                "settings": {
-                    // "foreground": "#FF0000"
+                "settings": { // "foreground": "#FF0000"
                 }
             },
             {
@@ -120,8 +65,7 @@
                     "entity.name.module",
                     "variable.import.parameter",
                     "variable.other.class",
-                    "meta.toc-list.id.html",
-                    // "source.json meta.structure.dictionary.json support.type.property-name.json",
+                    "meta.toc-list.id.html", // "source.json meta.structure.dictionary.json support.type.property-name.json",
                     "markup.list",
                     "meta.var.clojure",
                     "source.cs entity.name.variable",
@@ -130,25 +74,11 @@
                     "source.c",
                     "source.cpp",
                     "source.go",
-                    "source.python",
-                    // "meta.function-call.arguments.python",
-                    // "source.ruby",
-                    // "source.coffee.embedded.source",
-                    // "source.coffee",
-                    // "storage.modifier.import",
-                    // "storage.modifier.package",
-                    // "storage.type.annotation",
-                    // "punctuation.definition.annotation",
-                    // "source.groovy.embedded.source",
-                    // "punctuation.definition.variable",
-                    // "source.powershell",
-                    // "variable.other.readwrite.global.ruby punctuation.definition.variable.ruby",
-                    // "string.quoted.interpolated.vala constant.character.escape.vala",
-                    // "source.apacheconf"
+                    "source.python"
                 ],
                 "settings": {
-                    "foreground": "#f75959",
-                    "fontStyle": "bold"
+                    "fontStyle": "bold",
+                    "foreground": "#f75959"
                 }
             },
             {
@@ -164,8 +94,8 @@
                     "support.type.sys-types"
                 ],
                 "settings": {
-                    "foreground": "#FF0000",
-                    "fontStyle": "bold"
+                    "fontStyle": "bold",
+                    "foreground": "#FF0000"
                 }
             },
             {
@@ -180,74 +110,131 @@
                     "meta.group.braces.curly constant.other.object.key.js string.unquoted.label.js"
                 ],
                 "settings": {
-                    "foreground": "#6cfab3",
-                    "fontStyle": ""
+                    "fontStyle": "",
+                    "foreground": "#6cfab3"
                 }
             }
-        ],
-        "[Material Theme Ocean]": {
-            "textMateRules": []
-        },
+        ]
     },
+    "editor.wordWrap": "on",
+    "editor.wrappingIndent": "indent",
+    "eslint.packageManager": "yarn",
+    "explorer.autoReveal": false,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
     "explorer.openEditors.visible": 0,
-    "python.venvPath": "~/.pyenv",
-    "yaml.format.enable": true,
-    "yaml.format.singleQuote": true,
-    "autoDocstring.docstringFormat": "numpy",
-    "autoDocstring.newlineBeforeSummary": true,
+    "files.autoSave": "onFocusChange",
     "files.exclude": {
         "**/.classpath": true,
+        "**/.factorypath": true,
         "**/.project": true,
-        "**/.settings": true,
-        "**/.factorypath": true
+        "**/.settings": true
     },
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "markdown-table-formatter.enable": true,
-    "gitlens.settings.mode": "advanced",
-    "gitlens.currentLine.scrollable": false,
-    "gitlens.currentLine.enabled": false,
-    "gitlens.hovers.currentLine.over": "line",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
     "gitlens.codeLens.scopes": [],
-    "editor.multiCursorModifier": "ctrlCmd",
-    "explorer.autoReveal": false,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.currentLine.scrollable": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.settings.mode": "advanced",
+    "go.autocompleteUnimportedPackages": true,
+    "html.format.wrapLineLength": 90,
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "java.format.settings.url": "~/r/s/sys-setup/.dotfiles/.settings/org.eclipse.jdt.core.prefs",
+    "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "markdown-table-formatter.enable": true,
+    "markdown-table-formatter.markdownGrammarScopes": [
+        "markdown",
+        "python"
+    ],
+    "materialTheme.accent": "Cyan",
+    "prettier.eslintIntegration": true,
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "all",
+    "prettier.tslintIntegration": true,
+    "python.analysis.logLevel": "Trace",
     "python.analysis.openFilesOnly": true,
-    "python.linting.pylintUseMinimalCheckers": false,
     "python.analysis.symbolsHierarchyDepthLimit": 20,
-    "python.globalModuleInstallation": true,
     "python.formatting.autopep8Args": [
         "--aggressive"
     ],
-    "python.analysis.logLevel": "Trace",
-    "python.linting.pylintArgs": [
-        "--rcfile=~/.pylintrc"
-    ],
-    "python.linting.pydocstyleArgs": [
-        // "--verbose",
+    "python.globalModuleInstallation": true,
+    "python.linting.pydocstyleArgs": [ // "--verbose",
         // "--debug",
         // "--config=/Users/mch/.pydocstylerc"
         // "--config=$HOME/.pydocstylerc"
         // "--config=looool"
     ],
-    "vsintellicode.python.completionsEnabled": false,
     "python.linting.pydocstyleEnabled": true,
-    "coverage-gutters.ignoredPathGlobs": "**/{node_modules,venv,vendor,.tox,.pytest_cache,__pycache__ ,build,.git,dist}/**",
-    "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "shellcheck.disableVersionCheck": true,
-    "markdown-table-formatter.markdownGrammarScopes": [
-        "markdown",
-        "python"
+    "python.linting.pylintArgs": [
+        "--rcfile=~/.pylintrc"
     ],
+    "python.linting.pylintUseMinimalCheckers": false,
     "python.poetryPath": "/home/m/.poetry/bin/poetry",
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.python"
-    }
+    "python.venvPath": "~/.pyenv",
+    "shellcheck.customArgs": [
+        "-x"
+    ],
+    "shellcheck.disableVersionCheck": true,
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "vsintellicode.python.completionsEnabled": false,
+    "window.zoomLevel": 0,
+    "workbench.activityBar.visible": false,
+    "workbench.colorCustomizations": {
+        "activityBar.border": "#ff0000",
+        "activityBar.foreground": "#ff0000",
+        "activityBarBadge.background": "#00BCD4",
+        "breadcrumb.activeSelectionForeground": "#00BCD4",
+        "editor.lineHighlightBackground": "#ff260052",
+        "editor.selectionBackground": "#ff260052",
+        "editor.selectionHighlightBackground": "#ff260052",
+        // "editor.selectionHighlightBorder": "#ff0000",
+        "editorLineNumber.activeForeground": "#ff0000",
+        "editorLineNumber.foreground": "#f75959",
+        // "editorHoverWidget.background": "#ff0000",
+        // "editorSuggestWidget.background": "#ff0000",
+        "editorSuggestWidget.border": "#01cc56",
+        "editorSuggestWidget.foreground": "#01cc56",
+        "editorSuggestWidget.highlightForeground": "#00BCD4",
+        "editorSuggestWidget.selectedBackground": "#721919",
+        "editorWidget.border": "#00BCD4",
+        "editorWidget.resizeBorder": "#00BCD4",
+        "list.activeSelectionForeground": "#00ff15",
+        "list.highlightForeground": "#00e1ff",
+        "list.inactiveSelectionForeground": "#00BCD4",
+        "menu.selectionForeground": "#00BCD4",
+        "menubar.selectionForeground": "#00BCD4",
+        "notificationLink.foreground": "#00BCD4",
+        "panelTitle.activeBorder": "#00BCD4",
+        "pickerGroup.foreground": "#00BCD4",
+        "progressBar.background": "#00BCD4",
+        "scrollbarSlider.activeBackground": "#d237f1",
+        "settings.headerForeground": "#00BCD4",
+        "settings.modifiedItemIndicator": "#00BCD4",
+        "statusBar.foreground": "#f75959",
+        "tab.activeBorder": "#f75959",
+        "tab.activeForeground": "#f75959",
+        "tab.inactiveForeground": "#b44b4b",
+        "tab.unfocusedActiveForeground": "#f75959",
+        "tab.unfocusedInactiveForeground": "#ca4646",
+        "textLink.foreground": "#00BCD4"
+    },
+    "workbench.colorTheme": "Material Theme Ocean",
+    "workbench.editor.closeOnFileDelete": false,
+    "workbench.editor.revealIfOpen": true,
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.enableExperiments": false,
+    "workbench.list.horizontalScrolling": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.statusBar.feedback.visible": false,
+    "yaml.format.enable": true,
+    "yaml.format.singleQuote": true,
+    "zenMode.centerLayout": false,
+    "editor.minimap.renderCharacters": false,
+    "color-highlight.markerType": "dot-after",
+    "gitlens.views.repositories.enabled": false,
+    "gitlens.codeLens.recentChange.command": "gitlens.diffWithPrevious",
+    "gitlens.codeLens.enabled": false
 }

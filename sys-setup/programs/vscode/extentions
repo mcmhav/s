@@ -1,6 +1,4 @@
 aaron-bond.better-comments
-anseki.vscode-color
-bierner.color-info
 bungcip.better-toml
 CoenraadS.bracket-pair-colorizer
 dbaeumer.vscode-eslint
@@ -9,14 +7,8 @@ Equinusocio.vsc-material-theme
 esbenp.prettier-vscode
 fcrespo82.markdown-table-formatter
 foxundermoon.shell-format
-georgewfraser.vscode-javac
 GrapeCity.gc-excelviewer
-idleberg.hopscotch
-jprestidge.theme-material-theme
-lihui.vs-color-picker
-liviuschera.noctis
 ms-python.python
-ms-vscode.csharp
 ms-vscode.Go
 ms-vscode.vscode-typescript-tslint-plugin
 naco-siren.gradle-language
@@ -38,3 +30,4 @@ vscjava.vscode-maven
 WakaTime.vscode-wakatime
 wix.vscode-import-cost
 xabikos.ReactSnippets
+zengxingxin.sort-js-object-keys
