@@ -16,9 +16,11 @@
         "editor.formatOnSave": true
     },
     "autoDocstring.docstringFormat": "numpy",
-    "autoDocstring.newlineBeforeSummary": true,
+    "autoDocstring.startOnNewLine": true,
+    "color-highlight.markerType": "dot-after",
     "coverage-gutters.ignoredPathGlobs": "**/{node_modules,venv,vendor,.tox,.pytest_cache,__pycache__ ,build,.git,dist}/**",
     "editor.formatOnSave": true,
+    "editor.minimap.renderCharacters": false,
     "editor.minimap.showSlider": "always",
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.rulers": [
@@ -42,9 +44,12 @@
                     "punctuation.definition.comment",
                     "comment.block",
                     "comment.line",
-                    "comment.block.documentation"
+                    "comment.block.documentation",
+                    "string.quoted.docstring.single.python",
+                    "string.quoted.docstring.multi.python"
                 ],
-                "settings": { // "foreground": "#FF0000"
+                "settings": {
+                    "foreground": "#2d7252"
                 }
             },
             {
@@ -133,11 +138,14 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.codeLens.recentChange.command": "gitlens.diffWithPrevious",
     "gitlens.codeLens.scopes": [],
     "gitlens.currentLine.enabled": false,
     "gitlens.currentLine.scrollable": false,
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.settings.mode": "advanced",
+    "gitlens.views.repositories.enabled": false,
     "go.autocompleteUnimportedPackages": true,
     "html.format.wrapLineLength": 90,
     "java.errors.incompleteClasspath.severity": "ignore",
@@ -232,9 +240,7 @@
     "yaml.format.enable": true,
     "yaml.format.singleQuote": true,
     "zenMode.centerLayout": false,
-    "editor.minimap.renderCharacters": false,
-    "color-highlight.markerType": "dot-after",
-    "gitlens.views.repositories.enabled": false,
-    "gitlens.codeLens.recentChange.command": "gitlens.diffWithPrevious",
-    "gitlens.codeLens.enabled": false
+    "[markdown]": {
+        "editor.defaultFormatter": "fcrespo82.markdown-table-formatter"
+    }
 }
