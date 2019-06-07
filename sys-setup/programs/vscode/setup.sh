@@ -13,7 +13,7 @@ elif [ "$(uname -s)" == "Linux" ]; then
   exit 1
 elif [ "$(uname -s)" == "Darwin" ]; then
   VS_CODE_SETUP_HOME="$CSYS_HOME/sys-setup/programs/vscode"
-  VS_CODE_HOME_USER="$HOME/Library/Application\ Support/Code/User"
+  VS_CODE_HOME_USER="$HOME/Library/Application Support/Code/User"
   # VS_CODE_HOME=~/.vscode
 elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
   loggit "TODO"
@@ -24,7 +24,7 @@ handleVSUser() {
   if [[ $(uname -r) =~ Microsoft$ ]]; then
     cp -f "$VS_CODE_SETUP_HOME"/User/settings.json "$VS_CODE_HOME_USER"
   else
-    ln -sf "$VS_CODE_SETUP_HOME"/User/settings.json "$VS_CODE_HOME_USER"
+    ln -sf "$VS_CODE_SETUP_HOME/User/settings.json" "$VS_CODE_HOME_USER/settings.json"
   fi
   # ln -sf "$VS_CODE_SETUP_HOME"/User/snippets "$VS_CODE_HOME_USER"
 }
