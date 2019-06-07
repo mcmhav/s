@@ -242,5 +242,9 @@
     "zenMode.centerLayout": false,
     "[markdown]": {
         "editor.defaultFormatter": "fcrespo82.markdown-table-formatter"
-    }
+    },
+    "[dockerfile]": {
+        "editor.defaultFormatter": "PeterJausovec.vscode-docker"
+    },
+    "workbench.editor.closeEmptyGroups": false
 }
