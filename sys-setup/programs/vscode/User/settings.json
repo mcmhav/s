@@ -246,5 +246,19 @@
     "[dockerfile]": {
         "editor.defaultFormatter": "PeterJausovec.vscode-docker"
     },
-    "workbench.editor.closeEmptyGroups": false
+    "workbench.editor.closeEmptyGroups": false,
+    "cSpell.userWords": [
+        "dataset",
+        "eval",
+        "gcloud",
+        "gsutil",
+        "keras",
+        "logdir",
+        "mlengine",
+        "pipenv",
+        "pylint",
+        "tensorboard",
+        "tensorflow",
+        "tolist"
+    ]
 }
