@@ -244,21 +244,28 @@
         "editor.defaultFormatter": "fcrespo82.markdown-table-formatter"
     },
     "[dockerfile]": {
-        "editor.defaultFormatter": "PeterJausovec.vscode-docker"
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
     "workbench.editor.closeEmptyGroups": false,
     "cSpell.userWords": [
         "dataset",
+        "dropna",
+        "entrypoint",
         "eval",
         "gcloud",
         "gsutil",
+        "gunicorn",
+        "inplace",
+        "jsonify",
         "keras",
         "logdir",
         "mlengine",
+        "numpy",
         "pipenv",
         "pylint",
         "tensorboard",
         "tensorflow",
         "tolist"
-    ]
+    ],
+    "extensions.ignoreRecommendations": false
 }
