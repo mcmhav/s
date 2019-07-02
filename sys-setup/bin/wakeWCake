@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+wakeWCake() {
+  wol wake 10:C3:7B:9D:4F:30 -p 7
+  wol wake 80:19:34:1E:EB:05 -p 7
+}
+
+wakeWCake
