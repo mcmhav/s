@@ -26,9 +26,9 @@ module.exports = {
 
     foregroundColor: '#5ee39b',
 
-    backgroundColor: '#101010',
+    backgroundColor: '#10101099',
 
-    selectionColor: 'rgb(167, 26, 154, 0.8)',
+    selectionColor: 'rgb(167, 26, 154, 0.5)',
 
     borderColor: '#333',
 
@@ -105,7 +105,7 @@ module.exports = {
     // for advanced config flags please refer to https://hyper.is/#cfg
   },
 
-  plugins: ['hyper-search', 'hyper-opacity'],
+  plugins: ['hyper-search', 'hyper-pane'],
   localPlugins: [],
 
   keymaps: {
