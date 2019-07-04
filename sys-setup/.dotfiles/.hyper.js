@@ -26,7 +26,7 @@ module.exports = {
 
     foregroundColor: '#5ee39b',
 
-    backgroundColor: '#10101099',
+    backgroundColor: '#101010DD',
 
     selectionColor: 'rgb(167, 26, 154, 0.5)',
 
