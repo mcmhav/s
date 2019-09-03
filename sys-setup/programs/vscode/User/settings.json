@@ -155,7 +155,8 @@
     "markdown-table-formatter.enable": true,
     "markdown-table-formatter.markdownGrammarScopes": [
         "markdown",
-        "python"
+        "python",
+        "plaintext"
     ],
     "materialTheme.accent": "Cyan",
     "prettier.eslintIntegration": true,
@@ -267,5 +268,9 @@
         "tensorflow",
         "tolist"
     ],
-    "extensions.ignoreRecommendations": false
+    "extensions.ignoreRecommendations": false,
+    "python.formatting.provider": "yapf",
+    "python.formatting.blackArgs": [
+        "--skip-string-normalization"
+    ]
 }

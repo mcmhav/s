@@ -25,6 +25,7 @@ module.exports = {
     cursorBlink: true,
 
     foregroundColor: '#5ee39b',
+    // foregroundColor: '#5ee39b',
 
     backgroundColor: '#101010DD',
 
