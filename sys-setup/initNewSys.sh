@@ -13,9 +13,11 @@ non_gui_config() {
   ln -sf $CSYS_HOME/sys-setup/.dotfiles/.prettierrc.js ~/.prettierrc.js
   ln -sf $CSYS_HOME/sys-setup/.dotfiles/.pylintrc ~/.pylintrc
   ln -sf $CSYS_HOME/sys-setup/.dotfiles/.pydocstylerc ~/.pydocstylerc
+  ln -sf $CSYS_HOME/sys-setup/.dotfiles/.style.yapf ~/.style.yapf
 }
 gui_config() {
   ln -sf $CSYS_HOME/sys-setup/.dotfiles/.jupyter ~/.jupyter
+  ln -sf $CSYS_HOME/sys-setup/.dotfiles/.ipython ~/.ipython
   ln -sf $CSYS_HOME/sys-setup/.dotfiles/.hyper.js ~/.hyper.js
 }
 non_gui_program_setup() {
