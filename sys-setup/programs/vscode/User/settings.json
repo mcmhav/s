@@ -188,7 +188,6 @@
     ],
     "shellcheck.disableVersionCheck": true,
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "vsintellicode.python.completionsEnabled": false,
     "window.zoomLevel": 0,
     "workbench.activityBar.visible": false,
     "workbench.colorCustomizations": {
@@ -272,5 +271,6 @@
     "python.formatting.provider": "yapf",
     "python.formatting.blackArgs": [
         "--skip-string-normalization"
-    ]
+    ],
+    "python.jediEnabled": false
 }
