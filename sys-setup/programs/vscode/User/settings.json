@@ -159,10 +159,8 @@
         "plaintext"
     ],
     "materialTheme.accent": "Cyan",
-    "prettier.eslintIntegration": true,
     "prettier.singleQuote": true,
     "prettier.trailingComma": "all",
-    "prettier.tslintIntegration": true,
     "python.analysis.logLevel": "Trace",
     "python.analysis.openFilesOnly": true,
     "python.analysis.symbolsHierarchyDepthLimit": 20,
@@ -248,6 +246,7 @@
     },
     "workbench.editor.closeEmptyGroups": false,
     "cSpell.userWords": [
+        "astype",
         "dataset",
         "dropna",
         "entrypoint",
@@ -255,6 +254,7 @@
         "gcloud",
         "gsutil",
         "gunicorn",
+        "iloc",
         "inplace",
         "jsonify",
         "keras",
@@ -272,5 +272,11 @@
     "python.formatting.blackArgs": [
         "--skip-string-normalization"
     ],
-    "python.jediEnabled": false
+    "python.jediEnabled": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "gitlens.hovers.avatars": false,
+    "gitlens.hovers.annotations.enabled": false,
+    "gitlens.views.lineHistory.enabled": false,
+    "eslint.autoFixOnSave": true,
+    "eslint.alwaysShowStatus": true
 }

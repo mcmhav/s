@@ -85,7 +85,7 @@ module.exports = {
 
     shellArgs: ['--login'],
 
-    scrollback: 20000,
+    scrollback: 10000,
 
     env: {},
 
