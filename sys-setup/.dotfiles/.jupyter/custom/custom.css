@@ -3231,7 +3231,10 @@ body :focus .MathJax {
  width: auto;
 }
 div#maintoolbar {
- display: none !important;
+ margin-left: 8px !important;
+}
+.toolbar.container {
+ width: 100% !important;
 }
 #header-container {
  display: none !important;

@@ -278,5 +278,13 @@
     "gitlens.hovers.annotations.enabled": false,
     "gitlens.views.lineHistory.enabled": false,
     "eslint.autoFixOnSave": true,
-    "eslint.alwaysShowStatus": true
+    "python.linting.mypyEnabled": true,
+    "python.linting.mypyArgs": [
+        "--ignore-missing-imports",
+        "--follow-imports=silent",
+        "--show-column-numbers",
+        "--disallow-untyped-calls",
+        "--check-untyped-defs",
+        "--disallow-incomplete-defs"
+    ]
 }
