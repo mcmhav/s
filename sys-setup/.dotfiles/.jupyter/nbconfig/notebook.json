@@ -19,7 +19,7 @@
   },
   "Notebook": {
     "Header": true,
-    "Toolbar": true
+    "Toolbar": false
   },
   "scrollDownIsEnabled": true
 }

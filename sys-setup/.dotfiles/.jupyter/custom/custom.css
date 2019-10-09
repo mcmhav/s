@@ -457,28 +457,28 @@ div#notebook {
  background-color: #1d1e23;
  min-height: 0px;
  box-shadow: none;
- width: 980px;
+ width: 1000px;
  margin-right: auto;
  margin-left: auto;
 }
 div#ipython-main-app.container {
- width: 980px;
+ width: 1000px;
  margin-right: auto;
  margin-left: auto;
  margin-right: auto;
  margin-left: auto;
 }
 .container {
- width: 980px;
+ width: 1000px;
  margin-right: auto;
  margin-left: auto;
 }
 div#menubar-container {
  width: 100%;
- width: 980px;
+ width: 1000px;
 }
 div#header-container {
- width: 980px;
+ width: 1000px;
 }
 .notebook_app #header,
 .edit_app #header {
