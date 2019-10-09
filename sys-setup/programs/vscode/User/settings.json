@@ -286,5 +286,7 @@
         "--disallow-untyped-calls",
         "--check-untyped-defs",
         "--disallow-incomplete-defs"
-    ]
+    ],
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true
 }
