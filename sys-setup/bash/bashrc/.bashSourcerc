@@ -1,10 +1,8 @@
 #!/bin/bash
 
 bashWD="$CSYS_HOME/sys-setup/bash"
-completionsWD="$CSYS_HOME/sys-setup/completions"
 
 # adding extra sources
-source "$bashWD"/bashrc/.bashCommandrc
 source "$bashWD"/bashrc/.bashHelperFuncsrc
 source "$bashWD"/bashrc/.bashGitrc
 source "$bashWD"/bashrc/.bashAliasesrc
@@ -21,19 +19,16 @@ elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
   source "$bashWD"/bashrc/.bashWinrc
 fi
 
-# completions
-G_CLOUD_SDK_PATH="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f $G_CLOUD_SDK_PATH/path.bash.inc ]; then
-  source $G_CLOUD_SDK_PATH/path.bash.inc
+if [ -n "$BASH" ]; then
+  source "$bashWD"/bashrc/.bashCommandrc
+
+  G_CLOUD_SDK_PATH="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
+  # The next line updates PATH for the Google Cloud SDK.
+  if [ -e "$G_CLOUD_SDK_PATH/path.bash.inc" ]; then
+    source $G_CLOUD_SDK_PATH/path.bash.inc
+  fi
+
+  source "$bashWD"/bashrc/.bashCompletionrc
 fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f $G_CLOUD_SDK_PATH/completion.bash.inc ]; then
-  source $G_CLOUD_SDK_PATH/completion.bash.inc
-fi
-
-source $completionsWD/bash/csys
-
-#
-[ -e ~/.bashAkerrcs ] && source ~/.bashAkerrcs/.bashAkerrc
+[ -e $HOME/.bashAkerrcs ] && source $HOME/.bashAkerrcs/.bashAkerrc

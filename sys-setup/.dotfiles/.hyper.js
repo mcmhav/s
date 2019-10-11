@@ -81,7 +81,8 @@ module.exports = {
     //
     // PowerShell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
-    shell: '',
+    // shell: '',
+    shell: '/usr/local/bin/fish',
 
     shellArgs: ['--login'],
 

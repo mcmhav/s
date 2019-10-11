@@ -1,25 +1,22 @@
 #!/usr/bin/env bash
 
-get_get_my_7days_last_commits(){
-    git log "$1" --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative --author='mcmhav' --since='1 week ago' --not $(git for-each-ref --format='%(refname)' refs/heads/ | grep -v "refs/heads/$1")
-}
-alias gl7c='get_get_my_7days_last_commits'
+export PATH=$PATH:"$CSYS_HOME/sys-setup/bash/bashrc/gitbin"
 
-get_get_my_7days_last_commits_to_clipboard(){
-    git log "$1" --format=format:'(%ar) %s %d' --abbrev-commit --date=relative --author='Martin Havig' --since='1 week ago' --not $(git for-each-ref --format='%(refname)' refs/heads/ | grep -v "refs/heads/$1") | clip
-}
-alias gl7ctc='get_get_my_7days_last_commits_to_clipboard'
-
-alias git_graph_local="git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative"
-alias git_graph_all="git log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)\' --abbrev-commit --date=relative"
-alias git_graph_all_with_timestamp="git log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit"
+# bins start
 alias gt=git_graph_local
 alias gta=git_graph_all
 alias gtat=git_graph_all_with_timestamp
+alias gl7c=get_get_my_7days_last_commits
+alias gplb=git_purge_local_branches
+alias gtloc=git_line_count
+alias gnb='makeNewRemoteAAndLocalBranch'
+alias gnt='makeNewRemoteAAndLocalTag'
+alias gdb='deleteRemoteAndLocalBranch'
+alias gdt='deleteRemoteAndLocalTag'
+# bins end
 
 alias g='git'
 alias gco='git checkout'
-
 alias ga='git add'
 alias gaa='git add --all'
 alias gs='git status --short --branch'
@@ -47,59 +44,10 @@ alias grh='git reset HEAD'
 alias gb='git branch'
 alias gg='git grep'
 alias gmv='git mv'
-
 alias gdl='git pull --no-edit'
 alias gcm='git commit -am'
 alias gup='git push'
 alias gupf='git push -f'
 
-alias gplb='git branch -d $(git branch --merged)'
-
-makeNewRemoteAAndLocalBranch() {
-    git checkout -b "$1";
-    git push -u origin "$1";
-}
-makeNewRemoteAAndLocalBranchFeature() {
-    git checkout -b "feature/$1";
-    git push -u origin "feature/$1";
-}
-makeNewRemoteAAndLocalTag() {
-    git tag "$1";
-    git push --tag;
-}
-
-alias gnb='makeNewRemoteAAndLocalBranch'
-alias gnf='makeNewRemoteAAndLocalBranchFeature'
-alias gnt='makeNewRemoteAAndLocalTag'
-
-deleteRemoteAndLocalBranch() {
-    git branch -d "$1";
-    git push origin :"$1";
-}
-deleteRemoteAndLocalTag() {
-    git tag -d "$1";
-    git push origin :refs/tags/"$1";
-}
-alias gdb='deleteRemoteAndLocalBranch'
-alias gdt='deleteRemoteAndLocalTag'
-
 alias guia='git update-index --assume-unchanged'
 alias guina='git update-index --no-assume-unchanged'
-alias gtloc='wc -l $(git ls-files)'
-
-
-gitRemoveFile() {
-  MASTER="master"
-
-  git checkout -b tmpfix $1
-
-  git rm $2
-
-  git commit --amend
-
-  git checkout $MASTER
-
-  git rebase tmpfix
-
-  git branch -d tmpfix
-}

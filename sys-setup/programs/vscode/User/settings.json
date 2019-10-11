@@ -263,6 +263,7 @@
         "numpy",
         "pipenv",
         "pylint",
+        "pytest",
         "tensorboard",
         "tensorflow",
         "tolist"

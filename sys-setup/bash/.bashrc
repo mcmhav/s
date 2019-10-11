@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 # ~/.bashrc
 
+# https://support.apple.com/en-us/HT208050
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# [[ $- != *i* ]] && return
 
 [ -f /etc/shrc ] && . /etc/shrc
 
@@ -10,16 +13,6 @@
 # unset DIR
 export CSYS_HOME="$HOME/r/s"
 source "$CSYS_HOME/sys-setup/bash/bashrc/.bashSourcerc"
-
-if [ -x "$(command -v brew)" ]; then
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-  fi
-fi
-
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
 
 # shims and autocompletion, pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -33,5 +26,3 @@ if [ -n "$PYENV_COMMAND" ] && [ ! -x "$PYENV_COMMAND_PATH" ]; then
     PYENV_COMMAND_PATH="${PYENV_ROOT}/versions/${versions[0]}/bin/${PYENV_COMMAND}"
   fi
 fi
-
-export PATH="$HOME/.poetry/bin:$PATH"

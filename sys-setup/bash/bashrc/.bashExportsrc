@@ -1,8 +1,4 @@
-#!/bin/bash
-
-# old stuff
-# export EDITOR=subl3
-# export VISUAL=subl3
+#!/usr/bin/env bash
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -26,10 +22,9 @@ export ANDROID_HOME=/usr/local/share/android-sdk
 
 # path stuff
 PATHS=(
-	# "$PYENV_ROOT/bin"
+	# "$HOME/.pyenv/shims"
 	"/git/tools/bin"
 	"$PATH"
-	"/git/bob"
 	"/usr/local/bin"
 	# "/usr/local/go/bin" # pi/linux-golang?? export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 	"$GOPATH/bin"

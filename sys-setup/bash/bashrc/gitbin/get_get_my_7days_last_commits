@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+get_get_my_7days_last_commits() {
+    git log "$1" --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative --author='mcmhav' --since='1 week ago' --not $(git for-each-ref --format='%(refname)' refs/heads/ | grep -v "refs/heads/$1")
+}
+
+get_get_my_7days_last_commits "$@"

@@ -14,6 +14,7 @@ non_gui_config() {
   ln -sf $CSYS_HOME/sys-setup/.dotfiles/.pylintrc ~/.pylintrc
   ln -sf $CSYS_HOME/sys-setup/.dotfiles/.pydocstylerc ~/.pydocstylerc
   ln -sf $CSYS_HOME/sys-setup/.dotfiles/.style.yapf ~/.style.yapf
+  ln -sf $CSYS_HOME/sys-setup/fish ~/.config/
 }
 gui_config() {
   ln -sf $CSYS_HOME/sys-setup/.dotfiles/.jupyter ~/.jupyter

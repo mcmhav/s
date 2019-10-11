@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+gitRemoveFile() {
+  MASTER="master"
+  git checkout -b tmpfix "$1"
+  git rm "$2"
+  git commit --amend
+  git checkout $MASTER
+  git rebase tmpfix
+  git branch -d tmpfix
+}
+
+gitRemoveFile "$@"
