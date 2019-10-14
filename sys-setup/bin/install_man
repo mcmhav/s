@@ -1,0 +1,9 @@
+#!/bin/bash
+
+MAN_PATH="/usr/local/share/man/man1"
+
+install_man() {
+  cp man/* $MAN_PATH/
+}
+
+install_man "$@"

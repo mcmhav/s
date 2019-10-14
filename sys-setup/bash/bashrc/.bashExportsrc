@@ -5,17 +5,13 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 # go sgit
 export GOPATH="$HOME/.go"
-if [ "$(uname -s)" == "Linux" ]; then
-	if [ "$(uname -m)" == "armv7l" ]; then
-		export GOROOT=/usr/lib/go
-	else
-		export GOROOT=/usr/local/opt/go/libexec
-	fi
-elif [ "$(uname -s)" == "Darwin" ]; then
-	export GOROOT=/usr/local/opt/go/libexec
-elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
-	export GOROOT=/usr/local/opt/go/libexec
-fi
+declare -A GOROOTS=(
+	[$PI_OS]="export GOROOT=/usr/lib/go"
+	[$LIN_OS]="export GOROOT=/usr/local/opt/go/libexec"
+	[$MAC_OS]="export GOROOT=/usr/local/opt/go/libexec"
+	[$WIN_OS]="export GOROOT=/usr/local/opt/go/libexec"
+)
+${GOROOTS[$CSYS_OS]}
 
 # android
 export ANDROID_HOME=/usr/local/share/android-sdk
@@ -35,24 +31,20 @@ PATHS=(
 	"$HOME/.poetry/bin"
 )
 PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
-if [ ! -z "$(which ruby)" ]; then
+if [ -n "$(command -v ruby)" ]; then
 	PATH=$PATH:"$(ruby -r rubygems -e "puts Gem.user_dir")/bin"
 fi
 export PATH=$PATH
 
 # node
 export NVM_DIR="$HOME/.nvm"
-if [ "$(uname -s)" == "Linux" ]; then
-	if [ "$(uname -m)" == "armv7l" ]; then
-		NVM_SH="$NVM_DIR/nvm.sh"
-	else
-		echo "todo"
-	fi
-elif [ "$(uname -s)" == "Darwin" ]; then
-	NVM_SH="/usr/local/opt/nvm/nvm.sh"
-elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
-	echo "todo"
-fi
+declare -A NVM_SHS=(
+	[$PI_OS]="$NVM_DIR/nvm.sh"
+	[$LIN_OS]="echo todo_nvm_sh_lin"
+	[$MAC_OS]="/usr/local/opt/nvm/nvm.sh"
+	[$WIN_OS]="echo todo_nvm_sh_win"
+)
+NVM_SH=${NVM_SHS[$CSYS_OS]}
 
 # lazyloading of nvm since . "/usr/local/opt/nvm/nvm.sh"
 # is hellaslow
@@ -65,8 +57,7 @@ NODE_GLOBALS+=("yalc")
 
 # Lazy-loading nvm + npm on node globals call
 load_nvm() {
-	# [ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
-	[ -s "$NVM_SH" ] && . "$NVM_SH"
+	[ -s "$NVM_SH" ] && source "$NVM_SH"
 }
 
 # Making node global trigger the lazy loading

@@ -15,3 +15,5 @@ go
 shfmt
 mitmproxy
 jq
+fish
+bash

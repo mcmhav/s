@@ -2,6 +2,7 @@ set fish_greeting
 
 export CSYS_HOME="$HOME/r/s"
 
+bass source $CSYS_HOME/sys-setup/bash/bashrc/.bashcsysrc
 bass source $CSYS_HOME/sys-setup/bash/bashrc/.bashHelperFuncsrc
 bass source $CSYS_HOME/sys-setup/bash/bashrc/.bashGitrc
 bass source $CSYS_HOME/sys-setup/bash/bashrc/.bashAliasesrc
