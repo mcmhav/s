@@ -249,6 +249,7 @@
         "astype",
         "dataset",
         "dropna",
+        "dtype",
         "entrypoint",
         "eval",
         "gcloud",

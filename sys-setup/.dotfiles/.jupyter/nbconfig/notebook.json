@@ -10,7 +10,8 @@
     "splitcell/splitcell": true,
     "varInspector/main": false,
     "hinterland/hinterland": true,
-    "datestamper/main": true
+    "datestamper/main": true,
+    "collapsible_headings/main": false
   },
   "Cell": {
     "cm_config": {
@@ -21,5 +22,8 @@
     "Header": true,
     "Toolbar": false
   },
-  "scrollDownIsEnabled": true
+  "scrollDownIsEnabled": true,
+  "collapsible_headings": {
+    "add_button": true
+  }
 }
