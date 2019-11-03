@@ -17,7 +17,7 @@ if [ -z "$(which pipenv)" ]; then
   curl https://raw.githubusercontent.com/kennethreitz/pipenv/master/get-pipenv.py | python
 fi
 
-if [ dpkg -l yarn &> /dev/null ]; then
+if [ dpkg -l yarn ] &>/dev/null; then
   echo "oaijdf"
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
@@ -32,3 +32,22 @@ fi
 # install packages from piApts and apts (perhaps move apts to lin)
 # apt list --installed
 
+installApts() {
+  loggit "Installing apts"
+
+  while read l; do
+    read -ra APT_PACKAGE <<<$l
+    if ! dpkg -s "${APT_PACKAGE[0]}" | grep Status >/dev/null; then
+      sudo apt-get install $l
+    fi
+  done <configs/apts
+
+  loggit "Installing piApts"
+
+  while read l; do
+    read -ra APT_PACKAGE <<<$l
+    if ! dpkg -s "${APT_PACKAGE[0]}" | grep Status >/dev/null; then
+      sudo apt-get install $l
+    fi
+  done <configs/piApts
+}
