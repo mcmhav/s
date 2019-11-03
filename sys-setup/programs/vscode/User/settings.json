@@ -178,7 +178,6 @@
     "python.linting.pylintArgs": [
         "--rcfile=~/.pylintrc"
     ],
-    "python.linting.pylintUseMinimalCheckers": false,
     "python.poetryPath": "/home/m/.poetry/bin/poetry",
     "python.venvPath": "~/.pyenv",
     "shellcheck.customArgs": [
@@ -280,7 +279,6 @@
     "gitlens.hovers.annotations.enabled": false,
     "gitlens.views.lineHistory.enabled": false,
     "eslint.autoFixOnSave": true,
-    "python.linting.mypyEnabled": true,
     "python.linting.mypyArgs": [
         "--ignore-missing-imports",
         "--follow-imports=silent",
@@ -290,5 +288,11 @@
         "--disallow-incomplete-defs"
     ],
     "go.formatTool": "goimports",
-    "go.useLanguageServer": true
+    "go.useLanguageServer": true,
+    "python.linting.pylintCategorySeverity.warning": "Information",
+    "python.linting.pylintUseMinimalCheckers": false,
+    "python.linting.mypyCategorySeverity.note": "Warning",
+    "python.linting.mypyEnabled": true,
+    "git.enableStatusBarSync": false,
+    "terminal.integrated.shell.osx": "/usr/local/bin/bash"
 }
