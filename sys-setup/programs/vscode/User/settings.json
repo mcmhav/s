@@ -19,7 +19,6 @@
     "autoDocstring.startOnNewLine": true,
     "color-highlight.markerType": "dot-after",
     "coverage-gutters.ignoredPathGlobs": "**/{node_modules,venv,vendor,.tox,.pytest_cache,__pycache__ ,build,.git,dist}/**",
-    "editor.formatOnSave": true,
     "editor.minimap.renderCharacters": false,
     "editor.minimap.showSlider": "always",
     "editor.multiCursorModifier": "ctrlCmd",
@@ -273,7 +272,6 @@
     "python.formatting.blackArgs": [
         "--skip-string-normalization"
     ],
-    "python.jediEnabled": false,
     "diffEditor.ignoreTrimWhitespace": false,
     "gitlens.hovers.avatars": false,
     "gitlens.hovers.annotations.enabled": false,
@@ -294,5 +292,7 @@
     "python.linting.mypyCategorySeverity.note": "Warning",
     "python.linting.mypyEnabled": true,
     "git.enableStatusBarSync": false,
-    "terminal.integrated.shell.osx": "/usr/local/bin/bash"
+    "terminal.integrated.shell.osx": "/usr/local/bin/bash",
+    "editor.formatOnSave": true,
+    "vsintellicode.python.completionsEnabled": false
 }

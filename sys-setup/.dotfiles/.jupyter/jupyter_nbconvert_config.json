@@ -3,8 +3,7 @@
   "Exporter": {
     "template_path": [
       ".",
-      "/Users/mch/.local/share/virtualenvs/instrument_status-lINpuNe5/lib/python3.7/site-packages/jupyter_contrib_nbextensions/templates",
-      "/Users/mch/.local/share/virtualenvs/cda_leakage-6fWuaX5U/lib/python3.7/site-packages/jupyter_contrib_nbextensions/templates"
+      "/Users/mch/.local/share/virtualenvs/data_explorer-VKQ_fBd2/lib/python3.7/site-packages/jupyter_contrib_nbextensions/templates"
     ],
     "preprocessors": [
       "jupyter_contrib_nbextensions.nbconvert_support.CodeFoldingPreprocessor",
