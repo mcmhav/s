@@ -50,6 +50,7 @@ function fish_prompt
     set -l blue (set_color -o blue)
     set -l normal (set_color normal)
 
+    set -l prev_command_usage "$blue$CMD_DURATION_STR "
 
     set -l arrow "▲ "
     if test "$USER" = 'root'
@@ -71,5 +72,5 @@ function fish_prompt
         end
     end
 
-    echo -n -s $arrow $cwd $repo_info$normal ' '
+    echo -n -s $prev_command_usage $arrow $cwd $repo_info$normal ' '
 end

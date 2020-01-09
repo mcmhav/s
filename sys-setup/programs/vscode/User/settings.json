@@ -157,7 +157,6 @@
         "python",
         "plaintext"
     ],
-    "materialTheme.accent": "Cyan",
     "prettier.singleQuote": true,
     "prettier.trailingComma": "all",
     "python.analysis.logLevel": "Trace",
@@ -189,41 +188,19 @@
     "workbench.colorCustomizations": {
         "activityBar.border": "#ff0000",
         "activityBar.foreground": "#ff0000",
-        "activityBarBadge.background": "#00BCD4",
-        "breadcrumb.activeSelectionForeground": "#00BCD4",
         "editor.lineHighlightBackground": "#ff260052",
         "editor.selectionBackground": "#ff260052",
         "editor.selectionHighlightBackground": "#ff260052",
-        // "editor.selectionHighlightBorder": "#ff0000",
         "editorLineNumber.activeForeground": "#ff0000",
         "editorLineNumber.foreground": "#f75959",
-        // "editorHoverWidget.background": "#ff0000",
-        // "editorSuggestWidget.background": "#ff0000",
         "editorSuggestWidget.border": "#01cc56",
         "editorSuggestWidget.foreground": "#01cc56",
-        "editorSuggestWidget.highlightForeground": "#00BCD4",
         "editorSuggestWidget.selectedBackground": "#721919",
-        "editorWidget.border": "#00BCD4",
-        "editorWidget.resizeBorder": "#00BCD4",
-        "list.activeSelectionForeground": "#00ff15",
-        "list.highlightForeground": "#00e1ff",
-        "list.inactiveSelectionForeground": "#00BCD4",
-        "menu.selectionForeground": "#00BCD4",
-        "menubar.selectionForeground": "#00BCD4",
-        "notificationLink.foreground": "#00BCD4",
-        "panelTitle.activeBorder": "#00BCD4",
-        "pickerGroup.foreground": "#00BCD4",
-        "progressBar.background": "#00BCD4",
-        "scrollbarSlider.activeBackground": "#d237f1",
-        "settings.headerForeground": "#00BCD4",
-        "settings.modifiedItemIndicator": "#00BCD4",
         "statusBar.foreground": "#f75959",
-        "tab.activeBorder": "#f75959",
         "tab.activeForeground": "#f75959",
         "tab.inactiveForeground": "#b44b4b",
         "tab.unfocusedActiveForeground": "#f75959",
-        "tab.unfocusedInactiveForeground": "#ca4646",
-        "textLink.foreground": "#00BCD4"
+        "tab.unfocusedInactiveForeground": "#ca4646"
     },
     "workbench.colorTheme": "Material Theme Ocean",
     "workbench.editor.closeOnFileDelete": false,
@@ -294,5 +271,9 @@
     "git.enableStatusBarSync": false,
     "terminal.integrated.shell.osx": "/usr/local/bin/bash",
     "editor.formatOnSave": true,
-    "vsintellicode.python.completionsEnabled": false
+    "vsintellicode.python.completionsEnabled": false,
+    "coverage-gutters.xmlname": "coverage.xml",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
 }
