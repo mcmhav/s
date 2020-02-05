@@ -25,3 +25,7 @@ if [ -n "$PYENV_COMMAND" ] && [ ! -x "$PYENV_COMMAND_PATH" ]; then
     PYENV_COMMAND_PATH="${PYENV_ROOT}/versions/${versions[0]}/bin/${PYENV_COMMAND}"
   fi
 fi
+
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/mch/.sdkman"
+[[ -s "/Users/mch/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/mch/.sdkman/bin/sdkman-init.sh"

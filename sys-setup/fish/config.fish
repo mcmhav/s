@@ -17,3 +17,5 @@ end
 # source $CSYS_HOME/sys-setup/bash/.bashrc
 
 pyenv init - | source
+
+alias pipenv='env SHELL="/usr/local/bin/fish" pipenv'
