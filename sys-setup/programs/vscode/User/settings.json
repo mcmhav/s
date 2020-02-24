@@ -27,6 +27,7 @@
     "coverage-gutters.ignoredPathGlobs": "**/{node_modules,venv,vendor,.tox,.pytest_cache,__pycache__ ,build,.git,dist}/**",
     "coverage-gutters.xmlname": "coverage.xml",
     "cSpell.userWords": [
+        "Repressurizing",
         "UGLN",
         "astype",
         "bfill",
@@ -47,6 +48,7 @@
         "idxmax",
         "iloc",
         "inplace",
+        "iterrows",
         "jsonify",
         "keras",
         "logdir",
@@ -346,9 +348,6 @@
         // "--config=looool"
     ],
     "python.linting.pydocstyleEnabled": true,
-    "python.linting.pylintArgs": [
-        "--rcfile=~/.pylintrc"
-    ],
     "python.linting.pylintCategorySeverity.warning": "Information",
     "python.linting.pylintUseMinimalCheckers": false,
     "python.poetryPath": "/home/m/.poetry/bin/poetry",
