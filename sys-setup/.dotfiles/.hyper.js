@@ -5,11 +5,13 @@
 module.exports = {
   config: {
     // `'stable'`, `'canary'`
-    updateChannel: 'stable',
+    updateChannel: 'canary',
 
     fontSize: 11,
 
-    fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily:
+      '"Meslo LG S for Powerline", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace, powerline',
+    // "Roboto Mono for Powerline"
 
     fontWeight: 'normal',
 
@@ -25,8 +27,9 @@ module.exports = {
     cursorBlink: true,
 
     foregroundColor: '#5ee39b',
-    // foregroundColor: '#5ee39b',
+    // foregroundColor: 'red',
 
+    // backgroundColor: 'red',
     backgroundColor: '#101010DD',
 
     selectionColor: 'rgb(167, 26, 154, 0.5)',
@@ -105,9 +108,18 @@ module.exports = {
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
+    hyperTabs: {
+      // The height(unit px) of zone over tabs to drag the window
+      navMoveable: 0,
+      // The hotkeys of move tabs
+      hotkeys: {
+        moveLeft: 'ctrl+alt+left',
+        moveRight: 'ctrl+alt+right',
+      },
+    },
   },
 
-  plugins: ['hyper-search', 'hyper-pane'],
+  plugins: ['hyper-search', 'hyper-pane', 'hyper-reorderable-tabs'],
   localPlugins: [],
 
   keymaps: {

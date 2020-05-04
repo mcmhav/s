@@ -1,20 +1,17 @@
-nvm
-watchman
-git
-bash-completion
-shellcheck
-pyenv
-pipenv
-readline
-xz
-watch
-ack
-zlib
-yarn --without-node
-go
-shfmt
-mitmproxy
-jq
-fish
-bash
 awscli
+bash
+bash-completion
+fish
+git
+go
+jq
+nvm
+pipenv
+pyenv
+python
+readline
+shellcheck
+shfmt
+watch
+watchman
+yarn --without-node
