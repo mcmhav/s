@@ -324,19 +324,14 @@
     "markdown-table-formatter.markdownGrammarScopes": [
         "markdown",
         "python",
-        "plaintext"
+        "plaintext",
+        "xml"
     ],
     "prettier.singleQuote": true,
     "prettier.trailingComma": "all",
     "python.analysis.logLevel": "Trace",
     "python.analysis.openFilesOnly": true,
     "python.analysis.symbolsHierarchyDepthLimit": 20,
-    "python.formatting.autopep8Args": [
-        "--aggressive"
-    ],
-    "python.formatting.blackArgs": [
-        "--skip-string-normalization"
-    ],
     "python.formatting.provider": "yapf",
     "python.globalModuleInstallation": true,
     "python.linting.mypyArgs": [],
@@ -744,5 +739,8 @@
     "zenMode.centerLayout": false,
     "python.linting.mypyEnabled": true,
     "python.linting.pylintCategorySeverity.convention": "Warning",
-    "python.linting.pylintCategorySeverity.refactor": "Warning"
+    "python.linting.pylintCategorySeverity.refactor": "Warning",
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    }
 }

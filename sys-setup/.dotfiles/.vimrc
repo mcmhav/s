@@ -1,51 +1,136 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-syntax on
-set expandtab
-set tabstop=4
-set autoindent
-set cindent
-autocmd BufWritePre * :%s/\s\+$//e
-
-" set the runtime path to include Vundle and initialize
+" Plugins
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'timheap/linters.vim'
+call vundle#end()
+call plug#begin('~/.vim/plugged')
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
+Plug 'dense-analysis/ale'
+Plug 'mhinz/vim-startify'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'wakatime/vim-wakatime'
+call plug#end()
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
+" Syntax
+let g:vim_jsx_pretty_colorful_config = 1
+syntax on
+set t_Co=256
+set background=dark
+set termguicolors
+colorscheme cake
+
+set number
+autocmd BufWritePre * :%s/\s\+$//e
+let g:netrw_banner = 0
+
+" Indenting
+set softtabstop=2
+set shiftwidth=2
+set tabstop=2
+set expandtab
+set smarttab
+set autoindent
+set cindent
+filetype indent off
+"filetype plugin indent on
+
+" Autoformat
+autocmd InsertLeave *.yaml,*.html,*.js,*.css w
+autocmd InsertLeave *.yaml,*.html,*.js,*.css ALEFix
+"autocmd BufLeave,InsertLeave * wall
+"autocmd BufLeave * wall
+"autocmd WinLeave * :ALEFix | :write
+let g:ale_fixers = {
+\  'javascript': ['prettier'],
+\  'json': ['prettier'],
+\  'css': ['prettier'],
+\  'scss': ['prettier'],
+\  'html': ['prettier'],
+\  'xml': ['prettier'],
+\}
+let g:ale_fix_on_save = 1
 
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief helppaa
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" Sessions
+let g:sessions_dir = '~/.vim/sessions'
+let g:startify_session_persistence = 1
+let g:startify_session_dir = g:sessions_dir
+let g:startify_custom_header_quotes = [
+  \ [
+    \ '    ___       ___       ___       ___',
+    \ '   /\  \     /\  \     /\__\     /\  \',
+    \ '  /::\  \   /::\  \   /:/ _/_   /::\  \',
+    \ ' /:/\:\__\ /::\:\__\ /::-"\__\ /::\:\__\',
+    \ ' \:\ \/__/ \/\::/  / \;:;-",-" \:\:\/  /',
+    \ '  \:\__\     /:/  /   |:|  |    \:\/  /',
+    \ '   \/__/     \/__/     \|__|     \/__/',
+    \ '',
+  \ ]
+\ ]
+
+" Statusbar
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#format = 2
+"let g:airline#extensions#tabline#show_splits = 1
+"let g:airline#extensions#tabline#show_buffers = 0
+"let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'bubblegum'
+let g:airline_mode_map = {
+  \ '__'     : '-',
+  \ 'c'      : 'C',
+  \ 'i'      : 'I',
+  \ 'ic'     : 'I',
+  \ 'ix'     : 'I',
+  \ 'n'      : 'N',
+  \ 'multi'  : 'M',
+  \ 'ni'     : 'N',
+  \ 'no'     : 'N',
+  \ 'R'      : 'R',
+  \ 'Rv'     : 'R',
+  \ 's'      : 'S',
+  \ 'S'      : 'S',
+  \ ''     : 'S',
+  \ 't'      : 'T',
+  \ 'v'      : 'V',
+  \ 'V'      : 'V',
+  \ ''     : 'V',
+\ }
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.dirty='*'
+function! AirlineInit()
+  " let g:airline_section_b = '%{FugitiveStatusline()}'
+  let g:airline_section_c = airline#section#create(['%t', 'readonly', ' ', 'coc_status'])
+  let g:airline_section_y = ''
+  let g:airline_section_z = airline#section#create(['%4l', '%3v'])
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
+
+" Search
+set ignorecase
+set smartcase
+set incsearch
+
+" Keybindings
+inoremap qq <Esc>
+inoremap QQ <Esc>
+" Move line
+nnoremap <A-Up> :m .-2 <CR>
+nnoremap <A-Down> :m .+1 <CR>
+inoremap <A-Up> <Esc> :m .-2 <CR>
+inoremap <A-Down> <Esc> :m .+1 <CR>
+vnoremap <A-Up> :m '<-2' <CR> gv=gv
+vnoremap <A-Down> :m '>+1' <CR> gv=gv
+" Reload vims configuration file
+nnoremap confr :source $MYVIMRC<CR>
+" Make session
+exec 'nnoremap ,ss :mksession ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'

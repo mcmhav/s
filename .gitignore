@@ -1,3 +1,4 @@
 .DS_Store
 lin-sys-setup/.scripts/timeLogging/*.log
 .mypy_cache/
+*.swp
