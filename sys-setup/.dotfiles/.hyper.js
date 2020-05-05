@@ -5,7 +5,8 @@
 module.exports = {
   config: {
     // `'stable'`, `'canary'`
-    updateChannel: 'canary',
+    // updateChannel: 'canary',
+    updateChannel: 'stable',
 
     fontSize: 11,
 

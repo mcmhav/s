@@ -16,6 +16,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'wakatime/vim-wakatime'
+Plug 'junegunn/fzf'
 call plug#end()
 
 " Syntax
