@@ -16,7 +16,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'wakatime/vim-wakatime'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Syntax
@@ -30,6 +31,7 @@ colorscheme cake
 set number
 autocmd BufWritePre * :%s/\s\+$//e
 let g:netrw_banner = 0
+set autoread
 
 " Indenting
 set softtabstop=2
@@ -43,7 +45,7 @@ filetype indent off
 "filetype plugin indent on
 
 " Autoformat
-autocmd InsertLeave *.yaml,*.html,*.js,*.css w
+autocmd InsertLeave * w
 autocmd InsertLeave *.yaml,*.html,*.js,*.css ALEFix
 "autocmd BufLeave,InsertLeave * wall
 "autocmd BufLeave * wall
@@ -75,6 +77,10 @@ let g:startify_custom_header_quotes = [
     \ '',
   \ ]
 \ ]
+
+" Splits
+set splitbelow
+set splitright
 
 " Statusbar
 let g:airline_powerline_fonts = 1
@@ -135,3 +141,8 @@ vnoremap <A-Down> :m '>+1' <CR> gv=gv
 nnoremap confr :source $MYVIMRC<CR>
 " Make session
 exec 'nnoremap ,ss :mksession ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
+" Fuzzy find file
+nnoremap <silent> ,f :FZF<cr>
+nnoremap <silent> ,F :FZF ~<cr>
+" Search all
+nnoremap <silent> ,s :Ag<cr>

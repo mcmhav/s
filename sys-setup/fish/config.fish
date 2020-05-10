@@ -19,3 +19,4 @@ end
 pyenv init - | source
 
 alias pipenv='env SHELL="/usr/local/bin/fish" pipenv'
+alias :q="exit"
