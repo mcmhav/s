@@ -17,3 +17,4 @@ watchman
 yarn --without-node
 tmux
 the_silver_searcher
+fzf
