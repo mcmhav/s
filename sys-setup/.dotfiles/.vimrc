@@ -18,6 +18,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'wakatime/vim-wakatime'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'ap/vim-css-color'
+Plug 'haya14busa/incsearch.vim'
 call plug#end()
 
 " Syntax
@@ -126,10 +128,21 @@ autocmd User AirlineAfterInit call AirlineInit()
 set ignorecase
 set smartcase
 set incsearch
+set hlsearch
+autocmd InsertEnter * :set nohlsearch
+autocmd InsertLeave * :set hlsearch
+let g:incsearch#auto_nohlsearch = 0
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 
 " Keybindings
 inoremap qq <Esc>
 inoremap QQ <Esc>
+nnoremap qq :noh<return><Esc>
 " Move line
 nnoremap <A-Up> :m .-2 <CR>
 nnoremap <A-Down> :m .+1 <CR>
