@@ -20,5 +20,6 @@ if [ ! -d "$HOME/.vim/colors" ]; then
 fi
 
 vim +PluginInstall +qall
+vim +PlugInstall +qall
 
 cd "$RETURN_TO" || exit
