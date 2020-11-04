@@ -7,9 +7,9 @@
 ATOM_HOME=~/.atom
 ATOM_SETUP_HOME=$CSYS_HOME/sys-setup/programs/atom
 
-cd "$ATOM_HOME" || exit
+cd "$ATOM_HOME" &>/dev/null || exit
 
-makePackagesList() {
+MakePackagesList() {
   storeLocation="packagesList"
 
   if [ -n "$1" ]; then

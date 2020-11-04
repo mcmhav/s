@@ -7,7 +7,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 call vundle#end()
 call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
 Plug 'mhinz/vim-startify'
@@ -31,6 +31,7 @@ set termguicolors
 colorscheme cake
 
 set number
+set relativenumber
 autocmd BufWritePre * :%s/\s\+$//e
 let g:netrw_banner = 0
 set autoread
@@ -85,7 +86,7 @@ set splitbelow
 set splitright
 
 " Statusbar
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#format = 2
 "let g:airline#extensions#tabline#show_splits = 1
@@ -124,6 +125,13 @@ function! AirlineInit()
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 
+function! Testur()
+ let split_count = winnr('$')
+ echo split_count
+ return "\<Ctrl>w\<Ctrl>w"
+endfunction
+
+
 " Search
 set ignorecase
 set smartcase
@@ -140,9 +148,9 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 " Keybindings
-inoremap qq <Esc>
-inoremap QQ <Esc>
-nnoremap qq :noh<return><Esc>
+"inoremap qq <Esc>
+"inoremap QQ <Esc>
+"nnoremap qq :noh<return><Esc>
 " Move line
 nnoremap <A-Up> :m .-2 <CR>
 nnoremap <A-Down> :m .+1 <CR>

@@ -2,31 +2,26 @@
 
 VS_CODE_SETUP_HOME=""
 VS_CODE_HOME_USER=""
-# VS_CODE_HOME=""
 
-if [[ $(uname -r) =~ Microsoft$ ]]; then
-  VS_CODE_SETUP_HOME="$CSYS_HOME/sys-setup/programs/vscode"
-  VS_CODE_HOME_USER="/mnt/c/Users/mcmha/AppData/Roaming/Code/User/"
-  #VS_CODE_HOME_USER="$HOME/.config/Code/User"
+VS_CODE_SETUP_HOME="$CSYS_HOME/sys-setup/programs/vscode"
+
+if [ $(uname -o) == "Msys" ]; then
+  VS_CODE_HOME_USER="$HOME/AppData/Roaming/Code/User"
+  extra_link_flag="--hard"
 elif [ "$(uname -s)" == "Linux" ]; then
-  loggit "TODO"
+  loggit "TODO vscode setup"
   exit 1
 elif [ "$(uname -s)" == "Darwin" ]; then
-  VS_CODE_SETUP_HOME="$CSYS_HOME/sys-setup/programs/vscode"
   VS_CODE_HOME_USER="$HOME/Library/Application Support/Code/User"
-  # VS_CODE_HOME=~/.vscode
 elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
   loggit "TODO"
   exit 1
 fi
 
 handleVSUser() {
-  if [[ $(uname -r) =~ Microsoft$ ]]; then
-    cp -f "$VS_CODE_SETUP_HOME"/User/settings.json "$VS_CODE_HOME_USER"
-  else
-    ln -sf "$VS_CODE_SETUP_HOME/User/settings.json" "$VS_CODE_HOME_USER/settings.json"
-  fi
-  # ln -sf "$VS_CODE_SETUP_HOME"/User/snippets "$VS_CODE_HOME_USER"
+  ln -sf "$extra_link_flag" "$VS_CODE_SETUP_HOME/User/settings.json" "$VS_CODE_HOME_USER/settings.json"
+  ln -sf "$extra_link_flag" "$VS_CODE_SETUP_HOME/User/keybindings.json" "$VS_CODE_HOME_USER/keybindins.json"
+  ln -sf "$VS_CODE_SETUP_HOME/User/snippets" "$VS_CODE_HOME_USER/snippets"
 }
 
 storeExtentions() {
@@ -106,3 +101,4 @@ while [ "$1" != "" ]; do
   esac
   shift
 done
+
