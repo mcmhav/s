@@ -29,7 +29,7 @@ gui_config() {
     mkdir "$HOME/.ipython"
   fi
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.ipython" "$HOME/.ipython"
-  if [ "$(uname -o)" == "Mysys" ]; then
+  if [[ "$(uname -s)" =~ MINGW64_NT* ]]; then
     ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/AppData/Hyper/.hyper.js"
   else
     ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/.hyper.js"
@@ -58,7 +58,7 @@ if [ "$(uname -s)" == "Linux" ]; then
   fi
 elif [ "$(uname -s)" == "Darwin" ]; then
   source "$CSYS_HOME/sys-setup/bash/bashrc/.bash.winrc"
-elif [ "$(uname -o)" == "Msys" ]; then
+elif [[ "$(uname -s)" =~ MINGW64_NT* ]]; then
   source "$CSYS_HOME/sys-setup/bash/bashrc/.bash.winrc"
 fi
 
@@ -75,7 +75,7 @@ if [ "$(uname -s)" == "Linux" ]; then
 elif [ "$(uname -s)" == "Darwin" ]; then
   ./os/mac/setup.sh
   gui_program_setup
-elif [ "$(uname -o)" == "Msys" ]; then
+elif [[ "$(uname -s)" =~ MINGW64_NT* ]]; then
   ./os/win/setup.sh
   gui_program_setup
 fi
