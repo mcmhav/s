@@ -3,6 +3,9 @@
 export CSYS_HOME="$HOME/r/s"
 
 non_gui_config() {
+  if [ ! -d "$HOME/.config" ]; then
+    mkdir "$HOME/.config"
+  fi
   ln -sf "$CSYS_HOME/sys-setup/bash/.bashrc" "$HOME/.bashrc"
   ln -sf "$CSYS_HOME/sys-setup/bash/.bashrc" "$HOME/.bash_profile"
 

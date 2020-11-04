@@ -14,7 +14,7 @@ shellcheck
 shfmt
 watch
 watchman
-yarn --without-node
+yarn
 tmux
 the_silver_searcher
 fzf

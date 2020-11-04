@@ -7,7 +7,7 @@ installStuff() {
 	fi
 
 	if ! brew tap | grep -q 'homebrew/cask-fonts'; then
-		brew tap caskroom/fonts
+		brew tap homebrew/cask-fonts
 	fi
 
 	xcode-select --install 2>/dev/null
@@ -23,8 +23,8 @@ installStuff() {
 	CFLAGS="-I$(brew --prefix openssl)/include"
 	LDFLAGS="-L$(brew --prefix openssl)/lib"
 
-	if [ -z "$(pyenv versions | grep 3.4.3)" ]; then
-		pyenv install -s -v 3.4.3
+	if [ -z "$(pyenv versions | grep 3.7.7)" ]; then
+		pyenv install --skip-existing 3.7.7
 	fi
 
   $CSYS_HOME/sys-setup/programs/pip/setup.sh
@@ -72,32 +72,32 @@ installStuff() {
 installBrews() {
 	loggit "Installing brews"
 
-	while read l; do
+	while read -r l; do
 		read -ra BREW_PACKAGE <<<$l
 		if ! brew ls --versions "${BREW_PACKAGE[0]}" >/dev/null; then
-			brew install $l
+			brew install "$l"
 		fi
 	done <configs/brews
 
   loggit "Installing brews casks"
 
-	while read l; do
+	while read -r l; do
 		read -ra BREW_PACKAGE <<<$l
 		if ! brew cask ls --versions "${BREW_PACKAGE[0]}" >/dev/null; then
-			brew cask install $l
+			brew cask install "$l"
 		fi
 	done <configs/casks
 }
 
 installGos() {
-	while read l; do
-		go get -u $l
+	while read -r l; do
+		go get -u "$l"
 	done <configs/gos
 }
 
 installGems() {
-	while read l; do
-		gem install $l
+	while read -r l; do
+		gem install "$l"
 	done <configs/gems
 }
 

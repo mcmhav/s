@@ -1,5 +1,5 @@
 amethyst
-atom-beta
+homebrew/cask-versions/atom-beta
 avibrazil-rdm
 basictex
 docker
@@ -12,4 +12,4 @@ java
 signal
 steam
 visual-studio-code
-yujitach-menumeters
+menumeters
