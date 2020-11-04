@@ -1,1 +1,4 @@
 #!/usr/bin/env bash
+
+export PATH="$CSYS_HOME/sys-setup/os/win/bin":"$PATH"
+

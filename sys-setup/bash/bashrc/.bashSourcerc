@@ -26,3 +26,4 @@ if [ -n "$BASH" ]; then
 fi
 
 [ -e $HOME/.bashAkerrcs ] && source $HOME/.bashAkerrcs/.bashAkerrc
+[ -e $HOME/.bashTErcs ] && source $HOME/.bashTErcs/.bashTErc

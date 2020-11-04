@@ -1,0 +1,7 @@
+#!/bin/bash
+
+findFilesContains() {
+  grep --color=always -rnw . -e "$1"
+}
+
+findFilesContains "$1"
