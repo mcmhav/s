@@ -9,4 +9,4 @@ pieConnect() {
   fi
 }
 
-pieConnect $1
+pieConnect "$1"

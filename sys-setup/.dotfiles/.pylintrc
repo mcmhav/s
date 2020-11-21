@@ -1,0 +1,9 @@
+# https://github.com/PyCQA/pylint/blob/master/pylintrc
+
+[MESSAGES CONTROL]
+disable=missing-docstring,too-few-public-methods,len-as-condition
+
+[BASIC]
+variable-rgx=[a-z0-9_]{1,30}$
+no-docstring-rgx=(__.*__)
+good-names=df,x,y

@@ -7,16 +7,16 @@ HISTCONTROL=ignoreboth
 
 unset PROMPT_COMMAND
 
-function timer_start {
+function timer_start() {
   timer=${timer:-$SECONDS}
 }
 
-function timer_stop {
+function timer_stop() {
   timer_show=$((SECONDS - timer))
 
   if [ "$timer_show" -gt "900" ]; then
     notifyer "Done!!!"
-    tput bel
+    # tput bel
   fi
 
   # arr=( "sau" )
@@ -27,24 +27,25 @@ function timer_stop {
 }
 trap 'timer_start' DEBUG
 
-function error_log {
+function error_log() {
   prompt_command__isnewline__last="$prompt_command__isnewline__curr"
   prompt_command__isnewline__curr="$(history 1 | grep -Eo '^\ [0-9]+')"
 
   promt_message=""
-  if [[
-    # http://www.tldp.org/LDP/abs/html/exitcodes.html
-    $1 != 0 && # no error
-    $1 != 130 && # Ctrl + C - exit
-    "$prompt_command__isnewline__curr" != "$prompt_command__isnewline__last"
-  ]]; then
-    promt_message="$(printf \\xf0\\x9f\\x92\\xa9) ~$1|"
+  promt_message_spacer=""
+  if [[ $1 != 0 && $1 != 130 && "$prompt_command__isnewline__curr" != "$prompt_command__isnewline__last" ]] \
+    ; then # http://www.tldp.org/LDP/abs/html/exitcodes.html
+    # no error
+    # Ctrl + C - exit
+    promt_message="⬘~$1"
+    promt_message_spacer="|"
+    # promt_message="$(printf \\xf0\\x9f\\x92\\xa9) ~$1|"
   else
     printf ""
   fi
 }
 
-function promt_commands {
+function promt_commands() {
   local curr_exit="$?"
 
   timer_stop
@@ -61,15 +62,17 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 #   esac
 fi
 
-PS1='${promt_message}\[\e[1;35m\]${timer_show}\[\e[m\]|\[\e['
-if [ ! -z $IS_SSH_SESSION ]; then
+PS1='\[\e[0;31m\]${promt_message}\[\e[m\]${promt_message_spacer}\[\e[1;35m\]${timer_show}\[\e[m\]|\[\e['
+if [ -n "$IS_SSH_SESSION" ]; then
   PS1=$PS1'1;36m'
 else
   PS1=$PS1'1;32m'
 fi
-PS1=$PS1'\]\W\[\e[m\]\[\e[0;31m\]$\[\e[m\] '
+# ❮ ❯ ❰ ❱ ◼ ▶ ▴ ▲ ⌔ ∴ ⭓ ⭔ း ಃ 〓
+PS1=$PS1'\]\W\[\e[m\]\[\e[0;31m\]⭓\[\e[m\] '
 
 export PS1=$PS1
+export PROMPT=$PS1
 # export PS1='$(error_log)$ '
 # export PS1='[\[\e[1;35m\]${timer_show}\[\e[m\]][\[\e[1;32m\]\W\[\e[m\]]\[\e[0;31m\]$\[\e[m\] '
 export PS2='> '

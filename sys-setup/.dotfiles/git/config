@@ -1,0 +1,35 @@
+[user]
+	name = mcmhav
+  email = mcmhav@gmail.com
+[push]
+  default = simple
+[color]
+  ui = true
+[core]
+  editor = vim
+	excludesfile = ~/r/s/sys-setup/.dotfiles/.gitignore
+	preloadindex = true
+	fscache = true
+[fetch]
+  prune = true
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[credential]
+	helper = osxkeychain
+[alias]
+  ignore = update-index --assume-unchanged
+  unignore = update-index --no-assume-unchanged
+  ignored = !git ls-files -v | grep "^[[:lower:]]"
+	rb = for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/
+[merge]
+  conflictstyle = diff3
+[gc]
+	auto = 256
+[status]
+	submoduleSummary = false
+[pull]
+	rebase = true

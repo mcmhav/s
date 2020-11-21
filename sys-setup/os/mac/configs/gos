@@ -1,2 +1,3 @@
 google.golang.org/appengine
-github.com/derekparker/delve/cmd/dlv
+github.com/go-delve/delve/cmd/dlv
+github.com/sabhiram/go-wol/cmd/wol

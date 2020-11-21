@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+export PI_OS="pi"
+export LIN_OS="lin"
+export MAC_OS="mac"
+export WIN_OS="win"
+
+if [ "$(uname -s)" == "Linux" ]; then
+  if [ "$(uname -m)" == "armv7l" ]; then
+    export CSYS_OS="$PI_OS"
+  else
+    export CSYS_OS="$LIN_OS"
+  fi
+elif [ "$(uname -s)" == "Darwin" ]; then
+  export CSYS_OS="$MAC_OS"
+elif [ "$(uname -o)" == "Msys" ]; then
+  export CSYS_OS="$WIN_OS"
+fi
+
+export FISH_SHELL="fish"
+export BASH_SHELL="bash"
+
+if [ -n "$BASH" ]; then
+  export CSYS_SHELL="$BASH_SHELL"
+elif [ -n "$FISH_VERSION" ]; then
+  export CSYS_SHELL="$FISH_SHELL"
+fi

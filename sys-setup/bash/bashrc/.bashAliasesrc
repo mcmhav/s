@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
 if [ -x /usr/bin/dircolors ] || [ "$(uname -s)" == "Darwin" ]; then
-    if [ "$(uname -s)" == "Linux" ]; then
-      test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-      alias ls='ls --color=auto'
-    elif [ "$(uname -s)" == "Darwin" ]; then
-      alias ls='ls -G'
-    else
-      alias ls='ls --color=auto'
-    fi
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+  if [ "$(uname -s)" == "Linux" ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+  elif [ "$(uname -s)" == "Darwin" ]; then
+    alias ls='ls -G'
+  else
+    alias ls='ls --color=auto'
+  fi
+  #alias dir='dir --color=auto'
+  #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
 
 # some more ls aliases

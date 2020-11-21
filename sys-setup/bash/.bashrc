@@ -4,22 +4,14 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-[ -f /etc/shrc ] && . /etc/shrc
+[ -f /etc/shrc ] && source /etc/shrc
 
-# DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-# unset DIR
+# https://support.apple.com/en-us/HT208050
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 export CSYS_HOME="$HOME/r/s"
+source "$CSYS_HOME/sys-setup/bash/bashrc/.bashcsysrc"
 source "$CSYS_HOME/sys-setup/bash/bashrc/.bashSourcerc"
-
-if [ -x "$(command -v brew)" ]; then
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-  fi
-fi
-
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
 
 # shims and autocompletion, pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -33,3 +25,9 @@ if [ -n "$PYENV_COMMAND" ] && [ ! -x "$PYENV_COMMAND_PATH" ]; then
     PYENV_COMMAND_PATH="${PYENV_ROOT}/versions/${versions[0]}/bin/${PYENV_COMMAND}"
   fi
 fi
+
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/mch/.sdkman"
+[[ -s "/Users/mch/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/mch/.sdkman/bin/sdkman-init.sh"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

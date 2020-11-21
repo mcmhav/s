@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# widht:
+# total: 3821
+# logo: 490
+# use: 1665,5
+#
+# height:
+# total: 2130
+# use: 820
+
+makePrimitive() {
+  echo "asdf"
+}
+
+FILES="original/*"
+count=0
+
+for f in $FILES; do
+  primitive -i $f -o output-$count.png -n 300 -s 3821
+  (( count++ ))
+done

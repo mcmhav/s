@@ -44,6 +44,9 @@ installStuff() {
 	if [ ! -d ~/.nvm ]; then
 		mkdir ~/.nvm
 	fi
+  if [ ! -d "$HOME/.wakatime" ]; then
+    mkdir "$HOME/.wakatime"
+  fi
 
 	defaults write com.apple.screencapture location ~/Pictures/screenshots
 

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+cache_thingy_wipe() {
+  docker exec -it cache_thingy sh -c 'rm -r /data/nginx/cache/*'
+}
+
+cache_thingy_start() {
+  RETURN_TO=$(pwd)
+
+  cd "$HOME/r/cache-thingy" || exit
+  ./docker_start.sh -s
+  cd $RETURN_TO || exit
+}
+
+cache_thingy_run() {
+  RETURN_TO=$(pwd)
+
+  cd "$HOME/r/cache-thingy" || exit
+  ./docker_start.sh -r
+  cd $RETURN_TO || exit
+}
+
+while [ "$1" != "" ]; do
+  case $1 in
+  -s | --start)
+    cache_thingy_start
+    ;;
+  -r | --run)
+    cache_thingy_run
+    ;;
+  -w | --wipe)
+    cache_thingy_wipe
+    ;;
+  *)
+    echo "Heeelp"
+    ;;
+  esac
+  shift
+done
