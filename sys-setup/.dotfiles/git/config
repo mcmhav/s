@@ -8,6 +8,8 @@
 [core]
   editor = vim
 	excludesfile = ~/r/s/sys-setup/.dotfiles/.gitignore
+	preloadindex = true
+	fscache = true
 [fetch]
   prune = true
 [filter "lfs"]
@@ -25,3 +27,9 @@
 	rb = for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/
 [merge]
   conflictstyle = diff3
+[gc]
+	auto = 256
+[status]
+	submoduleSummary = false
+[pull]
+	rebase = true
