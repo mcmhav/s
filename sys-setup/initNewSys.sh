@@ -30,7 +30,7 @@ gui_config() {
   fi
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.ipython" "$HOME/.ipython"
   if [[ "$(uname -s)" =~ MINGW64_NT* ]]; then
-    ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/AppData/Hyper/.hyper.js"
+    ln -sf --hard "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/AppData/Roaming/Hyper/.hyper.js"
   else
     ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/.hyper.js"
   fi

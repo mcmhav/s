@@ -3,4 +3,4 @@ lin-sys-setup/.scripts/timeLogging/*.log
 .mypy_cache/
 *.swp
 update-notifier-*.json
-
+nodemon.json

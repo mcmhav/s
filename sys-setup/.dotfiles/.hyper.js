@@ -86,7 +86,12 @@ module.exports = {
     // PowerShell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
     // shell: '',
-    shell: '/usr/local/bin/fish',
+    // shell: '/usr/local/bin/fish',
+    // shell: 'C:\\Program Files\\Git\\bin\\bash.exe',
+    // shell: 'C:\\cygwin64\\bin\\bash.exe',
+    // shell: 'C:\\cygwin64\\bin\\bash.exe',
+    // shell: 'C:\\msys64\\usr\\bin\\bash.exe',
+    shell: 'C:\\msys64\\bin\\bash.exe',
 
     shellArgs: ['--login'],
 
@@ -95,7 +100,7 @@ module.exports = {
     env: {},
 
     // set to `false` for no bell
-    bell: 'SOUND',
+    bell: false,
 
     copyOnSelect: false,
 
@@ -120,7 +125,18 @@ module.exports = {
     },
   },
 
-  plugins: ['hyper-search', 'hyper-pane', 'hyper-reorderable-tabs'],
+  plugins: [
+    'hyper-custom-plugins',
+    'hyper-search',
+    'hyper-pane',
+    'hyper-reorderable-tabs',
+  ],
+  customPlugins: {
+    callback: ({ config, module }) => {
+      const homedir = module.require('os').platform();
+      // config.shell = 'C:\\Program Files\\Git\\bin\\bash.exe';
+    },
+  },
   localPlugins: [],
 
   keymaps: {
