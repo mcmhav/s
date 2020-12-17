@@ -1,6 +1,7 @@
 {
     "codeCellConfig": {
-        "lineNumbers": true
+        "lineNumbers": true,
+        "tabSize": 2,
     },
     "recordTiming": false
 }
