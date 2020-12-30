@@ -86,12 +86,12 @@ module.exports = {
     // PowerShell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
     // shell: '',
-    // shell: '/usr/local/bin/fish',
+    shell: '/usr/local/bin/fish',
     // shell: 'C:\\Program Files\\Git\\bin\\bash.exe',
     // shell: 'C:\\cygwin64\\bin\\bash.exe',
     // shell: 'C:\\cygwin64\\bin\\bash.exe',
     // shell: 'C:\\msys64\\usr\\bin\\bash.exe',
-    shell: 'C:\\msys64\\bin\\bash.exe',
+    // shell: 'C:\\msys64\\bin\\bash.exe',
 
     shellArgs: ['--login'],
 
