@@ -5,7 +5,7 @@ VS_CODE_HOME_USER=""
 
 VS_CODE_SETUP_HOME="$CSYS_HOME/sys-setup/programs/vscode"
 
-if [ $(uname -o) == "Msys" ]; then
+if [[ "$(uname -s)" =~ MINGW64_NT* ]]; then
   VS_CODE_HOME_USER="$HOME/AppData/Roaming/Code/User"
   extra_link_flag="--hard"
 elif [ "$(uname -s)" == "Linux" ]; then
