@@ -20,8 +20,8 @@ fi
 export FISH_SHELL="fish"
 export BASH_SHELL="bash"
 
-if [ -n "$BASH" ]; then
-  export CSYS_SHELL="$BASH_SHELL"
-elif [ -n "$FISH_VERSION" ]; then
+if [ "$1" == "$FISH_SHELL" ]; then
   export CSYS_SHELL="$FISH_SHELL"
+else
+  export CSYS_SHELL="$BASH_SHELL"
 fi

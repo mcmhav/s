@@ -355,7 +355,6 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "vsintellicode.python.completionsEnabled": false,
     "window.zoomLevel": 0,
-    "workbench.activityBar.visible": false,
     "workbench.colorCustomizations": {
         "activityBar.activeBorder": "#80cbc4",
         "activityBar.background": "#0f111a",
@@ -742,5 +741,7 @@
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
     },
-    "explorer.autoReveal": false
+    "workbench.activityBar.visible": false,
+    "workbench.tips.enabled": false,
+    "gitlens.codeLens.recentChange.enabled": false
 }
