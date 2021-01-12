@@ -18,17 +18,11 @@ non_gui_config() {
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.pylintrc" "$HOME/.pylintrc"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.pydocstylerc" "$HOME/.pydocstylerc"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.style.yapf" "$HOME/.style.yapf"
-  ln -sf "$CSYS_HOME/sys-setup/fish" "$HOME/.config/fish"
+  ln -sf "$CSYS_HOME/sys-setup/fish" "$HOME/.config/"
 }
 gui_config() {
-  if [ ! -d "$HOME/.jupyter" ]; then
-    mkdir "$HOME/.jupyter"
-  fi
-  ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.jupyter" "$HOME/.jupyter"
-  if [ ! -d "$HOME/.ipython" ]; then
-    mkdir "$HOME/.ipython"
-  fi
-  ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.ipython" "$HOME/.ipython"
+  ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.jupyter" "$HOME/"
+  ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.ipython" "$HOME/"
   if [[ "$(uname -s)" =~ MINGW64_NT* ]]; then
     ln -sf --hard "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/AppData/Roaming/Hyper/.hyper.js"
   else
@@ -50,6 +44,9 @@ RETURN_TO=$(pwd)
 cd "$CONFIG_HOME" || exit
 
 # TODO: use CSYS_OS-variable
+source "$CSYS_HOME/sys-setup/bash/bashrc/.bashcsysrc"
+source "$CSYS_HOME/sys-setup/bash/bashrc/.bashSourcerc"
+
 if [ "$(uname -s)" == "Linux" ]; then
   if [ "$(uname -m)" == "armv7l" ]; then
     source "$CSYS_HOME/sys-setup/bash/bashrc/.bash.winrc"
@@ -83,9 +80,3 @@ fi
 non_gui_program_setup
 
 cd "$RETURN_TO" || exit
-
-# function:
-# npm installs:
-#   eslint
-#   babel-eslint
-#	node-notifier

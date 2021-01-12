@@ -29,22 +29,45 @@ ln_mklink() {
   source param_parser --params "f hard force" --incomming_params "$@"
   IFS=' ' read -r -a LINK_PATHS <<< $PARAM_REST
 
-  link_to="${LINK_PATHS[0]}"
-  link_from="${LINK_PATHS[1]}"
-  link_to_slash_replaced="${link_to//\//\\}"
+  # link_to="${LINK_PATHS[0]}"
+  link_from="${LINK_PATHS[-1]}"
   link_from_slash_replaced="${link_from//\//\\}"
-  link_to_win_style="${link_to_slash_replaced/#\\c/C:}"
-  link_from_win_style="${link_from_slash_replaced/#\\c/C:}"
+
+  links_to=${LINK_PATHS[@]::${#LINK_PATHS[@]}-1}
 
   mklink_flag="/J"
   if [ ! -z "$PARAM_HARD" ]; then
     mklink_flag="/h"
   fi
-  if [ ! -z "PARAM_F" ]; then
-    rm -f "$link_from_win_style"
-  fi
 
-  cmd.exe /c "mklink "$mklink_flag" "$link_from_win_style" "$link_to_win_style
+  for link_to in ${links_to[@]}; do
+    link_from_win_style="${link_from_slash_replaced/#\\c/C:}"
+
+    link_to_slash_replaced="${link_to//\//\\}"
+    link_to_win_style="${link_to_slash_replaced/#\\c/C:}"
+
+    if [[ -d "$link_to_win_style" && -d "$link_from_win_style" ]]; then
+      FOLDER_NAME=$(basename $link_to_win_style)
+      FOLDER_SEPARATOR=""
+      if [ "${link_from_win_style: -1}" != "\\" ]; then
+        FOLDER_SEPARATOR="\\"
+      fi
+      link_from_win_style="$link_from_win_style$FOLDER_SEPARATOR$FOLDER_NAME"
+    elif [ -d "$link_from_win_style" ]; then
+      FOLDER_NAME=$(basename $link_to_win_style)
+      FOLDER_SEPARATOR=""
+      if [ "${link_from_win_style: -1}" != "\\" ]; then
+        FOLDER_SEPARATOR="\\"
+      fi
+      link_from_win_style="$link_from_win_style$FOLDER_SEPARATOR$FOLDER_NAME"
+    fi
+
+    if [ ! -z "PARAM_F" ]; then
+      rm -rf "$link_from_win_style"
+    fi
+
+    cmd.exe /c "mklink "$mklink_flag" "$link_from_win_style" "$link_to_win_style
+  done
 }
 
 ln_mklink "$@"

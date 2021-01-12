@@ -30,13 +30,13 @@ storeExtentions() {
     storeLocation="$1"
   fi
 
-  code --list-extensions >"$VS_CODE_SETUP_HOME/$storeLocation"
+  code --list-extensions > "$VS_CODE_SETUP_HOME/$storeLocation"
 }
 
 makeDiff() {
   tmp="$PWD"
   cd "$VS_CODE_SETUP_HOME" || exit
-  diff extentions $1 | grep ">" | sed 's/> //g' >$2
+  diff --strip-trailing-cr extentions $1 | grep ">" | sed 's/> //g' >$2
   cd "$tmp" || exit
 }
 
@@ -51,9 +51,9 @@ uninstallDiff() {
   loggit "uninstall list:"
   cat $VS_CODE_SETUP_HOME/$diffList
 
-  while read -r l; do
-    code --uninstall-extension $l
-  done <"$VS_CODE_SETUP_HOME"/$diffList
+  while IFS= read -r l; do
+    code --uninstall-extension "$l"
+  done < "$VS_CODE_SETUP_HOME/$diffList"
 
   rm $VS_CODE_SETUP_HOME/$tmpList
   rm $VS_CODE_SETUP_HOME/$diffList
@@ -64,11 +64,13 @@ installExtentions() {
 
   uninstallDiff
 
-  while read l; do
-    if ! code --list-extensions | grep $l >/dev/null; then
-      code --install-extension $l
+  while IFS= read -r l; do
+    # Checking and strippig
+    # Stripping to handled swithing between os's
+    if ! code --list-extensions | grep "${l//[$'\t\r\n ']}" >/dev/null; then
+      code --install-extension "${l//[$'\t\r\n ']}"
     fi
-  done <"$VS_CODE_SETUP_HOME"/extentions
+  done < "$VS_CODE_SETUP_HOME/extentions"
 }
 
 usage() {
@@ -101,4 +103,3 @@ while [ "$1" != "" ]; do
   esac
   shift
 done
-

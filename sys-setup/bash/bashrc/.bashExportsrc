@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SCRIPT_PATH=$(dirname $(realpath -s $0))
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 
@@ -40,8 +42,6 @@ if [ -n "$(command -v ruby)" ]; then
 	PATH=$PATH:"$(ruby -r rubygems -e "puts Gem.user_dir")/bin"
 fi
 export PATH=$PATH
-
-eval "$(nodenv init -)"
 
 # gcloud currently needs python 2
 export CLOUDSDK_PYTHON="$HOME/.pyenv/versions/2.7.16/bin/python"
