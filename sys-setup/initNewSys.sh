@@ -9,8 +9,6 @@ non_gui_config() {
 
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.vimrc" "$HOME/.vimrc"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.tmux.conf" "$HOME/.tmux.conf"
-  # ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.gitconfig" "$HOME/.gitconfig"
-  # ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.gitignore" "$HOME/.gitignore"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.eslintrc.js" "$HOME/.eslintrc.js"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.prettierrc.js" "$HOME/.prettierrc.js"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.pylintrc" "$HOME/.pylintrc"
