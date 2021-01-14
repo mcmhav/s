@@ -4,3 +4,4 @@ lin-sys-setup/.scripts/timeLogging/*.log
 *.swp
 update-notifier-*.json
 nodemon.json
+.vscode

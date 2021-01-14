@@ -16,7 +16,6 @@ function timer_stop() {
 
   if [ "$timer_show" -gt "900" ]; then
     notifyer "Done!!!"
-    # tput bel
   fi
 
   unset timer
@@ -35,7 +34,6 @@ function error_log() {
     # Ctrl + C - exit
     promt_message="▼~$1"
     promt_message_spacer="|"
-    # promt_message="$(printf \\xf0\\x9f\\x92\\xa9) ~$1|"
   else
     printf ""
   fi

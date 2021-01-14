@@ -14,7 +14,7 @@ installStuff() {
 
 	brew update
 	brew upgrade
-	brew cask upgrade
+	brew upgrade --cask
 	brew tap homebrew/services
 
 	# brews
@@ -69,8 +69,8 @@ installBrews() {
 
 	while read -r l; do
 		read -ra BREW_PACKAGE <<<"$l"
-		if ! brew cask ls --versions "${BREW_PACKAGE[0]}" >/dev/null; then
-			brew cask install "$l"
+		if ! brew ls --cask --versions "${BREW_PACKAGE[0]}" >/dev/null; then
+			brew install --cask "$l"
 		fi
 	done <configs/casks
 }

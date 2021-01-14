@@ -32,7 +32,6 @@ non_gui_program_setup() {
 }
 gui_program_setup() {
   programs/atom/setup.sh --install
-  # programs/subl/setup.sh # not using
   programs/vscode/setup.sh --install
 }
 
@@ -45,8 +44,6 @@ cd "$CONFIG_HOME" || exit
 # TODO: use CSYS_OS-variable
 source "$CSYS_HOME/sys-setup/bash/bashrc/.bashcsysrc"
 source "$CSYS_HOME/sys-setup/bash/bashrc/.bashSourcerc"
-
-exit
 
 non_gui_config
 gui_config
