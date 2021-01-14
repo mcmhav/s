@@ -15,7 +15,7 @@ installStuff() {
 	brew update
 	brew upgrade
 	brew cask upgrade
-  brew tap homebrew/services
+	brew tap homebrew/services
 
 	# brews
 	installBrews
@@ -27,26 +27,12 @@ installStuff() {
 		pyenv install --skip-existing 3.7.7
 	fi
 
-  $CSYS_HOME/sys-setup/programs/pip/setup.sh
-
-	# gems
-	if ! [ -x "$(command -v pod)" ]; then
-		sudo gem install cocoapods
-	fi
-
-	# gos
-	installGos
+	$CSYS_HOME/sys-setup/programs/pip/setup.sh
 
 	# mac-os setup
 	if [ ! -d ~/Pictures/screenshots ]; then
 		mkdir ~/Pictures/screenshots
 	fi
-	if [ ! -d ~/.nvm ]; then
-		mkdir ~/.nvm
-	fi
-  if [ ! -d "$HOME/.wakatime" ]; then
-    mkdir "$HOME/.wakatime"
-  fi
 
 	defaults write com.apple.screencapture location ~/Pictures/screenshots
 
@@ -73,32 +59,20 @@ installBrews() {
 	loggit "Installing brews"
 
 	while read -r l; do
-		read -ra BREW_PACKAGE <<<$l
+		read -ra BREW_PACKAGE <<<"$l"
 		if ! brew ls --versions "${BREW_PACKAGE[0]}" >/dev/null; then
 			brew install "$l"
 		fi
 	done <configs/brews
 
-  loggit "Installing brews casks"
+	loggit "Installing brews casks"
 
 	while read -r l; do
-		read -ra BREW_PACKAGE <<<$l
+		read -ra BREW_PACKAGE <<<"$l"
 		if ! brew cask ls --versions "${BREW_PACKAGE[0]}" >/dev/null; then
 			brew cask install "$l"
 		fi
 	done <configs/casks
-}
-
-installGos() {
-	while read -r l; do
-		go get -u "$l"
-	done <configs/gos
-}
-
-installGems() {
-	while read -r l; do
-		gem install "$l"
-	done <configs/gems
 }
 
 CONFIG_HOME="$CSYS_HOME/sys-setup/os/mac"

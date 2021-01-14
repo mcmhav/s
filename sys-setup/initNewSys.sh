@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-export CSYS_HOME="$HOME/r/s"
-
 non_gui_config() {
   if [ ! -d "$HOME/.config" ]; then
     mkdir "$HOME/.config"
@@ -18,7 +16,7 @@ non_gui_config() {
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.pylintrc" "$HOME/.pylintrc"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.pydocstylerc" "$HOME/.pydocstylerc"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.style.yapf" "$HOME/.style.yapf"
-  ln -sf "$CSYS_HOME/sys-setup/fish" "$HOME/.config/"
+  ln -sf "$CSYS_HOME/sys-setup/programs/fish" "$HOME/.config/"
 }
 gui_config() {
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.jupyter" "$HOME/"
@@ -38,6 +36,7 @@ gui_program_setup() {
   programs/vscode/setup.sh --install
 }
 
+CSYS_HOME="$HOME/r/s"
 CONFIG_HOME="$CSYS_HOME/sys-setup"
 RETURN_TO=$(pwd)
 
@@ -47,35 +46,26 @@ cd "$CONFIG_HOME" || exit
 source "$CSYS_HOME/sys-setup/bash/bashrc/.bashcsysrc"
 source "$CSYS_HOME/sys-setup/bash/bashrc/.bashSourcerc"
 
-if [ "$(uname -s)" == "Linux" ]; then
-  if [ "$(uname -m)" == "armv7l" ]; then
-    source "$CSYS_HOME/sys-setup/bash/bashrc/.bash.winrc"
-  else
-    source "$CSYS_HOME/sys-setup/bash/bashrc/.bash.winrc"
-  fi
-elif [ "$(uname -s)" == "Darwin" ]; then
-  source "$CSYS_HOME/sys-setup/bash/bashrc/.bash.winrc"
-elif [[ "$(uname -s)" =~ MINGW64_NT* ]]; then
-  source "$CSYS_HOME/sys-setup/bash/bashrc/.bash.winrc"
-fi
+exit
 
 non_gui_config
 gui_config
 
-if [ "$(uname -s)" == "Linux" ]; then
-  if [ "$(uname -m)" == "armv7l" ]; then
-    ./os/pi/setup.sh
-  else
-    ./os/lin/setup.sh
-    gui_program_setup
-  fi
-elif [ "$(uname -s)" == "Darwin" ]; then
+case "$CSYS_OS" in
+"$PI_OS") ./os/pi/setup.sh ;;
+"$LIN_OS")
+  ./os/lin/setup.sh
+  gui_program_setup
+  ;;
+"$MAC_OS")
   ./os/mac/setup.sh
   gui_program_setup
-elif [[ "$(uname -s)" =~ MINGW64_NT* ]]; then
+  ;;
+"$WIN_OS")
   ./os/win/setup.sh
   gui_program_setup
-fi
+  ;;
+esac
 
 non_gui_program_setup
 

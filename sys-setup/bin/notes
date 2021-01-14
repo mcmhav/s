@@ -5,7 +5,7 @@ NOTES_PATH="$HOME/r/computas/aker/subsense/notes"
 
 cd "$NOTES_PATH" || exit
 
-DATE=`date '+%Y.%m.%d'`
+DATE=$(date '+%Y.%m.%d')
 
 SUB_NAME=""
 if [ -n "$1" ]; then

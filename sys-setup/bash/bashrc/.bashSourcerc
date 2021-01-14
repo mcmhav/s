@@ -2,7 +2,6 @@
 
 bashWD="$CSYS_HOME/sys-setup/bash"
 # adding extra sources
-source "$bashWD"/bashrc/.bashHelperFuncsrc
 source "$bashWD"/bashrc/.bashGitrc
 source "$bashWD"/bashrc/.bashAliasesrc
 source "$bashWD"/bashrc/.bashExportsrc

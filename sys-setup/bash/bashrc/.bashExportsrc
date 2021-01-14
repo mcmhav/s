@@ -1,24 +1,18 @@
 #!/bin/bash
 
-SCRIPT_PATH=$(dirname $(realpath -s $0))
-
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 
 # go sgit
 export GOPATH="$HOME/.go"
 
-if [ "$PI_OS" == "$CSYS_OS" ]; then
-	export GOROOT=/usr/lib/go
-elif [ "$LIN_OS" == "$CSYS_OS" ]; then
-	export GOROOT=/usr/local/opt/go/libexec
-elif [ "$MAC_OS" == "$CSYS_OS" ]; then
-	export GOROOT=/usr/local/opt/go/libexec
-elif [ "$WIN_OS" == "$CSYS_OS" ]; then
-	export GOROOT=/usr/local/opt/go/libexec
-else
-	export GOROOT=/usr/local/opt/go/libexec
-fi
+case "$CSYS_OS" in
+"$PI_OS") export GOROOT=/usr/lib/go ;;
+"$LIN_OS") export GOROOT=/usr/local/opt/go/libexec ;;
+"$MAC_OS") export GOROOT=/usr/local/opt/go/libexec ;;
+"$WIN_OS") export GOROOT=/usr/local/opt/go/libexec ;;
+*) export GOROOT=/usr/local/opt/go/libexec ;;
+esac
 
 # android
 export ANDROID_HOME=/usr/local/share/android-sdk

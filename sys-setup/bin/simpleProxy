@@ -15,37 +15,38 @@ simpleProxy() {
 
   while [ "$1" != "" ]; do
     case $1 in
-      -ru | --reverse-url )
-        shift
-        if test $# -gt 0; then
-          REVERSE_URL=$1
-        else
-          loggit "no reverse url arg specified"
-          exit 1
-        fi
-        ;;
-      -p | --port )
-        shift
-        if test $# -gt 0; then
-          PORT=$1
-        else
-          loggit "no port arg specified"
-          exit 1
-        fi
-        ;;
-      -h | --help )
-        echo "$display_help"
-        exit
-        ;;
-      * )
-        loggit "Time plz"
+    -ru | --reverse-url)
+      shift
+      if test $# -gt 0; then
+        REVERSE_URL=$1
+      else
+        loggit "no reverse url arg specified"
+        exit 1
+      fi
+      ;;
+    -p | --port)
+      shift
+      if test $# -gt 0; then
+        PORT=$1
+      else
+        loggit "no port arg specified"
+        exit 1
+      fi
+      ;;
+    -h | --help)
+      echo "$display_help"
+      exit
+      ;;
+    *)
+      loggit "Time plz"
+      ;;
     esac
     shift
   done
 
   loggit "$REVERSE_URL can be reached on $(ipconfig getifaddr en0):$PORT"
 
-  mitmproxy -p $PORT --mode reverse:$REVERSE_URL --showhost
+  mitmproxy -p "$PORT" --mode reverse:"$REVERSE_URL" --showhost
 }
 
 simpleProxy "$@"

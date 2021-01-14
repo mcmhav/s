@@ -17,6 +17,6 @@ FILES="original/*"
 count=0
 
 for f in $FILES; do
-  primitive -i $f -o output-$count.png -n 300 -s 3821
-  (( count++ ))
+  primitive -i "$f" -o output-$count.png -n 300 -s 3821
+  ((count++))
 done

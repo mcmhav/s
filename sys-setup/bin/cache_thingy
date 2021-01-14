@@ -9,7 +9,7 @@ cache_thingy_start() {
 
   cd "$HOME/r/cache-thingy" || exit
   ./docker_start.sh -s
-  cd $RETURN_TO || exit
+  cd "$RETURN_TO" || exit
 }
 
 cache_thingy_run() {
@@ -17,7 +17,7 @@ cache_thingy_run() {
 
   cd "$HOME/r/cache-thingy" || exit
   ./docker_start.sh -r
-  cd $RETURN_TO || exit
+  cd "$RETURN_TO" || exit
 }
 
 while [ "$1" != "" ]; do

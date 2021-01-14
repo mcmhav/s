@@ -5,18 +5,17 @@ VS_CODE_HOME_USER=""
 
 VS_CODE_SETUP_HOME="$CSYS_HOME/sys-setup/programs/vscode"
 
-if [[ "$(uname -s)" =~ MINGW64_NT* ]]; then
+case "$CSYS_OS" in
+"$MAC_OS") VS_CODE_HOME_USER="$HOME/Library/Application Support/Code/User" ;;
+"$WIN_OS")
   VS_CODE_HOME_USER="$HOME/AppData/Roaming/Code/User"
   extra_link_flag="--hard"
-elif [ "$(uname -s)" == "Linux" ]; then
-  loggit "TODO vscode setup"
+  ;;
+*)
+  loggit "TODO: Not set up for os $CSYS_OS"
   exit 1
-elif [ "$(uname -s)" == "Darwin" ]; then
-  VS_CODE_HOME_USER="$HOME/Library/Application Support/Code/User"
-elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
-  loggit "TODO"
-  exit 1
-fi
+  ;;
+esac
 
 handleVSUser() {
   ln -sf "$extra_link_flag" "$VS_CODE_SETUP_HOME/User/settings.json" "$VS_CODE_HOME_USER/settings.json"
@@ -30,13 +29,13 @@ storeExtentions() {
     storeLocation="$1"
   fi
 
-  code --list-extensions > "$VS_CODE_SETUP_HOME/$storeLocation"
+  code --list-extensions >"$VS_CODE_SETUP_HOME/$storeLocation"
 }
 
 makeDiff() {
   tmp="$PWD"
   cd "$VS_CODE_SETUP_HOME" || exit
-  diff --strip-trailing-cr extentions $1 | grep ">" | sed 's/> //g' >$2
+  diff --strip-trailing-cr extentions "$1" | grep ">" | sed 's/> //g' >"$2"
   cd "$tmp" || exit
 }
 
@@ -49,14 +48,14 @@ uninstallDiff() {
   makeDiff $tmpList $diffList
 
   loggit "uninstall list:"
-  cat $VS_CODE_SETUP_HOME/$diffList
+  cat "$VS_CODE_SETUP_HOME/$diffList"
 
   while IFS= read -r l; do
     code --uninstall-extension "$l"
-  done < "$VS_CODE_SETUP_HOME/$diffList"
+  done <"$VS_CODE_SETUP_HOME/$diffList"
 
-  rm $VS_CODE_SETUP_HOME/$tmpList
-  rm $VS_CODE_SETUP_HOME/$diffList
+  rm "$VS_CODE_SETUP_HOME/$tmpList"
+  rm "$VS_CODE_SETUP_HOME/$diffList"
 }
 
 installExtentions() {
@@ -67,10 +66,10 @@ installExtentions() {
   while IFS= read -r l; do
     # Checking and strippig
     # Stripping to handled swithing between os's
-    if ! code --list-extensions | grep "${l//[$'\t\r\n ']}" >/dev/null; then
-      code --install-extension "${l//[$'\t\r\n ']}"
+    if ! code --list-extensions | grep "${l//[$'\t\r\n ']/}" >/dev/null; then
+      code --install-extension "${l//[$'\t\r\n ']/}"
     fi
-  done < "$VS_CODE_SETUP_HOME/extentions"
+  done <"$VS_CODE_SETUP_HOME/extentions"
 }
 
 usage() {

@@ -22,8 +22,6 @@ fi
 #alias la='ls -A'
 #alias l='ls -CF'
 
-# alias mcwd="echo $PWD | tr / '\n' | xargs -I X sh -c 'echo X | head -c 1; echo' | tr '\n' /"
-
 alias cake='sh $CSYS_HOME/sys-setup/.dotfiles/.cakeInit.sh'
 # alias scron="su -c $(printf "%q " "crontab -u $USER -e")"
 alias scron="sudo EDITOR=nano crontab -u $USER -e"

@@ -5,8 +5,8 @@ fish
 git
 go
 jq
-nvm
 pipenv
+nodenv
 pyenv
 python
 readline

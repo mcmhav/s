@@ -1,14 +1,11 @@
 #!/bin/bash
 
 notifyer() {
-  if [ "$(uname -s)" == "Linux" ]; then
-      notify-send -u critical "$@"
-  elif [ "$(uname -s)" == "Darwin" ]; then
-      # lol=$(curl -s "http://labs.bible.org/api/?passage=random")
-      osascript -e "display notification \"$*\" with title \"God:\""
-  else
-      loggit "todoooo"
-  fi
+    case "$CSYS_OS" in
+    "$LIN_OS") notify-send -u critical "$@" ;;
+    "$MAC_OS") osascript -e "display notification \"$*\" with title \"God:\"" ;;
+    *) loggit "TODO: Not implemented for $CSYS_OS" ;;
+    esac
 }
 
 notifyer "$@"

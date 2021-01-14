@@ -59,7 +59,7 @@ function fish_prompt
 
     set -l arrow "$green$arrow"
     if test $__last_command_exit_status != 0
-        set arrow "$red💩 "
+        set arrow "$red▼ "
     end
 
     set -l cwd $cyan(basename (prompt_pwd))
