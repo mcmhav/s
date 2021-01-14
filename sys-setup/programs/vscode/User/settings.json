@@ -32,6 +32,7 @@
         "astype",
         "bfill",
         "bokeh",
+        "cygwin",
         "dataset",
         "dateutil",
         "dropdown",
@@ -57,6 +58,7 @@
         "pipenv",
         "pylint",
         "pytest",
+        "scrollback",
         "scrollbar",
         "tensorboard",
         "tensorflow",
@@ -309,7 +311,7 @@
     "gitlens.hovers.avatars": false,
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.settings.mode": "advanced",
-    "gitlens.views.lineHistory.enabled": false,
+    "gitlens.views.lineHistory.enabled": true,
     "gitlens.views.repositories.enabled": false,
     "go.autocompleteUnimportedPackages": true,
     "go.formatTool": "goimports",
@@ -743,5 +745,6 @@
     },
     "workbench.activityBar.visible": false,
     "workbench.tips.enabled": false,
-    "gitlens.codeLens.recentChange.enabled": false
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.menus": false
 }
