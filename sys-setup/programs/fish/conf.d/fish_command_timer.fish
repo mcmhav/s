@@ -172,14 +172,17 @@ function fish_command_timer_postexec -e fish_postexec
   if [ $num_mins -gt 0 ]
     set time_str {$time_str}{$num_mins}"m "
   end
+  if [ $num_secs -gt 0 ]
+    set time_str {$time_str}{$num_secs}"s"
+  end
   set -l num_millis_pretty ''
   if begin
       set -q fish_command_timer_millis; and \
       [ "$fish_command_timer_millis" -ne 0 ]
      end
-    set num_millis_pretty (printf '%03d' $num_millis)
+    set num_millis_pretty (printf '%01d' $num_millis)
   end
-  set time_str {$time_str}{$num_secs}s{$num_millis_pretty}
+  set time_str {$time_str}{$num_millis_pretty}
   if begin
       set -q fish_command_timer_export_cmd_duration_str; and \
       [ "$fish_command_timer_export_cmd_duration_str" -ne 0 ]
