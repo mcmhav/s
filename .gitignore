@@ -8,4 +8,7 @@ nodemon.json
 # .dotfiles XDG_CONFIG_HOME bloats
 # TODO: handle applications usage of XDG_CONFIG_HOME better
 # is this used wrong?
+# ref: https://github.com/vercel/hyper/blob/61c3d760da37e6d81d9bf77b7d9380bc94ea8bcc/app/config/paths.ts#L12
+# "shell" from .hyper.js is needed for hyper to know XDG_CONFIG_HOME?
+# shell initialized before it can read XDG_CONFIG_HOME?
 sys-setup/.dotfiles/hyper
