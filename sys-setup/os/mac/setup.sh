@@ -46,13 +46,6 @@ installStuff() {
 
 	# stop mouse from accelerating
 	defaults write .GlobalPreferences com.apple.mouse.scaling -1
-
-	# remove white line
-	defaults write -app Visual\ Studio\ Code NSRequiresAquaSystemAppearance -bool No
-	defaults write -app Hyper NSRequiresAquaSystemAppearance -bool No
-	defaults write -app Google\ Chrome NSRequiresAquaSystemAppearance -bool No
-	defaults write -app Atom\ Beta NSRequiresAquaSystemAppearance -bool No
-	defaults write -app Station NSRequiresAquaSystemAppearance -bool No
 }
 
 installBrews() {
