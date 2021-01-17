@@ -1,20 +1,5 @@
 #!/usr/bin/env bash
 
-OPTIND=1
-OPTIONS=h?vsfdbiLn
-LONGOPTS=hard,force
-! PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTS --name "$0" -- "$@")
-if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
-  # e.g. return value is 1
-  #  then getopt has complained about wrong arguments to stdout
-  exit 2
-fi
-# read getopt’s output this way to handle the quoting right:
-eval set -- "$PARSED"
-
-LINK_FILE=""
-LINK_FILE_TO=""
-
 VERBOSE=0
 
 HELP_TEXT="Usage: $(basename $0) [OPTIONS]
@@ -27,7 +12,7 @@ Options:
 
 ln_mklink() {
   source param_parser --params "f hard force" --incomming_params "$@"
-  IFS=' ' read -r -a LINK_PATHS <<< $PARAM_REST
+  IFS=' ' read -r -a LINK_PATHS <<<$PARAM_REST
 
   # link_to="${LINK_PATHS[0]}"
   link_from="${LINK_PATHS[-1]}"
