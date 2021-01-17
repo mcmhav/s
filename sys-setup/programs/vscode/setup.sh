@@ -88,7 +88,7 @@ while [ "$1" != "" ]; do
     verbose="true"
     ;;
   -i | --install)
-    # installExtentions
+    installExtentions
     handleVSUser
     ;;
   -h | --help)
