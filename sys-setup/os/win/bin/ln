@@ -47,7 +47,7 @@ ln_mklink() {
       link_from_win_style="$link_from_win_style$FOLDER_SEPARATOR$FOLDER_NAME"
     fi
 
-    if [ ! -z "PARAM_F" ]; then
+    if [ ! -z "$PARAM_F" ]; then
       rm -rf "$link_from_win_style"
     fi
 
