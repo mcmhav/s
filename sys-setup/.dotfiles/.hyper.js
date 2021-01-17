@@ -4,7 +4,10 @@
 
 const dynamicShells = {
   win32: [
-    { shell: 'C:\\Program Files\\Git\\bin\\bash.exe' },
+    {
+      shell: 'C:\\Program Files\\Git\\bin\\bash.exe',
+      useConpty: true,
+    },
     { shell: 'C:\\cygwin64\\bin\\bash.exe' },
     { shell: 'C:\\msys64\\usr\\bin\\bash.exe' },
     { shell: 'C:\\msys64\\bin\\bash.exe' },
@@ -28,9 +31,14 @@ const customPlugins = {
     const fs = module.require('fs');
 
     if (config && config.dynamicShells && config.dynamicShells[platform]) {
-      config.dynamicShells[platform].every(({ shell }) => {
+      config.dynamicShells[platform].every(({ shell, ...rest }) => {
         if (fs.existsSync(shell)) {
           config.shell = shell;
+          if (rest) {
+            for (property in rest) {
+              config[property] = rest[property];
+            }
+          }
           return false;
         }
         return true;

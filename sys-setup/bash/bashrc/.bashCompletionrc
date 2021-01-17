@@ -11,7 +11,7 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 # shims and autocompletion, pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
+if command -v pyenv 1>/dev/null 2>&1 && [ "$CSYS_OS" != "$WIN_OS" ]; then
   eval "$(pyenv init -)"
 fi
 

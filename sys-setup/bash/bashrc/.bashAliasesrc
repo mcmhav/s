@@ -38,3 +38,5 @@ alias space='du -h -d 2 | sort -n'
 alias topCpu='top -F -R -o cpu'
 
 alias updateBashRC='source ~/.bashrc'
+
+alias :q='exit'

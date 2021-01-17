@@ -1,7 +1,11 @@
 .DS_Store
-lin-sys-setup/.scripts/timeLogging/*.log
 .mypy_cache/
 *.swp
 update-notifier-*.json
 nodemon.json
 .vscode
+
+# .dotfiles XDG_CONFIG_HOME bloats
+# TODO: handle applications usage of XDG_CONFIG_HOME better
+# is this used wrong?
+sys-setup/.dotfiles/hyper

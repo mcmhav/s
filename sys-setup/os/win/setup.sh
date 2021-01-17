@@ -5,7 +5,11 @@ installStuff() {
 	# - https://github.com/nvm-sh/nvm/issues/1643
 	# - https://github.com/coreybutler/nvm-windows
 	# - nodenv seems to be a good alternative, have not tested with windows
-	echo "TODO"
+
+	# pyenv
+	if [ ! -d "$HOME/.pyenv" ]; then
+		git clone https://github.com/pyenv-win/pyenv-win.git "$HOME/.pyenv"
+	fi
 }
 
 CONFIG_HOME="$CSYS_HOME/sys-setup/os/mac"
