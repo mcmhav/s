@@ -17,7 +17,13 @@ non_gui_config() {
   ln -sf "$CSYS_HOME/sys-setup/programs/fish" "$HOME/.config/"
 }
 gui_config() {
+  if [ ! -L "$HOME/.jupyter" ]; then
+    rm -rf "$HOME/.jupyter"
+  fi
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.jupyter" "$HOME/"
+  if [ ! -L "$HOME/.ipython" ]; then
+    rm -rf "$HOME/.ipython"
+  fi
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.ipython" "$HOME/"
   case "$CSYS_OS" in
   "$WIN_OS") ln -sf --hard "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/AppData/Roaming/Hyper/.hyper.js" ;;

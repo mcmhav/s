@@ -167,3 +167,13 @@ nnoremap <silent> ,f :FZF<cr>
 nnoremap <silent> ,F :FZF ~<cr>
 " Search all
 nnoremap <silent> ,s :Ag<cr>
+" Coc
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
