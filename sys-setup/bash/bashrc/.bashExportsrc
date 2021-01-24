@@ -15,7 +15,7 @@ case "$CSYS_OS" in
 esac
 
 # android
-export ANDROID_HOME=/usr/local/share/android-sdk
+export ANDROID_HOME="/usr/local/share/android-sdk"
 
 # path stuff
 PATHS=(
@@ -23,7 +23,6 @@ PATHS=(
 	"/git/tools/bin"
 	"$PATH"
 	"/usr/local/bin"
-	# "/usr/local/go/bin" # pi/linux-golang?? export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 	"$GOPATH/bin"
 	"$GOROOT/bin"
 	"/usr/local/opt/python/libexec/bin"

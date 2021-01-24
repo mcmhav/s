@@ -27,7 +27,5 @@ export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 # Added for python c-building issues, due to big sur? https://github.com/pyenv/pyenv/issues/1643#issuecomment-695350501
 export SYSTEM_VERSION_COMPAT=1
 
-# export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
-
-# Set brew-ruby as ruby version
-# export PATH="/usr/local/opt/ruby/bin:$PATH"
+# https://support.apple.com/en-us/HT208050
+export BASH_SILENCE_DEPRECATION_WARNING=1

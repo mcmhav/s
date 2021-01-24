@@ -452,7 +452,7 @@
         "inputValidation.errorBorder": "#ff537050",
         "inputValidation.infoBorder": "#82aaff50",
         "inputValidation.warningBorder": "#ffcb6b50",
-        "list.activeSelectionBackground": "#0f111a",
+        "list.activeSelectionBackground": "#4b1c1c",
         "list.activeSelectionForeground": "#80cbc4",
         "list.dropBackground": "#ff537080",
         "list.focusBackground": "#8f93a220",
@@ -460,7 +460,7 @@
         "list.highlightForeground": "#80cbc4",
         "list.hoverBackground": "#0f111a",
         "list.hoverForeground": "#ffffff",
-        "list.inactiveSelectionBackground": "#00000030",
+        "list.inactiveSelectionBackground": "#ff53703f",
         "list.inactiveSelectionForeground": "#80cbc4",
         "listFilterWidget.background": "#00000030",
         "listFilterWidget.noMatchesOutline": "#00000030",
@@ -746,5 +746,7 @@
     "workbench.activityBar.visible": false,
     "workbench.tips.enabled": false,
     "gitlens.codeLens.recentChange.enabled": false,
-    "gitlens.menus": false
+    "gitlens.menus": false,
+    "tab-groups.gitBranchGroups": false,
+    "tab-groups.saveGlobally": false
 }

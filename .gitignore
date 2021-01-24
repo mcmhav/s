@@ -2,7 +2,7 @@
 .mypy_cache/
 *.swp
 update-notifier-*.json
-nodemon.json
+sys-setup/.dotfiles/configstore/nodemon.json
 .vscode
 
 # .dotfiles XDG_CONFIG_HOME bloats

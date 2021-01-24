@@ -42,7 +42,6 @@ installStuff() {
 	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.apple.Terminal.plist ~/Library/Preferences/com.apple.Terminal.plist
 	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
 	# ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.apple.dock.plist ~/Library/Preferences/com.apple.dock.plist
-	# ln -sf $CSYS_HOME/sys-setup/os/mac/configs/.hyper.js ~/.hyper.js
 
 	# stop mouse from accelerating
 	defaults write .GlobalPreferences com.apple.mouse.scaling -1

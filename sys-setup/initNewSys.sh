@@ -19,11 +19,10 @@ non_gui_config() {
 gui_config() {
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.jupyter" "$HOME/"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.ipython" "$HOME/"
-  if [[ "$(uname -s)" =~ MINGW64_NT* ]]; then
-    ln -sf --hard "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/AppData/Roaming/Hyper/.hyper.js"
-  else
-    ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/.hyper.js"
-  fi
+  case "$CSYS_OS" in
+  "$WIN_OS") ln -sf --hard "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/AppData/Roaming/Hyper/.hyper.js" ;;
+  *) ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/.hyper.js" ;;
+  esac
 }
 non_gui_program_setup() {
   programs/vim/setup.sh
@@ -39,7 +38,6 @@ RETURN_TO=$(pwd)
 
 cd "$CONFIG_HOME" || exit
 
-# TODO: use CSYS_OS-variable
 source "$CSYS_HOME/sys-setup/bash/bashrc/.bashcsysrc"
 source "$CSYS_HOME/sys-setup/bash/bashrc/.bashSourcerc"
 

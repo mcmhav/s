@@ -6,9 +6,6 @@
 
 [ -f /etc/shrc ] && source /etc/shrc
 
-# https://support.apple.com/en-us/HT208050
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
 export CSYS_HOME="$HOME/r/s"
 source "$CSYS_HOME/sys-setup/bash/bashrc/.bashcsysrc"
 source "$CSYS_HOME/sys-setup/bash/bashrc/.bashSourcerc"

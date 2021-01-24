@@ -25,7 +25,6 @@ fi
 alias cake='sh $CSYS_HOME/sys-setup/.dotfiles/.cakeInit.sh'
 # alias scron="su -c $(printf "%q " "crontab -u $USER -e")"
 alias scron="sudo EDITOR=nano crontab -u $USER -e"
-alias xterm="xterm & sleep 0.8s && transset-df -a"
 
 alias click='shutter -s'
 
