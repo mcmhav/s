@@ -41,6 +41,8 @@ installStuff() {
 	# app configs
 	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.apple.Terminal.plist ~/Library/Preferences/com.apple.Terminal.plist
 	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
+	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.yujitach.MenuMeters.plist ~/Library/Preferences/com.yujitach.MenuMeters.plist
+	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.ragingmenace.MenuMeters.plist ~/Library/Preferences/com.ragingmenace.MenuMeters.plist
 	# ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.apple.dock.plist ~/Library/Preferences/com.apple.dock.plist
 
 	# stop mouse from accelerating
