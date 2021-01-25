@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 non_gui_config() {
+  if [ ! -d "$HOME/.wakatime" ]; then
+    mkdir "$HOME/.wakatime"
+  fi
   if [ ! -d "$HOME/.config" ]; then
     mkdir "$HOME/.config"
   fi
