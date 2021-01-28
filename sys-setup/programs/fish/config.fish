@@ -11,4 +11,5 @@ pyenv init - | source
 
 # alias pipenv='env SHELL="/usr/local/bin/fish" pipenv'
 alias :q="exit"
-# status --is-interactive; and source (rbenv init -|psub)
+status --is-interactive; and source (rbenv init -|psub)
+status --is-interactive; and source (nodenv init -|psub)

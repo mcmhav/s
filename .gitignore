@@ -12,3 +12,4 @@ sys-setup/.dotfiles/configstore/nodemon.json
 # "shell" from .hyper.js is needed for hyper to know XDG_CONFIG_HOME?
 # shell initialized before it can read XDG_CONFIG_HOME?
 sys-setup/.dotfiles/hyper
+sys-setup/.dotfiles/fish
