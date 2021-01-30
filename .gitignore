@@ -3,6 +3,7 @@
 *.swp
 update-notifier-*.json
 sys-setup/.dotfiles/configstore/nodemon.json
+sys-setup/.dotfiles/jgit/
 .vscode
 
 # .dotfiles XDG_CONFIG_HOME bloats
