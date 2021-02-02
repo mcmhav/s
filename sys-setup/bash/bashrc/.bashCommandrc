@@ -23,16 +23,13 @@ function timer_stop() {
 trap 'timer_start' DEBUG
 
 function error_log() {
-  prompt_command__isnewline__last="$prompt_command__isnewline__curr"
-  prompt_command__isnewline__curr="$(history 1 | grep -Eo '^\ [0-9]+')"
-
   promt_message=""
   promt_message_spacer=""
-  if [[ $1 != 0 && $1 != 130 && "$prompt_command__isnewline__curr" != "$prompt_command__isnewline__last" ]] \
-    ; then # http://www.tldp.org/LDP/abs/html/exitcodes.html
+  if [[ $1 != 0 && $1 != 130 ]]; then
+    # http://www.tldp.org/LDP/abs/html/exitcodes.html
     # no error
     # Ctrl + C - exit
-    promt_message="▼~$1"
+    promt_message="▼"
     promt_message_spacer="|"
   else
     printf ""
