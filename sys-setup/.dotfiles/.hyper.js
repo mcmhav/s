@@ -73,7 +73,7 @@ module.exports = {
     cursorShape: 'BLOCK',
     cursorBlink: true,
     foregroundColor: '#5ee39b',
-    backgroundColor: '#101010DD',
+    backgroundColor: '#101010',
     selectionColor: 'rgb(167, 26, 154, 0.5)',
     borderColor: '#333',
     css: '',
@@ -105,6 +105,7 @@ module.exports = {
       lightWhite: '#FFFFFF',
     },
     opacity: 0.9,
+
     // Windows
     // - Make sure to use a full path if the binary name doesn't work
     // - Remove `--login` in shellArgs
@@ -125,6 +126,7 @@ module.exports = {
     'hyper-search',
     'hyper-pane',
     'hyper-reorderable-tabs',
+    'hyper-opacity',
   ],
   // localPlugins: ['hyper-dynamic-shell-selector'],
   keymaps: {},

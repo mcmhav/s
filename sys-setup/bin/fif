@@ -1,0 +1,14 @@
+#!/bin/bash
+
+find_in_files() {
+  search_location="."
+  if [ -n "$1" ]; then
+    search_location="$1"
+  fi
+
+  echo "$search_location"
+
+  ag "$search_location" | fzf -e
+}
+
+find_in_files "$@"
