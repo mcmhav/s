@@ -104,7 +104,7 @@ module.exports = {
       lightCyan: '#68FDFE',
       lightWhite: '#FFFFFF',
     },
-    opacity: 0.9,
+    opacity: 0.95,
 
     // Windows
     // - Make sure to use a full path if the binary name doesn't work

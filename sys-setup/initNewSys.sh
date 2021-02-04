@@ -28,10 +28,13 @@ gui_config() {
     rm -rf "$HOME/.ipython"
   fi
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.ipython" "$HOME/"
+
   case "$CSYS_OS" in
   "$WIN_OS") ln -sf --hard "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/AppData/Roaming/Hyper/.hyper.js" ;;
   *) ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/.hyper.js" ;;
   esac
+
+  ln -df "$CSYS_HOME/sys-setup/.dotfiles/alacritty" "$HOME/.config/"
 }
 non_gui_program_setup() {
   programs/vim/setup.sh

@@ -8,7 +8,7 @@ find_in_files() {
 
   echo "$search_location"
 
-  ag "$search_location" | fzf -e
+  ag "$search_location" | fzf -e --bind="enter:execute:nvim {} < /dev/tty"
 }
 
 find_in_files "$@"
