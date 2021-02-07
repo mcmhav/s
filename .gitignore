@@ -2,3 +2,4 @@
 lin-sys-setup/.scripts/timeLogging/*.log
 .mypy_cache/
 *.swp
+sys-setup/bash/bashrc/.secrets

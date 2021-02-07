@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+source get_secrets || exit
+
+curl "https://www.duckdns.org/update?domains=DUCK_DOMAIN&token=$DUCK_TOKEN"
