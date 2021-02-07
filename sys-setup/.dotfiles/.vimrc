@@ -1,6 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" Variables
+runtime variables.vim
+
 " Plugins
 runtime plugins.vim
 
