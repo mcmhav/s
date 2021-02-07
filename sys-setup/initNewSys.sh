@@ -34,7 +34,7 @@ gui_config() {
   *) ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/.hyper.js" ;;
   esac
 
-  ln -df "$CSYS_HOME/sys-setup/.dotfiles/alacritty" "$HOME/.config/"
+  ln -sf "$CSYS_HOME/sys-setup/.dotfiles/alacritty" "$HOME/.config/"
 }
 non_gui_program_setup() {
   programs/vim/setup.sh
