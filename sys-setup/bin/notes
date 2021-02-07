@@ -1,11 +1,15 @@
 #!/bin/bash
 
 RETURN_TO=$(pwd)
-NOTES_PATH="$HOME/r/computas/aker/subsense/notes"
+NOTES_PATH="$HOME/.c_notes"
+
+if [ ! -d "$NOTES_PATH" ]; then
+  mkdir "$NOTES_PATH"
+fi
 
 cd "$NOTES_PATH" || exit
 
-DATE=`date '+%Y.%m.%d'`
+DATE=$(date '+%Y.%m.%d')
 
 SUB_NAME=""
 if [ -n "$1" ]; then

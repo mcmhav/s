@@ -1,65 +1,77 @@
 #!/usr/bin/env bash
 
-export CSYS_HOME="$HOME/r/s"
-
 non_gui_config() {
+  if [ ! -d "$HOME/.wakatime" ]; then
+    mkdir "$HOME/.wakatime"
+  fi
+  if [ ! -d "$HOME/.config" ]; then
+    mkdir "$HOME/.config"
+  fi
   ln -sf "$CSYS_HOME/sys-setup/bash/.bashrc" "$HOME/.bashrc"
   ln -sf "$CSYS_HOME/sys-setup/bash/.bashrc" "$HOME/.bash_profile"
 
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.vimrc" "$HOME/.vimrc"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.tmux.conf" "$HOME/.tmux.conf"
-  ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.gitconfig" "$HOME/.gitconfig"
-  ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.gitignore" "$HOME/.gitignore"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.eslintrc.js" "$HOME/.eslintrc.js"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.prettierrc.js" "$HOME/.prettierrc.js"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.pylintrc" "$HOME/.pylintrc"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.pydocstylerc" "$HOME/.pydocstylerc"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.style.yapf" "$HOME/.style.yapf"
-  ln -sf "$CSYS_HOME/sys-setup/fish" "$HOME/.config/"
+  ln -sf "$CSYS_HOME/sys-setup/programs/fish" "$HOME/.config/"
 }
 gui_config() {
-  ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.jupyter" "$HOME/.jupyter"
-  ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.ipython" "$HOME/.ipython"
-  ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/.hyper.js"
+  if [ ! -L "$HOME/.jupyter" ]; then
+    rm -rf "$HOME/.jupyter"
+  fi
+  ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.jupyter" "$HOME/"
+  if [ ! -L "$HOME/.ipython" ]; then
+    rm -rf "$HOME/.ipython"
+  fi
+  ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.ipython" "$HOME/"
+
+  case "$CSYS_OS" in
+  "$WIN_OS") ln -sf --hard "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/AppData/Roaming/Hyper/.hyper.js" ;;
+  *) ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.hyper.js" "$HOME/.hyper.js" ;;
+  esac
+
+  ln -df "$CSYS_HOME/sys-setup/.dotfiles/alacritty" "$HOME/.config/"
 }
 non_gui_program_setup() {
   programs/vim/setup.sh
 }
 gui_program_setup() {
   programs/atom/setup.sh --install
-  # programs/subl/setup.sh # not using
   programs/vscode/setup.sh --install
 }
 
+CSYS_HOME="$HOME/r/s"
 CONFIG_HOME="$CSYS_HOME/sys-setup"
 RETURN_TO=$(pwd)
 
 cd "$CONFIG_HOME" || exit
 
+source "$CSYS_HOME/sys-setup/bash/bashrc/.bashcsysrc"
+source "$CSYS_HOME/sys-setup/bash/bashrc/.bashSourcerc"
+
 non_gui_config
 gui_config
 
-if [ "$(uname -s)" == "Linux" ]; then
-  if [ "$(uname -m)" == "armv7l" ]; then
-    ./os/pi/setup.sh
-  else
-    ./os/lin/setup.sh
-    gui_program_setup
-  fi
-elif [ "$(uname -s)" == "Darwin" ]; then
+case "$CSYS_OS" in
+"$PI_OS") ./os/pi/setup.sh ;;
+"$LIN_OS")
+  ./os/lin/setup.sh
+  gui_program_setup
+  ;;
+"$MAC_OS")
   ./os/mac/setup.sh
   gui_program_setup
-elif [ "$(uname -s)" == "MINGW64_NT-10.0" ]; then
+  ;;
+"$WIN_OS")
   ./os/win/setup.sh
   gui_program_setup
-fi
+  ;;
+esac
 
 non_gui_program_setup
 
 cd "$RETURN_TO" || exit
-
-# function:
-# npm installs:
-#   eslint
-#   babel-eslint
-#	node-notifier

@@ -1,5 +1,5 @@
 amethyst
-atom-beta
+homebrew/cask-versions/atom-beta
 avibrazil-rdm
 basictex
 docker
@@ -8,8 +8,9 @@ google-backup-and-sync
 google-chrome
 google-cloud-sdk
 hyper
-java
 signal
 steam
 visual-studio-code
-yujitach-menumeters
+menumeters
+dozer
+adoptopenjdk/openjdk/adoptopenjdk8

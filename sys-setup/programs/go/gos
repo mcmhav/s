@@ -1,0 +1,8 @@
+google.golang.org/appengine
+github.com/go-delve/delve/cmd/dlv
+github.com/sabhiram/go-wol/cmd/wol
+github.com/fogleman/primitive
+github.com/uudashr/gopkgs/v2/cmd/gopkgs
+github.com/ramya-rao-a/go-outline
+golang.org/x/lint/golint
+golang.org/x/tools/gopls

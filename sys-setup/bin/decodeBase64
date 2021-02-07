@@ -3,11 +3,11 @@
 decodeBase64() {
   TO_DECODE=$1
 
-  if [ -z $TO_DECODE ]; then
+  if [ -z "$TO_DECODE" ]; then
     TO_DECODE=$(pbpaste)
   fi
 
   echo "$TO_DECODE" | base64 --decode
 }
 
-decodeBase64 $1
+decodeBase64 "$1"

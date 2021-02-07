@@ -1,8 +1,7 @@
-nodejs
-npm
-ruby
 golang-go
 git
-nginx
 jq
 vim
+pipenv
+fzf
+silversearcher-ag

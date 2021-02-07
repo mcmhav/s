@@ -32,6 +32,7 @@
         "astype",
         "bfill",
         "bokeh",
+        "cygwin",
         "dataset",
         "dateutil",
         "dropdown",
@@ -57,6 +58,7 @@
         "pipenv",
         "pylint",
         "pytest",
+        "scrollback",
         "scrollbar",
         "tensorboard",
         "tensorflow",
@@ -285,7 +287,6 @@
     "editor.wordWrap": "on",
     "editor.wrappingIndent": "indent",
     "eslint.packageManager": "yarn",
-    "explorer.autoReveal": false,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "explorer.openEditors.visible": 0,
@@ -310,7 +311,7 @@
     "gitlens.hovers.avatars": false,
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.settings.mode": "advanced",
-    "gitlens.views.lineHistory.enabled": false,
+    "gitlens.views.lineHistory.enabled": true,
     "gitlens.views.repositories.enabled": false,
     "go.autocompleteUnimportedPackages": true,
     "go.formatTool": "goimports",
@@ -318,7 +319,7 @@
     "html.format.wrapLineLength": 90,
     "java.errors.incompleteClasspath.severity": "ignore",
     "java.format.settings.url": "~/r/s/sys-setup/.dotfiles/.settings/org.eclipse.jdt.core.prefs",
-    "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home",
+    "java.home": "",
     "javascript.updateImportsOnFileMove.enabled": "always",
     "markdown-table-formatter.enable": true,
     "markdown-table-formatter.markdownGrammarScopes": [
@@ -356,7 +357,6 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "vsintellicode.python.completionsEnabled": false,
     "window.zoomLevel": 0,
-    "workbench.activityBar.visible": false,
     "workbench.colorCustomizations": {
         "activityBar.activeBorder": "#80cbc4",
         "activityBar.background": "#0f111a",
@@ -452,7 +452,7 @@
         "inputValidation.errorBorder": "#ff537050",
         "inputValidation.infoBorder": "#82aaff50",
         "inputValidation.warningBorder": "#ffcb6b50",
-        "list.activeSelectionBackground": "#0f111a",
+        "list.activeSelectionBackground": "#4b1c1c",
         "list.activeSelectionForeground": "#80cbc4",
         "list.dropBackground": "#ff537080",
         "list.focusBackground": "#8f93a220",
@@ -460,7 +460,7 @@
         "list.highlightForeground": "#80cbc4",
         "list.hoverBackground": "#0f111a",
         "list.hoverForeground": "#ffffff",
-        "list.inactiveSelectionBackground": "#00000030",
+        "list.inactiveSelectionBackground": "#ff53703f",
         "list.inactiveSelectionForeground": "#80cbc4",
         "listFilterWidget.background": "#00000030",
         "listFilterWidget.noMatchesOutline": "#00000030",
@@ -742,5 +742,11 @@
     "python.linting.pylintCategorySeverity.refactor": "Warning",
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
-    }
+    },
+    "workbench.activityBar.visible": false,
+    "workbench.tips.enabled": false,
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.menus": false,
+    "tab-groups.gitBranchGroups": false,
+    "tab-groups.saveGlobally": false
 }

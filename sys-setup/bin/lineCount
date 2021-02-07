@@ -4,4 +4,4 @@ lineCount() {
   find . -name "*.$1" | xargs wc -l
 }
 
-lineCount $1
+lineCount "$1"

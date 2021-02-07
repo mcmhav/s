@@ -1,0 +1,40 @@
+window:
+  dynamic_padding: true
+  decorations: buttonless
+  padding:
+    y: 5
+
+shell:
+  program: /usr/local/bin/fish
+  args:
+    - --login
+
+colors:
+  primary:
+    background: '#101010'
+    foreground: '#5ee39b'
+
+  cursor:
+    cursor: '#f81ce6'
+
+  normal:
+    black: '#313131'
+    red: '#ff6262'
+    green: '#1DC121'
+    yellow: '#C7C329'
+    blue: '#3eb5ff'
+    magenta: '#C839C5'
+    cyan: '#20C5C6'
+    white: '#C7C7C7'
+
+  bright:
+    Black: '#686868'
+    Red: '#FD6F6B'
+    Green: '#67F86F'
+    Yellow: '#FFFA72'
+    Blue: '#7accff'
+    Magenta: '#FD7CFC'
+    Cyan: '#68FDFE'
+    White: '#FFFFFF'
+
+background_opacity: 0.95

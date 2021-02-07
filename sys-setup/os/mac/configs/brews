@@ -5,8 +5,8 @@ fish
 git
 go
 jq
-nvm
 pipenv
+nodenv
 pyenv
 python
 readline
@@ -14,7 +14,11 @@ shellcheck
 shfmt
 watch
 watchman
-yarn --without-node
+yarn
 tmux
 the_silver_searcher
 fzf
+openssh
+gost
+bat
+xclip

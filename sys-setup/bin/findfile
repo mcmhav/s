@@ -4,4 +4,4 @@ findfile() {
   find . -type f -name "$1"
 }
 
-findfile $1
+findfile "$1"

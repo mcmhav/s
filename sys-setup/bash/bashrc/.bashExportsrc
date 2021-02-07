@@ -1,20 +1,21 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 
 # go sgit
 export GOPATH="$HOME/.go"
-declare -A GOROOTS=(
-	[$PI_OS]="export GOROOT=/usr/lib/go"
-	[$LIN_OS]="export GOROOT=/usr/local/opt/go/libexec"
-	[$MAC_OS]="export GOROOT=/usr/local/opt/go/libexec"
-	[$WIN_OS]="export GOROOT=/usr/local/opt/go/libexec"
-)
-${GOROOTS[$CSYS_OS]}
+
+case "$CSYS_OS" in
+"$PI_OS") export GOROOT=/usr/lib/go ;;
+"$LIN_OS") export GOROOT=/usr/local/opt/go/libexec ;;
+"$MAC_OS") export GOROOT=/usr/local/opt/go/libexec ;;
+"$WIN_OS") export GOROOT=/usr/local/opt/go/libexec ;;
+*) export GOROOT=/usr/local/opt/go/libexec ;;
+esac
 
 # android
-export ANDROID_HOME=/usr/local/share/android-sdk
+export ANDROID_HOME="/usr/local/share/android-sdk"
 
 # path stuff
 PATHS=(
@@ -22,7 +23,6 @@ PATHS=(
 	"/git/tools/bin"
 	"$PATH"
 	"/usr/local/bin"
-	# "/usr/local/go/bin" # pi/linux-golang?? export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 	"$GOPATH/bin"
 	"$GOROOT/bin"
 	"/usr/local/opt/python/libexec/bin"
@@ -36,35 +36,6 @@ if [ -n "$(command -v ruby)" ]; then
 fi
 export PATH=$PATH
 
-# node
-export NVM_DIR="$HOME/.nvm"
-declare -A NVM_SHS=(
-	[$PI_OS]="$NVM_DIR/nvm.sh"
-	[$LIN_OS]="echo todo_nvm_sh_lin"
-	[$MAC_OS]="/usr/local/opt/nvm/nvm.sh"
-	[$WIN_OS]="echo todo_nvm_sh_win"
-)
-NVM_SH=${NVM_SHS[$CSYS_OS]}
-
-# lazyloading of nvm since . "/usr/local/opt/nvm/nvm.sh"
-# is hellaslow
-# https://gist.github.com/fl0w/07ce79bd44788f647deab307c94d6922
-NODE_GLOBALS=($(find $NVM_DIR/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq))
-NODE_GLOBALS+=("node")
-NODE_GLOBALS+=("nvm")
-NODE_GLOBALS+=("yarn")
-NODE_GLOBALS+=("yalc")
-
-# Lazy-loading nvm + npm on node globals call
-load_nvm() {
-	[ -s "$NVM_SH" ] && source "$NVM_SH"
-}
-
-# Making node global trigger the lazy loading
-for cmd in "${NODE_GLOBALS[@]}"; do
-	eval "${cmd}(){ unset -f ${cmd}; load_nvm; ${cmd} \$@; }"
-done
-
 # gcloud currently needs python 2
 export CLOUDSDK_PYTHON="$HOME/.pyenv/versions/2.7.16/bin/python"
 
@@ -72,3 +43,15 @@ export CLOUDSDK_PYTHON="$HOME/.pyenv/versions/2.7.16/bin/python"
 export PIPENV_YES="yes"
 
 export WAKATIME_HOME="$HOME/.wakatime"
+
+# Git
+export XDG_CONFIG_HOME="$CSYS_HOME/sys-setup/.dotfiles"
+
+export LANG='en_US.UTF-8'
+
+# fzf
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -f -g ""'
+
+if command -v bat 1>/dev/null 2>&1; then
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi

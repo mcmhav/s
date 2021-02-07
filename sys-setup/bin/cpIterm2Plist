@@ -1,7 +1,0 @@
-#!/bin/bash
-
-cpIterm2Plist() {
-  cp ~/Library/Preferences/com.googlecode.iterm2.plist $CSYS_HOME/sys-setup/os/mac/configs/
-}
-
-cpIterm2Plist

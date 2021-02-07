@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+INCOMMING_PARAMS_PRE_FORMAT=""
+# Split incomming parameters to:
+#  - Wanted parameters
+#  - Parameters sent into script
+while getopts "h-:" optchar; do
+  case "${optchar}" in
+  -)
+    case "${OPTARG}" in
+    incomming_params)
+      shift $((OPTIND - 1))
+      INCOMMING_PARAMS_PRE_FORMAT="$@"
+      break
+      ;;
+    params)
+      PARAMS="${!OPTIND}"
+      IFS=' ' read -r -a PARAMS <<<"${!OPTIND^^}"
+      OPTIND=$((OPTIND + 1))
+      ;;
+    *)
+      OPTIND=$((OPTIND + 1))
+      ;;
+    esac
+    ;;
+  *) shift ;;
+  esac
+done
+
+# Format parameters sent into script:
+# TODO: Use PARAMS to set OPTIONS and LONGOPTS
+OPTIND=1
+OPTIONS=h?vsfdbiLn
+LONGOPTS=hard,force
+! PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTS --name "$0" -- $INCOMMING_PARAMS_PRE_FORMAT)
+if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
+  # e.g. return value is 1
+  #  then getopt has complained about wrong arguments to stdout
+  exit 2
+fi
+# read getopt’s output this way to handle the quoting right:
+eval set -- "$PARSED"
+IFS=' ' read -r -a INCOMMING_PARAMS <<<"$@"
+
+# Export incomming parameters into variables based on name and wanted parameters
+INCOMMING_PARAM="${INCOMMING_PARAMS[0]}"
+COUNT=0
+INCOMMING_PARAM_COUNT=0
+
+for param in "${PARAMS[@]}"; do
+  INCOMMING_PARAMS_COUNT=0
+  INCOMMING_PARAM="${INCOMMING_PARAMS[$COUNT]}"
+  while [ "$INCOMMING_PARAM" != "" ]; do
+    case "${INCOMMING_PARAM^^}" in
+    -$param | --$param)
+      if
+        [[ ${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]} != -* ]] && \
+        [[ ${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]} != "" ]]
+      then
+        declare -n ref="PARAM_$param"
+        export ref="${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]}"
+        INCOMMING_PARAMS_COUNT=$((INCOMMING_PARAMS_COUNT + 1))
+      else
+        declare -n ref="PARAM_$param"
+        export ref=1
+      fi
+      ;;
+    --) export PARAM_REST="${INCOMMING_PARAMS[@]:$((INCOMMING_PARAMS_COUNT + 1))}" ;;
+    *) ;;
+    esac
+    INCOMMING_PARAMS_COUNT=$((INCOMMING_PARAMS_COUNT + 1))
+    INCOMMING_PARAM=${INCOMMING_PARAMS[$INCOMMING_PARAMS_COUNT]}
+  done
+  COUNT=$((COUNT + 1))
+done
