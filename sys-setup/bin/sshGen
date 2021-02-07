@@ -4,4 +4,6 @@ if [ ! -d "$HOME/.ssh" ]; then
   mkdir "$HOME/.ssh"
 fi
 
-ssh-keygen -t rsa -b 4096 -C "mcmhav@gmail.com" -f "$HOME/.ssh/id_rsa" -N "" -q
+if [ ! -f "$HOME/.ssh/id_rsa" ]; then
+  ssh-keygen -t rsa -b 4096 -C "mcmhav@gmail.com" -f "$HOME/.ssh/id_rsa" -N "" -q
+fi
