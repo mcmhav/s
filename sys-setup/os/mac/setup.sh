@@ -51,6 +51,10 @@ installStuff() {
   # keyboard input speeds
   defaults write -g KeyRepeat -int 4 # normal minimum is 2
   defaults write -g InitialKeyRepeat -int 20
+
+  # Dock hiding
+  # Revert: defaults delete com.apple.dock autohide-delay; killall Dock
+  defaults write com.apple.dock autohide-delay -float 1000; killall Dock
 }
 
 installBrews() {
