@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
-sudo apt --fix-broken install
-sudo apt update
-sudo apt -y upgrade
-sudo apt autoremove -y
+
+readyApt() {
+  sudo apt --fix-broken install
+  sudo apt update
+  sudo apt -y upgrade
+  sudo apt autoremove -y
+}
 
 installAptKeys() {
   loggit "Installing tools"
@@ -70,6 +73,7 @@ RETURN_TO=$(pwd)
 
 cd "$CONFIG_HOME" || exit
 
+readyApt
 installAptKeys
 installApts
 installPython
