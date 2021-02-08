@@ -47,7 +47,9 @@ export WAKATIME_HOME="$HOME/.wakatime"
 # Git
 export XDG_CONFIG_HOME="$CSYS_HOME/sys-setup/.dotfiles"
 
+# Language
 export LANG='en_US.UTF-8'
+export LC_ALL="en_US.UTF-8"
 
 # fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -f -g ""'
