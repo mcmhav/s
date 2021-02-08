@@ -3,10 +3,15 @@
 *.swp
 sys-setup/bash/bashrc/.secrets
 update-notifier-*.json
-sys-setup/.dotfiles/configstore/nodemon.json
-sys-setup/.dotfiles/jgit/
 .vscode
 
+# Handle application putting stuff into XDG_CONFIG_HOME
+#  1. Copy/link into a local folder, and point XDG_CONFIG_HOME to it
+#  2. Whitelist insted of blacklist .dotfiles-conent
+# 1. looks best
+sys-setup/.dotfiles/coc/extensions/
+sys-setup/.dotfiles/configstore/nodemon.json
+sys-setup/.dotfiles/jgit/
 # .dotfiles XDG_CONFIG_HOME bloats
 # TODO: handle applications usage of XDG_CONFIG_HOME better
 # is this used wrong?
