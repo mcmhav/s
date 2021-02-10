@@ -9,9 +9,10 @@ API_KEYS_PATH="user/keys"
 
 # curl -H "Authorization: token $GIT_ACCESS_TOKEN" "$GITHUB_API_URL/$API_KEYS_PATH"
 
-SSH_PUB_KEY="$PARAM_K"
-if [ -z "$SSH_PUB_KEY" ]; then
+if [ -z "$PARAM_K" ]; then
   SSH_PUB_KEY=$(cat $HOME/.ssh/id_rsa.pub)
+else
+  SSH_PUB_KEY=$(cat "$PARAM_K")
 fi
 
 if [ -z "$PARAM_T" ]; then
