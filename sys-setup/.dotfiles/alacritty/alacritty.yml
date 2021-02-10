@@ -39,9 +39,11 @@ colors:
 
 background_opacity: 0.95
 
+alt_send_esc: false
+
 key_bindings:
-  - { key: 28,      mods: Alt, chars: "{" }
-  - { key: 25,      mods: Alt, chars: "}" }
+  - { key: 28,      mods: Alt|Shift, chars: "{" }
+  - { key: 25,      mods: Alt|Shift, chars: "}" }
   - { key: 37,      mods: Alt, chars: "@" }
   - { key: 26,      mods: Alt|Shift, chars: "\\" }
   - { key: 26,      mods: Alt, chars: "|" }

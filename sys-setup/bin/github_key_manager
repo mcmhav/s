@@ -1,9 +1,32 @@
 #!/bin/bash
 
+source param_parser --params "k t" --incomming_params "$@"
+
 source inject_secrets || exit
 
 GITHUB_API_URL="https://api.github.com"
+API_KEYS_PATH="user/keys"
 
-curl -H "Authorization: token $GIT_ACCESS_TOKEN" "$GITHUB_API_URL/user/keys"
+# curl -H "Authorization: token $GIT_ACCESS_TOKEN" "$GITHUB_API_URL/$API_KEYS_PATH"
+
+SSH_PUB_KEY="$PARAM_K"
+if [ -z "$SSH_PUB_KEY" ]; then
+  SSH_PUB_KEY=$(cat $HOME/.ssh/id_rsa.pub)
+fi
+
+if [ -z "$PARAM_T" ]; then
+  echo "Must set title -t"
+  exit 1
+fi
+
+SSH_TITLE="$PARAM_T"
+
+curl \
+  -X POST \
+  -H "Authorization: token $GIT_ACCESS_TOKEN" \
+  "$GITHUB_API_URL/$API_KEYS_PATH" \
+  -d '{"key":"'"$SSH_PUB_KEY"'","title":"'"$SSH_TITLE"'"}'
+
+
 
 # TODO: extend to something like https://unix.stackexchange.com/a/324451/152545

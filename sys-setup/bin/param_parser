@@ -15,7 +15,8 @@ while getopts "h-:" optchar; do
       ;;
     params)
       PARAMS="${!OPTIND}"
-      IFS=' ' read -r -a PARAMS <<<"${!OPTIND^^}"
+      PARAMS=$(echo "$PARAMS" | tr '[:lower:]' '[:upper:]')
+      IFS=' ' read -r -a PARAMS <<<"$PARAMS"
       OPTIND=$((OPTIND + 1))
       ;;
     *)
@@ -29,40 +30,42 @@ done
 
 # Format parameters sent into script:
 # TODO: Use PARAMS to set OPTIONS and LONGOPTS
-OPTIND=1
-OPTIONS=h?vsfdbiLn
-LONGOPTS=hard,force
-! PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTS --name "$0" -- $INCOMMING_PARAMS_PRE_FORMAT)
-if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
-  # e.g. return value is 1
-  #  then getopt has complained about wrong arguments to stdout
-  exit 2
-fi
+#OPTIND=1
+#OPTIONS=h?vsfdbiLnkt
+#LONGOPTS=hard,force
+#! PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTS --name "$0" -- $INCOMMING_PARAMS_PRE_FORMAT)
+#if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
+## e.g. return value is 1
+##  then getopt has complained about wrong arguments to stdout
+##exit 2
+#fi
 # read getopt’s output this way to handle the quoting right:
-eval set -- "$PARSED"
+#eval set -- "$PARSED"
 IFS=' ' read -r -a INCOMMING_PARAMS <<<"$@"
 
 # Export incomming parameters into variables based on name and wanted parameters
 INCOMMING_PARAM="${INCOMMING_PARAMS[0]}"
-COUNT=0
-INCOMMING_PARAM_COUNT=0
+
 
 for param in "${PARAMS[@]}"; do
   INCOMMING_PARAMS_COUNT=0
-  INCOMMING_PARAM="${INCOMMING_PARAMS[$COUNT]}"
+  INCOMMING_PARAM="${INCOMMING_PARAMS[$INCOMMING_PARAMS_COUNT]}"
   while [ "$INCOMMING_PARAM" != "" ]; do
-    case "${INCOMMING_PARAM^^}" in
+    tmp_incomming_param=$(echo "$INCOMMING_PARAM" | tr '[:lower:]' '[:upper:]')
+    case "$tmp_incomming_param" in
     -$param | --$param)
       if
         [[ ${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]} != -* ]] && \
         [[ ${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]} != "" ]]
       then
-        declare -n ref="PARAM_$param"
-        export ref="${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]}"
+        tmp_name="PARAM_$param"
+        printf -v $tmp_name "${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]}"
+        export $tmp_name
         INCOMMING_PARAMS_COUNT=$((INCOMMING_PARAMS_COUNT + 1))
       else
-        declare -n ref="PARAM_$param"
-        export ref=1
+        tmp_name="PARAM_$param"
+        printf -v $tmp_name 1
+        export $tmp_name
       fi
       ;;
     --) export PARAM_REST="${INCOMMING_PARAMS[@]:$((INCOMMING_PARAMS_COUNT + 1))}" ;;
@@ -71,5 +74,4 @@ for param in "${PARAMS[@]}"; do
     INCOMMING_PARAMS_COUNT=$((INCOMMING_PARAMS_COUNT + 1))
     INCOMMING_PARAM=${INCOMMING_PARAMS[$INCOMMING_PARAMS_COUNT]}
   done
-  COUNT=$((COUNT + 1))
 done
