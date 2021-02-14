@@ -1,0 +1,8 @@
+#!/bin/bash
+
+end_time=$(date +%s000)
+start_time=$((end_time-10800000))
+limit=200
+symbols="tBTCEUR"
+
+curl -s "https://api-pub.bitfinex.com/v2/tickers/hist?symbols=$symbols&limit=$limit&start=$start_time&end=end_time" | jq -r 'map(.[1]) | reverse | @tsv' | asciigraph -h 25 -w 120
