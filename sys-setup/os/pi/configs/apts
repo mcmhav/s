@@ -2,7 +2,5 @@ golang-go
 git
 jq
 vim
-pipenv
-fzf
+nvim
 silversearcher-ag
-bat

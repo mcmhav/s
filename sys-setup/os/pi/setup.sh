@@ -48,13 +48,16 @@ installPython() {
   if [ -z "$(which pyenv)" ]; then
     curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
   fi
-  if command -v poetry 1>/dev/null 2>&1; then
+  if ! command -v poetry 1>/dev/null 2>&1; then
     curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
   fi
 }
 
 installNode() {
   loggit "Installing node"
+  if ! command -v nodenv 1>/dev/null 2>&1; then
+    curl -fsSL https://raw.githubusercontent.com/nodenv/nodenv-installer/master/bin/nodenv-installer | bash
+  fi
 }
 
 installDocker() {
@@ -80,6 +83,7 @@ readyApt
 installAptKeys
 installApts
 installPython
+installNode
 installDocker
 
 cd "$RETURN_TO" || exit
