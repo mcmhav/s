@@ -30,6 +30,7 @@ PATHS=(
 	"$CSYS_HOME/sys-setup/bin"
 	"$HOME/.poetry/bin"
 	"$HOME/.nodenv/bin"
+  "$HOME/.nodenv/shims"
 )
 PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
 if [ -n "$(command -v ruby)" ]; then
