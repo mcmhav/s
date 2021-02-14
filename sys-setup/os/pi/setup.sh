@@ -49,7 +49,7 @@ installPython() {
     curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
   fi
   if ! command -v poetry 1>/dev/null 2>&1; then
-    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python --no-modify-path -
   fi
 }
 
