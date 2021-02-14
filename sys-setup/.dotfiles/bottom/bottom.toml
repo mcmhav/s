@@ -1,0 +1,12 @@
+[[row]]
+  [[row.child]]
+  type="cpu"
+[[row]]
+    ratio=2
+    [[row.child]]
+      ratio=4
+      type="mem"
+    [[row.child]]
+      ratio=3
+      [[row.child.child]]
+        type="temp"

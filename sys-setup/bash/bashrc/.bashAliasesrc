@@ -15,6 +15,12 @@ if [ -x /usr/bin/dircolors ] || [ "$(uname -s)" == "Darwin" ]; then
   alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
+  alias less='less -r'
+fi
+
+if command -v bat 1>/dev/null 2>&1; then
+  alias cat='bat'
+  alias less='bat'
 fi
 
 # some more ls aliases
