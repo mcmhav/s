@@ -3,3 +3,7 @@ git
 jq
 vim
 silversearcher-ag
+snapd
+libreadline-dev
+libbz2-dev
+libsqlite3-dev

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+PYTHON_VERSION="3.7.5"
 
 readyApt() {
   sudo apt --fix-broken install
@@ -29,7 +30,7 @@ installApts() {
   while read -r l; do
     read -ra APT_PACKAGE <<<"$l"
     if ! dpkg -s "${APT_PACKAGE[0]}" | grep Status >/dev/null; then
-      sudo apt-get install -y "$l"
+      sudo apt install -y "$l"
     fi
   done <configs/apts
 
@@ -38,7 +39,7 @@ installApts() {
   while read -r l; do
     read -ra APT_PACKAGE <<<"$l"
     if ! dpkg -s "${APT_PACKAGE[0]}" | grep Status >/dev/null; then
-      sudo apt-get install -y "$l"
+      sudo apt install -y "$l"
     fi
   done <configs/piApts
 }
@@ -47,6 +48,10 @@ installPython() {
   loggit "Installing python"
   if [ -z "$(which pyenv)" ]; then
     curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+  fi
+  if ! pyenv version | grep "$PYTHON_VERSION" 1>/dev/null 2>&1; then
+    pyenv install "$PYTHON_VERSION"
+    pyenv global "$PYTHON_VERSION"
   fi
   if ! command -v poetry 1>/dev/null 2>&1; then
     curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python - --no-modify-path

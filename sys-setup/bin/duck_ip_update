@@ -2,4 +2,15 @@
 
 source inject_secrets || exit
 
-curl "https://www.duckdns.org/update?domains=DUCK_DOMAIN&token=$DUCK_TOKEN"
+LATEST_IP_LOCAION=".ifconfig_latest_ip"
+
+if [ ! -f "$FILE" ]; then
+  touch "$LATEST_IP_LOCAION"
+fi
+latest_ip=$(cat "$LATEST_IP_LOCAION")
+curl -s ifconfig.me/ip > "$LATEST_IP_LOCAION"
+current_ip=$(cat "$LATEST_IP_LOCAION")
+
+if [ "$latest_ip" != "$current_ip" ]; then
+  curl "https://www.duckdns.org/update?domains=$DUCK_DOMAIN&token=$DUCK_TOKEN"
+fi

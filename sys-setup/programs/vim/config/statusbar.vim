@@ -1,10 +1,11 @@
+let g:airline_extensions = []
 " let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#format = 2
 "let g:airline#extensions#tabline#show_splits = 1
 "let g:airline#extensions#tabline#show_buffers = 0
 "let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'bubblegum'
+let g:airline_theme = 'angr'
 let g:airline_mode_map = {
   \ '__'     : '-',
   \ 'c'      : 'C',
@@ -36,10 +37,4 @@ function! AirlineInit()
   let g:airline_section_z = airline#section#create(['%4l', '%3v'])
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
-
-function! Testur()
- let split_count = winnr('$')
- echo split_count
- return "\<Ctrl>w\<Ctrl>w"
-endfunction
 

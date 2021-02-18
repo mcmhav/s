@@ -20,3 +20,4 @@ sys-setup/.dotfiles/jgit/
 # shell initialized before it can read XDG_CONFIG_HOME?
 sys-setup/.dotfiles/hyper
 sys-setup/.dotfiles/fish
+sys-setup/.dotfiles/coc/history.json

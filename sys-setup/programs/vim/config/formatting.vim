@@ -24,8 +24,8 @@ filetype indent off
 "filetype plugin indent on
 
 " Autoformat
-autocmd InsertLeave * w
-autocmd InsertLeave *.yaml,*.html,*.js,*.css ALEFix
+"autocmd InsertLeave * w
+"autocmd InsertLeave *.yaml,*.html,*.js,*.css ALEFix
 "autocmd BufLeave,InsertLeave * wall
 "autocmd BufLeave * wall
 "autocmd WinLeave * :ALEFix | :write
