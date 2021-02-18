@@ -18,3 +18,4 @@ let g:startify_custom_header_quotes = [
 " Splits
 set splitbelow
 set splitright
+set noshowmode

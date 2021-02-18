@@ -8,10 +8,14 @@ link_config() {
   if [ ! -d "$HOME/.vim/colors" ]; then
     mkdir "$HOME/.vim/colors"
   fi
+  if [ ! -d "$HOME/.vim/after/syntax" ]; then
+    mkdir -p "$HOME/.vim/after/syntax"
+  fi
   if [ ! -d "$HOME/.vim/sessions" ]; then
     mkdir "$HOME/.vim/sessions"
   fi
   ln -sf "$LOCAL_CONFIG_PATH/colors/cake.vim" "$HOME/.vim/colors/cake.vim"
+  ln -sf "$LOCAL_CONFIG_PATH/colors/syntax/"* "$HOME/.vim/after/syntax"
 }
 
 setup_plugins() {

@@ -28,7 +28,7 @@ endif
 
 let colors_name = "cake"
 
-function! s:h(group, style)
+function! CHG(group, style)
   let s:ctermformat = "NONE"
   let s:guiformat = "NONE"
   if has_key(a:style, "format")
@@ -78,7 +78,7 @@ let s:darkgrey    = { "gui": "#64645e", "cterm": "239" }
 let s:warmgrey    = { "gui": "#75715E", "cterm": "59" }
 
 let s:pink        = { "gui": "#F92772", "cterm": "197" }
-let s:green       = { "gui": "#A6E22D", "cterm": "148" }
+let s:green       = { "gui": "#3fe069", "cterm": "148" }
 let s:aqua        = { "gui": "#66d9ef", "cterm": "81" }
 let s:yellow      = { "gui": "#E6DB74", "cterm": "186" }
 let s:orange      = { "gui": "#FD9720", "cterm": "208" }
@@ -106,293 +106,182 @@ let s:keywords_color = { "gui": "#ed095a", "cterm": "197" }
 let s:separator_color = { "gui": "#ed095a", "cterm": "197" }
 let s:operator_color = { "gui": "#ed095a", "cterm": "197" }
 
+function! Get_color_palette()
+  return {
+    \ "white": s:white,
+    \ "white2": s:white2,
+    \ "black": s:black,
+    \ "lightblack": s:lightblack,
+    \ "lightblack2": s:lightblack2,
+    \ "lightblack3": s:lightblack3,
+    \ "darkblack": s:darkblack,
+    \ "grey": s:grey,
+    \ "lightgrey": s:lightgrey,
+    \ "darkgrey": s:darkgrey,
+    \ "warmgrey": s:warmgrey,
+    \
+    \ "pink": s:pink,
+    \ "green": s:green,
+    \ "aqua": s:aqua,
+    \ "yellow": s:yellow,
+    \ "orange": s:orange,
+    \ "purple": s:purple,
+    \ "red": s:red,
+    \ "purered": s:purered,
+    \ "darkred": s:darkred,
+    \
+    \ "addfg": s:addfg,
+    \ "addbg": s:addbg,
+    \ "delbg": s:delbg,
+    \ "changefg": s:changefg,
+    \ "changebg": s:changebg,
+    \
+    \ "cyan": s:cyan,
+    \ "br_green": s:br_green,
+    \ "br_yellow": s:br_yellow,
+    \ "br_blue": s:br_blue,
+    \ "br_purple": s:br_purple,
+    \ "br_cyan": s:br_cyan,
+    \ "br_white": s:br_white,
+    \
+    \ "function_color": s:function_color,
+    \ "keywords_color": s:keywords_color,
+    \ "separator_color": s:separator_color,
+    \ "operator_color": s:operator_color,
+  \ }
+endfunction
+
+" Statusbar
+" ---------
+call CHG("NormalMode", { "fg": s:black, "bg": s:aqua })
+call CHG("InsertMode", { "fg": s:black, "bg": s:pink })
+call CHG("ReplaceMode", { "fg": s:black, "bg": s:aqua })
+call CHG("VisualMode", { "fg": s:black, "bg": s:yellow })
+call CHG("CommandMode", { "fg": s:black, "bg": s:green })
+
+call CHG("LinePosition", { "fg": s:black, "bg": s:aqua })
+
 " Highlighting
 " ------------
 
 " editor
-"call s:h("Normal",        { "fg": s:white,      "bg": s:black })
-call s:h("ColorColumn",   {                     "bg": s:lightblack })
-call s:h("Cursor",        { "fg": s:black,      "bg": s:white })
-call s:h("CursorColumn",  {                     "bg": s:lightblack2 })
-call s:h("CursorLine",    {                     "bg": s:lightblack2 })
-call s:h("NonText",       { "fg": s:lightgrey })
-call s:h("StatusLine",    { "fg": s:warmgrey,   "bg": s:black,        "format": "reverse" })
-call s:h("StatusLineNC",  { "fg": s:darkgrey,   "bg": s:warmgrey,     "format": "reverse" })
-call s:h("TabLine",       { "fg": s:white,      "bg": s:darkblack,    "format": "reverse" })
-call s:h("Visual",        {                     "bg": s:lightgrey })
-call s:h("Search",        { "fg": s:black,      "bg": s:yellow })
-call s:h("MatchParen",    { "fg": s:purple,                           "format": "underline,bold" })
-call s:h("Question",      { "fg": s:yellow })
-call s:h("ModeMsg",       { "fg": s:yellow })
-call s:h("MoreMsg",       { "fg": s:yellow })
-call s:h("ErrorMsg",      { "fg": s:black,      "bg": s:red,          "format": "standout" })
-call s:h("WarningMsg",    { "fg": s:red })
-call s:h("VertSplit",     { "fg": s:darkgrey,   "bg": s:darkblack })
-call s:h("LineNr",        { "fg": s:grey })
-call s:h("CursorLineNr",  { "fg": s:orange,     "bg": s:lightblack })
-call s:h("SignColumn",    {                     "bg": s:lightblack })
+call CHG("Normal",        { })
+call CHG("ColorColumn",   {                     "bg": s:lightblack })
+call CHG("Cursor",        { "fg": s:black,      "bg": s:white })
+call CHG("CursorColumn",  {                     "bg": s:lightblack2 })
+call CHG("CursorLine",    {                     "bg": s:lightblack2 })
+call CHG("NonText",       { "fg": s:lightgrey })
+call CHG("StatusLine",    { "fg": s:warmgrey,   "bg": s:black,        "format": "reverse" })
+call CHG("StatusLineNC",  { "fg": s:darkgrey,   "bg": s:warmgrey,     "format": "reverse" })
+call CHG("TabLine",       { "fg": s:white,      "bg": s:darkblack,    "format": "reverse" })
+call CHG("Visual",        {                     "bg": s:lightgrey })
+call CHG("Search",        { "fg": s:black,      "bg": s:yellow })
+call CHG("MatchParen",    { "fg": s:purple,                           "format": "underline,bold" })
+call CHG("Question",      { "fg": s:yellow })
+call CHG("ModeMsg",       { "fg": s:yellow })
+call CHG("MoreMsg",       { "fg": s:yellow })
+call CHG("ErrorMsg",      { "fg": s:black,      "bg": s:red,          "format": "standout" })
+call CHG("WarningMsg",    { "fg": s:red })
+call CHG("VertSplit",     { "fg": s:darkgrey,   "bg": s:darkblack })
+call CHG("LineNr",        { "fg": s:grey })
+call CHG("CursorLineNr",  { "fg": s:orange,     "bg": s:lightblack })
+call CHG("SignColumn",    {                     "bg": s:lightblack })
 
 " spell
-call s:h("SpellBad",      { "fg": s:red,                              "format": "underline" })
-call s:h("SpellCap",      { "fg": s:purple,                           "format": "underline" })
-call s:h("SpellRare",     { "fg": s:aqua,                             "format": "underline" })
-call s:h("SpellLocal",    { "fg": s:pink,                             "format": "underline" })
+call CHG("SpellBad",      { "fg": s:red,                              "format": "underline" })
+call CHG("SpellCap",      { "fg": s:purple,                           "format": "underline" })
+call CHG("SpellRare",     { "fg": s:aqua,                             "format": "underline" })
+call CHG("SpellLocal",    { "fg": s:pink,                             "format": "underline" })
 
 " misc
-call s:h("SpecialKey",    { "fg": s:pink })
-call s:h("Title",         { "fg": s:yellow })
-call s:h("Directory",     { "fg": s:aqua })
+call CHG("SpecialKey",    { "fg": s:pink })
+call CHG("Title",         { "fg": s:yellow })
+call CHG("Directory",     { "fg": s:aqua })
 
 " diff
-call s:h("DiffAdd",       { "fg": s:addfg,      "bg": s:addbg })
-call s:h("DiffDelete",    { "fg": s:black,      "bg": s:delbg })
-call s:h("DiffChange",    { "fg": s:changefg,   "bg": s:changebg })
-call s:h("DiffText",      { "fg": s:black,      "bg": s:aqua })
+call CHG("DiffAdd",       { "fg": s:addfg,      "bg": s:addbg })
+call CHG("DiffDelete",    { "fg": s:black,      "bg": s:delbg })
+call CHG("DiffChange",    { "fg": s:changefg,   "bg": s:changebg })
+call CHG("DiffText",      { "fg": s:black,      "bg": s:aqua })
 
 " fold
-call s:h("Folded",        { "fg": s:warmgrey,   "bg": s:darkblack })
-call s:h("FoldColumn",    {                     "bg": s:darkblack })
+call CHG("Folded",        { "fg": s:warmgrey,   "bg": s:darkblack })
+call CHG("FoldColumn",    {                     "bg": s:darkblack })
 "        Incsearch"
 
 " popup menu
-call s:h("Pmenu",         { "fg": s:white2,     "bg": s:lightblack3 })
-call s:h("PmenuSel",      { "fg": s:aqua,       "bg": s:lightblack3,        "format": "reverse,bold" })
-call s:h("PmenuThumb",    { "fg": s:lightblack, "bg": s:grey })
+call CHG("Pmenu",         { "fg": s:white2,     "bg": s:lightblack3 })
+call CHG("PmenuSel",      { "fg": s:aqua,       "bg": s:lightblack3,        "format": "reverse,bold" })
+call CHG("PmenuThumb",    { "fg": s:lightblack, "bg": s:grey })
 "        PmenuSbar"
 
 " Generic Syntax Highlighting
 " ---------------------------
+call CHG("Constant",      { "fg": s:purple })
+call CHG("Number",        { "fg": s:purple })
+call CHG("Float",         { "fg": s:purple })
+call CHG("Boolean",       { "fg": s:purple })
+call CHG("Character",     { "fg": s:yellow })
+call CHG("String",        { "fg": s:yellow })
 
-call s:h("Constant",      { "fg": s:purple })
-call s:h("Number",        { "fg": s:purple })
-call s:h("Float",         { "fg": s:purple })
-call s:h("Boolean",       { "fg": s:purple })
-call s:h("Character",     { "fg": s:yellow })
-call s:h("String",        { "fg": s:yellow })
+call CHG("Type",          { "fg": s:aqua })
+call CHG("Structure",     { "fg": s:aqua })
+call CHG("StorageClass",  { "fg": s:aqua })
+call CHG("Typedef",       { "fg": s:aqua })
 
-call s:h("Type",          { "fg": s:aqua })
-call s:h("Structure",     { "fg": s:aqua })
-call s:h("StorageClass",  { "fg": s:aqua })
-call s:h("Typedef",       { "fg": s:aqua })
+call CHG("Identifier",    { "fg": s:aqua })
+call CHG("Function",      { "fg": s:function_color })
 
-call s:h("Identifier",    { "fg": s:green })
-call s:h("Function",      { "fg": s:green })
+call CHG("Statement",     { "fg": s:pink })
+call CHG("Operator",      { "fg": s:operator_color })
+call CHG("Label",         { "fg": s:pink })
+call CHG("Keyword",       { "fg": s:red })
+call CHG("Bracket",       { "fg": s:red })
 
-call s:h("Statement",     { "fg": s:pink })
-call s:h("Operator",      { "fg": s:pink })
-call s:h("Label",         { "fg": s:pink })
-call s:h("Keyword",       { "fg": s:pink })
 "        Conditional"
 "        Repeat"
 "        Exception"
 
-call s:h("PreProc",       { "fg": s:green })
-call s:h("Include",       { "fg": s:pink })
-call s:h("Define",        { "fg": s:pink })
-call s:h("Macro",         { "fg": s:green })
-call s:h("PreCondit",     { "fg": s:green })
+call CHG("PreProc",       { "fg": s:green })
+call CHG("Include",       { "fg": s:pink })
+call CHG("Define",        { "fg": s:pink })
+call CHG("Macro",         { "fg": s:green })
+call CHG("PreCondit",     { "fg": s:green })
 
-call s:h("Special",       { "fg": s:purple })
-call s:h("SpecialChar",   { "fg": s:pink })
-call s:h("Delimiter",     { "fg": s:pink })
-call s:h("SpecialComment",{ "fg": s:aqua })
-call s:h("Tag",           { "fg": s:pink })
+call CHG("Special",       { "fg": s:purple })
+call CHG("SpecialChar",   { "fg": s:pink })
+call CHG("Delimiter",     { "fg": s:pink })
+call CHG("SpecialComment",{ "fg": s:aqua })
+call CHG("Tag",           { "fg": s:pink })
+
 "        Debug"
+call CHG("Todo",          { "fg": s:orange,   "format": "bold,italic" })
+call CHG("Comment",       { "fg": s:warmgrey, "format": "italic" })
 
-call s:h("Todo",          { "fg": s:orange,   "format": "bold,italic" })
-call s:h("Comment",       { "fg": s:warmgrey, "format": "italic" })
-
-call s:h("Underlined",    { "fg": s:green })
-call s:h("Ignore",        {})
-call s:h("Error",         { "fg": s:red, "bg": s:darkred })
-
-" NerdTree
-" --------
-
-call s:h("NERDTreeOpenable",        { "fg": s:yellow })
-call s:h("NERDTreeClosable",        { "fg": s:yellow })
-call s:h("NERDTreeHelp",            { "fg": s:yellow })
-call s:h("NERDTreeBookmarksHeader", { "fg": s:pink })
-call s:h("NERDTreeBookmarksLeader", { "fg": s:black })
-call s:h("NERDTreeBookmarkName",    { "fg": s:yellow })
-call s:h("NERDTreeCWD",             { "fg": s:pink })
-call s:h("NERDTreeUp",              { "fg": s:white })
-call s:h("NERDTreeDirSlash",        { "fg": s:grey })
-call s:h("NERDTreeDir",             { "fg": s:grey })
+call CHG("Underlined",    { "fg": s:green })
+call CHG("Ignore",        {})
+call CHG("Error",         { "fg": s:red, "bg": s:darkred })
 
 " Syntastic
 " ---------
-
 hi! link SyntasticErrorSign Error
-call s:h("SyntasticWarningSign",    { "fg": s:lightblack, "bg": s:orange })
+call CHG("SyntasticWarningSign",    { "fg": s:lightblack, "bg": s:orange })
 
 " coc
 " ---
-
 hi! link CocErrorSign Error
-call s:h("CocErrorHighlight",       { "fg": s:red, "format": "underline" })
-call s:h("CocErrorFloat",           { "fg": s:purered, "bg": s:lightblack3 })
+call CHG("CocErrorHighlight",       { "fg": s:red, "format": "underline" })
+call CHG("CocErrorFloat",           { "fg": s:purered, "bg": s:lightblack3 })
 
-call s:h("CocWarningSign",          { "fg": s:orange, "bg": s:lightblack })
-call s:h("CocWarningHighlight",     { "format": "underline" })
-call s:h("CocWarningFloat",         { "fg": s:orange, "bg": s:lightblack3 })
+call CHG("CocWarningSign",          { "fg": s:orange, "bg": s:lightblack })
+call CHG("CocWarningHighlight",     { "format": "underline" })
+call CHG("CocWarningFloat",         { "fg": s:orange, "bg": s:lightblack3 })
 
-call s:h("CocInfoSign",             { "fg": s:yellow, "bg": s:lightblack3 })
-call s:h("CocInfoHighlight",        { "format": "underline" })
+call CHG("CocInfoSign",             { "fg": s:yellow, "bg": s:lightblack3 })
+call CHG("CocInfoHighlight",        { "format": "underline" })
 
-call s:h("CocHintSign",             { "fg": s:white, "bg": s:lightblack3 })
-call s:h("CocHintHighlight",        { "format": "underline" })
-
-" Language highlight
-" ------------------
-
-" Java properties
-call s:h("jpropertiesIdentifier",   { "fg": s:pink })
-
-" Vim command
-call s:h("vimCommand",              { "fg": s:pink })
-
-" Javascript
-call s:h("jsClassKeyword",      { "fg": s:aqua, "format": "italic" })
-call s:h("jsGlobalObjects",     { "fg": s:aqua, "format": "italic" })
-call s:h("jsFuncName",          { "fg": s:green })
-call s:h("jsThis",              { "fg": s:orange, "format": "italic" })
-call s:h("jsFunctionKey",       { "fg": s:green })
-call s:h("jsPrototype",         { "fg": s:aqua })
-call s:h("jsExceptions",        { "fg": s:aqua })
-call s:h("jsFutureKeys",        { "fg": s:aqua })
-call s:h("jsBuiltins",          { "fg": s:aqua })
-call s:h("jsArgsObj",           { "fg": s:aqua })
-call s:h("jsStatic",            { "fg": s:aqua })
-call s:h("jsSuper",             { "fg": s:orange, "format": "italic" })
-call s:h("jsFuncArgRest",       { "fg": s:purple, "format": "italic" })
-call s:h("jsFuncArgs",          { "fg": s:orange, "format": "italic" })
-call s:h("jsStorageClass",      { "fg": s:aqua, "format": "italic" })
-call s:h("jsDocTags",           { "fg": s:aqua,   "format": "italic" })
-call s:h("jsFunction",          { "fg": s:aqua,   "format": "italic" })
-
-"call s:h("jsDestructuringProperty", { "fg": s:orange })
-"call s:h("jsDestructuringAssignment", { "fg": s:orange })
-"call s:h("jsDestructuringValue", { "fg": s:orange })
-"call s:h("jsDestructuringValueAssignment", { "fg": s:orange })
-"call s:h("jsDestructuringPropertyValue", { "fg": s:orange })
-"call s:h("jsDestructuringPropertyComputed", { "fg": s:orange })
-call s:h("jsDestructuringBlock", { "fg": s:orange })
-" call s:h("jsRestExpression", { "fg": s:orange })
-call s:h("jsSpreadExpression", { "fg": s:orange })
-
-call s:h("jsObjectKey", { "fg": s:aqua })
-call s:h("jsObjectShorthandProp", { "fg": s:aqua })
-
-" separators
-call s:h("jsNoise", { "fg": s:separator_color })
-call s:h("jsDot", { "fg": s:separator_color })
-call s:h("jsObjectColon", { "fg": s:separator_color })
-call s:h("jsObjectSeparator", { "fg": s:separator_color })
-call s:h("jsDestructuringNoise", { "fg": s:separator_color })
-
-call s:h("jsReturn",          { "fg": s:keywords_color,   "format": "italic" })
-call s:h("jsxComponentName", {"fg": s:function_color })
-
-" Typescript
-call s:h("typescriptBraces",              { "fg": s:white })
-call s:h("typescriptParens",              { "fg": s:white })
-call s:h("typescriptOperator",            { "fg": s:pink })
-call s:h("typescriptEndColons",           { "fg": s:white })
-call s:h("typescriptModule",              { "fg": s:aqua })
-call s:h("typescriptPredefinedType",      { "fg": s:aqua })
-call s:h("typescriptImport",              { "fg": s:pink })
-call s:h("typescriptExport",              { "fg": s:pink })
-call s:h("typescriptIdentifier",          { "fg": s:orange, "format": "italic" })
-call s:h("typescriptVariable",            { "fg": s:aqua })
-call s:h("typescriptCastKeyword",         { "fg": s:pink })
-call s:h("typescriptAmbientDeclaration",  { "fg": s:pink })
-call s:h("typescriptTestGlobal",          { "fg": s:pink })
-call s:h("typescriptFuncKeyword",         { "fg": s:aqua })
-call s:h("typescriptFuncTypeArrow",       { "fg": s:aqua })
-call s:h("typescriptFuncType",            { "fg": s:orange, "format": "italic" })
-call s:h("typescriptFuncName",            { "fg": s:green })
-call s:h("typescriptArrowFuncArg",        { "fg": s:orange, "format": "italic" })
-call s:h("typescriptCall",                { "fg": s:orange, "format": "italic" })
-call s:h("typescriptClassKeyword",        { "fg": s:aqua,   "format": "italic" })
-call s:h("typescriptClassName",           { "fg": s:white })
-call s:h("typescriptClassHeritage",       { "fg": s:white })
-call s:h("typescriptInterfaceKeyword",    { "fg": s:aqua,   "format": "italic" })
-call s:h("typescriptInterfaceName",       { "fg": s:white })
-call s:h("typescriptObjectLabel",         { "fg": s:green })
-call s:h("typescriptMember",              { "fg": s:green })
-call s:h("typescriptTypeReference",       { "fg": s:purple, "format": "italic" })
-call s:h("typescriptTypeParameter",       { "fg": s:purple, "format": "italic" })
-call s:h("typescriptOptionalMark",        { "fg": s:pink })
-call s:h("tsxAttrib",                     { "fg": s:green })
-call s:h("tsxTagName",                    { "fg": s:pink })
-
-" Html
-call s:h("htmlTag",             { "fg": s:white })
-call s:h("htmlEndTag",          { "fg": s:white })
-call s:h("htmlTagName",         { "fg": s:pink })
-call s:h("htmlArg",             { "fg": s:green })
-call s:h("htmlSpecialChar",     { "fg": s:purple })
-
-" Xml
-call s:h("xmlTag",              { "fg": s:pink })
-call s:h("xmlEndTag",           { "fg": s:pink })
-call s:h("xmlTagName",          { "fg": s:orange })
-call s:h("xmlAttrib",           { "fg": s:green })
-
-" CSS
-call s:h("cssProp",             { "fg": s:yellow })
-call s:h("cssUIAttr",           { "fg": s:yellow })
-call s:h("cssFunctionName",     { "fg": s:aqua })
-call s:h("cssColor",            { "fg": s:purple })
-call s:h("cssPseudoClassId",    { "fg": s:purple })
-call s:h("cssClassName",        { "fg": s:green })
-call s:h("cssValueLength",      { "fg": s:purple })
-call s:h("cssCommonAttr",       { "fg": s:pink })
-call s:h("cssBraces" ,          { "fg": s:white })
-call s:h("cssClassNameDot",     { "fg": s:pink })
-call s:h("cssURL",              { "fg": s:orange, "format": "underline,italic" })
-
-" LESS
-call s:h("lessVariable",        { "fg": s:green })
-
-" ruby
-call s:h("rubyInterpolationDelimiter",  {})
-call s:h("rubyInstanceVariable",        {})
-call s:h("rubyGlobalVariable",          {})
-call s:h("rubyClassVariable",           {})
-call s:h("rubyPseudoVariable",          {})
-call s:h("rubyFunction",                { "fg": s:green })
-call s:h("rubyStringDelimiter",         { "fg": s:yellow })
-call s:h("rubyRegexp",                  { "fg": s:yellow })
-call s:h("rubyRegexpDelimiter",         { "fg": s:yellow })
-call s:h("rubySymbol",                  { "fg": s:purple })
-call s:h("rubyEscape",                  { "fg": s:purple })
-call s:h("rubyInclude",                 { "fg": s:pink })
-call s:h("rubyOperator",                { "fg": s:pink })
-call s:h("rubyControl",                 { "fg": s:pink })
-call s:h("rubyClass",                   { "fg": s:pink })
-call s:h("rubyDefine",                  { "fg": s:pink })
-call s:h("rubyException",               { "fg": s:pink })
-call s:h("rubyRailsARAssociationMethod",{ "fg": s:orange })
-call s:h("rubyRailsARMethod",           { "fg": s:orange })
-call s:h("rubyRailsRenderMethod",       { "fg": s:orange })
-call s:h("rubyRailsMethod",             { "fg": s:orange })
-call s:h("rubyConstant",                { "fg": s:aqua })
-call s:h("rubyBlockArgument",           { "fg": s:orange })
-call s:h("rubyBlockParameter",          { "fg": s:orange })
-
-" eruby
-call s:h("erubyDelimiter",              {})
-call s:h("erubyRailsMethod",            { "fg": s:aqua })
-
-" c
-call s:h("cLabel",                      { "fg": s:pink })
-call s:h("cStructure",                  { "fg": s:aqua })
-call s:h("cStorageClass",               { "fg": s:pink })
-call s:h("cInclude",                    { "fg": s:pink })
-call s:h("cDefine",                     { "fg": s:pink })
-call s:h("cSpecial",                    { "fg": s:purple })
+call CHG("CocHintSign",             { "fg": s:white, "bg": s:lightblack3 })
+call CHG("CocHintHighlight",        { "format": "underline" })
 
 " Terminal Colors
 " ---------------
