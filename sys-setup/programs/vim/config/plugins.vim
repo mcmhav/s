@@ -13,22 +13,35 @@ call plug#begin('~/.vim/plugged')
   " - air'line ~1175
   " - css-color ~545
   " - startify+css ~555
+  " - gitgutter ~620 - slow to add gutterinfo in unchanged->changed
+  "   suggest not not use this on r-pi
+  " - incsearch ~525 - might be redundant
+  " - waka ~540
+  " - polyglot ~820
+  " - fugutive ~560
+  "
+  " - startify+fzf+css+waka+fugitive ~640, wut?
 
   " Low impact on startup time
-  "Plug 'mhinz/vim-startify'
-  "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  "Plug 'junegunn/fzf.vim'
-  "Plug 'ap/vim-css-color'
+  Plug 'mhinz/vim-startify'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'ap/vim-css-color'
+  Plug 'wakatime/vim-wakatime'
+  Plug 'tpope/vim-fugitive'
+  " Test for now, remove if no large benefit is seen as default seach works pretty well
+  Plug 'haya14busa/incsearch.vim'
 
   " Low impact, might be causing the lags?
   "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-  " Untested
-  " Plug 'airblade/vim-gitgutter'
-  " Plug 'wakatime/vim-wakatime'
-  " Plug 'dense-analysis/ale'
+  " Do not use on pi
+  if $CSYS_OS != "pi"
+    Plug 'airblade/vim-gitgutter'
+    Plug 'sheerun/vim-polyglot' " high startup-inpact, claims to be low
+  " impact, config-issues?
+  endif
 
-  " Plug 'haya14busa/incsearch.vim'
-  " Plug 'sheerun/vim-polyglot'
-  " Plug 'tpope/vim-fugitive'
+  " Untested - check if we can remove this, in favour of doing all with coc
+  " Plug 'dense-analysis/ale'
 call plug#end()

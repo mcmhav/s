@@ -1,10 +1,5 @@
-" File:       cake.vim
-"
-" The colour palette is from http://www.colourlovers.com/
-
-" Initialisation
-" --------------
-
+" Init
+" ----
 if !has("gui_running") && &t_Co < 256
   finish
 endif
