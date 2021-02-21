@@ -2,6 +2,11 @@
 
 source param_parser --params "c s" --incomming_params "$@"
 
+if ! command -v asciigraph 1>/dev/null 2>&1; then
+  go get github.com/mcmhav/asciigraph
+  go install github.com/mcmhav/asciigraph/cmd/asciigraph
+fi
+
 end_time=$(date +%s000)
 start_time=$((end_time-10800000))
 limit=200
