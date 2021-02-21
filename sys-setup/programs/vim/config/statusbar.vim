@@ -29,6 +29,7 @@ set statusline+=%#CommandMode#%{(mode()=='c')?'\ \ C\ ':''}
 
 set statusline+=%#Visual#
 set statusline+=\ %t
+set statusline+=%m
 
 " Right
 set statusline+=%=

@@ -16,6 +16,6 @@ if [ -n "$1" ]; then
   SUB_NAME="-$1"
 fi
 
-vim "$DATE$SUB_NAME"
+"$EDITOR" "$DATE$SUB_NAME"
 
 cd "$RETURN_TO" || exit

@@ -59,3 +59,17 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -f -g ""'
 if command -v bat 1>/dev/null 2>&1; then
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
+
+potential_editors=(
+  "nvim"
+  "vim"
+  "vi"
+  "nano"
+)
+for potential_editor in "${potential_editors[@]}"; do
+   if command -v "$potential_editor" 1>/dev/null 2>&1; then
+     export EDITOR="$potential_editor"
+     break
+   fi
+done
+
