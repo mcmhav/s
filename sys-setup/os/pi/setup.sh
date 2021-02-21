@@ -79,7 +79,7 @@ installDocker() {
   fi
 }
 
-CONFIG_HOME="$CSYS_HOME/sys-setup/os/pi"
+CONFIG_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 RETURN_TO=$(pwd)
 
 cd "$CONFIG_HOME" || exit

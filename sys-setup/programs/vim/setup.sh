@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 link_config() {
+  if [ ! -d "$HOME/.vim" ]; then
+    mkdir "$HOME/.vim"
+  fi
   LOCAL_CONFIG_PATH="$CSYS_HOME/sys-setup/programs/vim/config"
 
   ln -sf "$LOCAL_CONFIG_PATH"/*.vim "$HOME"/.vim
