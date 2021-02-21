@@ -4,6 +4,7 @@ bash-completion
 fish
 git
 go
+zlib
 jq
 pipenv
 nodenv
