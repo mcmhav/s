@@ -1,0 +1,34 @@
+#!/bin/bash
+
+UPDATE_TO_VERSION="buster"
+
+# Update packages
+#sudo apt update
+#sudo apt dist-upgrade -y
+
+if [ ! -z "$UPDATE_FIRMWARE" ]; then
+  # Update firmware
+  sudo rpi-update
+fi
+
+# Get os version name
+source /etc/os-release
+
+# Update source lists
+#sudo sed -i "s/$VERSION_CODENAME/$UPDATE_TO_VERSION/g" /etc/apt/sources.list
+#sudo sed -i "s/$VERSION_CODENAME/$UPDATE_TO_VERSION/g" /etc/apt/sources.list.d/raspi.list
+
+for file in $(grep -lnr stretch /etc/apt); do
+  sudo sed -i "s/$VERSION_CODENAME/$UPDATE_TO_VERSION/g" "$file"
+done
+
+# Speed up steps??
+sudo apt-get remove apt-listchanges -y
+
+# Do the upgrade
+sudo apt-get update
+sudo apt-get full-upgrade -y
+
+# Cleanup
+sudo apt-get autoremove -y
+sudo apt-get autoclean
