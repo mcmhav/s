@@ -2,33 +2,51 @@
 
 UPDATE_TO_VERSION="buster"
 
+# Get os version name
+source /etc/os-release
+
+if [ "$UPDATE_TO_VERSION" == "$VERSION_CODENAME" ]; then
+  loggit "Already at wanted version"
+  exit
+fi 
+
+# http://baddotrobot.com/blog/2019/08/29/upgrade-raspian-stretch-to-buster/
+# https://pimylifeup.com/upgrade-raspbian-stretch-to-raspbian-buster/
+
 # Update packages
-#sudo apt update
-#sudo apt dist-upgrade -y
+sudo apt update
+sudo apt dist-upgrade -y
 
 if [ ! -z "$UPDATE_FIRMWARE" ]; then
   # Update firmware
   sudo rpi-update
 fi
 
-# Get os version name
-source /etc/os-release
-
 # Update source lists
-#sudo sed -i "s/$VERSION_CODENAME/$UPDATE_TO_VERSION/g" /etc/apt/sources.list
-#sudo sed -i "s/$VERSION_CODENAME/$UPDATE_TO_VERSION/g" /etc/apt/sources.list.d/raspi.list
-
 for file in $(grep -lnr stretch /etc/apt); do
   sudo sed -i "s/$VERSION_CODENAME/$UPDATE_TO_VERSION/g" "$file"
 done
 
 # Speed up steps??
-sudo apt-get remove apt-listchanges -y
+sudo apt remove apt-listchanges -y
 
 # Do the upgrade
-sudo apt-get update
-sudo apt-get full-upgrade -y
+sudo apt update
+sudo apt full-upgrade -y
 
 # Cleanup
-sudo apt-get autoremove -y
-sudo apt-get autoclean
+sudo apt purge \
+  timidity \
+  lxmusic \
+  gnome-disk-utility \
+  deluge-gtk \
+  evince \
+  wicd \
+  wicd-gtk \
+  clipit \
+  usermode \
+  gucharmap \
+  gnome-system-tools \
+  pavucontrol
+sudo apt autoremove -y
+sudo apt autoclean

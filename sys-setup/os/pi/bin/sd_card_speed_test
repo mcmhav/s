@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if ! dpkg -s agnostics 1>/dev/null 2>&1; then
+  sudo apt install agnostics -y
+fi
+
+# https://geektechstuff.com/2020/03/08/raspberry-pi-microsd-check-using-agnostics-via-cli-raspberry-pi/
+sh /usr/share/agnostics/sdtest.sh
