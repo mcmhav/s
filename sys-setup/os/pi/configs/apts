@@ -9,3 +9,5 @@ libbz2-dev
 libsqlite3-dev
 libssl-dev
 libffi-dev
+fzf
+python3-pip

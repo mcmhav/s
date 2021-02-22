@@ -77,6 +77,9 @@ installDocker() {
     sudo curl https://download.docker.com/linux/raspbian/gpg
     rm -rf tmp
   fi
+  if ! command -v docker-compose &> /dev/null; then
+    sudo pip3 install docker-compose
+  fi
 }
 
 CONFIG_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
