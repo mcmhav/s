@@ -1,33 +1,56 @@
 #!/bin/bash
 
-source param_parser --params "k t" --incomming_params "$@"
+# TODO: extend to something like https://unix.stackexchange.com/a/324451/152545
 
 source inject_secrets || exit
 
 GITHUB_API_URL="https://api.github.com"
 API_KEYS_PATH="user/keys"
 
-# curl -H "Authorization: token $GIT_ACCESS_TOKEN" "$GITHUB_API_URL/$API_KEYS_PATH"
+add() {
+  source param_parser --params "k t" --incomming_params "$@"
 
-if [ -z "$PARAM_K" ]; then
-  SSH_PUB_KEY=$(cat $HOME/.ssh/id_rsa.pub)
-else
-  SSH_PUB_KEY=$(cat "$PARAM_K")
-fi
+  if [ -z "$PARAM_K" ]; then
+    SSH_PUB_KEY=$(cat $HOME/.ssh/id_rsa.pub)
+  else
+    SSH_PUB_KEY=$(cat "$PARAM_K")
+  fi
 
-if [ -z "$PARAM_T" ]; then
-  echo "Must set title -t"
-  exit 1
-fi
+  if [ -z "$PARAM_T" ]; then
+    echo "Must set title -t"
+    exit 1
+  fi
 
-SSH_TITLE="$PARAM_T"
+  SSH_TITLE="$PARAM_T"
 
-curl \
-  -X POST \
-  -H "Authorization: token $GIT_ACCESS_TOKEN" \
-  "$GITHUB_API_URL/$API_KEYS_PATH" \
-  -d '{"key":"'"$SSH_PUB_KEY"'","title":"'"$SSH_TITLE"'"}'
+  curl \
+    -X POST \
+    -H "Authorization: token $GIT_ACCESS_TOKEN" \
+    "$GITHUB_API_URL/$API_KEYS_PATH" \
+    -d '{"key":"'"$SSH_PUB_KEY"'","title":"'"$SSH_TITLE"'"}'
+}
 
+get() {
+  curl \
+    -s \
+    -H "Authorization: token $GIT_ACCESS_TOKEN" \
+    "$GITHUB_API_URL/$API_KEYS_PATH"
+}
 
+GITHUB_ACTION="$1"
+shift
+case "$GITHUB_ACTION" in
+  add)
+    add "$@"
+    exit
+    ;;
+  get)
+    get "$@"
+    exit
+    ;;
+  *)
+    echo "Action not recognised, $GITHUB_ACTION"
+    exit 1
+    ;;
+esac
 
-# TODO: extend to something like https://unix.stackexchange.com/a/324451/152545

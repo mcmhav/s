@@ -53,22 +53,27 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 #   esac
 fi
 
-PS1='\[\e[0;31m\]${promt_message}\[\e[m\]${promt_message_spacer}\[\e[1;35m\]${timer_show}\[\e[m\]|\[\e['
+PS1=''
+PS1=$PS1'\[\e[0;31m\]${promt_message}\[\e[m\]'
+PS1=$PS1'${promt_message_spacer}'
+PS1=$PS1'\[\e[1;35m\]${timer_show}\[\e[m\]'
+PS1=$PS1'|'
+PS1=$PS1'\[\e['
 if [ -n "$IS_SSH_SESSION" ]; then
   PS1=$PS1'1;36m'
 else
   PS1=$PS1'1;32m'
 fi
+PS1=$PS1'\]\W\[\e[m\]'
 # ❮ ❯ ❰ ❱ ◼ ▶ ▴ ▲ ▼ ⬘ ⌔ ∴ ⭓ ⭔ း ಃ 〓 💩
-PS1=$PS1'\]\W\[\e[m\]\[\e[0;31m\]⭓\[\e[m\] '
+PS1=$PS1'\[\e[0;31m\]⭓\[\e[m\] '
 
 export PS1=$PS1
 export PROMPT=$PS1
 export PS2='> '
 
 # '\e[x;ym $PS1 \e[m' Where:
-
-# \e[ : Start color scheme.
-# x;y : Color pair to use (x;y)
-# $PS1 : Your shell prompt variable.
-# \e[m : Stop color scheme.
+#  - \e[ : Start color scheme.
+#  - x;y : Color pair to use (x;y)
+#  - $PS1 : Your shell prompt variable.
+#  - \e[m : Stop color scheme.
