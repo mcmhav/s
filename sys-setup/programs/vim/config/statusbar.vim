@@ -41,3 +41,5 @@ set statusline+=\ %#LinePosition#
 set statusline+=\ %l:%c
 set statusline+=%{'\ '}
 
+set laststatus=2
+
