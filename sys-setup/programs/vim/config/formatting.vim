@@ -21,6 +21,7 @@ set smarttab
 set autoindent
 set cindent
 filetype indent off
+set breakindent
 "filetype plugin indent on
 
 " Autoformat
