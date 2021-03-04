@@ -6,9 +6,14 @@ find_in_files() {
     search_location="$1"
   fi
 
-  echo "$search_location"
+  ag_fzf_result=`ag "$search_location" | fzf -e`
 
-  ag "$search_location" | fzf -e --bind="enter:execute:nvim {} < /dev/tty"
+  selected_file=`echo "$ag_fzf_result" | awk 'BEGIN {FS=":";} { print $1 }'`
+  selected_line_num=`echo "$ag_fzf_result" | awk 'BEGIN {FS=":";} { print $2 }'`
+
+  if [ ! -z "$selected_file" ]; then
+    vim "$selected_file" +$selected_line_num
+  fi
 }
 
 find_in_files "$@"
