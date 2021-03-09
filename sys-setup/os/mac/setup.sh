@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
 installStuff() {
+  while ! xcrun --version 1>/dev/null 2>&1; do
+    xcode-select --install 2>/dev/null
+    echo "Waiting for xcron/xcode-install"
+    sleep 10
+  done
+
 	# brew
 	if ! [ -x "$(command -v brew)" ]; then
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -9,8 +15,6 @@ installStuff() {
 	if ! brew tap | grep -q 'homebrew/cask-fonts'; then
 		brew tap homebrew/cask-fonts
 	fi
-
-	xcode-select --install 2>/dev/null
 
 	brew update
 	brew upgrade
@@ -39,11 +43,9 @@ installStuff() {
 	defaults write com.apple.finder AppleShowAllFiles YES
 
 	# app configs
-	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.apple.Terminal.plist ~/Library/Preferences/com.apple.Terminal.plist
-	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
-	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.yujitach.MenuMeters.plist ~/Library/Preferences/com.yujitach.MenuMeters.plist
-	ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.ragingmenace.MenuMeters.plist ~/Library/Preferences/com.ragingmenace.MenuMeters.plist
-	# ln -sf $CSYS_HOME/sys-setup/os/mac/configs/com.apple.dock.plist ~/Library/Preferences/com.apple.dock.plist
+  for file in "$CSYS_HOME/sys-setup/os/mac/configs/plists/"*; do
+    ln -sf $file ~/Library/Preferences/$(basename -- $file)
+  done
 
 	# stop mouse from accelerating
 	defaults write .GlobalPreferences com.apple.mouse.scaling -1
