@@ -31,6 +31,7 @@ PATHS=(
 	"$HOME/.poetry/bin"
 	"$HOME/.nodenv/bin"
   "$HOME/.nodenv/shims"
+  "$HOME/.cargo/bin"
 )
 PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
 if [ -n "$(command -v ruby)" ]; then
@@ -52,6 +53,9 @@ export XDG_CONFIG_HOME="$CSYS_HOME/sys-setup/.dotfiles"
 # Language
 export LANG='en_US.UTF-8'
 export LC_ALL="en_US.UTF-8"
+
+# Rust
+export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 # fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --unrestricted --ignore .git -f -g ""'

@@ -57,6 +57,9 @@ installStuff() {
   # Dock hiding
   # Revert: defaults delete com.apple.dock autohide-delay; killall Dock
   defaults write com.apple.dock autohide-delay -float 1000; killall Dock
+
+  # menubar? not working tho?
+  # defaults write com.apple.controlcenter.plist "NSStatusItem Visible Sound" -bool false
 }
 
 installBrews() {
