@@ -51,7 +51,7 @@ installStuff() {
 	defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
   # keyboard input speeds
-  defaults write -g KeyRepeat -int 4 # normal minimum is 2
+  defaults write -g KeyRepeat -int 3 # normal minimum is 2
   defaults write -g InitialKeyRepeat -int 20
 
   # Dock hiding
