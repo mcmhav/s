@@ -32,6 +32,8 @@ installStuff() {
 	fi
 
 	$CSYS_HOME/sys-setup/programs/pip/setup.sh
+	$CSYS_HOME/sys-setup/programs/rust/setup.sh --setup
+	$CSYS_HOME/sys-setup/programs/rust/setup.sh --installCargos
 
 	# mac-os setup
 	if [ ! -d ~/Pictures/screenshots ]; then
