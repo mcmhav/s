@@ -33,7 +33,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'haya14busa/incsearch.vim'
 
   " Low impact, might be causing the lags?
-  "Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " Do not use on pi
   if $CSYS_OS != "pi"
@@ -44,4 +44,8 @@ call plug#begin('~/.vim/plugged')
 
   " Untested - check if we can remove this, in favour of doing all with coc
   " Plug 'dense-analysis/ale'
+
+  " New untested
+  Plug 'tpope/vim-commentary'
+
 call plug#end()

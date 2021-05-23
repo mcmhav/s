@@ -1,4 +1,4 @@
-"inoremap qq <Esc>
+inoremap jj <Esc>
 "inoremap QQ <Esc>
 "nnoremap qq :noh<return><Esc>
 
