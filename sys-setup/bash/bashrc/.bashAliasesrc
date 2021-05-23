@@ -31,10 +31,19 @@ if command -v watch 1>/dev/null 2>&1; then
   alias watch='watch --color'
 fi
 
+if command -v loggit 1>/dev/null 2>&1; then
+  alias echo='loggit'
+fi
+
 # some more ls aliases
 #alias ll='ls -l'
 #alias la='ls -A'
 #alias l='ls -CF'
+
+# loggs
+alias logginfo='loggit info'
+alias loggwarn='loggit warn'
+alias loggerrr='loggit errr'
 
 alias cake='sh $CSYS_HOME/sys-setup/.dotfiles/.cakeInit.sh'
 

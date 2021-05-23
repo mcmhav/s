@@ -1,7 +1,38 @@
 #!/bin/bash
 
+source term_colors
+
+SEVERITY="${LIGHT_CYAN}INFO${NC}"
+PARAMS="$@"
+
+check_severity() {
+  potential_severity=$(echo "$1" | tr '[:lower:]' '[:upper:]')
+  case $potential_severity in
+  info | INFO)
+    SEVERITY="${LIGHT_CYAN}INFO${NC}"
+    shift
+    PARAMS="$@"
+    ;;
+  warn | WARN)
+    SEVERITY="${YELLOW}WARN${NC}"
+    shift
+    PARAMS="$@"
+    ;;
+  errr | ERRR)
+    SEVERITY="${RED}ERRR${NC}"
+    shift
+    PARAMS="$@"
+    ;;
+  esac
+}
+
 loggit() {
-  printf "=== %s \n" "$@"
+  check_severity "$@"
+  # PARENT_COMMAND=$(ps -o comm= $PPID)
+  # cat /proc/$PPID/cmdline
+  PARENT_PATH=$(ls /proc/$PPID/fd/255)
+  PARENT_REAL_PATH=$(realpath $PARENT_PATH)
+  printf "[$SEVERITY]$PARENT_REAL_PATH:%s \n" "$PARAMS"
 }
 
 loggit "$@"

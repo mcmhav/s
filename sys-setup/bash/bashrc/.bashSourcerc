@@ -3,8 +3,8 @@
 bashWD="$CSYS_HOME/sys-setup/bash"
 # adding extra sources
 source "$bashWD"/bashrc/.bashGitrc
-source "$bashWD"/bashrc/.bashAliasesrc
 source "$bashWD"/bashrc/.bashExportsrc
+source "$bashWD"/bashrc/.bashAliasesrc
 source "$bashWD"/bashrc/.bash."$CSYS_OS"rc
 
 G_CLOUD_SDK_PATH="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
