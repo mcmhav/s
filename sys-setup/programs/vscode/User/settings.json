@@ -748,5 +748,11 @@
     "gitlens.codeLens.recentChange.enabled": false,
     "gitlens.menus": false,
     "tab-groups.gitBranchGroups": false,
-    "tab-groups.saveGlobally": false
+    "tab-groups.saveGlobally": false,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ]
 }
