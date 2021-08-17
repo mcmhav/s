@@ -62,6 +62,9 @@ installStuff() {
 
   # menubar? not working tho?
   # defaults write com.apple.controlcenter.plist "NSStatusItem Visible Sound" -bool false
+
+  # Menu bar:
+  defaults write com.apple.menuextra.clock.plist DateFormat -string "HH:mm"
 }
 
 installBrews() {
