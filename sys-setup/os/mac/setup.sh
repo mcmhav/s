@@ -56,15 +56,22 @@ installStuff() {
   defaults write -g KeyRepeat -int 3 # normal minimum is 2
   defaults write -g InitialKeyRepeat -int 20
 
-  # Dock hiding
+  # Dock
   defaults delete com.apple.dock autohide-delay; killall Dock
+  defaults write com.apple.dock static-only -bool false; killall Dock
   # defaults write com.apple.dock autohide-delay -float 1000; killall Dock
-
-  # menubar? not working tho?
-  # defaults write com.apple.controlcenter.plist "NSStatusItem Visible Sound" -bool false
 
   # Menu bar:
   defaults write com.apple.menuextra.clock.plist DateFormat -string "HH:mm"
+  # menubar? not working tho?
+  # defaults write com.apple.controlcenter.plist "NSStatusItem Visible Sound" -bool false
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Battery -int 18
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist BatteryShowPercentage -int 0
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Bluetooth -int 24
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Clock -int 18
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Sound -int 24
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist UserSwitcher -int 24
+  defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist WiFi -int 24
 }
 
 installBrews() {
