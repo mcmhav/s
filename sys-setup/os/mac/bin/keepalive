@@ -1,0 +1,7 @@
+#!/bin/bash
+
+while true; do
+  echo "keeping alive sending code 57"
+  osascript -e 'tell application "System Events" to key code 57'
+  sleep 30
+done

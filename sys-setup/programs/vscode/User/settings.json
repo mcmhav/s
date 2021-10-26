@@ -68,7 +68,6 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
-    "editor.formatOnSave": true,
     "editor.minimap.renderCharacters": false,
     "editor.minimap.showSlider": "always",
     "editor.multiCursorModifier": "ctrlCmd",
@@ -291,7 +290,6 @@
     "explorer.confirmDragAndDrop": false,
     "explorer.openEditors.visible": 0,
     "extensions.ignoreRecommendations": false,
-    "files.autoSave": "onFocusChange",
     "files.exclude": {
         "**/.classpath": true,
         "**/.factorypath": true,
@@ -749,10 +747,14 @@
     "gitlens.menus": false,
     "tab-groups.gitBranchGroups": false,
     "tab-groups.saveGlobally": false,
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ]
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "python.defaultInterpreterPath": "~/.pyenv/shims/python",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "files.autoSave": "onFocusChange"
 }
