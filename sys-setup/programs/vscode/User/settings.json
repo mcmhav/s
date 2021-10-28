@@ -27,14 +27,13 @@
     "coverage-gutters.ignoredPathGlobs": "**/{node_modules,venv,vendor,.tox,.pytest_cache,__pycache__ ,build,.git,dist}/**",
     "coverage-gutters.xmlname": "coverage.xml",
     "cSpell.userWords": [
-        "Repressurizing",
-        "UGLN",
         "astype",
         "bfill",
         "bokeh",
         "cygwin",
         "dataset",
         "dateutil",
+        "deserialization",
         "dropdown",
         "dropna",
         "dtype",
@@ -53,16 +52,19 @@
         "jsonify",
         "keras",
         "logdir",
+        "mcmhav",
         "mlengine",
         "numpy",
         "pipenv",
         "pylint",
         "pytest",
+        "Repressurizing",
         "scrollback",
         "scrollbar",
         "tensorboard",
         "tensorflow",
-        "tolist"
+        "tolist",
+        "UGLN"
     ],
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.codeActionsOnSave": {
@@ -748,13 +750,15 @@
     "tab-groups.gitBranchGroups": false,
     "tab-groups.saveGlobally": false,
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
+        "*.ipynb": "jupyter.notebook.ipynb"
     },
     "python.defaultInterpreterPath": "~/.pyenv/shims/python",
-    "notebook.cellToolbarLocation": {
-        "default": "right",
-        "jupyter-notebook": "left"
-    },
+    "monkeyC.developerKeyPath": "/Users/mcmhav/r/cake/garmin/developer_key",
+    "monkeyC.javaPath": "/Library/Java/JavaVirtualMachines/openjdk-11.0.2.jdk/Contents/Home",
+    "go.toolsManagement.autoUpdate": true,
+    "security.workspace.trust.enabled": false,
+    "security.workspace.trust.startupPrompt": "never",
     "security.workspace.trust.untrustedFiles": "open",
-    "files.autoSave": "onFocusChange"
+    "update.showReleaseNotes": false,
+    "redhat.telemetry.enabled": false
 }
