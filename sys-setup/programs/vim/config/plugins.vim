@@ -28,7 +28,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'ap/vim-css-color'
   Plug 'wakatime/vim-wakatime'
-  Plug 'tpope/vim-fugitive'
+  " Plug 'tpope/vim-fugitive'
   " Test for now, remove if no large benefit is seen as default seach works pretty well
   Plug 'haya14busa/incsearch.vim'
 
