@@ -34,6 +34,8 @@ setup_plugins() {
   fi
 
   vim +PlugInstall +qall
+  vim +PlugUpgrade +qall
+  vim +PlugUpdate +qall
 }
 
 VIM_BUNDLE_PATH="$HOME/.vim/bundle/Vundle.vim"
