@@ -36,7 +36,7 @@ loggit() {
     PARENT_REAL_PATH=$(realpath $PARENT_PATH)
     ;;
   esac
-  timestamp=${LIGHT_CYAN}$(date +"%m/%d/%Y-%T")${NC}
+  timestamp=${LIGHT_CYAN}$(date +"%d/%m/%Y-%T")${NC}
   printf "[$SEVERITY]$timestamp$PARENT_REAL_PATH:%s \n" "$PARAMS"
 }
 
