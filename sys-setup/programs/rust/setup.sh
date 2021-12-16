@@ -18,10 +18,10 @@ installCargos() {
 ACTION="$1"
 shift
 case "$ACTION" in
-  setup)
+  --setup)
     setup
     ;;
-  installCargos)
+  --installCargos)
     installCargos
     ;;
   *)
