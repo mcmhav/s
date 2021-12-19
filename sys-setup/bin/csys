@@ -5,7 +5,13 @@
 csys() {
 	csysUpdate() {
 		git pull
-		./sys-setup/initNewSys.sh
+    if [ $? -eq 0 ]; then
+      ./sys-setup/initNewSys.sh
+    else
+      git stash
+      ./sys-setup/initNewSys.sh
+      git stash pop
+    fi
 	}
 
 	csysUpload() {

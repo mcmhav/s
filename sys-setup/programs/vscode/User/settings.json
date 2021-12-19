@@ -760,5 +760,6 @@
     "security.workspace.trust.startupPrompt": "never",
     "security.workspace.trust.untrustedFiles": "open",
     "update.showReleaseNotes": false,
-    "redhat.telemetry.enabled": false
+    "redhat.telemetry.enabled": false,
+    "files.autoSave": "afterDelay"
 }
