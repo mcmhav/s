@@ -70,6 +70,7 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
+    "editor.formatOnSave": true,
     "editor.minimap.renderCharacters": false,
     "editor.minimap.showSlider": "always",
     "editor.multiCursorModifier": "ctrlCmd",
@@ -292,6 +293,7 @@
     "explorer.confirmDragAndDrop": false,
     "explorer.openEditors.visible": 0,
     "extensions.ignoreRecommendations": false,
+    "files.autoSave": "onFocusChange",
     "files.exclude": {
         "**/.classpath": true,
         "**/.factorypath": true,
@@ -760,6 +762,5 @@
     "security.workspace.trust.startupPrompt": "never",
     "security.workspace.trust.untrustedFiles": "open",
     "update.showReleaseNotes": false,
-    "redhat.telemetry.enabled": false,
-    "files.autoSave": "afterDelay"
+    "redhat.telemetry.enabled": false
 }
