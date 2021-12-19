@@ -32,6 +32,8 @@ PATHS=(
 	"$HOME/.nodenv/bin"
   "$HOME/.nodenv/shims"
   "$HOME/.cargo/bin"
+	"$HOME/r/s/sys-setup/bin"
+	"/usr/local/miniconda3/bin"
 )
 PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
 if [ -n "$(command -v ruby)" ]; then
