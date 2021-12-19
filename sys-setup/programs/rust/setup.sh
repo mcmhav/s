@@ -3,6 +3,7 @@
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 
 setup() {
+  loggit "Setting up rust"
   if [ ! -d "$HOME/.cargo" ]; then
     mkdir "$HOME/.cargo"
   fi
@@ -10,6 +11,7 @@ setup() {
 }
 
 installCargos() {
+  loggit "Installing cargos"
   while read -r l; do
     cargo install "$l" --quiet
   done <"$SCRIPT_DIR/cargos"

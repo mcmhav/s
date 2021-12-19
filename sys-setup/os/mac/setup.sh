@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+INSTALL_PY_VERSION="3.8.12"
+
 installStuff() {
   while ! xcrun --version 1>/dev/null 2>&1; do
     xcode-select --install 2>/dev/null
@@ -27,8 +29,8 @@ installStuff() {
 	CFLAGS="-I$(brew --prefix openssl)/include"
 	LDFLAGS="-L$(brew --prefix openssl)/lib"
 
-	if [ -z "$(pyenv versions | grep 3.7.7)" ]; then
-		pyenv install --skip-existing 3.7.7
+	if [ -z "$(pyenv versions | grep INSTALL_PY_VERSION)" ]; then
+		pyenv install --skip-existing "$INSTALL_PY_VERSION"
 	fi
 
 	$CSYS_HOME/sys-setup/programs/pip/setup.sh
