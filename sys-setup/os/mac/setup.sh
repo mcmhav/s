@@ -59,7 +59,7 @@ installStuff() {
   defaults write -g InitialKeyRepeat -int 20
 
   # Dock
-  defaults delete com.apple.dock autohide-delay; killall Dock
+  # defaults delete com.apple.dock autohide-delay; killall Dock
   defaults write com.apple.dock static-only -bool false; killall Dock
   # defaults write com.apple.dock autohide-delay -float 1000; killall Dock
 
