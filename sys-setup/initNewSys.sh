@@ -18,7 +18,7 @@ non_gui_config() {
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.pylintrc" "$HOME/.pylintrc"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.pydocstylerc" "$HOME/.pydocstylerc"
   ln -sf "$CSYS_HOME/sys-setup/.dotfiles/.style.yapf" "$HOME/.style.yapf"
-  ln -sf "$CSYS_HOME/sys-setup/programs/fish" "$HOME/.config/"
+  ln -sf "$CSYS_HOME/sys-setup/.dotfiles/fish" "$HOME/.config/"
 }
 gui_config() {
   if [ ! -L "$HOME/.jupyter" ]; then

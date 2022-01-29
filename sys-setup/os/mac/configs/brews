@@ -23,7 +23,9 @@ openssh
 gost
 bat
 xclip
-clementtsang/bottom/bottom
 nvim
 rust
 bottom
+rbenv
+hashicorp/tap/terraform
+hashicorp/tap/terraform-ls

@@ -19,7 +19,7 @@ esac
 
 handleVSUser() {
   ln -sf $extra_link_flag "$VS_CODE_SETUP_HOME/User/settings.json" "$VS_CODE_HOME_USER/settings.json"
-  #ln -sf"$extra_link_flag" "$VS_CODE_SETUP_HOME/User/keybindings.json" "$VS_CODE_HOME_USER/keybindins.json"
+  ln -sf $extra_link_flag "$VS_CODE_SETUP_HOME/User/keybindings.json" "$VS_CODE_HOME_USER/keybindins.json"
   #ln -sf "$VS_CODE_SETUP_HOME/User/snippets" "$VS_CODE_HOME_USER/snippets"
 }
 
@@ -47,7 +47,7 @@ uninstallDiff() {
 
   makeDiff $tmpList $diffList
 
-  loggit "uninstall list:"
+  loggit "Uninstall list:"
   cat "$VS_CODE_SETUP_HOME/$diffList"
 
   while IFS= read -r l; do
@@ -63,6 +63,7 @@ installExtentions() {
 
   uninstallDiff
 
+  loggit "Installing extentions"
   while IFS= read -r l; do
     # Checking and strippig
     # Stripping to handled swithing between os's

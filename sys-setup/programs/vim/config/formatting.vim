@@ -30,15 +30,6 @@ set breakindent
 "autocmd BufLeave,InsertLeave * wall
 "autocmd BufLeave * wall
 "autocmd WinLeave * :ALEFix | :write
-let g:ale_fixers = {
-\  'javascript': ['prettier'],
-\  'json': ['prettier'],
-\  'css': ['prettier'],
-\  'scss': ['prettier'],
-\  'html': ['prettier'],
-\  'xml': ['prettier'],
-\}
-let g:ale_fix_on_save = 1
 
 " Search
 set ignorecase

@@ -24,3 +24,8 @@ fi
 completionsWD="$CSYS_HOME/sys-setup/completions"
 
 source $completionsWD/bash/csys
+
+# Terraform:
+if [ -f "/usr/local/bin/terraform" ]; then
+  complete -C /usr/local/bin/terraform terraform
+fi

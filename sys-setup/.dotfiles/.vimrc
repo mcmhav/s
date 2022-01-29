@@ -18,3 +18,4 @@ runtime statusbar.vim
 
 " Keybindings
 runtime keybindings.vim
+

@@ -1,6 +1,7 @@
 window:
   dynamic_padding: true
   decorations: buttonless
+  opacity: 0.95
   padding:
     y: 5
 
@@ -36,8 +37,6 @@ colors:
     Magenta: '#FD7CFC'
     Cyan: '#68FDFE'
     White: '#FFFFFF'
-
-background_opacity: 0.95
 
 alt_send_esc: false
 

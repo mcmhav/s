@@ -49,3 +49,12 @@ map g# <Plug>(incsearch-nohl-g#)
 
 " Clipboard
 set clipboard=unnamed
+
+" Matching brackets
+inoremap { {}<Esc>ha
+inoremap ( ()<Esc>ha
+inoremap [ []<Esc>ha
+inoremap " ""<Esc>ha
+inoremap ' ''<Esc>ha
+inoremap ` ``<Esc>ha
+

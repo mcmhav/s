@@ -1,58 +1,65 @@
 #!/usr/bin/env bash
 
 INSTALL_PY_VERSION="3.8.12"
+INSTALL_NODE_VERSION="16.13.1"
 
 installStuff() {
+  loggit "Installing mac stuff"
   while ! xcrun --version 1>/dev/null 2>&1; do
     xcode-select --install 2>/dev/null
     echo "Waiting for xcron/xcode-install"
     sleep 10
   done
 
-	# brew
-	if ! [ -x "$(command -v brew)" ]; then
-		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	fi
+  # brew
+  if ! [ -x "$(command -v brew)" ]; then
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
 
-	if ! brew tap | grep -q 'homebrew/cask-fonts'; then
-		brew tap homebrew/cask-fonts
-	fi
+  if ! brew tap | grep -q 'homebrew/cask-fonts'; then
+    brew tap homebrew/cask-fonts
+  fi
 
-	brew update
-	brew upgrade
-	brew upgrade --cask
-	brew tap homebrew/services
+  brew update
+  brew upgrade
+  brew upgrade --cask
+  brew tap homebrew/services
 
-	# brews
-	installBrews
+  # brews
+  installBrews
 
-	CFLAGS="-I$(brew --prefix openssl)/include"
-	LDFLAGS="-L$(brew --prefix openssl)/lib"
+  CFLAGS="-I$(brew --prefix openssl)/include"
+  LDFLAGS="-L$(brew --prefix openssl)/lib"
 
-	if [ -z "$(pyenv versions | grep INSTALL_PY_VERSION)" ]; then
-		pyenv install --skip-existing "$INSTALL_PY_VERSION"
-	fi
+  if [ -z "$(pyenv versions | grep INSTALL_PY_VERSION)" ]; then
+    pyenv install --skip-existing "$INSTALL_PY_VERSION"
+    pyenv global "$INSTALL_PY_VERSION"
+  fi
+  if [ -z "$(nodenv versions | grep INSTALL_NODE_VERSION)" ]; then
+    nodenv install --skip-existing "$INSTALL_NODE_VERSION"
+    nodenv global "$INSTALL_NODE_VERSION"
+  fi
 
-	$CSYS_HOME/sys-setup/programs/pip/setup.sh
-	$CSYS_HOME/sys-setup/programs/rust/setup.sh --setup
-	$CSYS_HOME/sys-setup/programs/rust/setup.sh --installCargos
+  "$CSYS_HOME/sys-setup/programs/pip/setup.sh"
+  "$CSYS_HOME/sys-setup/programs/rust/setup.sh" --setup
+  "$CSYS_HOME/sys-setup/programs/rust/setup.sh" --installCargos
 
-	# mac-os setup
-	if [ ! -d ~/Pictures/screenshots ]; then
-		mkdir ~/Pictures/screenshots
-	fi
+  # mac-os setup
+  if [ ! -d ~/Pictures/screenshots ]; then
+    mkdir ~/Pictures/screenshots
+  fi
 
-	defaults write com.apple.screencapture location ~/Pictures/screenshots
+  defaults write com.apple.screencapture location ~/Pictures/screenshots
 
-	defaults write com.apple.finder AppleShowAllFiles YES
+  defaults write com.apple.finder AppleShowAllFiles YES
 
-	# app configs
+  # app configs
   for file in "$CSYS_HOME/sys-setup/os/mac/configs/plists/"*; do
     ln -sf $file ~/Library/Preferences/$(basename -- $file)
   done
 
-	# stop mouse from accelerating
-	defaults write .GlobalPreferences com.apple.mouse.scaling -1
+  # stop mouse from accelerating
+  defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
   # keyboard input speeds
   defaults write -g KeyRepeat -int 3 # normal minimum is 2
@@ -60,7 +67,8 @@ installStuff() {
 
   # Dock
   # defaults delete com.apple.dock autohide-delay; killall Dock
-  defaults write com.apple.dock static-only -bool false; killall Dock
+  defaults write com.apple.dock static-only -bool false
+  killall Dock
   # defaults write com.apple.dock autohide-delay -float 1000; killall Dock
 
   # Menu bar:
@@ -77,23 +85,24 @@ installStuff() {
 }
 
 installBrews() {
-	loggit "Installing brews"
+  loggit "Installing brews"
 
-	while read -r l; do
-		read -ra BREW_PACKAGE <<<"$l"
-		if ! brew ls --versions "${BREW_PACKAGE[0]}" >/dev/null; then
-			brew install "$l"
-		fi
-	done <configs/brews
+  for l in $(cat configs/brews); do
+    read -ra BREW_PACKAGE <<<"$l"
+    brew ls --versions "${BREW_PACKAGE[0]}" >/dev/null
+    if [ "$?" -ne 0 ]; then
+      brew install "$l"
+    fi
+  done
 
-	loggit "Installing brews casks"
+  loggit "Installing brews casks"
 
-	while read -r l; do
-		read -ra BREW_PACKAGE <<<"$l"
-		if ! brew ls --cask --versions "${BREW_PACKAGE[0]}" >/dev/null; then
-			brew install --cask "$l"
-		fi
-	done <configs/casks
+  while read -r l; do
+    read -ra BREW_PACKAGE <<<"$l"
+    if ! brew ls --cask --versions "${BREW_PACKAGE[0]}" >/dev/null; then
+      brew install --cask "$l"
+    fi
+  done <configs/casks
 }
 
 CONFIG_HOME="$CSYS_HOME/sys-setup/os/mac"

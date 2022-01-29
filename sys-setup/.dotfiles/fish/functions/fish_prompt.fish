@@ -65,12 +65,17 @@ function fish_prompt
     set -l cwd $cyan(basename (prompt_pwd))
 
     if set -l repo_type (_repo_type)
-        set repo_info "$blue ⭔"
+        # set repo_info "$blue ⭔"
+        # set repo_info "$blue ⚇"
+        set repo_info "$blue ❱"
 
         if [ (_is_repo_dirty $repo_type) ]
-            set repo_info "$yellow ⭓"
+            # set repo_info "$yellow ⭓ "
+            # set repo_info "$yellow ⚉"
+            set repo_info "$yellow ❱"
         end
     end
 
-    echo -n -s $prev_command_usage $arrow $cwd $repo_info$normal ' '
+    echo -n -s $prev_command_usage $arrow $cwd $repo_info $normal ' '
+    # echo -n -s ⭓
 end

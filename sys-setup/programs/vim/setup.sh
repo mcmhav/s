@@ -22,6 +22,7 @@ link_config() {
 }
 
 setup_plugins() {
+  loggit "Setup plugins"
   if [ ! -d "$VIM_BUNDLE_PATH" ]; then
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   else
@@ -36,6 +37,9 @@ setup_plugins() {
   vim +PlugInstall +qall
   vim +PlugUpgrade +qall
   vim +PlugUpdate +qall
+  # install cocs:
+  cd "$CSYS_HOME/sys-setup/.dotfiles/coc/extensions" || exit
+  yarn install --frozen-lockfile --ignore-engines
 }
 
 VIM_BUNDLE_PATH="$HOME/.vim/bundle/Vundle.vim"

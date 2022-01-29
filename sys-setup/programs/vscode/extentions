@@ -1,7 +1,5 @@
 aaron-bond.better-comments
-brainfit.vscode-importmagic
 bungcip.better-toml
-CoenraadS.bracket-pair-colorizer
 dbaeumer.vscode-eslint
 eamodio.gitlens
 Equinusocio.vsc-community-material-theme
@@ -16,6 +14,7 @@ GrapeCity.gc-excelviewer
 hangxingliu.vscode-nginx-conf-hint
 ms-azuretools.vscode-docker
 ms-python.python
+ms-python.vscode-pylance
 ms-toolsai.jupyter
 ms-toolsai.jupyter-renderers
 ms-vscode.vscode-typescript-tslint-plugin
@@ -23,7 +22,6 @@ naco-siren.gradle-language
 naumovs.color-highlight
 njpwerner.autodocstring
 oderwat.indent-rainbow
-redhat.java
 redhat.vscode-yaml
 ryanluker.vscode-coverage-gutters
 secanis.jenkinsfile-support
@@ -31,11 +29,6 @@ skyapps.fish-vscode
 streetsidesoftware.code-spell-checker
 timonwong.shellcheck
 VisualStudioExptTeam.vscodeintellicode
-vscjava.vscode-java-debug
-vscjava.vscode-java-dependency
-vscjava.vscode-java-pack
-vscjava.vscode-java-test
-vscjava.vscode-maven
 WakaTime.vscode-wakatime
 wix.vscode-import-cost
 xabikos.ReactSnippets

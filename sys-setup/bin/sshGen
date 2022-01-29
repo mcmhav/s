@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
+KEY_MAIL="mcmhav@gmail.com"
+
+if [ ! -z "$1" ]; then
+  KEY_MAIL="$1"
+fi
+
 if [ ! -d "$HOME/.ssh" ]; then
   mkdir "$HOME/.ssh"
 fi
 
 if [ ! -f "$HOME/.ssh/id_rsa" ]; then
-  ssh-keygen -t rsa -b 4096 -C "mcmhav@gmail.com" -f "$HOME/.ssh/id_rsa" -N "" -q
+  ssh-keygen -t rsa -b 4096 -C "$KEY_MAIL" -f "$HOME/.ssh/id_rsa" -N "" -q
 fi
