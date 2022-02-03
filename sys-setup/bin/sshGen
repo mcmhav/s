@@ -1,15 +1,24 @@
 #!/usr/bin/env bash
 
-KEY_MAIL="mcmhav@gmail.com"
+source param_parser --params "m n" --incomming_params "$@"
 
-if [ ! -z "$1" ]; then
-  KEY_MAIL="$1"
+KEY_MAIL="mcmhav@gmail.com"
+KEY_NAME="id_rsa"
+
+if [ -n "$PARAM_M" ]; then
+  KEY_MAIL="$PARAM_M"
+fi
+
+if [ -n "$PARAM_N" ]; then
+  KEY_NAME="$PARAM_N"
 fi
 
 if [ ! -d "$HOME/.ssh" ]; then
   mkdir "$HOME/.ssh"
 fi
 
-if [ ! -f "$HOME/.ssh/id_rsa" ]; then
-  ssh-keygen -t rsa -b 4096 -C "$KEY_MAIL" -f "$HOME/.ssh/id_rsa" -N "" -q
+if [ ! -f "$HOME/.ssh/$KEY_NAME" ]; then
+  ssh-keygen -t rsa -b 4096 -C "$KEY_MAIL" -f "$HOME/.ssh/$KEY_NAME" -N "" -q
+else
+  loggit "Not forced, $KEY_NAME already exists"
 fi

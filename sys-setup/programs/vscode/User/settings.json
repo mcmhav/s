@@ -358,7 +358,6 @@
     "terminal.integrated.shell.osx": "/usr/local/bin/bash",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "vsintellicode.python.completionsEnabled": false,
-    "window.zoomLevel": 0,
     "workbench.colorCustomizations": {
         "activityBar.activeBorder": "#80cbc4",
         "activityBar.background": "#0f111a",
@@ -767,5 +766,14 @@
         "gitpod.gitpod-remote-ssh"
     ],
     "remote.SSH.configFile": "/var/folders/_m/901vxzrs6s140z27_mbk5429_j407g/T/gitpod_ssh_config-56616-g2JoCCFoplSI",
-    "http.proxyStrictSSL": false
+    "http.proxyStrictSSL": false,
+    "terminal.integrated.profiles.osx": {
+        "fish": {
+            "path": "/usr/local/bin/fish", // overriding
+            "args": [
+                "-l"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.osx": "fish",
 }

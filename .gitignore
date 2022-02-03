@@ -10,6 +10,7 @@ update-notifier-*.json
 #  2. Whitelist insted of blacklist .dotfiles-conent
 # 1. looks best
 sys-setup/.dotfiles/coc/extensions/
+sys-setup/.dotfiles/coc/suggest.txt
 sys-setup/.dotfiles/configstore/nodemon.json
 sys-setup/.dotfiles/jgit/
 # .dotfiles XDG_CONFIG_HOME bloats

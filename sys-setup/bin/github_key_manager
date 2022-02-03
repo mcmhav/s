@@ -11,13 +11,13 @@ add() {
   source param_parser --params "k t" --incomming_params "$@"
 
   if [ -z "$PARAM_K" ]; then
-    SSH_PUB_KEY=$(cat $HOME/.ssh/id_rsa.pub)
+    SSH_PUB_KEY=$(cat "$HOME/.ssh/id_rsa.pub")
   else
     SSH_PUB_KEY=$(cat "$PARAM_K")
   fi
 
   if [ -z "$PARAM_T" ]; then
-    echo "Must set title -t"
+    loggit "Must set title -t"
     exit 1
   fi
 
@@ -40,17 +40,16 @@ get() {
 GITHUB_ACTION="$1"
 shift
 case "$GITHUB_ACTION" in
-  add)
-    add "$@"
-    exit
-    ;;
-  get)
-    get "$@"
-    exit
-    ;;
-  *)
-    echo "Action not recognised, $GITHUB_ACTION"
-    exit 1
-    ;;
+add)
+  add "$@"
+  exit
+  ;;
+get)
+  get "$@"
+  exit
+  ;;
+*)
+  loggit "Action not recognised, $GITHUB_ACTION"
+  exit 1
+  ;;
 esac
-

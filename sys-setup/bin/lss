@@ -1,0 +1,7 @@
+#!/bin/bash
+
+tree_function() {
+  tree -C -L 2 "$@" | bat
+}
+
+tree_function "$@"

@@ -46,17 +46,16 @@ IFS=' ' read -r -a INCOMMING_PARAMS <<<"$@"
 # Export incomming parameters into variables based on name and wanted parameters
 INCOMMING_PARAM="${INCOMMING_PARAMS[0]}"
 
-
 for param in "${PARAMS[@]}"; do
   INCOMMING_PARAMS_COUNT=0
   INCOMMING_PARAM="${INCOMMING_PARAMS[$INCOMMING_PARAMS_COUNT]}"
   while [ "$INCOMMING_PARAM" != "" ]; do
-    tmp_incomming_param=$(echo "$INCOMMING_PARAM" | tr '[:lower:]' '[:upper:]')
+    tmp_incomming_param=$(printf "%s" "$INCOMMING_PARAM" | tr '[:lower:]' '[:upper:]')
     case "$tmp_incomming_param" in
     -$param | --$param)
       if
-        [[ ${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]} != -* ]] && \
-        [[ ${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]} != "" ]]
+        [[ ${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]} != -* ]] &&
+          [[ ${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]} != "" ]]
       then
         tmp_name="PARAM_$param"
         printf -v $tmp_name "${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]}"
