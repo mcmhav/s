@@ -29,3 +29,4 @@ bottom
 rbenv
 hashicorp/tap/terraform
 hashicorp/tap/terraform-ls
+tree
