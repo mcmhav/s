@@ -11,7 +11,7 @@ cb() {
 alias brewUpdate='brew update && brew upgrade && brew cask upgrade'
 
 # java versions-helpers
-if [[ $(/usr/libexec/java_home -V 2> /dev/null) ]]; then
+if [[ $(/usr/libexec/java_home -V 2>/dev/null) ]]; then
   alias j8="export JAVA_HOME=$(/usr/libexec/java_home -v 1.8); java -version"
   alias j10="export JAVA_HOME=$(/usr/libexec/java_home -v 10); java -version"
   alias j11="export JAVA_HOME=$(/usr/libexec/java_home -v 11); java -version"
@@ -24,13 +24,15 @@ if [[ $(/usr/libexec/java_home -V 2> /dev/null) ]]; then
   export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 fi
 
-
-if ! xcrun --version &>/dev/null ; then
+if ! xcrun --version &>/dev/null; then
   loggit "Should probably install stuff, want that? Might take a couple of minutes"
   select yn in "Yes" "No"; do
     case $yn in
-      Yes ) "$CSYS_HOME/sys-setup/os/mac/setup.sh"; break;;
-      No ) exit;;
+    Yes)
+      "$CSYS_HOME/sys-setup/os/mac/setup.sh"
+      break
+      ;;
+    No) exit ;;
     esac
   done
 fi
@@ -41,3 +43,5 @@ export SYSTEM_VERSION_COMPAT=1
 
 # https://support.apple.com/en-us/HT208050
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+export PATH="$PATH:$CSYS_HOME/sys-setup/os/mac/bin"

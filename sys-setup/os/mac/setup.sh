@@ -60,6 +60,7 @@ installStuff() {
 
   # stop mouse from accelerating
   defaults write .GlobalPreferences com.apple.mouse.scaling -1
+  defaults write -g com.apple.trackpad.scaling -float 1.5
 
   # keyboard input speeds
   defaults write -g KeyRepeat -int 3 # normal minimum is 2

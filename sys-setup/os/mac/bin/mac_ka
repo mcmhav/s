@@ -1,13 +1,12 @@
 #!/bin/bash
 
-if [ $(date +%H) -gt 8 ] && [ $(date +%H) -lt 18 ]; then
-  loggit "lol"
-fi
-
-exit
+SLEEP_TIME=30
 
 while true; do
-  echo "keeping alive sending code 57"
-  osascript -e 'tell application "System Events" to key code 57'
-  sleep 30
+  if [ -z "$GUARD_FROM" ] ||
+    [ -z "$GUARD_TO" ] ||
+    { [ "$(date +%H)" -gt "$GUARD_FROM" ] && [ "$(date +%H)" -lt "$GUARD_TO" ]; }; then
+    osascript -e 'tell application "System Events" to key code 57'
+  fi
+  sleep $SLEEP_TIME
 done
