@@ -37,9 +37,9 @@ setup_plugins() {
   vim +PlugInstall +qall
   vim +PlugUpgrade +qall
   vim +PlugUpdate +qall
-  # install cocs:
-  cd "$CSYS_HOME/sys-setup/.dotfiles/coc/extensions" || exit
-  yarn install --frozen-lockfile --ignore-engines
+  # install cocs: Handled in vim conf. Keeping in case of issues
+  # cd "$CSYS_HOME/sys-setup/.dotfiles/coc/extensions" || exit
+  # yarn install --frozen-lockfile --ignore-engines
 }
 
 VIM_BUNDLE_PATH="$HOME/.vim/bundle/Vundle.vim"
