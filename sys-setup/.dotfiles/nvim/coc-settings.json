@@ -17,10 +17,14 @@
     "terraform",
     "sh"
   ],
+  "coc.preferences.willSaveHandlerTimeout": 2000,
   "diagnostic-languageserver.filetypes": {
     "sh": "shellcheck"
   },
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
-  }
+  },
+  "python.formatting.provider": "yapf",
+  "python.formatting.yapfPath": "~/.pyenv/shims/yapf",
+  "python.linting.mypyEnabled": true
 }

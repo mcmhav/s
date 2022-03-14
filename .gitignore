@@ -13,6 +13,7 @@ sys-setup/.dotfiles/coc/extensions/
 sys-setup/.dotfiles/coc/suggest.txt
 sys-setup/.dotfiles/configstore/nodemon.json
 sys-setup/.dotfiles/jgit/
+sys-setup/.dotfiles/gh
 # .dotfiles XDG_CONFIG_HOME bloats
 # TODO: handle applications usage of XDG_CONFIG_HOME better
 # is this used wrong?

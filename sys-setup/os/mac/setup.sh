@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 INSTALL_PY_VERSION="3.8.12"
-INSTALL_NODE_VERSION="16.13.1"
+INSTALL_NODE_VERSION="16.14.0"
 
 installStuff() {
   loggit "Installing mac stuff"

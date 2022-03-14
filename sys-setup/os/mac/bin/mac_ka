@@ -1,12 +1,21 @@
 #!/bin/bash
 
+source param_parser --params "f t" --incomming_params "$@"
 SLEEP_TIME=30
+
+if [ -n "$PARAM_F" ]; then
+  GUARD_FROM="$PARAM_F"
+fi
+if [ -n "$PARAM_T" ]; then
+  GUARD_TO="$PARAM_T"
+fi
 
 while true; do
   if [ -z "$GUARD_FROM" ] ||
     [ -z "$GUARD_TO" ] ||
-    { [ "$(date +%H)" -gt "$GUARD_FROM" ] && [ "$(date +%H)" -lt "$GUARD_TO" ]; }; then
+    { [ "$(date +%H)" -ge "$GUARD_FROM" ] && [ "$(date +%H)" -le "$GUARD_TO" ]; }; then
     osascript -e 'tell application "System Events" to key code 57'
+    loggit "Up"
   fi
   sleep $SLEEP_TIME
 done

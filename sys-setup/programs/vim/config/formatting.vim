@@ -25,6 +25,8 @@ set breakindent
 "filetype plugin indent on
 
 " Autoformat
+" Slow for coc-python, add here instead of coc-settings.json
+au BufWrite *.py call CocAction('format')
 "autocmd InsertLeave * w
 "autocmd InsertLeave *.yaml,*.html,*.js,*.css ALEFix
 "autocmd BufLeave,InsertLeave * wall
