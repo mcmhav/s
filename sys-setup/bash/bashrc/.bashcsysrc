@@ -4,6 +4,7 @@ export PI_OS="pi"
 export LIN_OS="lin"
 export MAC_OS="mac"
 export WIN_OS="win"
+export GITPOD_OS="gitpod"
 
 if [ "$(uname -s)" == "Linux" ]; then
   if [[ "$(uname -m)" =~ armv[0-9]l ]] && [[ "$(uname -n)" =~ pi* ]]; then
