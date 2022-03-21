@@ -755,8 +755,9 @@
   "security.workspace.trust.startupPrompt": "never",
   "security.workspace.trust.untrustedFiles": "open",
   "update.showReleaseNotes": false,
-  "remote.SSH.defaultExtensions": ["gitpod.gitpod-remote-ssh"],
-  "remote.SSH.configFile": "/var/folders/_m/901vxzrs6s140z27_mbk5429_j407g/T/gitpod_ssh_config-56616-g2JoCCFoplSI",
+  "remote.SSH.defaultExtensions": [
+    "gitpod.gitpod-remote-ssh"
+  ],
   "http.proxyStrictSSL": false,
   "terminal.integrated.profiles.osx": {
     "fish": {
@@ -766,5 +767,6 @@
   },
   "terminal.integrated.defaultProfile.osx": "fish",
   "redhat.telemetry.enabled": false,
-  "prettier.requireConfig": true
+  "prettier.requireConfig": true,
+  "remote.SSH.configFile": "/var/folders/_m/901vxzrs6s140z27_mbk5429_j407g/T/gitpod_ssh_config-83899-ee6NZw1tv75B"
 }
