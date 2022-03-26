@@ -3,6 +3,10 @@
 INSTALL_PY_VERSION="3.8.12"
 INSTALL_NODE_VERSION="16.14.0"
 
+unquarantine() {
+  xattr -d com.apple.quarantine /Applications/Alacritty.app
+}
+
 installStuff() {
   loggit "Installing mac stuff"
   while ! xcrun --version 1>/dev/null 2>&1; do
@@ -83,6 +87,8 @@ installStuff() {
   defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Sound -int 24
   defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist UserSwitcher -int 24
   defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist WiFi -int 24
+
+  unquarantine
 }
 
 installBrews() {
