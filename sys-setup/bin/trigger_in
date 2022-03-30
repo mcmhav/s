@@ -10,3 +10,7 @@ for i in $(seq "$ITERATIONS"); do
   sleep 1
   echo "$i"
 done | tqdm --total "$ITERATIONS" >>/dev/null
+
+if [ -n "$2" ]; then
+  $2
+fi
