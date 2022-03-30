@@ -1,0 +1,12 @@
+#!/bin/bash
+
+t2s() {
+  sed 's/d/*24*3600 +/g; s/h/*3600 +/g; s/m/*60 +/g; s/s/\+/g; s/+[ ]*$//g' <<<"$1" | bc
+}
+
+ITERATIONS=$(t2s "$1")
+
+for i in $(seq "$ITERATIONS"); do
+  sleep 1
+  echo "$i"
+done | tqdm --total "$ITERATIONS" >>/dev/null
