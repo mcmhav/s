@@ -4,6 +4,7 @@
 sys-setup/bash/bashrc/.secrets
 update-notifier-*.json
 .vscode
+*.log
 
 # Handle application putting stuff into XDG_CONFIG_HOME
 #  1. Copy/link into a local folder, and point XDG_CONFIG_HOME to it
