@@ -13,21 +13,25 @@ setup() {
 installCargos() {
   loggit "Installing cargos"
   while read -r l; do
+    loggit "Installing: $l"
     cargo install "$l" --quiet
   done <"$SCRIPT_DIR/cargos"
+  while read -r l; do
+    loggit "Installing: $l"
+    cargo-binstall $l --no-confirm >/dev/null
+  done <"$SCRIPT_DIR/cargos-bin"
 }
 
 ACTION="$1"
 shift
 case "$ACTION" in
-  --setup)
-    setup
-    ;;
-  --installCargos)
-    installCargos
-    ;;
-  *)
-    echo "Action not recognised, $ACTION"
-    ;;
+--setup)
+  setup
+  ;;
+--installCargos)
+  installCargos
+  ;;
+*)
+  echo "Action not recognised, $ACTION"
+  ;;
 esac
-
