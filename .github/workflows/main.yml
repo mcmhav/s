@@ -16,4 +16,10 @@ jobs:
       - name: event-type
         id: event-type
         run: |
-          echo ${{ toJson(github) }}
+          echo '${{ toJson(github) }}'
+
+      - name:
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        run: |
+          echo "uggaaaa"
+
