@@ -13,11 +13,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: event-type
-        id: event-type
-        run: |
-          echo '${{ toJson(github) }}'
-
       - name:
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         run: |
