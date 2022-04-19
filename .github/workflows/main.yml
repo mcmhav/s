@@ -16,4 +16,4 @@ jobs:
       - name: event-type
         id: event-type
         run: |
-          echo ${{ github.event }}
+          echo ${{ toJson(github) }}
