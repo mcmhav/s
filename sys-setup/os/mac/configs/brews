@@ -27,7 +27,7 @@ nvim
 rust
 bottom
 rbenv
-hashicorp/tap/terraform
-hashicorp/tap/terraform-ls
+terraform
+terraform-ls
 tree
 poetry
