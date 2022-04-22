@@ -43,7 +43,7 @@ setup_plugins() {
 }
 
 install_deps() {
-  "$CSYS_HOME/sys-setup/programs/node/setup.sh"
+  "$CSYS_HOME/sys-setup/programs/node/setup.sh" --setup
 }
 
 VIM_BUNDLE_PATH="$HOME/.vim/bundle/Vundle.vim"
