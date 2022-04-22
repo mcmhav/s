@@ -5,7 +5,7 @@ BASHRC_LOCATION="$HOME/.bashrc.d"
 CSYS_HOME="$CONFIG_HOME"
 
 DOTFILES="$CSYS_HOME/sys-setup/.dotfiles"
-PROGRAMS_CONFIG="$CSYS_HOME/sys-setup/programs"
+PROGRAMS_CONFIG="$CSYS_HOME/programs"
 
 if [ ! -d "$BASHRC_LOCATION" ]; then
   mkdir "$BASHRC_LOCATION"
