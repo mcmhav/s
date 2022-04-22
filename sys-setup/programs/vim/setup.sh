@@ -42,9 +42,14 @@ setup_plugins() {
   # yarn install --frozen-lockfile --ignore-engines
 }
 
+install_deps() {
+  "$CSYS_HOME/sys-setup/programs/node/setup.sh"
+}
+
 VIM_BUNDLE_PATH="$HOME/.vim/bundle/Vundle.vim"
 RETURN_TO=$(pwd)
 
+install_deps
 link_config
 setup_plugins
 

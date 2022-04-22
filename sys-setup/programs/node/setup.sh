@@ -2,27 +2,24 @@
 
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 
+DESIRED_NODE_VERSION="18.0.0"
+OLD_NODE_VERSION="16.14.2"
+
+with_nodenv() {
+  curl -fsSL https://raw.githubusercontent.com/nodenv/nodenv-installer/master/bin/nodenv-installer | bash
+}
+
 setup() {
   loggit "Setting up node"
 
   case "$CSYS_OS" in
-  "$PI_OS") ./os/pi/setup.sh ;;
-  "$LIN_OS")
-    ./os/lin/setup.sh
-    gui_program_setup
-    ;;
-  "$MAC_OS")
-    ./os/mac/setup.sh
-    gui_program_setup
-    ;;
-  "$WIN_OS")
-    ./os/win/setup.sh
-    gui_program_setup
+  "$LIN_OS") with_nodenv ;;
+  "$MAC_OS") with_nodenv ;;
+  "*")
+    loggit "Node install not implemented for OS: $CSYS_OS"
     ;;
   esac
 
-  # Check os
-  # Check for existing node
   # Install if not present
   # done?
 }
