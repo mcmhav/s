@@ -73,9 +73,11 @@ potential_editors=(
   "nano"
 )
 for potential_editor in "${potential_editors[@]}"; do
-   if command -v "$potential_editor" 1>/dev/null 2>&1; then
-     export EDITOR="$potential_editor"
-     break
-   fi
+  if command -v "$potential_editor" 1>/dev/null 2>&1; then
+    export EDITOR="$potential_editor"
+    break
+  fi
 done
 
+# Notrack
+export DO_NOT_TRACK=1
