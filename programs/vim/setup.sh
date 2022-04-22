@@ -51,10 +51,6 @@ install_deps() {
 VIM_BUNDLE_PATH="$HOME/.vim/bundle/Vundle.vim"
 RETURN_TO=$(pwd)
 
-echo "path?!: $SCRIPT_DIR"
-
-exit
-
 install_deps
 link_config
 setup_plugins

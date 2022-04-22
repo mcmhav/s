@@ -2,7 +2,7 @@
 
 CONFIG_HOME="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 BASHRC_LOCATION="$HOME/.bashrc.d"
-CSYS_HOME="$CONFIG_HOME"
+export CSYS_HOME="$CONFIG_HOME"
 
 DOTFILES="$CSYS_HOME/sys-setup/.dotfiles"
 PROGRAMS_CONFIG="$CSYS_HOME/programs"
@@ -37,6 +37,9 @@ non_gui_config() {
 }
 
 non_gui_config
+
+source "$CSYS_HOME/sys-setup/bash/bashrc/.bashcsysrc"
+source "$CSYS_HOME/sys-setup/bash/bashrc/.bashSourcerc"
 
 "$PROGRAMS_CONFIG/wakatime/setup.sh"
 "$PROGRAMS_CONFIG/vim/setup.sh"
