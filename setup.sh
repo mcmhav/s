@@ -19,9 +19,6 @@ if ! grep -q "$BASH_RC_SOURCER" <"$HOME/.bashrc"; then
 fi
 
 non_gui_config() {
-  if [ ! -d "$HOME/.wakatime" ]; then
-    mkdir "$HOME/.wakatime"
-  fi
   if [ ! -d "$HOME/.config" ]; then
     mkdir "$HOME/.config"
   fi
@@ -41,4 +38,5 @@ non_gui_config() {
 
 non_gui_config
 
+"$PROGRAMS_CONFIG/wakatime/setup.sh"
 "$PROGRAMS_CONFIG/vim/setup.sh"
