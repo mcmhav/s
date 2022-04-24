@@ -2,6 +2,9 @@
 
 if [ ! -d "$HOME/.wakatime" ]; then
   mkdir "$HOME/.wakatime"
+fi
+
+if [ ! -f "$HOME/.wakatime/.wakatime.cfg" ]; then
   echo """[settings]
   debug = false
   hidefilenames = false
