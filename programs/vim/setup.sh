@@ -21,6 +21,7 @@ link_config() {
   fi
   ln -sf "$LOCAL_CONFIG_PATH/colors/cake.vim" "$HOME/.vim/colors/cake.vim"
   ln -sf "$LOCAL_CONFIG_PATH/colors/syntax/"* "$HOME/.vim/after/syntax"
+  ln -sf "$LOCAL_CONFIG_PATH/.vimrc" "$HOME/.vimrc"
 }
 
 setup_plugins() {
@@ -39,9 +40,6 @@ setup_plugins() {
   vim +PlugInstall +qall
   vim +PlugUpgrade +qall
   vim +PlugUpdate +qall
-  # install cocs: Handled in vim conf. Keeping in case of issues
-  # cd "$CSYS_HOME/sys-setup/.dotfiles/coc/extensions" || exit
-  # yarn install --frozen-lockfile --ignore-engines
 }
 
 install_deps() {

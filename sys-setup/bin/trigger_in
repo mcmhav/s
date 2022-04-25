@@ -9,7 +9,7 @@ ITERATIONS=$(t2s "$1")
 for i in $(seq "$ITERATIONS"); do
   sleep 1
   echo "$i"
-done | python _tqdm.py --total "$ITERATIONS" >>/dev/null
+done | python "$CSYS_HOME/sys-setup/bin/_tqdm.py" --total "$ITERATIONS" >>/dev/null
 
 if [ -n "$2" ]; then
   $2

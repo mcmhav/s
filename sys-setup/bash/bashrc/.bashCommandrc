@@ -46,11 +46,11 @@ function promt_commands() {
 PROMPT_COMMAND=promt_commands
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  IS_SSH_SESSION="yeyaa"
-# else
-#   case $(ps -o comm= -p $PPID) in
-#     sshd|*/sshd) SESSION_TYPE=remote/ssh;;
-#   esac
+  IS_SSH_SESSION="1"
+else
+  case $(ps -o comm= -p $PPID) in
+  sshd | */sshd) IS_SSH_SESSION="1" ;;
+  esac
 fi
 
 PS1=''
@@ -60,13 +60,19 @@ PS1=$PS1'\[\e[1;35m\]${timer_show}\[\e[m\]'
 PS1=$PS1'|'
 PS1=$PS1'\[\e['
 if [ -n "$IS_SSH_SESSION" ]; then
-  PS1=$PS1'1;36m'
+  PS1=$PS1'1;31m'
 else
   PS1=$PS1'1;32m'
 fi
 PS1=$PS1'\]\W\[\e[m\]'
 # ❮ ❯ ❰ ❱ ◼ ▶ ▴ ▲ ▼ ⬘ ⌔ ∴ ⭓ ⭔ း ಃ 〓 💩
-PS1=$PS1'\[\e[0;31m\]⭓\[\e[m\] '
+PS1=$PS1'\[\e['
+if [ -n "$IS_SSH_SESSION" ]; then
+  PS1=$PS1'0;34m'
+else
+  PS1=$PS1'0;31m'
+fi
+PS1=$PS1'\]⭓\[\e[m\] '
 
 export PS1=$PS1
 export PROMPT=$PS1
