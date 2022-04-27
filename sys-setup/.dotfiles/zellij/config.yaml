@@ -37,7 +37,7 @@ keybinds:
         - action: [MoveFocus: Up,]
           key: [ Alt: 'k' ]
         - action: [FocusNextPane,]
-          key: [ Ctrl: 'w']
+          key: [ Ctrl: 'q']
         - action: [Resize: Increase,]
           key: [ Alt: '=']
         - action: [Resize: Increase,]

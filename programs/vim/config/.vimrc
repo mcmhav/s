@@ -19,3 +19,10 @@ runtime statusbar.vim
 " Keybindings
 runtime keybindings.vim
 
+" Profile:
+":profile start vim-markdown.log
+":profile file *
+":profile func *
+":e foo.md
+":q
+

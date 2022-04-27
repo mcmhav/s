@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh "$@" -t "sh -c 'if which fish >/dev/null ; then exec fish -li; else exec \$SHELL -li; fi'"

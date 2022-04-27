@@ -1,3 +1,4 @@
+# https://wiki.archlinux.org/title/fish
 set fish_greeting
 
 set fish_command_timer_enabled 0

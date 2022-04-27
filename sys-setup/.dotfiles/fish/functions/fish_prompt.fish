@@ -1,8 +1,8 @@
 function fish_prompt
 	set -l __last_command_exit_status $status
 
-    if not set -q -g __fish_robbyrussell_functions_defined
-        set -g __fish_robbyrussell_functions_defined
+    if not set -q -g __fish_cake_functions_defined
+        set -g __fish_cake_functions_defined
 
         function _is_git_dirty
             echo (git status -s --ignore-submodules=dirty 2>/dev/null)
