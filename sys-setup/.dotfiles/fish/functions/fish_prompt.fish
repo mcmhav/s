@@ -41,6 +41,13 @@ function fish_prompt
             end
             return 1
         end
+
+        function _is_ssh
+          if test -n "$SSH_CLIENT"; or test -n "$SSH_TTY"
+            return 0
+          end
+          return 1
+        end
     end
 
     set -l cyan (set_color -o cyan)
@@ -57,12 +64,21 @@ function fish_prompt
         set arrow "# "
     end
 
-    set -l arrow "$green$arrow"
+    if _is_ssh
+      set arrow "$blue$arrow"
+    else
+      set arrow "$green$arrow"
+    end
     if test $__last_command_exit_status != 0
         set arrow "$red▼ "
     end
 
-    set -l cwd $cyan(basename (prompt_pwd))
+    set -l cwd (basename (prompt_pwd))
+    if _is_ssh
+      set cwd "$red$cwd"
+    else
+      set cwd "$cyan$cwd"
+    end
 
     if set -l repo_type (_repo_type)
         # set repo_info "$blue ⭔"

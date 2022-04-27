@@ -19,12 +19,37 @@ let s:cterm_red = 174
 let s:gui_pink = '#d7afd7'
 let s:cterm_pink = 182
 
+let g:currentmode = {
+\ 'n'  : 'n',
+\ 'v'  : 'v',
+\ 'V'  : 'v',
+\ '' : 'v',
+\ 'i'  : 'i',
+\ 'R'  : 'r',
+\ 'Rv' : 'rv',
+\ 'c'  : 'c',
+\ 't'  : 'f',
+\}
+
+function! RaiRai()
+  let m = mode(1)
+  if m[0] ==# "i"
+    return printf('%%(%%#%s#%s%%)','InsertMode', " I ")
+  endif
+
+  return 'nothing'
+endfunction
+
 " Left
 set statusline=
+"set statusline+=%{(RaiRai())}
 set statusline+=%#NormalMode#%{(mode()=='n')?'\ \ N\ ':''}
 set statusline+=%#InsertMode#%{(mode()=='i')?'\ \ I\ ':''}
 set statusline+=%#ReplaceMode#%{(mode()=='r')?'\ \ R\ ':''}
-set statusline+=%#VisualMode#%{(mode()=='v')?'\ \ V\ ':''}
+" Visual
+" set statusline+=%#VisualMode#%{(mode()=='v')?'\ \ V\ ':''}
+set statusline+=%#VisualMode#%{(g:currentmode[mode()]=='v')?'\ \ V\ ':''}
+" Command
 set statusline+=%#CommandMode#%{(mode()=='c')?'\ \ C\ ':''}
 
 set statusline+=%#Visual#

@@ -25,17 +25,19 @@ keybinds:
         - action: [SwitchToMode: Tmux,]
           key: [Ctrl: 'b',]
         - action: [Quit,]
-          key: [Ctrl: 'q',]
+          key: []
         - action: [NewPane: ]
           key: [ Alt: 'n',]
         - action: [MoveFocusOrTab: Left,]
-          key: [ Alt: 'h', Alt: Left]
+          key: [ Alt: 'h' ]
         - action: [MoveFocusOrTab: Right,]
-          key: [ Alt: 'l', Alt: Right ]
+          key: [ Alt: 'l' ]
         - action: [MoveFocus: Down,]
-          key: [ Alt: 'j', Alt: Down]
+          key: [ Alt: 'j' ]
         - action: [MoveFocus: Up,]
-          key: [ Alt: 'k', Alt: Up, ]
+          key: [ Alt: 'k' ]
+        - action: [FocusNextPane,]
+          key: [ Ctrl: 'w']
         - action: [Resize: Increase,]
           key: [ Alt: '=']
         - action: [Resize: Increase,]
@@ -512,7 +514,7 @@ pane_frames: false
 # Options:
 #   - true (default)
 #   - false
-#mouse_mode: false
+mouse_mode: false
 
 # Configure the scroll back buffer size
 # This is the number of lines zellij stores for each pane in the scroll back
@@ -537,3 +539,19 @@ pane_frames: false
 #   - system (default)
 #   - primary
 # copy_clipboard: primary
+#
+themes:
+  default:
+    bg: [27, 29, 30]
+    red: [255, 0, 0]
+    # green: [0, 140, 0]
+    green: [249, 39, 114]
+    yellow: [255, 255, 0]
+    blue: [102, 217, 239]
+    magenta: [174, 129, 255]
+    orange: [253, 151, 31]
+    fg: [248, 248, 240]
+    cyan: [0, 255, 255]
+    black: [0, 0, 0]
+    white: [255, 255, 255]
+    gray: [60, 60, 60]

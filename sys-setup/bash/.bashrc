@@ -21,3 +21,4 @@ if [ -n "$PYENV_COMMAND" ] && [ ! -x "$PYENV_COMMAND_PATH" ]; then
     PYENV_COMMAND_PATH="${PYENV_ROOT}/versions/${versions[0]}/bin/${PYENV_COMMAND}"
   fi
 fi
+for i in $(ls -A $HOME/.bashrc.d/); do source $HOME/.bashrc.d/$i; done
