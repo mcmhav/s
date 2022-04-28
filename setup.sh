@@ -2,7 +2,7 @@
 # https://raw.githubusercontent.com/mcmhav/s/HEAD/setup.sh
 
 CONFIG_HOME="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-BASHRC_LOCATION="$HOME/.bashrc.d"
+BASHRC_LOCATION="$HOME/.csys.bashrc.d"
 export CSYS_HOME="$CONFIG_HOME"
 
 DOTFILES="$CSYS_HOME/sys-setup/.dotfiles"
@@ -14,7 +14,7 @@ fi
 
 ln -sf "$CSYS_HOME/sys-setup/bash/.bashrc" "$BASHRC_LOCATION"
 
-BASH_RC_SOURCER='for i in $(ls -A $HOME/.bashrc.d/); do source $HOME/.bashrc.d/$i; done'
+BASH_RC_SOURCER='for i in $(ls -A $HOME/.csys.bashrc.d/ | grep "rc$"); do source $HOME/.csys.bashrc.d/$i; done'
 if ! grep -q "$BASH_RC_SOURCER" <"$HOME/.bashrc"; then
 	echo "$BASH_RC_SOURCER" >>$HOME/.bashrc
 fi
@@ -23,10 +23,6 @@ non_gui_config() {
 	if [ ! -d "$HOME/.config" ]; then
 		mkdir "$HOME/.config"
 	fi
-	# ln -sf "$CSYS_HOME/sys-setup/bash/.bashrc" "$HOME/.bashrc"
-	# ln -sf "$CSYS_HOME/sys-setup/bash/.bashrc" "$HOME/.bash_profile"
-
-	ln -sf "$DOTFILES/.vimrc" "$HOME/.vimrc"
 	ln -sf "$DOTFILES/.tmux.conf" "$HOME/.tmux.conf"
 	ln -sf "$DOTFILES/zellij" "$HOME/.config/"
 	ln -sf "$DOTFILES/.eslintrc.js" "$HOME/.eslintrc.js"

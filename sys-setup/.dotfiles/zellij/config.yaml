@@ -9,7 +9,7 @@ keybinds:
     unbind: true
     normal:
         - action: [SwitchToMode: Locked,]
-          key: [Ctrl: 'g',]
+          key: []
         - action: [SwitchToMode: Pane,]
           key: [Ctrl: 'p',]
         - action: [SwitchToMode: Resize,]

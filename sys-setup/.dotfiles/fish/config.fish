@@ -3,12 +3,12 @@ set fish_greeting
 
 set fish_command_timer_enabled 0
 
-export CSYS_HOME="$HOME/r/s"
+set SCRIPT_LOCATION (dirname (status --current-filename))
+export CSYS_HOME="$SCRIPT_LOCATION/../../.."
 bass source $CSYS_HOME/sys-setup/bash/bashrc/.bashcsysrc fish
 bass source $CSYS_HOME/sys-setup/bash/bashrc/.bashSourcerc
 
-# alias pipenv='env SHELL="/usr/local/bin/fish" pipenv'
 alias :q="exit"
-status --is-login; and pyenv init --path | source
+status --is-interactive; and source (pyenv init -|psub)
 status --is-interactive; and source (rbenv init -|psub)
 status --is-interactive; and source (nodenv init -|psub)
