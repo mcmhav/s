@@ -4,8 +4,6 @@ SETUVAR --export JAVA_HOME:/Library/Java/JavaVirtualMachines/openjdk\x2d14\x2e0\
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
 SETUVAR __fish_initialized:3400
-SETUVAR _fisher_jorgebucaran_2F_fisher_files:/Users/a504ad5/r/s/sys\x2dsetup/\x2edotfiles/fish/functions/fisher\x2efish\x1e/Users/a504ad5/r/s/sys\x2dsetup/\x2edotfiles/fish/completions/fisher\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/fisher
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7
