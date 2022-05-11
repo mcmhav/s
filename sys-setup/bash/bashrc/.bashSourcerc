@@ -24,8 +24,3 @@ if [ "$CSYS_SHELL" == bash ]; then
 	source "$bashWD"/bashrc/.bashCompletionrc
 fi
 
-if [ -d "$HOME"/.bashrcs ]; then
-	for file in $(find "$HOME"/.bashrcs -name '*.bashrc'); do
-		source "$file"
-	done
-fi

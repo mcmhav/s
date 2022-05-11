@@ -31,3 +31,4 @@ terraform
 terraform-ls
 tree
 poetry
+coreutils
