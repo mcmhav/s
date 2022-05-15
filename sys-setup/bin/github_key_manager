@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # TODO: extend to something like https://unix.stackexchange.com/a/324451/152545
 

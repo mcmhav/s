@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 RETURN_TO=$(pwd)
 NOTES_PATH="$HOME/.c_notes"

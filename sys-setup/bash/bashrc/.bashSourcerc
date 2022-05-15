@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 bashWD="$CSYS_HOME/sys-setup/bash"
 # adding extra sourcesz

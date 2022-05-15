@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DISK_NUM="2"
 IMG_FILE=""

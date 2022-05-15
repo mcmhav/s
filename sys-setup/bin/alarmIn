@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 alarmIn() {
   SLEEP_TIME="$1"

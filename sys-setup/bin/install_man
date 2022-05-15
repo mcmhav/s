@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 MAN_PATH="/usr/local/share/man/man1"
 

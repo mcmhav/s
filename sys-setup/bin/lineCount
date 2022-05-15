@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 lineCount() {
   find . -name "*.$1" | xargs wc -l

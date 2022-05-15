@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 decodeBase64() {
   TO_DECODE=$1

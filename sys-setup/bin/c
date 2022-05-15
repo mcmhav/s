@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 c() {
   if [ "$(uname -s)" == "Linux" ]; then

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 tree_function() {
   tree -I .git -I .DS_Store -a -C -L 2 "$@" | bat

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 getProcessName() {
   ps -p "$1" -o comm=

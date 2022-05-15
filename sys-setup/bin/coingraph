@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source param_parser --params "c s" --incomming_params "$@"
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 notifyer() {
   case "$CSYS_OS" in

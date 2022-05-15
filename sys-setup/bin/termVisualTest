@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ruby -eh,w=$LINES,$COLUMNS'
 B=(0..20).map{[0,rand*h,rand*5,rand]}
