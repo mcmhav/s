@@ -289,7 +289,7 @@ keybinds:
         - action: [ScrollToBottom, SwitchToMode: Normal,]
           key: [Ctrl: 'c',]
         - action: [Quit,]
-          key: [Ctrl: 'q',]
+          key: []
         - action: [ScrollDown,]
           key: [Char: 'j', Down,]
         - action: [ScrollUp,]

@@ -32,6 +32,7 @@ PATHS=(
   "$HOME/.nodenv/bin"
   "$HOME/.nodenv/shims"
   "$HOME/.cargo/bin"
+  "$HOME/.csys.bashrc.d/bin"
   "/home/linuxbrew/.linuxbrew/bin"
 )
 PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
