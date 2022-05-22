@@ -1,7 +1,7 @@
 .DS_Store
 .mypy_cache/
 *.swp
-sys-setup/bash/bashrc/.secrets
+*.secrets
 update-notifier-*.json
 .vscode
 *.log
