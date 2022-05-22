@@ -6,18 +6,22 @@ BASHRC_LOCATION="$HOME/.csys.bashrc.d"
 export CSYS_HOME="$CONFIG_HOME"
 
 DOTFILES="$CSYS_HOME/sys-setup/.dotfiles"
+BASH_CONFIG="$CSYS_HOME/bash"
 PROGRAMS_CONFIG="$CSYS_HOME/programs"
 
 if [ ! -d "$BASHRC_LOCATION" ]; then
   mkdir "$BASHRC_LOCATION"
 fi
 
-ln -sf "$CSYS_HOME/sys-setup/bash/.bashrc" "$BASHRC_LOCATION"
+ln -sf "$BASH_CONFIG/main.bashrc" "$BASHRC_LOCATION"
 
-BASH_RC_SOURCER='for i in $(ls -A $HOME/.csys.bashrc.d/ | grep "rc$"); do source $HOME/.csys.bashrc.d/$i; done'
+# Hacky as shit?
+BASH_RC_SOURCER="[ -d \"$BASHRC_LOCATION\" ] && for i in \$(find $BASHRC_LOCATION -regex \".*rc$\"); do source \"\$i\"; done || echo \"csys not set up\""
 if ! grep -q "$BASH_RC_SOURCER" <"$HOME/.bashrc"; then
-  echo "$BASH_RC_SOURCER" >>$HOME/.bashrc
+  echo "$BASH_RC_SOURCER" >>"$HOME/.bashrc"
 fi
+
+exit
 
 non_gui_config() {
   if [ ! -d "$HOME/.config" ]; then

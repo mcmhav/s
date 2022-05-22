@@ -5,8 +5,8 @@ set fish_command_timer_enabled 0
 
 set SCRIPT_LOCATION (dirname (status --current-filename))
 export CSYS_HOME="$SCRIPT_LOCATION/../../.."
-bass source $CSYS_HOME/sys-setup/bash/bashrc/.bashcsysrc fish
-bass source $CSYS_HOME/sys-setup/bash/bashrc/.bashSourcerc
+bass source $CSYS_HOME/bash/bashrc.d/csys.bashrc fish
+bass source $CSYS_HOME/bash/bashrc.d/sourcer.bashrc
 
 alias :q="exit"
 status --is-interactive; and source (pyenv init -|psub)
