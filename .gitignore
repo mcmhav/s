@@ -26,3 +26,5 @@ sys-setup/.dotfiles/hyper
 # sys-setup/.dotfiles/fish
 sys-setup/.dotfiles/containers
 sys-setup/.dotfiles/coc/history.json
+
+sys-setup/.dotfiles/fish/fish_variables

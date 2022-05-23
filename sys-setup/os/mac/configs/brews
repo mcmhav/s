@@ -16,7 +16,6 @@ shfmt
 watch
 watchman
 yarn
-tmux
 the_silver_searcher
 fzf
 openssh
