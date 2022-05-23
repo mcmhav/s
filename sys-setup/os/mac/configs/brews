@@ -1,6 +1,6 @@
 awscli
 bash
-bash-completion
+bash-completion@2
 fish
 git
 go
