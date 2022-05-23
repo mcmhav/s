@@ -60,8 +60,8 @@ gui_program_setup() {
 
 non_gui_config
 
-source "$CSYS_HOME/sys-setup/bash/bashrc/.bashcsysrc"
-source "$CSYS_HOME/sys-setup/bash/bashrc/.bashSourcerc"
+source "$CSYS_HOME/bash/bashrc.d/csys.bashrc"
+source "$CSYS_HOME/bash/bashrc.d/sourcer.bashrc"
 
 "$PROGRAMS_CONFIG/wakatime/setup.sh"
 "$PROGRAMS_CONFIG/vim/setup.sh"
