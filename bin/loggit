@@ -26,12 +26,12 @@ check_severity() {
   esac
 }
 
-loggit() {
+_loggit() {
   check_severity "$@"
   # PARENT_COMMAND=$(ps -o comm= $PPID)
   # cat /proc/$PPID/cmdline
   case "$CSYS_OS" in
-    "$PI_OS")
+  "$PI_OS")
     PARENT_PATH=$(ls /proc/$PPID/fd/255)
     PARENT_REAL_PATH=$(realpath $PARENT_PATH)
     ;;
@@ -40,4 +40,4 @@ loggit() {
   printf "[$SEVERITY]$timestamp$PARENT_REAL_PATH:%s \n" "$PARAMS"
 }
 
-loggit "$@"
+_loggit "$@"

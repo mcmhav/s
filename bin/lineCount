@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+_lineCount() {
+  find . -name "*.$1" -print0 | xargs wc -l
+}
+
+_lineCount "$1"

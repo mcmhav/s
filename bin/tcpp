@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-tcpp() {
+_tcpp() {
   netstat -vanp tcp | grep -e "$1" -e pid
 }
 
-tcpp "$1"
+_tcpp "$1"

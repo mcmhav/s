@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-lc() {
-  colorls "$@" 2> /dev/null
-}
-
-lc "$@"

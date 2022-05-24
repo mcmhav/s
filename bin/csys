@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+# bash_completion
+# https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
+csys() {
+  csysUpdate() {
+    if git pull; then
+      "$CSYS_HOME/setup.sh"
+    else
+      git stash
+      "$CSYS_HOME/setup.sh"
+      git stash pop
+    fi
+  }
+
+  csysUpload() {
+    loggit "updating vscode config"
+    "$CSYS_PROGRAMS/vscode/setup.sh" --makePackagesList
+
+    loggit "adding to git"
+    git add --all
+
+    loggit "commiting to git"
+    git commit -am "AUTO: update system configs" --quiet
+
+    loggit "pushing to git"
+    git push --quiet
+  }
+
+  csysStatus() {
+    git status --short --branch
+  }
+
+  csysDiff() {
+    git diff
+  }
+
+  while [ "$1" != "" ]; do
+    case $1 in
+    -s | --status)
+      csysStatus
+      ;;
+    -u | --upload)
+      csysUpload
+      ;;
+    -d | --download)
+      csysUpdate
+      ;;
+    --diff)
+      csysDiff
+      ;;
+    *)
+      loggit "no work"
+      ;;
+    esac
+    shift
+  done
+}
+
+CONFIG_HOME="$CSYS_HOME"
+RETURN_TO=$(pwd)
+
+cd "$CONFIG_HOME" || exit
+
+csys "$@"
+
+cd "$RETURN_TO" || exit

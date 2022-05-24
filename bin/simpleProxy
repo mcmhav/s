@@ -9,7 +9,7 @@ where:
   -h, --help            show this help text
 "
 
-simpleProxy() {
+_simpleProxy() {
   REVERSE_URL="http://localhost:3000"
   PORT="8080"
 
@@ -49,4 +49,4 @@ simpleProxy() {
   mitmproxy -p "$PORT" --mode reverse:"$REVERSE_URL" --showhost
 }
 
-simpleProxy "$@"
+_simpleProxy "$@"

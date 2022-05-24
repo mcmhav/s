@@ -28,6 +28,7 @@ PATHS=(
   "/usr/local/opt/python/libexec/bin"
   "$PYENV_ROOT/bin"
   "$CSYS_HOME/sys-setup/bin"
+  "$CSYS_BIN"
   "$HOME/.poetry/bin"
   "$HOME/.nodenv/bin"
   "$HOME/.nodenv/shims"

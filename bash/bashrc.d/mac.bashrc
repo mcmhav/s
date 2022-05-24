@@ -44,4 +44,4 @@ export SYSTEM_VERSION_COMPAT=1
 # https://support.apple.com/en-us/HT208050
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-export PATH="$PATH:$CSYS_HOME/sys-setup/os/mac/bin"
+export PATH="$PATH:$CSYS_OS_PATH/mac/bin"

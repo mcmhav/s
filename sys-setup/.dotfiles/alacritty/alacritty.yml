@@ -6,6 +6,7 @@ window:
     y: 5
 
 shell:
+  # program: ~/.cargo/bin/zellij
   program: /usr/local/bin/fish
   # program: /Users/a504ad5/.cargo/bin/zellij
   args:

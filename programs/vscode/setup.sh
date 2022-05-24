@@ -3,7 +3,7 @@
 VS_CODE_SETUP_HOME=""
 VS_CODE_HOME_USER=""
 
-VS_CODE_SETUP_HOME="$CSYS_HOME/programs/vscode"
+VS_CODE_SETUP_HOME="$CSYS_PROGRAMS/vscode"
 
 case "$CSYS_OS" in
 "$MAC_OS") VS_CODE_HOME_USER="$HOME/Library/Application Support/Code/User" ;;

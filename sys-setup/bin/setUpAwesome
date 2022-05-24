@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-setUpAwesome() {
-  mkdir ~/.config/awesome
-  ln -s "$CSYS_HOME/lin-sys-setup/awesome/" ~/.config/awesome
-}
-
-setUpAwesome

@@ -67,7 +67,7 @@ installNode() {
 
 installDocker() {
   loggit "Installing docker"
-  if ! command -v docker &> /dev/null; then
+  if ! command -v docker &>/dev/null; then
     sudo apt-get install apt-transport-https ca-certificates software-properties-common -y
     mkdir -p "$HOME/tmp"
     cd "$HOME/tmp"
@@ -77,12 +77,12 @@ installDocker() {
     sudo curl https://download.docker.com/linux/raspbian/gpg
     rm -rf tmp
   fi
-  if ! command -v docker-compose &> /dev/null; then
+  if ! command -v docker-compose &>/dev/null; then
     sudo pip3 install docker-compose
   fi
 }
 
-CONFIG_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+CONFIG_HOME="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 RETURN_TO=$(pwd)
 
 cd "$CONFIG_HOME" || exit
