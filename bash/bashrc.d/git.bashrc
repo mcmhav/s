@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export PATH=$PATH:"$CSYS_HOME/sys-setup/bash/bashrc/gitbin"
+export PATH=$PATH:"$CSYS_BASH/bashrc.d/gitbin"
 
 # bins start
 alias gt=git_graph_local
