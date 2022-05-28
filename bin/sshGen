@@ -3,7 +3,8 @@
 source param_parser --params "m n" --incomming_params "$@"
 
 KEY_MAIL="mcmhav@gmail.com"
-KEY_NAME="id_ed25519"
+KEY_TYPE="ed25519"
+KEY_NAME="id_$KEY_TYPE"
 
 if [ -n "$PARAM_M" ]; then
   KEY_MAIL="$PARAM_M"
@@ -18,7 +19,7 @@ if [ ! -d "$HOME/.ssh" ]; then
 fi
 
 if [ ! -f "$HOME/.ssh/$KEY_NAME" ]; then
-  ssh-keygen -t ED25519 -b 4096 -C "$KEY_MAIL" -f "$HOME/.ssh/$KEY_NAME" -N "" -q
+  ssh-keygen -t "$KEY_TYPE" -b 4096 -C "$KEY_MAIL" -f "$HOME/.ssh/$KEY_NAME" -N "" -q
 else
   loggit "Not forced, $KEY_NAME already exists"
 fi
