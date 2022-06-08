@@ -1,0 +1,16 @@
+{
+  "name": "csys",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.14.0"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "csys",
+        "uiTheme": "vs-dark",
+        "path": "./themes/csys.json"
+      }
+    ]
+  }
+}
