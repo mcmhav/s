@@ -25,3 +25,12 @@ if [ "$CSYS_SHELL" == "bash" ]; then
 
   source "$SCRIPT_DIR/completion.bashrc"
 fi
+
+if [ -d "$HOME/.csys.bashrc.d" ]; then
+  for i in "$HOME"/.csys.bashrc.d/*rc; do
+    case "$i" in
+    *main.bashrc) ;;
+    *) source "$i" ;;
+    esac
+  done
+fi

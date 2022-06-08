@@ -71,6 +71,8 @@ installExtentions() {
       code --install-extension "${l//[$'\t\r\n ']/}"
     fi
   done <"$VS_CODE_SETUP_HOME/extentions"
+
+  ln -sf "$VS_CODE_SETUP_HOME/themes/csys.theme" "$HOME/.vscode/extensions/csys.theme"
 }
 
 usage() {

@@ -16,7 +16,8 @@ fi
 ln -sf "$BASH_CONFIG/main.bashrc" "$BASHRC_LOCATION"
 
 # Hacky as shit?
-BASH_RC_SOURCER="[ -d \"$BASHRC_LOCATION\" ] && for i in \$(find $BASHRC_LOCATION -regex \".*rc$\"); do source \"\$i\"; done || echo \"csys not set up\""
+# BASH_RC_SOURCER="[ -d \"$BASHRC_LOCATION\" ] && for i in \$(find $BASHRC_LOCATION -regex \".*rc$\"); do source \"\$i\"; done || echo \"csys not set up\""
+BASH_RC_SOURCER="[ -f \"$BASHRC_LOCATION/main.bashrc\" ] && source \"$BASHRC_LOCATION/main.bashrc\" || echo \"csys not set up\""
 # BASH_RC_SOURCER="[ -d \"$BASHRC_LOCATION\" ] && find $BASHRC_LOCATION -name \*rc -print0 | while IFS= read -r -d '' line; do source \"\$line\"; done || echo \"csys not set up\""
 if ! grep -q "$BASH_RC_SOURCER" <"$HOME/.bashrc"; then
   echo "$BASH_RC_SOURCER" >>"$HOME/.bashrc"
