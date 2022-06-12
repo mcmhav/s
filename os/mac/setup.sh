@@ -73,6 +73,9 @@ installStuff() {
   defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist UserSwitcher -int 24
   defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist WiFi -int 24
 
+  # Change computer name (for bluethooth/localhost/network):
+  # scutil --set ComputerName c
+
   unquarantine
 }
 
