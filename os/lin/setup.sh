@@ -2,5 +2,7 @@
 
 echo "TODO - more"
 
+"$CSYS_PROGRAMS/brew/setup.sh"
+
 sudo apt-get update
 sudo apt-get upgrade
