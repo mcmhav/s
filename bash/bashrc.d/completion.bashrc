@@ -20,7 +20,7 @@ fi
 
 completionsWD="$CSYS_HOME/bash/completions"
 
-source "$completionsWD/bash/csys"
+source "$completionsWD/csys.bash"
 
 # Terraform:
 if [ -f "/usr/local/bin/terraform" ]; then
