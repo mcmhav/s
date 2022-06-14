@@ -18,7 +18,7 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-completionsWD="$CSYS_HOME/completions"
+completionsWD="$CSYS_HOME/bash/completions"
 
 source "$completionsWD/bash/csys"
 

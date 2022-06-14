@@ -6,7 +6,6 @@ git
 go
 zlib
 jq
-pipenv
 nodenv
 pyenv
 python
