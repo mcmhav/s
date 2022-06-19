@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source param_parser --params "f t" --incomming_params "$@"
+source param_parser --params "f t d" --incomming_params "$@"
 SLEEP_TIME=30
 
 if [ -n "$PARAM_F" ]; then
@@ -9,11 +9,15 @@ fi
 if [ -n "$PARAM_T" ]; then
   GUARD_TO="$PARAM_T"
 fi
+if [ -n "$PARAM_D" ]; then
+  GUARD_D="$PARAM_D"
+fi
 
 while true; do
   if [ -z "$GUARD_FROM" ] ||
     [ -z "$GUARD_TO" ] ||
-    { [ "$(date +%H)" -ge "$GUARD_FROM" ] && [ "$(date +%H)" -le "$GUARD_TO" ]; }; then
+    [ -z "$GUARD_D" ] ||
+    { [ "$(date +%H)" -ge "$GUARD_FROM" ] && [ "$(date +%H)" -le "$GUARD_TO" ] && [[ "$GUARD_D" =~ $(date +%u) ]]; }; then
     osascript -e 'tell application "System Events" to key code 57'
     loggit "Up"
   fi

@@ -44,7 +44,7 @@ check_severity() {
 
 _loggit() {
   check_severity "$@"
-  if [ "$CSYS_LOG_LEVEL" -lt "$SEVERITY_NUM" ]; then
+  if [ -n "$CSYS_LOG_LEVEL" ] && [ "$CSYS_LOG_LEVEL" -lt "$SEVERITY_NUM" ]; then
     exit
   fi
   # PARENT_COMMAND=$(ps -o comm= $PPID)
