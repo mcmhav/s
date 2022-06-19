@@ -12,10 +12,10 @@ installStuff() {
     sleep 10
   done
 
+  loggit "Installing brew"
   csys install brew
-  csys deps-install "$SCRIPT_PATH/deps"
-
-  exit
+  loggit "Installing csys-reqs"
+  csys reqs-install "$SCRIPT_PATH/reqs"
 
   # mac-os setup
   # Screenshots

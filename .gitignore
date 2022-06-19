@@ -10,21 +10,4 @@ update-notifier-*.json
 #  1. Copy/link into a local folder, and point XDG_CONFIG_HOME to it
 #  2. Whitelist insted of blacklist .dotfiles-conent
 # 1. looks best
-sys-setup/.dotfiles/coc/extensions/
-sys-setup/.dotfiles/coc/suggest.txt
-sys-setup/.dotfiles/configstore/nodemon.json
-sys-setup/.dotfiles/jgit/
-sys-setup/.dotfiles/gh
-sys-setup/.dotfiles/.ipython/profile_default/history.sqlite
-# .dotfiles XDG_CONFIG_HOME bloats
-# TODO: handle applications usage of XDG_CONFIG_HOME better
-# is this used wrong?
-# ref: https://github.com/vercel/hyper/blob/61c3d760da37e6d81d9bf77b7d9380bc94ea8bcc/app/config/paths.ts#L12
-# "shell" from .hyper.js is needed for hyper to know XDG_CONFIG_HOME?
-# shell initialized before it can read XDG_CONFIG_HOME?
-sys-setup/.dotfiles/hyper
-# sys-setup/.dotfiles/fish
-sys-setup/.dotfiles/containers
-sys-setup/.dotfiles/coc/history.json
-
-sys-setup/.dotfiles/fish/fish_variables
+*/sys-setup/*

@@ -51,9 +51,9 @@ install)
   shift
   "$SCRIPT_DIR/_csys/_csys_install" "$@"
   ;;
-deps-install)
+reqs-install)
   shift
-  "$SCRIPT_DIR/_csys/_csys_deps_install" "$@"
+  "$SCRIPT_DIR/_csys/_csys_reqs_install" "$@"
   ;;
 -s | --status)
   csysStatus

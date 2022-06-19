@@ -29,3 +29,8 @@ fi
 
 export CSYS_SHALLOW_FLAG="--shallow"
 export CSYS_LOG_LEVEL=4
+
+export CSYS_BIN="$CSYS_HOME/bin"
+export CSYS_PROGRAMS="$CSYS_HOME/programs"
+export CSYS_BASH_HOME="$CSYS_PROGRAMS/bash"
+export CSYS_OS_PATH="$CSYS_HOME/os"
