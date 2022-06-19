@@ -1,25 +1,14 @@
 #!/bin/bash
 
-SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
+PACKAGE_NAME="fish"
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
-install_deps() {
-	"$CSYS_HOME/programs/rbenv/setup.sh" --setup
+_setup() {
+  if ! command -v "$PACKAGE_NAME" >/dev/null; then
+    brew install "$PACKAGE_NAME"
+  fi
+
+  ln -sf "$SCRIPT_PATH/config/fish" "$HOME/.config"
 }
 
-setup() {
-	loggit "Setting up node"
-
-	case "$CSYS_OS" in
-	"$LIN_OS") install_deps ;;
-	"$MAC_OS") install_deps ;;
-	"*")
-		loggit "Fish not set up for os: $CSYS_OS"
-		;;
-	esac
-}
-
-RETURN_TO=$(pwd)
-
-setup
-
-cd "$RETURN_TO" || exit
+_setup

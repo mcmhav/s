@@ -1,6 +1,0 @@
-eclipse.preferences.version=1
-org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8
-org.eclipse.jdt.core.compiler.compliance=1.8
-org.eclipse.jdt.core.compiler.source=1.8
-org.eclipse.jdt.core.formatter.comment.line_length=100
-org.eclipse.jdt.core.formatter.alignment_for_selector_in_method_invocation=50

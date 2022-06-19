@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 
-http() {
+PORT="8080"
+if [ -n "$1" ]; then
+  PORT="$1"
+fi
+
+_http() {
   PYTHON_MAJOR_VERSION=$(python -c 'import sys; print(sys.version_info[0])')
 
   if [ "$PYTHON_MAJOR_VERSION" -gt 2 ]; then
-    python -m http.server "$1"
+    python -m http.server "$PORT"
   else
-    python -m SimpleHTTPServer "$1"
+    python -m SimpleHTTPServer "$PORT"
   fi
 }
 
-http "$1"
+_http

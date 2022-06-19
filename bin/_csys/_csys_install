@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+read -ra ORIGINAL_ARGS <<<"$*"
+PACKAGE_TO_INSTALL=""
+SHALLOW_SETUP=""
+while [ "$1" != "" ]; do
+  case "$1" in
+  "$CSYS_SHALLOW_FLAG")
+    SHALLOW_SETUP="$1"
+    ;;
+  -*) ;;
+  *)
+    if [ -z "$PACKAGE_TO_INSTALL" ]; then
+      PACKAGE_TO_INSTALL="$1"
+    fi
+    ;;
+  esac
+  shift
+done
+
+if [ -f "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/setup.sh" ]; then
+  if [ -f "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/deps" ]; then
+    while read -r l; do
+      csys install "$l"
+    done <"$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/deps"
+  fi
+  loggit dbug "csys | Setup $PACKAGE_TO_INSTALL"
+  "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/setup.sh" "$SHALLOW_SETUP"
+else
+  loggit dbug "brew | Setup $PACKAGE_TO_INSTALL"
+  if ! brew ls --version "${ORIGINAL_ARGS[@]}" >/dev/null; then
+    brew install "${ORIGINAL_ARGS[@]}"
+  fi
+fi

@@ -1,37 +1,24 @@
 #!/bin/bash
 
+PACKAGE_NAME="rust"
+PACKAGE_COMMAND="rustc"
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 
-setup() {
-  loggit "Setting up rust"
-  if [ ! -d "$HOME/.cargo" ]; then
-    mkdir "$HOME/.cargo"
-  fi
-  ln -sf "config.toml" "$HOME/.cargo"
-}
-
-installCargos() {
-  loggit "Installing cargos"
+_installCargos() {
+  loggit dbug "Installing cargos"
   while read -r l; do
-    loggit "Installing: $l"
-    cargo install "$l" --quiet
+    loggit dbug "Installing: $l"
+    cargo install $l --quiet
   done <"$SCRIPT_DIR/cargos"
-  while read -r l; do
-    loggit "Installing: $l"
-    cargo-binstall $l --no-confirm >/dev/null
-  done <"$SCRIPT_DIR/cargos-bin"
 }
 
-ACTION="$1"
-shift
-case "$ACTION" in
---setup)
-  setup
-  ;;
---installCargos)
-  installCargos
-  ;;
-*)
-  echo "Action not recognised, $ACTION"
-  ;;
-esac
+_setup() {
+  if ! command -v "$PACKAGE_COMMAND" >/dev/null; then
+    brew install "$PACKAGE_NAME"
+  fi
+  mkdir -p "$HOME/.cargo"
+  ln -sf "config.toml" "$HOME/.cargo"
+  _installCargos
+}
+
+_setup

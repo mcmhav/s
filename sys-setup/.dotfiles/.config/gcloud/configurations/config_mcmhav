@@ -1,8 +1,0 @@
-[core]
-project = t-0000001
-account = mcmhav@gmail.com
-
-[compute]
-zone = europe-west3
-region = europe-west3-b
-

@@ -1,0 +1,42 @@
+awscli
+bash
+bash-completion@2
+fish
+git
+go
+zlib
+jq
+nodenv
+pyenv
+python
+readline
+shellcheck
+shfmt
+watch
+watchman
+yarn
+the_silver_searcher
+fzf
+openssh
+gost
+bat
+xclip
+nvim
+rust
+bottom
+rbenv
+terraform
+terraform-ls
+tree
+poetry
+coreutils
+gsed
+hyper
+--cask amethyst
+--cask enpass
+--cask google-chrome
+--cask google-cloud-sdk
+--cask google-chrome-canary
+--cask menumeters
+--cask dozer
+--cask avibrazil-rdm

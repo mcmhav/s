@@ -3,37 +3,56 @@
 source term_colors
 
 SEVERITY="${LIGHT_CYAN}INFO${NC}"
-PARAMS="$@"
+SEVERITY_NUM="4"
+PARAMS="$*"
 
 check_severity() {
   potential_severity=$(echo "$1" | tr '[:lower:]' '[:upper:]')
   case $potential_severity in
+  dbug | DBUG)
+    SEVERITY="${LIGHT_PURPLE}DBUG${NC}"
+    SEVERITY_NUM=5
+    shift
+    PARAMS="$*"
+    ;;
   info | INFO)
     SEVERITY="${LIGHT_CYAN}INFO${NC}"
+    SEVERITY_NUM=4
     shift
-    PARAMS="$@"
+    PARAMS="$*"
     ;;
   warn | WARN)
     SEVERITY="${YELLOW}WARN${NC}"
+    SEVERITY_NUM=3
     shift
-    PARAMS="$@"
+    PARAMS="$*"
     ;;
   errr | ERRR)
     SEVERITY="${RED}ERRR${NC}"
+    SEVERITY_NUM=2
     shift
-    PARAMS="$@"
+    PARAMS="$*"
+    ;;
+  crit | CRIT)
+    SEVERITY="${RED}CRIT${NC}"
+    SEVERITY_NUM=1
+    shift
+    PARAMS="$*"
     ;;
   esac
 }
 
 _loggit() {
   check_severity "$@"
+  if [ "$CSYS_LOG_LEVEL" -lt "$SEVERITY_NUM" ]; then
+    exit
+  fi
   # PARENT_COMMAND=$(ps -o comm= $PPID)
   # cat /proc/$PPID/cmdline
   case "$CSYS_OS" in
   "$PI_OS")
     PARENT_PATH=$(ls /proc/$PPID/fd/255)
-    PARENT_REAL_PATH=$(realpath $PARENT_PATH)
+    PARENT_REAL_PATH=$(realpath "$PARENT_PATH")
     ;;
   esac
   timestamp=${LIGHT_CYAN}$(date +"%d/%m/%Y-%T")${NC}

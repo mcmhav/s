@@ -1,45 +1,20 @@
 #!/usr/bin/env bash
 
-_installBrews() {
-  loggit "Installing brews"
-
-  for l in $(cat $SCRIPT_DIR/configs/brews); do
-    read -ra BREW_PACKAGE <<<"$l"
-    if ! brew ls --versions "${BREW_PACKAGE[0]}" >/dev/null; then
-      brew install "$l"
-    fi
-  done
-
-  loggit "Installing brews casks"
-
-  while read -r l; do
-    read -ra BREW_PACKAGE <<<"$l"
-    if ! brew ls --cask --versions "${BREW_PACKAGE[0]}" >/dev/null; then
-      brew install --cask "$l"
-    fi
-  done <"$SCRIPT_DIR/configs/casks"
-}
-
 _setup() {
-  # brew
-  if ! [ -x "$(command -v brew)" ]; then
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  if ! command -v brew >/dev/null; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 
-  if ! brew tap | grep -q 'homebrew/cask-fonts'; then
+  BREW_TAPS=$(brew tap)
+  if ! echo "$BREW_TAPS" | grep -q 'homebrew/cask-fonts'; then
     brew tap homebrew/cask-fonts
+  fi
+  if ! echo "$BREW_TAPS" | grep -q 'homebrew/services'; then
+    brew tap homebrew/services
   fi
 
   brew update
   brew upgrade
-  brew upgrade --cask
-  brew tap homebrew/services
-
-  # brews
-  _installBrews
-
 }
-
-SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 
 _setup

@@ -1,2 +1,2 @@
 cargo-update
-cargo-binstall
+cargo-binstall --version 0.7.0

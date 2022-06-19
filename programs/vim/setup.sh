@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
-
 link_config() {
   if [ ! -d "$HOME/.vim" ]; then
     mkdir "$HOME/.vim"
   fi
-  LOCAL_CONFIG_PATH="$SCRIPT_DIR/config"
+  LOCAL_CONFIG_PATH="$SCRIPT_PATH/config"
 
   ln -sf "$LOCAL_CONFIG_PATH"/*.vim "$HOME"/.vim
 
@@ -42,14 +40,10 @@ setup_plugins() {
   vim +PlugUpdate +qall
 }
 
-install_deps() {
-  "$CSYS_HOME/programs/node/setup.sh" --setup
-}
-
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 VIM_BUNDLE_PATH="$HOME/.vim/bundle/Vundle.vim"
 RETURN_TO=$(pwd)
 
-install_deps
 link_config
 setup_plugins
 

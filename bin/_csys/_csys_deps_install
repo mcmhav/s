@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+DEPS_FILE_PATH="$1"
+
+while read -r l; do
+  read -ra arguments <<<"$l"
+  csys install "${arguments[@]}"
+done <"$DEPS_FILE_PATH"
