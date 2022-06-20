@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+COC_HOME="$HOME/.config/coc/extensions"
+
 link_config() {
   if [ ! -d "$HOME/.vim" ]; then
     mkdir "$HOME/.vim"
@@ -20,6 +22,7 @@ link_config() {
   ln -sf "$LOCAL_CONFIG_PATH/colors/cake.vim" "$HOME/.vim/colors/cake.vim"
   ln -sf "$LOCAL_CONFIG_PATH/colors/syntax/"* "$HOME/.vim/after/syntax"
   ln -sf "$LOCAL_CONFIG_PATH/.vimrc" "$HOME/.vimrc"
+  ln -sf "$LOCAL_CONFIG_PATH/coc-package.json" "$COC_HOME/package.json"
 }
 
 setup_plugins() {
@@ -31,6 +34,10 @@ setup_plugins() {
     vim +PlugInstall +qall 1>/dev/null 2>&1
     vim +PlugUpgrade +qall 1>/dev/null 2>&1
     vim +PlugUpdate +qall 1>/dev/null 2>&1
+    (
+      cd "$COC_HOME" &&
+        npm install --ignore-scripts --no-lockfile --production --legacy-peer-deps --no-global 1>/dev/null 2>&1
+    )
   } &
 }
 

@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "coc-diagnostic": ">=0.23.4",
+    "coc-json": ">=1.4.2",
+    "coc-prettier": ">=9.3.1",
+    "coc-pyright": ">=1.1.255",
+    "coc-rls": ">=1.1.6",
+    "coc-sh": ">=0.7.0"
+  }
+}
