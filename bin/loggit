@@ -52,11 +52,31 @@ _loggit() {
   case "$CSYS_OS" in
   "$PI_OS")
     PARENT_PATH=$(ls /proc/$PPID/fd/255)
-    PARENT_REAL_PATH=$(realpath "$PARENT_PATH")
+    LOG_CALLER=$(realpath "$PARENT_PATH")
+    ;;
+  "$MAC_OS")
+    PID_COMMAND=$(ps -p $PPID -o comm=)
+    case "$PID_COMMAND" in
+    *bash)
+      BASH_COMMAND_ARGS=$(ps -p $PPID -o command=)
+      read -ra BASH_COMMAND_ARGS <<<"$BASH_COMMAND_ARGS"
+
+      if [ ${#BASH_COMMAND_ARGS[@]} -gt 1 ]; then
+        BASH_COMMAND_FILE=$(basename "${BASH_COMMAND_ARGS[1]}")
+      else
+        BASH_COMMAND_FILE=$(basename "${BASH_COMMAND_ARGS[0]}")
+      fi
+      LOG_CALLER="[$BASH_COMMAND_FILE]"
+      ;;
+    *)
+      LOG_CALLER="[$(basename "$PID_COMMAND")]"
+      ;;
+    esac
     ;;
   esac
-  timestamp=${LIGHT_CYAN}$(date +"%d/%m/%Y-%T")${NC}
-  printf "[$SEVERITY]$timestamp$PARENT_REAL_PATH:%s \n" "$PARAMS"
+  LOG_CALLER="${LIGHT_BLUE}$LOG_CALLER${NC}"
+  LOG_TIMESTAMP=${LIGHT_CYAN}$(date +"%d/%m/%Y-%T")${NC}
+  printf "[$SEVERITY]$LOG_TIMESTAMP$LOG_CALLER:%s \n" "$PARAMS"
 }
 
 _loggit "$@"

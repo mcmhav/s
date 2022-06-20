@@ -28,6 +28,7 @@ else
 fi
 
 export CSYS_SHALLOW_FLAG="--shallow"
+export CSYS_SHALLOW_SETUP="true"
 export CSYS_LOG_LEVEL=4
 
 export CSYS_BIN="$CSYS_HOME/bin"

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 unquarantine() {
-  xattr -d com.apple.quarantine /Applications/Alacritty.app
+  xattr -d com.apple.quarantine /Applications/Alacritty.app 2>/dev/null
+  xattr -d com.apple.quarantine /Applications/Hyper.app 2>/dev/null
 }
 
 installStuff() {
@@ -17,6 +18,7 @@ installStuff() {
   loggit "Installing csys-reqs"
   csys reqs-install "$SCRIPT_PATH/reqs"
 
+  loggit "Setting mac preferences"
   # mac-os setup
   # Screenshots
   mkdir -p ~/Pictures/screenshots

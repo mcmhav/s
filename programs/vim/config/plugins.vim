@@ -1,4 +1,3 @@
-set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin('~/.vim/plugged')
   " pi3 timings:
   " - no enabled - empty ~420
@@ -23,7 +22,7 @@ call plug#begin('~/.vim/plugged')
   " - startify+fzf+css+waka+fugitive ~640, wut?
 
   " Low impact on startup time
-  Plug 'mhinz/vim-startify'
+  " Plug 'mhinz/vim-startify'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'ap/vim-css-color'
