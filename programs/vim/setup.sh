@@ -22,6 +22,8 @@ link_config() {
   ln -sf "$LOCAL_CONFIG_PATH/colors/cake.vim" "$HOME/.vim/colors/cake.vim"
   ln -sf "$LOCAL_CONFIG_PATH/colors/syntax/"* "$HOME/.vim/after/syntax"
   ln -sf "$LOCAL_CONFIG_PATH/.vimrc" "$HOME/.vimrc"
+
+  mkdir -p "$COC_HOME"
   ln -sf "$LOCAL_CONFIG_PATH/coc-package.json" "$COC_HOME/package.json"
 }
 
