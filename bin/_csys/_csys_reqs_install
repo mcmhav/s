@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-DEPS_FILE_PATH="$1"
+REQS_FILE_PATH="$1"
+
+REQS_COUNT=$(wc -l "$REQS_FILE_PATH" | awk '{print $1}')
+
+loggit "Reqs to setup: $REQS_COUNT"
 
 while read -ra l; do
   csys install "${l[@]}"
-done <"$DEPS_FILE_PATH"
+done <"$REQS_FILE_PATH"
