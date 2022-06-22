@@ -42,6 +42,9 @@ _setup() {
   inject_bashrc
   non_gui_config
 
+  loggit "Setup using:"
+  loggit "  CSYS_HOME: $CSYS_HOME"
+  loggit "  CSYS_OS: $CSYS_OS"
   "$CSYS_HOME/os/$CSYS_OS/setup.sh"
 }
 

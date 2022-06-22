@@ -4,8 +4,7 @@ set fish_greeting
 set fish_command_timer_enabled 0
 
 set SCRIPT_LOCATION (readlink (dirname (status --current-filename)))
-
-export CSYS_HOME="$SCRIPT_LOCATION/../../../.."
+set --global CSYS_HOME (realpath "$SCRIPT_LOCATION/../../../..")
 
 bass source $CSYS_HOME/programs/bash/bashrc.d/csys.bashrc fish
 bass source $CSYS_HOME/programs/bash/bashrc.d/sourcer.bashrc
