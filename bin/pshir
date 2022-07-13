@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+PROCESS_NAME="$1"
+
+# echo "$PPID"
+
+ps -axwwo user,pid,ppid,pgid,command | awk '{$5="\""$5"\"""//";}1' | pstree -f - -s "$PROCESS_NAME" -g 3 | bat -l js

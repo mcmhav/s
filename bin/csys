@@ -1,19 +1,6 @@
 #!/usr/bin/env bash
 
-csysUpdate() {
-  if git pull; then
-    "$CSYS_HOME/setup.sh"
-  else
-    git stash
-    "$CSYS_HOME/setup.sh"
-    git stash pop
-  fi
-}
-
-csysUpload() {
-  loggit "updating vscode config"
-  "$CSYS_PROGRAMS/vscode/setup.sh" --makePackagesList
-
+_push() {
   loggit "adding to git"
   git add --all
 
@@ -55,14 +42,15 @@ reqs-install)
   shift
   "$SCRIPT_DIR/_csys/_csys_reqs_install" "$@"
   ;;
+update)
+  shift
+  "$SCRIPT_DIR/_csys/_csys_update" "$@"
+  ;;
 -s | --status)
   csysStatus
   ;;
--u | --upload)
-  csysUpload
-  ;;
--d | --download)
-  csysUpdate
+push)
+  _push
   ;;
 --diff)
   csysDiff

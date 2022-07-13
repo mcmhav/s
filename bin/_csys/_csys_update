@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+_update() {
+  brew update
+  brew upgrade
+
+  exit
+  if git pull; then
+    "$CSYS_HOME/setup.sh"
+  else
+    git stash
+    "$CSYS_HOME/setup.sh"
+    git stash pop
+  fi
+}
+
+_update "$@"

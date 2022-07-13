@@ -32,14 +32,22 @@ autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 " netrw
+" http://vimdoc.sourceforge.net/htmldoc/pi_netrw.html#netrw-P
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
-""let g:netrw_browse_split = 4
-let g:netrw_altv = 1
+let g:netrw_preview = 1
+"let g:netrw_browse_split = 4
+"let g:netrw_altv = 1
 let g:netrw_winsize = 25
 let g:netrw_alto  = 'sb'
 let g:netrw_altv = 'spr'
-" let g:netrw_localrmdir='rm -r'
-let g:netrw_preview = 1
-let g:netrw_chgwin = 2
+"let g:netrw_altv = 1
+""let g:netrw_alto = 1
 
+" let g:netrw_localrmdir='rm -r'
+"let g:netrw_chgwin = 1
+
+" Cursor
+" https://stackoverflow.com/questions/6488683/how-to-change-the-cursor-between-normal-and-insert-modes-in-vim/42118416#42118416
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"

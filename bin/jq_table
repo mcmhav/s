@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+jq_tabler='
+(.[0] | keys_unsorted | (., map(length*"=")) | @tsv),
+(.[] | map(.) | @tsv)'
+
+JQ_FILTER="$1"
+
+jq -r "$JQ_FILTER | $jq_tabler" | column -ts $'\t'

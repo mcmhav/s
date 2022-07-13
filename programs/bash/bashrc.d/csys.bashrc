@@ -27,7 +27,7 @@ else
   export CSYS_SHELL="$BASH_SHELL"
 fi
 
-export CSYS_SHALLOW_FLAG="--shallow"
+export SHALLOW_FLAG_CSYS="--shallow"
 export CSYS_SHALLOW_SETUP="true"
 export CSYS_LOG_LEVEL=4
 

@@ -6,7 +6,9 @@ _find_in_files() {
     search_location="$1"
   fi
 
-  ag_fzf_result=$(ag --hidden "$search_location" | fzf -e)
+  ag_fzf_result=$(cd "$search_location" && ag --hidden --ignore ".git" "." | fzf -e)
+
+  ag_fzf_result="$search_location/$ag_fzf_result"
 
   selected_file=$(echo "$ag_fzf_result" | awk 'BEGIN {FS=":";} { print $1 }')
   selected_line_num=$(echo "$ag_fzf_result" | awk 'BEGIN {FS=":";} { print $2 }')
