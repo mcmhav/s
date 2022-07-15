@@ -3,7 +3,10 @@
 VS_CODE_SETUP_HOME=""
 VS_CODE_HOME_USER=""
 
-VS_CODE_SETUP_HOME="$CSYS_PROGRAMS/vscode"
+PACKAGE_NAME="visual-studio-code"
+PACKAGE_COMMAND="code"
+
+VS_CODE_SETUP_HOME="$CSYS_PROGRAMS/$PACKAGE_NAME"
 
 case "$CSYS_OS" in
 "$MAC_OS") VS_CODE_HOME_USER="$HOME/Library/Application Support/Code/User" ;;
@@ -79,9 +82,6 @@ usage() {
   loggit "lol"
 }
 
-PACKAGE_NAME="visual-studio-code"
-PACKAGE_COMMAND="code"
-
 _setup() {
   if ! command -v "$PACKAGE_COMMAND" >/dev/null; then
     brew install --cask "$PACKAGE_NAME"
@@ -91,6 +91,10 @@ _setup() {
 }
 
 verbose=""
+
+if [ "$1" == "" ]; then
+  _setup
+fi
 
 while [ "$1" != "" ]; do
   case $1 in
@@ -109,7 +113,7 @@ while [ "$1" != "" ]; do
     exit
     ;;
   *)
-    _setup
+    usage
     exit
     ;;
   esac

@@ -1,14 +1,14 @@
 inoremap jj <Esc>
-"inoremap QQ <Esc>
 "nnoremap qq :noh<return><Esc>
+"inoremap QQ <Esc>
 
 " Move line
-nnoremap <A-Up> :m .-2 <CR>
-nnoremap <A-Down> :m .+1 <CR>
-inoremap <A-Up> <Esc> :m .-2 <CR>
-inoremap <A-Down> <Esc> :m .+1 <CR>
-vnoremap <A-Up> :m '<-2' <CR> gv=gv
-vnoremap <A-Down> :m '>+1' <CR> gv=gv
+nnoremap ª :m .-2 <CR>
+nnoremap √ :m .+1 <CR>
+inoremap ª <Esc> :m .-2 <CR>==gi
+inoremap √ <Esc> :m .+1 <CR>==gi
+vnoremap ª :m '<-2' <CR> gv=gv
+vnoremap √ :m '>+1' <CR> gv=gv
 
 " Reload vims configuration file
 nnoremap confr :source $MYVIMRC<CR>
@@ -19,6 +19,7 @@ exec 'nnoremap ,ss :mksession ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><
 " Fuzzy find file
 nnoremap <silent> ,f :FZF<cr>
 nnoremap <silent> ,F :FZF ~<cr>
+inoremap <C-p>,F :FZF ~<cr>
 
 " Search all
 nnoremap <silent> ,s :Ag<cr>

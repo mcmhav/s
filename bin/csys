@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
+COMMAND_OPTIONS=$(printf "
+  install \t install a package
+  reqs-install \t install requirements
+  update \t update system
+  push \t push system config to remote
+  status \t status of the system config
+  -h, --help \t show this help text
+" | column -ts $'\t')
+
+HELP_TEXT="usage: $(basename "$0") [-h] --
+
+where:
+$COMMAND_OPTIONS"
+
 _push() {
   loggit "adding to git"
   git add --all
@@ -46,7 +60,7 @@ update)
   shift
   "$SCRIPT_DIR/_csys/_csys_update" "$@"
   ;;
--s | --status)
+status)
   csysStatus
   ;;
 push)
@@ -54,6 +68,9 @@ push)
   ;;
 --diff)
   csysDiff
+  ;;
+-h | --help)
+  echo "$HELP_TEXT"
   ;;
 *)
   loggit "no work"
