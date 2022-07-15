@@ -30,8 +30,15 @@ if [ -f "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/setup.sh" ]; then
 else
   loggit dbug "brew | Setup $PACKAGE_TO_INSTALL"
   if
-    { [ "$CSYS_SHALLOW_SETUP" = "true" ] && ! command -v "$PACKAGE_TO_INSTALL" >/dev/null && ! brew ls --version "${ORIGINAL_ARGS[@]}" >/dev/null; } ||
-      { [ "$CSYS_SHALLOW_SETUP" = "false" ] && ! brew ls --version "${ORIGINAL_ARGS[@]}" >/dev/null; }
+    {
+      [ "$CSYS_SHALLOW_SETUP" = "true" ] &&
+        ! command -v "$PACKAGE_TO_INSTALL" >/dev/null &&
+        ! brew ls --version "${ORIGINAL_ARGS[@]}" >/dev/null
+    } ||
+      {
+        [ "$CSYS_SHALLOW_SETUP" = "false" ] &&
+          ! brew ls --version "${ORIGINAL_ARGS[@]}" >/dev/null
+      }
   then
     brew install "${ORIGINAL_ARGS[@]}"
   fi
