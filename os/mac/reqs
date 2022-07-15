@@ -38,6 +38,7 @@ hyper
 --cask google-chrome
 --cask google-cloud-sdk
 --cask google-chrome-canary
+--cask brave-browser
 --cask menumeters
 --cask dozer
 --cask avibrazil-rdm

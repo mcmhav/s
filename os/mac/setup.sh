@@ -3,6 +3,7 @@
 unquarantine() {
   xattr -d com.apple.quarantine /Applications/Alacritty.app 2>/dev/null
   xattr -d com.apple.quarantine /Applications/Hyper.app 2>/dev/null
+  xattr -d com.apple.quarantine "/Applications/Brave Browser.app" 2>/dev/null
 }
 
 installStuff() {
