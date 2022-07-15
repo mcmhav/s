@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ "$1" == "tail" ]; then
+  tail -f "$HOME/.csys.bashrc.d/log/mac_ka.log"
+  exit
+fi
+
 source param_parser --params "f t d" --incomming_params "$@"
 SLEEP_TIME=30
 
@@ -17,7 +22,11 @@ while true; do
   if [ -z "$GUARD_FROM" ] ||
     [ -z "$GUARD_TO" ] ||
     [ -z "$GUARD_D" ] ||
-    { [ "$(date +%H)" -ge "$GUARD_FROM" ] && [ "$(date +%H)" -le "$GUARD_TO" ] && [[ "$GUARD_D" =~ $(date +%u) ]]; }; then
+    {
+      [ "$(date +%H)" -ge "$GUARD_FROM" ] &&
+        [ "$(date +%H)" -lt "$GUARD_TO" ] &&
+        [[ "$GUARD_D" =~ $(date +%u) ]]
+    }; then
     osascript -e 'tell application "System Events" to key code 57'
     loggit "Up"
   fi
