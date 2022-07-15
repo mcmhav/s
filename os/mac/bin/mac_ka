@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source param_parser --params "f t d" --incomming_params "$@"
 SLEEP_TIME=30
@@ -22,4 +22,7 @@ while true; do
     loggit "Up"
   fi
   sleep $SLEEP_TIME
+  if [ -f "$HOME/.csys.bashrc.d/mac_ka.env" ]; then
+    source "$HOME/.csys.bashrc.d/mac_ka.env"
+  fi
 done

@@ -19,13 +19,6 @@
     "go"
   ],
   "coc.preferences.willSaveHandlerTimeout": 2000,
-  "diagnostic-languageserver.filetypes": {
-    "sh": "shellcheck",
-    "shx": {
-      "command": "shellcheck",
-      "args": ["-x"]
-    }
-  },
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
   },
