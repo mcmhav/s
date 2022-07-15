@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+cleanup() {
+  exit
+}
+
+trap cleanup SIGINT
+
 t2s() {
   sed 's/d/*24*3600 +/g; s/h/*3600 +/g; s/m/*60 +/g; s/s/\+/g; s/+[ ]*$//g' <<<"$1" | bc
 }
@@ -11,6 +17,8 @@ for i in $(seq "$ITERATIONS"); do
   echo "$i"
 done | python "$CSYS_BIN/_tqdm.py" --total "$ITERATIONS" >>/dev/null
 
-if [ -n "$2" ]; then
-  $2
+shift
+if [ -n "$1" ]; then
+  afplay /System/Library/Sounds/Glass.aiff
+  "$@"
 fi

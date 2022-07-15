@@ -5,6 +5,7 @@ set t_Co=256
 set background=dark
 set termguicolors
 colorscheme cake
+" colorscheme gruvbox
 
 set number
 set relativenumber
@@ -41,3 +42,6 @@ set hlsearch
 autocmd InsertEnter * :set nohlsearch
 autocmd InsertLeave * :set hlsearch
 let g:incsearch#auto_nohlsearch = 0
+
+" folding
+set foldlevelstart=1

@@ -20,6 +20,7 @@ link_config() {
     mkdir "$HOME/.vim/sessions"
   fi
   ln -sf "$LOCAL_CONFIG_PATH/colors/cake.vim" "$HOME/.vim/colors/cake.vim"
+  ln -sf "$LOCAL_CONFIG_PATH/colors/gruvbox.vim" "$HOME/.vim/colors/gruvbox.vim"
   ln -sf "$LOCAL_CONFIG_PATH/colors/syntax/"* "$HOME/.vim/after/syntax"
   ln -sf "$LOCAL_CONFIG_PATH/.vimrc" "$HOME/.vimrc"
 

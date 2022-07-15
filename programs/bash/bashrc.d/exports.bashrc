@@ -82,3 +82,6 @@ done
 
 # Notrack
 export DO_NOT_TRACK=1
+
+# Bat
+export BAT_THEME="gruvbox-dark"
