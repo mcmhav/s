@@ -5,7 +5,7 @@ set t_Co=256
 set background=dark
 set termguicolors
 colorscheme cake
-" colorscheme gruvbox
+"colorscheme gruvbox-material
 
 set number
 set relativenumber

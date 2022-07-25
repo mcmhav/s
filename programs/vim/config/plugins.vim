@@ -37,8 +37,8 @@ call plug#begin('~/.vim/plugged')
   " Do not use on pi
   if $CSYS_OS != "pi"
     Plug 'airblade/vim-gitgutter'
-    Plug 'sheerun/vim-polyglot' " high startup-inpact, claims to be low
   " impact, config-issues?
+    Plug 'sheerun/vim-polyglot' " high startup-inpact, claims to be low
   endif
 
   " Untested - check if we can remove this, in favour of doing all with coc
@@ -46,4 +46,6 @@ call plug#begin('~/.vim/plugged')
 
   " New untested
   Plug 'tpope/vim-commentary'
+
+  Plug 'sainnhe/gruvbox-material'
 call plug#end()

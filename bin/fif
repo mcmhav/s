@@ -13,7 +13,7 @@ _find_in_files() {
   selected_file=$(echo "$ag_fzf_result" | awk 'BEGIN {FS=":";} { print $1 }')
   selected_line_num=$(echo "$ag_fzf_result" | awk 'BEGIN {FS=":";} { print $2 }')
 
-  if [ -n "$selected_file" ]; then
+  if [ -n "$selected_file" ] && [ "$selected_file" != "./" ]; then
     vim "$selected_file" +"$selected_line_num"
   fi
 }

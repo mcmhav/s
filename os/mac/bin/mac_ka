@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
 
-if [ "$1" == "tail" ]; then
+case $1 in
+tail)
   tail -f "$HOME/.csys.bashrc.d/log/mac_ka.log"
   exit
-fi
+  ;;
+config)
+  vim "$HOME/.csys.bashrc.d/mac_ka.env"
+  exit
+  ;;
+*) ;;
+esac
 
 source param_parser --params "f t d" --incomming_params "$@"
 SLEEP_TIME=30
