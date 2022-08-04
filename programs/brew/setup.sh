@@ -13,8 +13,10 @@ _setup() {
     brew tap homebrew/services
   fi
 
-  brew update
-  brew upgrade
+  if [ "$CSYS_SHALLOW_SETUP" != "true" ]; then
+    brew update
+    brew upgrade
+  fi
 }
 
 _setup

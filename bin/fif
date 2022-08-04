@@ -15,6 +15,7 @@ _find_in_files() {
 
   if [ -n "$selected_file" ] && [ "$selected_file" != "./" ]; then
     vim "$selected_file" +"$selected_line_num"
+    echo "$selected_file"
   fi
 }
 

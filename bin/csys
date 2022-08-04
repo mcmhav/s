@@ -66,6 +66,9 @@ status)
 push)
   _push
   ;;
+config-update)
+  source "$CSYS_BASH_HOME/main.bashrc"
+  ;;
 --diff)
   csysDiff
   ;;
