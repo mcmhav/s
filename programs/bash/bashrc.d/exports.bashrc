@@ -8,7 +8,7 @@ export GOPATH="$HOME/.go"
 
 case "$CSYS_OS" in
 "$PI_OS") export GOROOT=/usr/lib/go ;;
-"$LIN_OS") export GOROOT=/usr/local/opt/go/libexec ;;
+"$LIN_OS") export GOROOT="$HOME/go" ;;
 "$MAC_OS") export GOROOT=/usr/local/opt/go/libexec ;;
 "$WIN_OS") export GOROOT=/usr/local/opt/go/libexec ;;
 *) export GOROOT=/usr/local/opt/go/libexec ;;
