@@ -17,3 +17,6 @@ template:
           - direction: Vertical
       - direction: Horizontal
 
+session:
+  name: "c" # a string, that names the session
+  attach: true # default `true`. If session exists, re-attach.

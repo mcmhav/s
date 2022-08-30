@@ -11,7 +11,7 @@ shell:
   # program: /Users/a504ad5/.cargo/bin/zellij
   args:
     - --login
-    - -C zellij
+    - -C command -v zellij-work && zellij-work || zellij
 
 colors:
   primary:

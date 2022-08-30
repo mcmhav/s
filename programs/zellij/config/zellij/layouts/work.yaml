@@ -1,0 +1,48 @@
+---
+template:
+  direction: Horizontal
+  parts:
+    - direction: Vertical
+      borderless: true
+      split_size:
+        Fixed: 1
+      run:
+        plugin:
+          location: "zellij:tab-bar"
+    - direction: Vertical
+      parts:
+      - direction: Horizontal
+        parts:
+          - direction: Vertical
+          - direction: Vertical
+      - direction: Horizontal
+
+session:
+  name: "work" # a string, that names the session
+  attach: true # default `true`. If session exists, re-attach.
+
+tabs:
+  - name: "w1" # tab 1
+    direction: Vertical
+    parts:
+      - direction: Horizontal
+      - direction: Horizontal
+        parts:
+          - direction: Horizontal
+          - direction: Vertical
+  - name: "w2" # tab 2
+    direction: Vertical
+    parts:
+      - direction: Horizontal
+      - direction: Horizontal
+        parts:
+          - direction: Horizontal
+          - direction: Vertical
+  - name: "-" # tab 3
+    direction: Vertical
+    parts:
+      - direction: Horizontal
+      - direction: Horizontal
+        parts:
+          - direction: Horizontal
+          - direction: Vertical
