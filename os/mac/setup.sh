@@ -63,6 +63,9 @@ installStuff() {
   # scutil --set ComputerName c
 
   unquarantine
+
+  # mac update packages
+  softwareupdate --all --install --force
 }
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
