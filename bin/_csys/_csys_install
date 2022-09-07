@@ -33,6 +33,8 @@ else
     {
       [ "$CSYS_SHALLOW_SETUP" = "true" ] &&
         ! command -v "$PACKAGE_TO_INSTALL" >/dev/null &&
+        ! ls "/usr/local/Cellar/$PACKAGE_TO_INSTALL" 1>/dev/null 2>&1 &&
+        ! ls "/usr/local/Caskroom/$PACKAGE_TO_INSTALL" 1>/dev/null 2>&1 &&
         ! brew ls --version "${ORIGINAL_ARGS[@]}" >/dev/null
     } ||
       {

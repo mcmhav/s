@@ -4,13 +4,13 @@ _update() {
   brew update
   brew upgrade
 
-  # exit
-  if git pull; then
+  if git pull 1>/dev/null 2>&1; then
     "$CSYS_HOME/setup.sh"
   else
     git stash
-    "$CSYS_HOME/setup.sh"
+    git pull
     git stash pop
+    "$CSYS_HOME/setup.sh"
   fi
 }
 
