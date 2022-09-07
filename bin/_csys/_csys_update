@@ -4,7 +4,7 @@ _update() {
   brew update
   brew upgrade
 
-  exit
+  # exit
   if git pull; then
     "$CSYS_HOME/setup.sh"
   else
