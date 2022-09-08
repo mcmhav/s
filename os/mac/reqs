@@ -45,3 +45,4 @@ hyper
 alacritty
 zellij
 visual-studio-code
+pre-commit
