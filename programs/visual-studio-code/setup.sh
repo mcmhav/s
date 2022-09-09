@@ -15,7 +15,7 @@ case "$CSYS_OS" in
   extra_link_flag="--hard"
   ;;
 *)
-  loggit "TODO: Not set up for os $CSYS_OS"
+  loggit warn "TODO: Not set up for os $CSYS_OS"
   exit 1
   ;;
 esac
@@ -50,7 +50,7 @@ uninstallDiff() {
 
   makeDiff $tmpList $diffList
 
-  loggit "Uninstall list:"
+  loggit debug "Uninstall list:"
   cat "$VS_CODE_SETUP_HOME/$diffList"
 
   while IFS= read -r l; do
@@ -62,11 +62,11 @@ uninstallDiff() {
 }
 
 installExtentions() {
-  loggit "Installing vs-code extentions"
+  loggit debug "Installing vs-code extentions"
 
   uninstallDiff
 
-  loggit "Installing extentions"
+  loggit debug "Installing extentions"
   while IFS= read -r l; do
     # Checking and strippig
     # Stripping to handled swithing between os's

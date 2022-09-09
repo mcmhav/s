@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+WORD="$1"
+if [ -z "$WORD" ]; then
+  loggit errr "Word must be set"
+  exit 1
+fi
+shift
+DEFINITION_OUTPUT="definition"
+LANGUAGE="en"
+
+while [ "$1" != "" ]; do
+  case $1 in
+  -d | --definition-output)
+    shift
+    if [ -n "$1" ]; then
+      DEFINITION_OUTPUT="$1"
+    else
+      loggit errr "-d flag needs an option"
+      exit 1
+    fi
+    ;;
+  -l | --language)
+    shift
+    if [ -n "$1" ]; then
+      LANGUAGE="$1"
+    else
+      loggit errr "-l flag needs an option"
+      exit 1
+    fi
+    ;;
+  esac
+  shift
+done
+
+RESULTS=$(curl -s "https://api.dictionaryapi.dev/api/v2/entries/$LANGUAGE/$WORD" |
+  jq -r ".[].meanings | .[].definitions | [.[].$DEFINITION_OUTPUT]" |
+  jq -sr 'flatten(1) | foreach .[] as $l (0; .+1; [.,$l]) | @tsv')
+
+if [ -z "$RESULTS" ]; then
+  loggit warn "Did not find a result for '$WORD'"
+  exit
+fi
+
+if command -v bat >/dev/null; then
+  echo "$RESULTS" | bat
+else
+  echo "$RESULTS"
+fi

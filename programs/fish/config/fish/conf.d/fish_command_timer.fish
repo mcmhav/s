@@ -163,6 +163,11 @@ function fish_command_timer_postexec -e fish_postexec
   set -l num_secs (math -s0 "$CMD_DURATION % $MIN / $SEC")
   set -l num_millis (math -s0 "$CMD_DURATION % $SEC")
   set -l time_str ""
+
+  # TODO: append to file
+  # echo "$CMD_DURATION"
+  # set -l main_command (string split " " -- $argv[1])[1]
+
   if [ $num_days -gt 0 ]
     set time_str {$time_str}{$num_days}"d "
   end
