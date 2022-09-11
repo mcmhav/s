@@ -50,7 +50,7 @@ uninstallDiff() {
 
   makeDiff $tmpList $diffList
 
-  loggit debug "Uninstall list:"
+  loggit dbug "Uninstall list:"
   cat "$VS_CODE_SETUP_HOME/$diffList"
 
   while IFS= read -r l; do
@@ -62,11 +62,11 @@ uninstallDiff() {
 }
 
 installExtentions() {
-  loggit debug "Installing vs-code extentions"
+  loggit dbug "Installing vs-code extentions"
 
   uninstallDiff
 
-  loggit debug "Installing extentions"
+  loggit dbug "Installing extentions"
   while IFS= read -r l; do
     # Checking and strippig
     # Stripping to handled swithing between os's
