@@ -34,11 +34,11 @@ while [ "$1" != "" ]; do
 done
 
 RESULTS=$(curl -s "https://api.dictionaryapi.dev/api/v2/entries/$LANGUAGE/$WORD" |
-  jq -r ".[].meanings? | .[].definitions | [.[].$DEFINITION_OUTPUT]" |
+  jq -r ".[].meanings? | .[].definitions | [.[].$DEFINITION_OUTPUT | select(.!=null)]" |
   jq -sr 'flatten(1) | foreach .[] as $l (0; .+1; [.,$l]) | @tsv')
 
 if [ -z "$RESULTS" ]; then
-  loggit warn "Did not find a result for '$WORD'"
+  loggit warn "Did not find any '$DEFINITION_OUTPUT' results for '$WORD'"
   exit
 fi
 

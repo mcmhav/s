@@ -8,6 +8,9 @@ _setup() {
     brew install "$PACKAGE_NAME"
   fi
 
+  if ! test -L "$HOME/.config/fish"; then
+    rm -rf "$HOME/.config/fish"
+  fi
   ln -sf "$SCRIPT_PATH/config/fish" "$HOME/.config"
 }
 
