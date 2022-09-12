@@ -9,6 +9,9 @@ export GITPOD_OS="gitpod"
 if [ "$(uname -s)" == "Linux" ]; then
   if [[ "$(uname -m)" =~ armv[0-9]l ]] && [[ "$(uname -n)" =~ pi* ]]; then
     export CSYS_OS="$PI_OS"
+  elif [ -n "$GITPOD_REPO_ROOT" ]; then
+    # Probably a gitpod
+    export CSYS_OS="$GITPOD_OS"
   else
     export CSYS_OS="$LIN_OS"
   fi

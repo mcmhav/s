@@ -1,12 +1,19 @@
 #!/usr/bin/env bash
 
+source param_parser --params "l i" --incomming_params "$@"
+
 _find_in_files() {
   search_location="."
-  if [ -n "$1" ]; then
-    search_location="$1"
+  if [ -n "$PARAM_L" ]; then
+    search_location="$PARAM_L"
   fi
 
-  ag_fzf_result=$(cd "$search_location" && ag --hidden --ignore ".git" "." | fzf -e)
+  EXTRA_IGNORE=""
+  if [ -n "$PARAM_I" ]; then
+    EXTRA_IGNORE="--ignore $PARAM_I"
+  fi
+
+  ag_fzf_result=$(cd "$search_location" && ag --hidden --ignore ".git" "." $EXTRA_IGNORE | fzf -e)
 
   ag_fzf_result="$search_location/$ag_fzf_result"
 
