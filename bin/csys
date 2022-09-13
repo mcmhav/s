@@ -6,6 +6,7 @@ COMMAND_OPTIONS=$(printf "
   update \t update system
   push \t push system config to remote
   status \t status of the system config
+  is-package-installed \t check if package is installed
   -h, --help \t show this help text
 " | column -ts $'\t')
 
@@ -68,6 +69,11 @@ push)
   ;;
 config-update)
   source "$CSYS_BASH_HOME/main.bashrc"
+  ;;
+is-package-installed)
+  shift
+  "$SCRIPT_DIR/_csys/_csys_is_package_installed" "$@"
+  exit $?
   ;;
 --diff)
   csysDiff
