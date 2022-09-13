@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-if [ "$(podman machine list --format json | jq 'length')" == 0 ]; then
-  podman machine init
-fi
-if [ "$(podman machine list --format json | jq '.[].Running')" == "false" ]; then
-  podman machine start
-fi
-podman machine ssh --username root date --set "$(date -Iseconds)"
