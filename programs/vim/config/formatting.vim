@@ -4,8 +4,9 @@ syntax on
 set t_Co=256
 set background=dark
 set termguicolors
-colorscheme cake
+"colorscheme cake
 "colorscheme gruvbox-material
+colorscheme dracula
 
 set number
 set relativenumber

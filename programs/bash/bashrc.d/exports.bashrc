@@ -86,3 +86,6 @@ export DO_NOT_TRACK=1
 
 # Bat
 export BAT_THEME="Dracula"
+
+# Brew
+export HOMEBREW_NO_ENV_HINTS=1

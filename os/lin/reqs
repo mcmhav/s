@@ -1,10 +1,9 @@
 git
-vim
 zellij
 the_silver_searcher
 fzf
 bat
+tree
 nvim
 fish
-tree
 pre-commit
