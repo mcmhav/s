@@ -9,5 +9,7 @@
     "coc-rls": ">=1.1.6",
     "coc-sh": ">=0.7.0",
     "coc-yaml": ">=1.7.5"
-  }
+  },
+  "disabled": [],
+  "locked": []
 }
