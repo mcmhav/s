@@ -1,5 +1,7 @@
 {
   "NotebookApp": {
+    "allow_origin": "*",
+    "open_browser": false,
     "nbserver_extensions": {
       "jupyter_nbextensions_configurator": true
     }
