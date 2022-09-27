@@ -5,6 +5,8 @@
 update-notifier-*.json
 .vscode
 *.log
+.ipynb_checkpoints
+**/history.sqlite
 
 # Handle application putting stuff into XDG_CONFIG_HOME
 #  1. Copy/link into a local folder, and point XDG_CONFIG_HOME to it

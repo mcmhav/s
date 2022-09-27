@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# https://surrealdb.com/docs/start
+# sdb sql "SELECT * FROM http::get('https://data.brreg.no/enhetsregisteret/api/enheter/940731895/roller');" | jq
+SURREAL_DATABASE="test"
+SURREAL_NAMESPACE="test"
+SURREAL_USERNAME="root"
+SURREAL_PASSWORD="root"
+SURREAL_PORT="8000"
+# SURREAL_LOG_LOCATION="file://$CSYS_PROGRAMS/surreal/logs"
+SURREAL_DB_LOCATION="file://$CSYS_PROGRAMS/surreal/surreal.db"
+_sdb() {
+  curl -k -L -s --compressed POST \
+    --header "Content-Type: application/json" \
+    --header "NS: $SURREAL_NAMESPACE" \
+    --header "DB: $SURREAL_DATABASE" \
+    --user "$SURREAL_USERNAME:$SURREAL_PASSWORD" \
+    --data "${1}" \
+    "http://localhost:$SURREAL_PORT/sql"
+}
+
+case $1 in
+start)
+  surreal start --user "$SURREAL_USERNAME" --pass "$SURREAL_PASSWORD" --log debug "$SURREAL_DB_LOCATION"
+  ;;
+sql)
+  shift
+  if [ -n "$1" ]; then
+    _sdb "$@"
+  else
+    loggit "no select query input"
+    exit 1
+  fi
+  ;;
+*)
+  # _sdb "$@"
+  loggit "Not implemented"
+  ;;
+esac
