@@ -19,9 +19,14 @@ link_config() {
   if [ ! -d "$HOME/.vim/sessions" ]; then
     mkdir "$HOME/.vim/sessions"
   fi
+  if [ ! -d "$HOME/.vim/autoload" ]; then
+    mkdir "$HOME/.vim/autoload"
+  fi
   ln -sf "$LOCAL_CONFIG_PATH/colors/cake.vim" "$HOME/.vim/colors/cake.vim"
   ln -sf "$LOCAL_CONFIG_PATH/colors/gruvbox.vim" "$HOME/.vim/colors/gruvbox.vim"
   ln -sf "$LOCAL_CONFIG_PATH/colors/gruvbox-material.vim" "$HOME/.vim/colors/gruvbox-material.vim"
+  ln -sf "$LOCAL_CONFIG_PATH/colors/dracula.vim" "$HOME/.vim/colors/dracula.vim"
+  ln -sf "$LOCAL_CONFIG_PATH/autoload/dracula.vim" "$HOME/.vim/autoload/dracula.vim"
   ln -sf "$LOCAL_CONFIG_PATH/colors/syntax/"* "$HOME/.vim/after/syntax"
   ln -sf "$LOCAL_CONFIG_PATH/.vimrc" "$HOME/.vimrc"
 
