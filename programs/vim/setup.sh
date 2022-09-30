@@ -25,9 +25,10 @@ link_config() {
   ln -sf "$LOCAL_CONFIG_PATH/colors/cake.vim" "$HOME/.vim/colors/cake.vim"
   ln -sf "$LOCAL_CONFIG_PATH/colors/gruvbox.vim" "$HOME/.vim/colors/gruvbox.vim"
   ln -sf "$LOCAL_CONFIG_PATH/colors/gruvbox-material.vim" "$HOME/.vim/colors/gruvbox-material.vim"
-  ln -sf "$LOCAL_CONFIG_PATH/colors/dracula.vim" "$HOME/.vim/colors/dracula.vim"
-  ln -sf "$LOCAL_CONFIG_PATH/autoload/dracula.vim" "$HOME/.vim/autoload/dracula.vim"
+  # ln -sf "$LOCAL_CONFIG_PATH/colors/dracula.vim" "$HOME/.vim/colors/dracula.vim"
+  # ln -sf "$LOCAL_CONFIG_PATH/autoload/dracula.vim" "$HOME/.vim/autoload/dracula.vim"
   ln -sf "$LOCAL_CONFIG_PATH/colors/syntax/"* "$HOME/.vim/after/syntax"
+  ln -sf "$LOCAL_CONFIG_PATH/c-pluggs" "$HOME/.vim/c-pluggs"
   ln -sf "$LOCAL_CONFIG_PATH/.vimrc" "$HOME/.vimrc"
 
   mkdir -p "$COC_HOME"
@@ -35,7 +36,7 @@ link_config() {
 }
 
 setup_plugins() {
-  if [ ! -d "$HOME/.vim/autoload" ]; then
+  if [ ! -d "$HOME/.vim/autoload/plug.vim" ]; then
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   fi
 

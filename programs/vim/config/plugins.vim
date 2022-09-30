@@ -46,8 +46,4 @@ call plug#begin('~/.vim/plugged')
 
   " New untested
   Plug 'tpope/vim-commentary'
-
-  Plug 'sainnhe/gruvbox-material'
-  Plug 'dracula/vim', { 'as': 'dracula' }
-  Plug 'sonph/onehalf', { 'rtp': 'vim' }
 call plug#end()

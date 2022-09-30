@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+case $1 in
+c)
+  shift
+  gp preview "$(gp url "$1")" --external
+  ;;
+*)
+  gp "$@"
+  ;;
+esac

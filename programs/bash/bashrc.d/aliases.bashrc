@@ -54,3 +54,6 @@ alias :q='exit'
 if command -v nvim 1>/dev/null 2>&1; then
   alias vim='nvim'
 fi
+
+alias ..='cd ..'
+alias ...='cd ../..'
