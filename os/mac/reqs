@@ -29,6 +29,7 @@ rbenv
 terraform
 terraform-ls
 tree
+pstree
 poetry
 coreutils
 gsed
