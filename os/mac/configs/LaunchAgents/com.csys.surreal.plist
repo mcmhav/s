@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.csys.surreal</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <string>PATH="$PATH:$HOME/r/s/bin" CSYS_BASHRC_D="$HOME/.csys.bashrc.d" $HOME/r/s/bin/sdb start > $HOME/$LOG_PATH/info.log 2> $HOME/$LOG_PATH/error.log</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <!--
+    <key>StandardOutPath</key>
+    <string>$HOME/.csys.bashrc.d/log/mac_ka.log</string>
+    <key>StandardErrorPath</key>
+    <string>$HOME/.csys.bashrc.d/log/mac_ka.error.log</string>
+    -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string><![CDATA[/bin:/usr/bin:/usr/local/bin]]></string>
+        <key>CSYS_OS</key>
+        <string>mac</string>
+        <key>LOG_PATH</key>
+        <string>.csys.bashrc.d/surreal/logs</string>
+    </dict>
+</dict>
+</plist>
+

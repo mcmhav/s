@@ -46,4 +46,5 @@ call plug#begin('~/.vim/plugged')
 
   " New untested
   Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-surround'
 call plug#end()

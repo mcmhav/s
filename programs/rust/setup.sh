@@ -1,6 +1,5 @@
 #!/bin/bash
 
-PACKAGE_NAME="rust"
 PACKAGE_COMMAND="rustc"
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 
@@ -14,7 +13,7 @@ _installCargos() {
 
 _setup() {
   if ! command -v "$PACKAGE_COMMAND" >/dev/null; then
-    brew install "$PACKAGE_NAME"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
   fi
   mkdir -p "$HOME/.cargo"
   ln -sf "config.toml" "$HOME/.cargo"

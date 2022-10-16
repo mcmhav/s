@@ -6,12 +6,14 @@ SURREAL_DATABASE="test"
 SURREAL_NAMESPACE="test"
 SURREAL_USERNAME="root"
 SURREAL_PASSWORD="root"
-SURREAL_PORT="8000"
+SURREAL_PORT="8001"
 # SURREAL_LOG_LOCATION="file://$CSYS_PROGRAMS/surreal/logs"
-SURREAL_DB_LOCATION="file://$CSYS_PROGRAMS/surreal/surreal.db"
+SURREAL_DB_LOCATION="file://$CSYS_BASHRC_D/surreal/surreal.db"
 _sdb() {
-  curl -k -L -s --compressed POST \
-    --header "Content-Type: application/json" \
+  curl \
+    -k -L -s --compressed \
+    --request POST \
+    --header "Accept: application/json" \
     --header "NS: $SURREAL_NAMESPACE" \
     --header "DB: $SURREAL_DATABASE" \
     --user "$SURREAL_USERNAME:$SURREAL_PASSWORD" \
@@ -21,7 +23,12 @@ _sdb() {
 
 case $1 in
 start)
-  surreal start --user "$SURREAL_USERNAME" --pass "$SURREAL_PASSWORD" --log debug "$SURREAL_DB_LOCATION"
+  surreal start \
+    --user "$SURREAL_USERNAME" \
+    --pass "$SURREAL_PASSWORD" \
+    --bind "0.0.0.0:$SURREAL_PORT" \
+    --log debug \
+    "$SURREAL_DB_LOCATION"
   ;;
 sql)
   shift

@@ -1,12 +1,24 @@
 #!/usr/bin/env bash
 
-unquarantine() {
+_unquarantine() {
   xattr -d com.apple.quarantine /Applications/Alacritty.app 2>/dev/null
   xattr -d com.apple.quarantine /Applications/Hyper.app 2>/dev/null
   xattr -d com.apple.quarantine "/Applications/Brave Browser.app" 2>/dev/null
 }
 
-installStuff() {
+_launchctl_setup() {
+  for file in "$SCRIPT_PATH/configs/LaunchAgents/"*; do
+    ln -sf "$file" "$HOME/Library/LaunchAgents/"
+    filename=$(basename -- "$file")
+    filename_base="${filename%.*}"
+    if launchctl list | grep "$filename_base" >/dev/null; then
+      launchctl unload "$HOME/Library/LaunchAgents/$filename"
+    fi
+    launchctl load "$HOME/Library/LaunchAgents/$filename"
+  done
+}
+
+_install() {
   loggit "Installing mac stuff"
   while ! xcrun --version 1>/dev/null 2>&1; do
     xcode-select --install 2>/dev/null
@@ -62,7 +74,8 @@ installStuff() {
   # Change computer name (for bluethooth/localhost/network):
   # scutil --set ComputerName c
 
-  unquarantine
+  _unquarantine
+  _launchctl_setup
 
   # mac update packages
   softwareupdate --all --install --force
@@ -73,6 +86,6 @@ RETURN_TO=$(pwd)
 
 cd "$SCRIPT_PATH" || exit
 
-installStuff
+_install
 
 cd "$RETURN_TO" || exit

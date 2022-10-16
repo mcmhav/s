@@ -28,7 +28,7 @@ link_config() {
   # ln -sf "$LOCAL_CONFIG_PATH/colors/dracula.vim" "$HOME/.vim/colors/dracula.vim"
   # ln -sf "$LOCAL_CONFIG_PATH/autoload/dracula.vim" "$HOME/.vim/autoload/dracula.vim"
   ln -sf "$LOCAL_CONFIG_PATH/colors/syntax/"* "$HOME/.vim/after/syntax"
-  ln -sf "$LOCAL_CONFIG_PATH/c-pluggs" "$HOME/.vim/c-pluggs"
+  ln -sf "$LOCAL_CONFIG_PATH/c-pluggs" "$HOME/.vim"
   ln -sf "$LOCAL_CONFIG_PATH/.vimrc" "$HOME/.vimrc"
 
   mkdir -p "$COC_HOME"

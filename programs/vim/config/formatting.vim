@@ -46,3 +46,7 @@ let g:incsearch#auto_nohlsearch = 0
 
 " folding
 set foldlevelstart=1
+
+" highlighting
+au BufNewFile,BufRead,BufReadPost *.bashrc set syntax=sh
+au BufNewFile,BufRead,BufReadPost *.plist set syntax=xml
