@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 tree_function() {
-  tree -I .git -I .DS_Store -a -C -L 2 "$@" | bat
+  if command -v bat >/dev/null && command -v tree >/dev/null; then
+    tree -I .git -I .DS_Store -a -C -L 2 "$@" | bat
+  else
+    ls -la
+  fi
 }
 
 tree_function "$@"
