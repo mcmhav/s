@@ -36,7 +36,7 @@ link_config() {
 }
 
 setup_plugins() {
-  if [ ! -d "$HOME/.vim/autoload/plug.vim" ]; then
+  if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   fi
 

@@ -3,6 +3,8 @@ set fish_greeting
 
 set fish_command_timer_enabled 0
 
+set SHELL (which fish)
+
 set SCRIPT_LOCATION (readlink (dirname (status --current-filename)))
 set --export CSYS_HOME (realpath "$SCRIPT_LOCATION/../../../..")
 

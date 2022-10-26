@@ -29,7 +29,7 @@ if ! xcrun --version &>/dev/null; then
   select yn in "Yes" "No"; do
     case $yn in
     Yes)
-      "$CSYS_HOME/sys-setup/os/mac/setup.sh"
+      "$CSYS_HOME/os/mac/setup.sh"
       break
       ;;
     No) exit ;;
