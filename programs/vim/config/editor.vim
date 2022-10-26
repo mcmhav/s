@@ -51,3 +51,7 @@ let &t_EI = "\e[2 q"
 " Folding
 set foldmethod=indent
 set foldlevelstart=99
+
+" Mouse
+set mouse=
+
