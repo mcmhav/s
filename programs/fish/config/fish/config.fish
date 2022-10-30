@@ -3,13 +3,14 @@ set fish_greeting
 
 set fish_command_timer_enabled 0
 
-set SHELL (which fish)
-
 set SCRIPT_LOCATION (readlink (dirname (status --current-filename)))
 set --export CSYS_HOME (realpath "$SCRIPT_LOCATION/../../../..")
 
 bass source $CSYS_HOME/programs/bash/bashrc.d/csys.bashrc fish
 bass source $CSYS_HOME/programs/bash/bashrc.d/sourcer.bashrc
+
+# TODO: Should be set earlier for usage in other scripts
+set --export SHELL (which fish)
 
 status --is-interactive; and type -q pyenv; and source (pyenv init -|psub)
 status --is-interactive; and type -q rbenv; and source (rbenv init -|psub)
