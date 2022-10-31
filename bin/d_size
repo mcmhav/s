@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+SIZE_LOCATION="$HOME/.tmp/sizes"
+LOG_FILE="$SIZE_LOCATION/size$(pwd | sed 's|/|-|g').log"
+
+mkdir -p "$SIZE_LOCATION"
+
+du -mc -d 1 >"$LOG_FILE" 2>/dev/null
+sort -nr <"$LOG_FILE"

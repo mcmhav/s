@@ -23,16 +23,25 @@ _fix_time_drift() {
   podman machine ssh --username root date --set "$(date -Iseconds)"
 }
 
+_rm_machine() {
+  podman machine stop
+  podman machine rm -f
+  rm -rf "$HOME/.local/share/containers/podman/machine/qemu"
+}
+
 case "$ACTION" in
 build)
   ACTION="$ACTION --tls-verify=false"
   ;;
 restart)
-  podman machine stop
-  podman machine rm -f
+  _rm_machine
   podman machine init
   podman machine start
   _inject_cert
+  exit
+  ;;
+rm-machine)
+  _rm_machine
   exit
   ;;
 inject-cert)
