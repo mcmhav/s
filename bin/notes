@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 RETURN_TO=$(pwd)
-NOTES_PATH="$HOME/.c_notes"
+NOTES_PATH="$CSYS_BASHRC_D/.c_notes"
+FILE_TYPE=".md"
 
 if [ ! -d "$NOTES_PATH" ]; then
   mkdir "$NOTES_PATH"
@@ -16,6 +17,6 @@ if [ -n "$1" ]; then
   SUB_NAME="-$1"
 fi
 
-"$EDITOR" "$DATE$SUB_NAME"
+"$EDITOR" "$DATE$SUB_NAME$FILE_TYPE"
 
 cd "$RETURN_TO" || exit

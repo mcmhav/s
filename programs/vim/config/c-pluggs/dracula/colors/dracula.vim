@@ -23,7 +23,7 @@ if v:version > 580
   endif
 endif
 
-let g:colors_name = 'dracula'
+let g:colors_name = 'dracula-c'
 
 if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 256
   finish

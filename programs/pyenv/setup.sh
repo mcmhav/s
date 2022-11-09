@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PACKAGE_NAME="pyenv"
-INSTALL_PY_VERSION="3.8.12"
+INSTALL_PY_VERSION="3.10.7"
 
 _setup() {
   if ! command -v "$PACKAGE_NAME" >/dev/null; then

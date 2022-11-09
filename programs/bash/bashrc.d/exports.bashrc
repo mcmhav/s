@@ -48,8 +48,6 @@ export CLOUDSDK_PYTHON="$HOME/.pyenv/versions/2.7.16/bin/python"
 # Pipenv
 export PIPENV_YES="yes"
 
-export WAKATIME_HOME="$HOME/.wakatime"
-
 export XDG_CONFIG_HOME="$HOME/.config"
 
 export SHELLCHECK_OPTS="--external-sources"

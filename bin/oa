@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+source inject_secrets || exit
+
+CURL_RESPONSE_LOCATION="$CSYS_BASHRC_D/open-ai/images"
+NUMBER_OF_IMAGES="4"
+IMAGE_SIZE="1024x1024"
+
+_download_generated_images() {
+  for f in "$CURL_RESPONSE_LOCATION"/*.json; do
+    ITERATION=0
+    loggit "Downloading image $ITERATION"
+    for image_link in $(jq -r '.data[].url' <"$f"); do
+      curl -s "$image_link" >"$f-img-$ITERATION.png"
+      ITERATION=$((ITERATION + 1))
+    done
+    rm "$f"
+  done
+}
+_generate_image() {
+  PROMT_TEXT="$1"
+  if [ -z "$PROMT_TEXT" ]; then
+    loggit "not promt text"
+  fi
+  DATE=$(date '+%s')
+  if [ ! -d "$CURL_RESPONSE_LOCATION" ]; then
+    mkdir -p "$CURL_RESPONSE_LOCATION"
+  fi
+  CURL_DATA="{"
+  CURL_DATA="$CURL_DATA\"prompt\":\"$PROMT_TEXT\","
+  CURL_DATA="$CURL_DATA\"n\":\"$NUMBER_OF_IMAGES\","
+  CURL_DATA="$CURL_DATA\"size\":\"$IMAGE_SIZE\","
+  CURL_DATA="$CURL_DATA}"
+  loggit "Asking open-ai to generate image"
+  curl https://api.openai.com/v1/images/generations \
+    -s \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPEN_AI_KEY" \
+    -d "$CURL_DATA" >"$CURL_RESPONSE_LOCATION/$DATE-response.json"
+  _download_generated_images
+}
+
+case $1 in
+gi | generate-image)
+  shift
+  _generate_image "$@"
+  exit
+  ;;
+di)
+  _download_generated_images
+  exit
+  ;;
+esac
+shift

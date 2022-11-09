@@ -26,7 +26,7 @@ _fix_time_drift() {
 _rm_machine() {
   podman machine stop
   podman machine rm -f
-  rm -rf "$HOME/.local/share/containers/podman/machine/qemu"
+  # rm -rf "$HOME/.local/share/containers/podman/machine/qemu"
 }
 
 case "$ACTION" in
