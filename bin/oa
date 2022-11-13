@@ -2,19 +2,24 @@
 
 source inject_secrets || exit
 
-CURL_RESPONSE_LOCATION="$CSYS_BASHRC_D/open-ai/images"
+OPEN_AI_IMAGE_LOCATION="$CSYS_BASHRC_D/open-ai/images"
 NUMBER_OF_IMAGES="4"
 IMAGE_SIZE="1024x1024"
 
 _download_generated_images() {
-  for f in "$CURL_RESPONSE_LOCATION"/*.json; do
+  for f in "$OPEN_AI_IMAGE_LOCATION"/**/response.json; do
     ITERATION=0
-    loggit "Downloading image $ITERATION"
+    loggit "Parsing json for downloading"
+    IMAGE_DL_LOCATION="$(dirname "$f")/images"
+    mkdir -p "$IMAGE_DL_LOCATION"
     for image_link in $(jq -r '.data[].url' <"$f"); do
-      curl -s "$image_link" >"$f-img-$ITERATION.png"
+      loggit "Downloading image $ITERATION"
+      curl -s "$image_link" >"$IMAGE_DL_LOCATION/img-$ITERATION.png"
       ITERATION=$((ITERATION + 1))
     done
-    rm "$f"
+    if [ "$?" == 0 ]; then
+      mv "$f" "$IMAGE_DL_LOCATION/response-done.json"
+    fi
   done
 }
 _generate_image() {
@@ -23,20 +28,26 @@ _generate_image() {
     loggit "not promt text"
   fi
   DATE=$(date '+%s')
-  if [ ! -d "$CURL_RESPONSE_LOCATION" ]; then
-    mkdir -p "$CURL_RESPONSE_LOCATION"
+  STORE_LOCATION="$OPEN_AI_IMAGE_LOCATION"
+  FOLDER_NAME="$(echo "$PROMT_TEXT" | sed -e 's|[^a-zA-Z0-9]|-|g' -E -e 's|-{2,}|-|g' | cut -c 1-20)-$DATE"
+  STORE_LOCATION="$STORE_LOCATION/$FOLDER_NAME"
+  if [ ! -d "$STORE_LOCATION" ]; then
+    mkdir -p "$STORE_LOCATION"
   fi
+  echo "promt-text: \"$PROMT_TEXT\"" >"$STORE_LOCATION/promt-text.txt"
+  echo "folder-name: \"$FOLDER_NAME\"" >>"$STORE_LOCATION/promt-text.txt"
   CURL_DATA="{"
   CURL_DATA="$CURL_DATA\"prompt\":\"$PROMT_TEXT\","
-  CURL_DATA="$CURL_DATA\"n\":\"$NUMBER_OF_IMAGES\","
-  CURL_DATA="$CURL_DATA\"size\":\"$IMAGE_SIZE\","
+  CURL_DATA="$CURL_DATA\"n\":$NUMBER_OF_IMAGES,"
+  CURL_DATA="$CURL_DATA\"size\":\"$IMAGE_SIZE\""
   CURL_DATA="$CURL_DATA}"
   loggit "Asking open-ai to generate image"
+  loggit dbug "$CURL_DATA"
   curl https://api.openai.com/v1/images/generations \
     -s \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPEN_AI_KEY" \
-    -d "$CURL_DATA" >"$CURL_RESPONSE_LOCATION/$DATE-response.json"
+    -d "$CURL_DATA" >"$STORE_LOCATION/response.json"
   _download_generated_images
 }
 
