@@ -4,7 +4,9 @@ SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 _setup_vscode_config() {
   loggit "Setting up vs-code-config"
-  cp "$SCRIPT_PATH/config/settings.json" "/workspace/.vscode-remote/data/Machine/"
+  VS_CODE_SETTINGS_LOCATION="/workspace/.vscode-remote/data/Machine/"
+  mkdir -p "$VS_CODE_SETTINGS_LOCATION"
+  cp "$SCRIPT_PATH/config/settings.json" "$VS_CODE_SETTINGS_LOCATION"
 }
 
 _setup() {
