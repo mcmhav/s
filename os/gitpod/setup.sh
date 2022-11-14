@@ -10,12 +10,13 @@ _setup_vscode_config() {
 _setup() {
   export CSYS_LOG_LEVEL=5
   export CSYS_SHALLOW_SETUP="true"
+
+  _setup_vscode_config
+
   loggit "Installing brew"
   csys install brew
   loggit "Installing csys-reqs"
   csys reqs-install "$SCRIPT_PATH/reqs"
-
-  _setup_vscode_config
 }
 
 _setup
