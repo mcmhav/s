@@ -71,6 +71,7 @@ function fish_prompt
     end
     if test $__last_command_exit_status != 0
         set arrow "$red▼ "
+        # giphy explosion
     end
 
     set -l cwd (basename (prompt_pwd))

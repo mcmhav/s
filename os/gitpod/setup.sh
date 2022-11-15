@@ -7,10 +7,11 @@ _setup_vscode_config() {
   VS_CODE_SETTINGS_LOCATION="/workspace/.vscode-remote/data/Machine/"
   COUNT=0
   while [ ! -f "$VS_CODE_SETTINGS_LOCATION/settings.json" ]; do
+    loggit warn "Could not find settings json, waiting"
     if [ "$COUNT" -gt 10 ]; then
       break
     fi
-    sleep 1
+    sleep 2
     COUNT=$((COUNT + 1))
   done
   mkdir -p "$VS_CODE_SETTINGS_LOCATION"
