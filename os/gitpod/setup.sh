@@ -11,10 +11,11 @@ _setup_vscode_config() {
     if [ "$COUNT" -gt 10 ]; then
       break
     fi
-    sleep 2
+    sleep 6
     COUNT=$((COUNT + 1))
   done
   mkdir -p "$VS_CODE_SETTINGS_LOCATION"
+  loggit "Adding vscode config to machine"
   cp "$SCRIPT_PATH/config/settings.json" "$VS_CODE_SETTINGS_LOCATION"
 }
 
