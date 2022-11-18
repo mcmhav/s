@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+source inject_secrets
+
+GIPHY_URL="https://api.giphy.com/v1/gifs/search"
+
+# https://api.giphy.com/v1/gifs/search?api_key=$GIPHY_KEY&q=explosion&limit=1&offset=0&rating=g&lang=en
+
+QUERY="$1"
+LIMIT=1
+OFFSET=$(($RANDOM % 100))
+RATING="g"
+IMG_SIZE=60
+
+GIPHY_URL="$GIPHY_URL?api_key=$GIPHY_KEY"
+GIPHY_URL="$GIPHY_URL&q=$QUERY"
+GIPHY_URL="$GIPHY_URL&limit=$LIMIT"
+GIPHY_URL="$GIPHY_URL&offset=$OFFSET"
+GIPHY_URL="$GIPHY_URL&rating=$RATING"
+GIPHY_URL="$GIPHY_URL&lang=en"
+
+GIF_URL="$(curl -s "$GIPHY_URL" | jq -r '.data[] | "https://i.giphy.com/media/" + .id + "/giphy." + .type')"
+curl -s "$GIF_URL" |
+  viu -w "$IMG_SIZE" -
+
+# curl -s (cat test.json | jq -r '.data[] | "https://i.giphy.com/media/" + .id + "/giphy." + .type') | viu -w 60 -
+
+# https://media1.giphy.com/media/d4aVHC1HKnButuXC/giphy.webp
+# https://i.giphy.com/media/d4aVHC1HKnButuXC/giphy.webp

@@ -1,3 +1,4 @@
+fish
 git
 zellij
 the_silver_searcher
@@ -5,6 +6,4 @@ fzf
 bat
 tree
 nvim
-fish
-pre-commit
 

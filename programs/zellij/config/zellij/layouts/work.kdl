@@ -13,6 +13,8 @@ layout {
     }
     tab name="w1"
     tab name="w2"
+    tab name="w3"
+    tab name="w4"
     tab name="-"
 }
 session_name "work"
