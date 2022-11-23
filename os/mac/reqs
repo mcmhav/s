@@ -50,3 +50,4 @@ pre-commit
 podman
 surrealdb/tap/surreal
 viu
+gh

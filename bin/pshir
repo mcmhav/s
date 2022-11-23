@@ -3,5 +3,10 @@
 PROCESS_NAME="$1"
 
 # echo "$PPID"
+# ps -axwwo user,pid,ppid,pgid,command | grep "$$"
 
-ps -axwwo user,pid,ppid,pgid,command | awk '{$5="\""$5"\"""//";}1' | pstree -f - -s "$PROCESS_NAME" -g 3 | bat -l js
+ps -axwwo user,pid,ppid,pgid,command |
+  grep --invert-match "$$" |
+  awk '{$5="\""$5"\"""//";}1' |
+  pstree -f - -s "$PROCESS_NAME" -g 3 |
+  bat -l js
