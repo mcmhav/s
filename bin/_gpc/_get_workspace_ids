@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+source "$SCRIPT_PATH/_env"
+
+_get_workspace_ids() {
+  LATEST_LOG="$(find "$GITPOD_LOCAL_COMPANION_LOG_PATH" -name "*.log" -type file | sort -r | head -n 1)"
+
+  TUNNEL_RECORDS="$(grep 'tunnel: ssh' <"$LATEST_LOG")"
+
+  TUNNEL_CONNECTION_RECORDS="$(echo "$TUNNEL_RECORDS" | grep "$TUNNEL_CONNECTION_STRING")"
+
+  # CONNECTED_WORKSPACES="$(echo "$TUNNEL_CONNECTION_RECORDS" | awk '{print $8}' | awk -F '=' '{print $2}' | sort | uniq)"
+  CONNECTED_WORKSPACES="$(echo "$TUNNEL_CONNECTION_RECORDS" |
+    sed 's/\( [a-z]*=\)/\n\1/g' |
+    grep 'workspace' |
+    awk -F '=' '{print $2}' |
+    sort |
+    uniq)"
+  WORKSPACE_IDS=()
+  for connection in $CONNECTED_WORKSPACES; do
+    if echo "$TUNNEL_RECORDS" | grep "$connection" | tail -n 1 | grep "$TUNNEL_CONNECTION_STRING" >/dev/null; then
+      # loggit "is currently connected to: $connection"
+      WORKSPACE_IDS+=("$connection")
+    fi
+  done
+
+  echo "${WORKSPACE_IDS[@]}"
+}
+_get_running_workspaces() {
+  TUNNEL_CONNECTION_STRING="tunnel: ssh client connected"
+  _get_workspace_ids
+}
+
+_get_stopped_workspaces() {
+  TUNNEL_CONNECTION_STRING="tunnel: ssh client closed"
+  _get_workspace_ids
+}
+
+case $1 in
+s | stopped)
+  _get_stopped_workspaces
+  exit
+  ;;
+r | running | *)
+  _get_running_workspaces
+  exit
+  ;;
+esac

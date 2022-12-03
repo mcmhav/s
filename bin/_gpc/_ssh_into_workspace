@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+WORKSPACE_ID="$1"
+
+if [ "$WORKSPACE_ID" != "" ]; then
+  SSH_CONNECTION_DOMAIN=".ssh.ws.$GITPOD_DOMAIN_NAME"
+  loggit "$WORKSPACE_ID@$WORKSPACE_ID$SSH_CONNECTION_DOMAIN"
+
+  fissh "$WORKSPACE_ID@$WORKSPACE_ID$SSH_CONNECTION_DOMAIN"
+else
+  exit 1
+fi
+exit

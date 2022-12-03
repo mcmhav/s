@@ -9,15 +9,7 @@
       "settings": {}
     }
   },
-  "coc.preferences.formatOnSaveFiletypes": [
-    "css",
-    "markdown",
-    "json",
-    "jsonc",
-    "terraform",
-    "sh",
-    "go"
-  ],
+  "coc.preferences.formatOnSave": true,
   "coc.preferences.willSaveHandlerTimeout": 2000,
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"

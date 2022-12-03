@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+
+_run() {
+  if [ ! -f "$SCRIPT_PATH/$GITPOD_LOCAL_COMPANION_BIN" ]; then
+    _install
+  fi
+  if [ ! -d "$GITPOD_LOCAL_COMPANION_LOG_PATH" ]; then
+    mkdir "$GITPOD_LOCAL_COMPANION_LOG_PATH"
+  fi
+  if [ -n "$*" ]; then
+    "$SCRIPT_PATH/$GITPOD_LOCAL_COMPANION_BIN" "$@"
+    exit
+  fi
+  loggit "Starting gitpod local companion with domain: '$GITPOD_DOMAIN'"
+  "$SCRIPT_PATH/$GITPOD_LOCAL_COMPANION_BIN" \
+    >"$GITPOD_LOCAL_COMPANION_LOG_PATH/$(date '+%s').log" \
+    2>"$GITPOD_LOCAL_COMPANION_LOG_PATH/error.log"
+}
+
+_run "$@"

@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+REPO_LIST_LOCATION="$SCRIPT_PATH/.repo-list"
+COUNT="200"
+
+_fetch_repo_list() {
+  gh repo list "$REPO_OWNER" -L "$COUNT" --json name -q '.[].name' >"$REPO_LIST_LOCATION"
+}
+
+_grep_repo_list() {
+  QUERY="$1"
+  grep "$QUERY" "$REPO_LIST_LOCATION"
+}
+
+_fzf_repo_list() {
+  QUERY="$1"
+  fzf -q "$QUERY" <"$REPO_LIST_LOCATION"
+}
+
+_query_repos() {
+  QUERY="$1"
+
+  if [ ! -f "$REPO_LIST_LOCATION" ]; then
+    _fetch_repo_list
+  fi
+
+  GREPED_REPO_LIST="$(_grep_repo_list "$QUERY")"
+  # Check if grep was enough
+  IFS=$'\n' read -d '' -ra FILTERED_LIST_REPO_LIST <<<"$GREPED_REPO_LIST"
+  if [ "${#FILTERED_LIST_REPO_LIST[@]}" -eq 1 ]; then
+    REPO_NAME="${FILTERED_LIST_REPO_LIST[0]}"
+    echo "$REPO_NAME"
+    exit
+  fi
+
+  # Grep was not enough, give fzf search
+  FZFED_REPO_LIST=$(_fzf_repo_list "$QUERY")
+  # Check if fzf was okh
+  IFS=$'\n' read -d '' -ra FILTERED_LIST_REPO_LIST <<<"$FZFED_REPO_LIST"
+  if [ "${#FILTERED_LIST_REPO_LIST[@]}" -eq 1 ]; then
+    REPO_NAME="${FILTERED_LIST_REPO_LIST[0]}"
+    echo "$REPO_NAME"
+    exit
+  fi
+
+  if [ "${#FILTERED_LIST_REPO_LIST[@]}" -eq 0 ]; then
+    _fetch_repo_list
+  fi
+  # Grep was not enough, give fzf search
+  FZFED_REPO_LIST=$(_fzf_repo_list "$QUERY")
+  # Check if fzf was okh
+  IFS=$'\n' read -d '' -ra FILTERED_LIST_REPO_LIST <<<"$FZFED_REPO_LIST"
+  if [ "${#FILTERED_LIST_REPO_LIST[@]}" -eq 1 ]; then
+    REPO_NAME="${FILTERED_LIST_REPO_LIST[0]}"
+    echo "$REPO_NAME"
+    exit
+  fi
+  exit 1
+}
+
+while [ "$1" != "" ]; do
+  case $1 in
+  q | query)
+    shift
+    _query_repos "$@"
+    exit
+    ;;
+  s | select)
+    shift
+    _select_repo_from_list "$@"
+    exit
+    ;;
+  fetch-repo-list)
+    _fetch_repo_list
+    exit
+    ;;
+  esac
+  shift
+done

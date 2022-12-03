@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+
+_install() {
+  loggit "Installing/updating gitpod-local-companion"
+  {
+    cd "$SCRIPT_PATH" || exit
+    curl -sOL https://gitpod.io/static/bin/gitpod-local-companion-darwin
+    chmod +x "./$GITPOD_LOCAL_COMPANION_BIN"
+  }
+}
+
+_install

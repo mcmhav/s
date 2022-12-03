@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+source "$SCRIPT_PATH/_env"
+
+REPO="$1"
+QUERY_BRANCH="$2"
+REPO_HOST="git@github.com"
+
+REPO_TMP_LOCATION="/tmp/$REPO"
+
+if [ ! -d "$REPO_TMP_LOCATION" ] || ! (cd "$REPO_TMP_LOCATION" && git status) >/dev/null; then
+  rm -rf "$REPO_TMP_LOCATION"
+  git clone --quiet "$REPO_HOST:$REPO_OWNER/$REPO" "$REPO_TMP_LOCATION"
+fi
+cd "$REPO_TMP_LOCATION" || exit
+
+_grep_repo_branch_list() {
+  git branch -r --no-color --format "%(refname:short)" | grep "$1"
+}
+
+_fzf_repo_branch_list() {
+  git branch -r --no-color --format "%(refname:short)" |
+    grep "origin" |
+    grep --invert-match "origin/HEAD" |
+    sed 's|origin/||g' |
+    fzf -q "$QUERY_BRANCH"
+}
+REPO_BRANCH_LIST="$(_grep_repo_branch_list "$QUERY_BRANCH")"
+IFS=$'\n' read -d '' -ra FILTERED_LIST_REPO_LIST <<<"$REPO_BRANCH_LIST"
+if [ "${#FILTERED_LIST_REPO_LIST[@]}" -eq 1 ]; then
+  REPO_NAME="${FILTERED_LIST_REPO_LIST[0]}"
+  echo "$REPO_NAME"
+  exit
+fi
+
+REPO_BRANCH_LIST="$(_fzf_repo_branch_list "$QUERY_BRANCH")"
+IFS=$'\n' read -d '' -ra FILTERED_LIST_REPO_LIST <<<"$REPO_BRANCH_LIST"
+if [ "${#FILTERED_LIST_REPO_LIST[@]}" -eq 1 ]; then
+  REPO_NAME="${FILTERED_LIST_REPO_LIST[0]}"
+  echo "$REPO_NAME"
+  exit
+fi
+
+git fetch --quiet --all
+
+REPO_BRANCH_LIST="$(_fzf_repo_branch_list "$QUERY_BRANCH")"
+IFS=$'\n' read -d '' -ra FILTERED_LIST_REPO_LIST <<<"$REPO_BRANCH_LIST"
+if [ "${#FILTERED_LIST_REPO_LIST[@]}" -eq 1 ]; then
+  REPO_NAME="${FILTERED_LIST_REPO_LIST[0]}"
+  echo "$REPO_NAME"
+  exit
+fi

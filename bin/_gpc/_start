@@ -1,0 +1,138 @@
+#!/usr/bin/env bash
+
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+
+SHOULD_QUERY_BRANCH=0
+QUERY_BRANCH=""
+QUERY_REPO=""
+WORKSPACE_ID=""
+
+_wait_for_workspace_to_start() {
+  GREP_STRING="$1"
+  INVERT_GREP_STRING="$2"
+
+  COUNT=0
+  while [ "$COUNT" -lt 10 ]; do
+    loggit "Waiting for workspace to get ready"
+    RUNNING_WORKSPACES=$("$SCRIPT_PATH/_get_workspace_ids" running)
+
+    loggit dbug "Running workspaces: $RUNNING_WORKSPACES"
+    for workspace in $(echo "$RUNNING_WORKSPACES" | tr ' ' '\n'); do
+      if [ -n "$INVERT_GREP_STRING" ]; then
+        loggit warn "This might never start, if gitpod views the currently running as the same as the newly requested"
+        WORKSPACE_ID="$(echo "$workspace" | grep --invert-match -E "$INVERT_GREP_STRING" | grep "$GREP_STRING")"
+      else
+        WORKSPACE_ID="$(echo "$workspace" | grep "$GREP_STRING")"
+      fi
+
+      if [ -n "$WORKSPACE_ID" ]; then
+        break
+      fi
+    done
+
+    if [ -n "$WORKSPACE_ID" ]; then
+      break
+    fi
+    sleep 15
+    COUNT=$((COUNT + 1))
+  done
+}
+
+_start_previous_workspace() {
+  WORKSPACE_IDS=$("$SCRIPT_PATH/_get_workspace_ids" stopped)
+  REQUESTED_WORKSPACE_ID="$(echo "$WORKSPACE_IDS" | tr ' ' '\n' | fzf)"
+  "$SCRIPT_PATH/_open" --workspace-id "$REQUESTED_WORKSPACE_ID"
+
+  _wait_for_workspace_to_start "$REQUESTED_WORKSPACE_ID"
+
+  loggit "Trying to ssh into workspace: $WORKSPACE_ID repo: $SELECTED_REPO"
+  "$SCRIPT_PATH/_ssh_into_workspace" "$WORKSPACE_ID"
+  if [ "$?" != 0 ]; then
+    loggit warn "Did not manage to connect"
+    loggit warn "- Workspace-id: $WORKSPACE_ID"
+    loggit warn "- Repo: $SELECTED_REPO"
+    exit 1
+  fi
+}
+
+_get_workspace_id() {
+  SELECTED_REPO="$1"
+  # Check if selected repo has gitpod running
+  GITPOD_SHORT_NAME=$(echo "$SELECTED_REPO" | sed 's|[^a-z]||g' | cut -c 1-11)
+  RUNNING_WORKSPACES=$("$SCRIPT_PATH/_get_workspace_ids" running)
+  MATCHING_RUNNING_WORKSPACE=$(echo "$RUNNING_WORKSPACES" | tr ' ' '\n' | grep "$GITPOD_SHORT_NAME")
+
+  ## If running, ask if we want to use that as ssh-option
+  if [ "$MATCHING_RUNNING_WORKSPACE" != "" ]; then
+    loggit "Found matching workspace"
+    IFS=$'\n' read -d '' -ra WORKSPACE_IDS <<<"$MATCHING_RUNNING_WORKSPACE"
+    if [ "${#WORKSPACE_IDS[@]}" -eq 1 ]; then
+      WORKSPACE_ID="$MATCHING_RUNNING_WORKSPACE"
+    elif [ "${#WORKSPACE_IDS[@]}" -gt 1 ]; then
+      WORKSPACE_ID=$(echo "$MATCHING_RUNNING_WORKSPACE" | fzf)
+    fi
+    loggit "Workspace selected: $WORKSPACE_ID"
+  fi
+
+  if [ "$SHOULD_QUERY_BRANCH" -eq 1 ]; then
+    BRANCH_NAME=$("$SCRIPT_PATH/_query_repo_branches" "$SELECTED_REPO" "$QUERY_BRANCH")
+    WORKSPACE_ID=""
+    loggit dbug "Using branch: $BRANCH_NAME"
+  fi
+
+  ## If not running, or condition over is false, open browser page, and wait for running
+  if [ "$MATCHING_RUNNING_WORKSPACE" == "" ] || [ "$WORKSPACE_ID" == "" ]; then
+    "$SCRIPT_PATH/_open" --repo-name "$SELECTED_REPO" --branch "$BRANCH_NAME"
+    # Wait for workspace ready
+    ## Filter away all MATCHING_RUNNING_WORKSPACE, find match for GITPOD_SHORT_NAME
+    if [ -n "$MATCHING_RUNNING_WORKSPACE" ]; then
+      MATCHING_PIPED="$(echo "$MATCHING_RUNNING_WORKSPACE" | tr '\n' '|' | rev | cut -c2- | rev)"
+    fi
+    _wait_for_workspace_to_start "$GITPOD_SHORT_NAME" "$MATCHING_PIPED"
+  fi
+  echo "$WORKSPACE_ID"
+}
+
+_ssh_into_gitpod() {
+  # Get matching repos
+  SELECTED_REPO=$("$SCRIPT_PATH/_query_repos" q "$QUERY_REPO")
+  if [ "$?" != 0 ]; then
+    echo "$SELECTED_REPO"
+    exit 1
+  fi
+  loggit dbug "Selected repo: $SELECTED_REPO"
+
+  # WORKSPACE_ID="$(_get_workspace_id "$SELECTED_REPO")"
+  _get_workspace_id "$SELECTED_REPO"
+
+  # Try to ssh into running gitpod
+  loggit "Trying to ssh into workspace: $WORKSPACE_ID repo: $SELECTED_REPO"
+  "$SCRIPT_PATH/_ssh_into_workspace" "$WORKSPACE_ID"
+  if [ "$?" != 0 ]; then
+    loggit warn "Did not manage to connect"
+    loggit warn "- Workspace-id: $WORKSPACE_ID"
+    loggit warn "- Repo: $SELECTED_REPO"
+    exit 1
+  fi
+}
+
+while [ "$1" != "" ]; do
+  case $1 in
+  -b | --branch)
+    shift
+    SHOULD_QUERY_BRANCH=1
+    QUERY_BRANCH="$1"
+    ;;
+  -r | --repo-query)
+    shift
+    QUERY_REPO="$1"
+    ;;
+  -o | --start-previous-workspace)
+    _start_previous_workspace
+    exit
+    ;;
+  esac
+  shift
+done
+
+_ssh_into_gitpod

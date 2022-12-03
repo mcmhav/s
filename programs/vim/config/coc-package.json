@@ -6,10 +6,11 @@
     "coc-markdownlint": ">=1.12.7",
     "coc-prettier": ">=9.3.1",
     "coc-pyright": ">=1.1.255",
-    "coc-rls": ">=1.1.6",
     "coc-sh": ">=0.7.0",
-    "coc-yaml": ">=1.7.5"
+    "coc-yaml": ">=1.7.5",
+    "coc-rust-analyzer": ">=0.69.7"
   },
   "disabled": [],
-  "locked": []
+  "locked": [],
+  "lastUpdate": 1669898139601
 }

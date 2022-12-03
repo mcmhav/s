@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+SUB_GPC_PATH="$SCRIPT_PATH/_gpc"
+source "$SUB_GPC_PATH/_env"
+
+case $1 in
+i | install)
+  shift
+  "$SUB_GPC_PATH/_install"
+  exit
+  ;;
+ssh)
+  shift
+  WORKSPACE_IDS="$("$SUB_GPC_PATH/_get_workspace_ids" running | tr ' ' '\n')"
+  WORKSPACE_IDS_COUNT="$(echo "$WORKSPACE_IDS" | wc -l)"
+
+  if [ "$WORKSPACE_IDS_COUNT" -eq 1 ]; then
+    WORKSPACE_ID="$WORKSPACE_IDS"
+  elif [ "$WORKSPACE_IDS_COUNT" -gt 1 ]; then
+    WORKSPACE_ID=$(echo "$WORKSPACE_IDS" | fzf)
+  fi
+  echo "WORKSPACE_ID: $WORKSPACE_ID"
+  exit
+  WORKSPACE_ID="$(echo "$WORKSPACE_IDS" | tr ' ' '\n' | fzf)"
+  "$SUB_GPC_PATH/_ssh_into_workspace" "$WORKSPACE_ID"
+  exit
+  ;;
+start)
+  shift
+  "$SUB_GPC_PATH/_start" "$@"
+  exit
+  ;;
+run)
+  shift
+  "$SUB_GPC_PATH/_run" "$@"
+  exit
+  ;;
+esac

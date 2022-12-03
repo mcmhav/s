@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+REPO_NAME=""
+BRANCH_NAME=""
+
+_open_repo() {
+  if [ -n "$BRANCH_NAME" ]; then
+    REPO_URL="$GITHUB_URL/$REPO_NAME/tree/$BRANCH_NAME"
+  else
+    REPO_URL="$GITHUB_URL/$REPO_NAME"
+  fi
+  echo "$GITPOD_HOST/#$REPO_URL"
+  open -a 'Safari' "$GITPOD_HOST/#$REPO_URL"
+  osascript -e 'tell application "Safari" to set miniaturized of every window to true'
+}
+
+_open_workspace() {
+  WORKSPACE_ID="$1"
+  GITPOD_URL="$GITPOD_HOST/start#$WORKSPACE_ID"
+  echo "$GITPOD_URL"
+  open -a 'Safari' "$GITPOD_URL"
+  osascript -e 'tell application "Safari" to set miniaturized of every window to true'
+}
+
+while [ "$1" != "" ]; do
+  case $1 in
+  -b | --branch)
+    shift
+    BRANCH_NAME="$1"
+    ;;
+  -r | --repo-name)
+    shift
+    REPO_NAME="$1"
+    ;;
+  -w | --workspace-id)
+    shift
+    WORKSPACE_ID="$1"
+    _open_workspace "$WORKSPACE_ID"
+    exit
+    ;;
+  esac
+  shift
+done
+
+_open_repo

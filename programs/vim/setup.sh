@@ -1,33 +1,30 @@
 #!/usr/bin/env bash
 
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 COC_HOME="$HOME/.config/coc/extensions"
+VIM_HOME="$HOME/.vim"
+LOCAL_CONFIG_PATH="$SCRIPT_PATH/config"
 
 link_config() {
-  if [ ! -d "$HOME/.vim" ]; then
-    mkdir "$HOME/.vim"
+  if [ ! -d "$VIM_HOME" ]; then
+    mkdir "$VIM_HOME"
   fi
-  LOCAL_CONFIG_PATH="$SCRIPT_PATH/config"
 
-  ln -sf "$LOCAL_CONFIG_PATH"/*.vim "$HOME"/.vim
+  ln -sf "$LOCAL_CONFIG_PATH"/*.vim "$VIM_HOME"
 
-  if [ ! -d "$HOME/.vim/colors" ]; then
-    mkdir "$HOME/.vim/colors"
+  if [ ! -d "$VIM_HOME/colors" ]; then
+    mkdir "$VIM_HOME/colors"
   fi
-  if [ ! -d "$HOME/.vim/after/syntax" ]; then
-    mkdir -p "$HOME/.vim/after/syntax"
+  if [ ! -d "$VIM_HOME/after/syntax" ]; then
+    mkdir -p "$VIM_HOME/after/syntax"
   fi
-  if [ ! -d "$HOME/.vim/sessions" ]; then
-    mkdir "$HOME/.vim/sessions"
+  if [ ! -d "$VIM_HOME/sessions" ]; then
+    mkdir "$VIM_HOME/sessions"
   fi
-  if [ ! -d "$HOME/.vim/autoload" ]; then
-    mkdir "$HOME/.vim/autoload"
+  if [ ! -d "$VIM_HOME/autoload" ]; then
+    mkdir "$VIM_HOME/autoload"
   fi
-  ln -sf "$LOCAL_CONFIG_PATH/colors/cake.vim" "$HOME/.vim/colors/cake.vim"
-  ln -sf "$LOCAL_CONFIG_PATH/colors/gruvbox.vim" "$HOME/.vim/colors/gruvbox.vim"
-  ln -sf "$LOCAL_CONFIG_PATH/colors/gruvbox-material.vim" "$HOME/.vim/colors/gruvbox-material.vim"
-  # ln -sf "$LOCAL_CONFIG_PATH/colors/dracula.vim" "$HOME/.vim/colors/dracula.vim"
-  # ln -sf "$LOCAL_CONFIG_PATH/autoload/dracula.vim" "$HOME/.vim/autoload/dracula.vim"
-  ln -sf "$LOCAL_CONFIG_PATH/colors/syntax/"* "$HOME/.vim/after/syntax"
+  ln -sf "$LOCAL_CONFIG_PATH/colors/"* "$VIM_HOME/colors/"
   ln -sf "$LOCAL_CONFIG_PATH/c-pluggs" "$HOME/.vim"
   ln -sf "$LOCAL_CONFIG_PATH/.vimrc" "$HOME/.vimrc"
 
@@ -36,8 +33,8 @@ link_config() {
 }
 
 setup_plugins() {
-  if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  if [ ! -f "$VIM_HOME/autoload/plug.vim" ]; then
+    curl -fLo "$VIM_HOME/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   fi
 
   {
@@ -51,10 +48,5 @@ setup_plugins() {
   } &
 }
 
-SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-RETURN_TO=$(pwd)
-
 link_config
 setup_plugins
-
-cd "$RETURN_TO" || exit
