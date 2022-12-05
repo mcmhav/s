@@ -19,10 +19,9 @@ ssh)
     WORKSPACE_ID="$WORKSPACE_IDS"
   elif [ "$WORKSPACE_IDS_COUNT" -gt 1 ]; then
     WORKSPACE_ID=$(echo "$WORKSPACE_IDS" | fzf)
+  else
+    loggit warn "No running workspaces"
   fi
-  echo "WORKSPACE_ID: $WORKSPACE_ID"
-  exit
-  WORKSPACE_ID="$(echo "$WORKSPACE_IDS" | tr ' ' '\n' | fzf)"
   "$SUB_GPC_PATH/_ssh_into_workspace" "$WORKSPACE_ID"
   exit
   ;;

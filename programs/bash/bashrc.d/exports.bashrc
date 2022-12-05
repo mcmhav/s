@@ -87,3 +87,6 @@ export BAT_THEME="Dracula"
 
 # Brew
 export HOMEBREW_NO_ENV_HINTS=1
+
+# Git
+export GIT_EDITOR="vim"
