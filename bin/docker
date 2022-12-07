@@ -29,6 +29,19 @@ _rm_machine() {
   # rm -rf "$HOME/.local/share/containers/podman/machine/qemu"
 }
 
+COMMAND_OPTIONS=$(printf "
+  restart \t restart podman machine
+  rm-machine \t remove machine
+  inject-cert \t inject cert into podman machine
+  fix-time-drift \t fix time drift on podman machine
+  -h, --help \t show this help text
+" | column -ts $'\t')
+
+HELP_TEXT="usage: $(basename "$0") [-h] --
+
+where:
+$COMMAND_OPTIONS"
+
 case "$ACTION" in
 build)
   ACTION="$ACTION --tls-verify=false"
@@ -50,6 +63,10 @@ inject-cert)
   ;;
 fix-time-drift)
   _fix_time_drift
+  exit
+  ;;
+-h | --help)
+  echo "$HELP_TEXT"
   ;;
 esac
 
