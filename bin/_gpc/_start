@@ -41,6 +41,10 @@ _wait_for_workspace_to_start() {
 _start_previous_workspace() {
   WORKSPACE_IDS=$("$SCRIPT_PATH/_get_workspace_ids" stopped)
   REQUESTED_WORKSPACE_ID="$(echo "$WORKSPACE_IDS" | tr ' ' '\n' | fzf)"
+  if [ -z "$REQUESTED_WORKSPACE_ID" ]; then
+    loggit errr "No workspace selected"
+    exit 1
+  fi
   "$SCRIPT_PATH/_open" --workspace-id "$REQUESTED_WORKSPACE_ID"
 
   _wait_for_workspace_to_start "$REQUESTED_WORKSPACE_ID"

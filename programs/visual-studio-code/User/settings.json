@@ -194,6 +194,5 @@
   "yaml.format.singleQuote": true,
   "zenMode.centerLayout": false,
   "workbench.colorTheme": "csys",
-  "gitpod.host": "https://gitpod.test-dataplattform.sparebank1.no",
-  "remote.SSH.configFile": "/var/folders/_m/901vxzrs6s140z27_mbk5429_j407g/T/gitpod_ssh_config-21070-bRKFqWaIEwVL"
+  "gitpod.host": "https://gitpod.test-dataplattform.sparebank1.no"
 }

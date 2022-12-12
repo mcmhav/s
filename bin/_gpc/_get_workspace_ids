@@ -10,7 +10,6 @@ _get_workspace_ids() {
 
   TUNNEL_CONNECTION_RECORDS="$(echo "$TUNNEL_RECORDS" | grep "$TUNNEL_CONNECTION_STRING")"
 
-  # CONNECTED_WORKSPACES="$(echo "$TUNNEL_CONNECTION_RECORDS" | awk '{print $8}' | awk -F '=' '{print $2}' | sort | uniq)"
   CONNECTED_WORKSPACES="$(echo "$TUNNEL_CONNECTION_RECORDS" |
     sed 's/\( [a-z]*=\)/\n\1/g' |
     grep 'workspace' |
@@ -20,7 +19,6 @@ _get_workspace_ids() {
   WORKSPACE_IDS=()
   for connection in $CONNECTED_WORKSPACES; do
     if echo "$TUNNEL_RECORDS" | grep "$connection" | tail -n 1 | grep "$TUNNEL_CONNECTION_STRING" >/dev/null; then
-      # loggit "is currently connected to: $connection"
       WORKSPACE_IDS+=("$connection")
     fi
   done
@@ -33,7 +31,7 @@ _get_running_workspaces() {
 }
 
 _get_stopped_workspaces() {
-  TUNNEL_CONNECTION_STRING="tunnel: ssh client closed"
+  TUNNEL_CONNECTION_STRING="tunnel: ssh client.*closed"
   _get_workspace_ids
 }
 
