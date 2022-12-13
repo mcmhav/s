@@ -6,6 +6,7 @@ set fish_command_timer_enabled 0
 set SCRIPT_LOCATION (readlink (dirname (status --current-filename)))
 set --export CSYS_HOME (realpath "$SCRIPT_LOCATION/../../../..")
 
+test -d "$HOME/.bashrc.d"; and for i in "$HOME/.bashrc.d/"*; bass source "$i"; end
 bass source $CSYS_HOME/programs/bash/bashrc.d/csys.bashrc fish
 bass source $CSYS_HOME/programs/bash/bashrc.d/sourcer.bashrc
 
