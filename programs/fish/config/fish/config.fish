@@ -3,6 +3,11 @@ set fish_greeting
 
 set fish_command_timer_enabled 0
 
+# if set -q -g csys_fish_up
+#   echo "we should be up"
+#   exit
+# end
+
 set SCRIPT_LOCATION (readlink (dirname (status --current-filename)))
 set --export CSYS_HOME (realpath "$SCRIPT_LOCATION/../../../..")
 
@@ -16,3 +21,6 @@ set --export SHELL (which fish)
 status --is-interactive; and type -q pyenv; and source (pyenv init -|psub)
 status --is-interactive; and type -q rbenv; and source (rbenv init -|psub)
 status --is-interactive; and type -q nodenv; and source (nodenv init -|psub)
+
+set --global --export csys_fish_up 1
+

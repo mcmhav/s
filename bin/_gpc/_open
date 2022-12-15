@@ -3,6 +3,13 @@
 REPO_NAME=""
 BRANCH_NAME=""
 
+_open_in_browser() {
+  URL="$1"
+  open -a 'Safari' "$URL"
+  osascript -e 'tell application "Safari" to set miniaturized of every window to true'
+  osascript -e 'tell application "alacritty" to activate'
+}
+
 _open_repo() {
   if [ -n "$BRANCH_NAME" ]; then
     REPO_URL="$GITHUB_URL/$REPO_NAME/tree/$BRANCH_NAME"
@@ -10,16 +17,14 @@ _open_repo() {
     REPO_URL="$GITHUB_URL/$REPO_NAME"
   fi
   echo "$GITPOD_HOST/#$REPO_URL"
-  open -a 'Safari' "$GITPOD_HOST/#$REPO_URL"
-  osascript -e 'tell application "Safari" to set miniaturized of every window to true'
+  _open_in_browser "$GITPOD_HOST/#$REPO_URL"
 }
 
 _open_workspace() {
   WORKSPACE_ID="$1"
   GITPOD_URL="$GITPOD_HOST/start#$WORKSPACE_ID"
   echo "$GITPOD_URL"
-  open -a 'Safari' "$GITPOD_URL"
-  osascript -e 'tell application "Safari" to set miniaturized of every window to true'
+  _open_in_browser "$GITPOD_URL"
 }
 
 while [ "$1" != "" ]; do

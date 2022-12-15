@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+case $1 in
+-f)
+  /usr/bin/tail "$@" | bat --paging=never -l log
+  ;;
+*)
+  /usr/bin/tail "$@"
+  ;;
+esac
+echo "spfdojdfj"

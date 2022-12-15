@@ -18,7 +18,7 @@ function bass
   end
 
   if test -n "$bass_debug"
-    cat $script_file
+    cp $script_file ~/.tmp/bass_output.fish
   end
   source $script_file
   command rm $script_file

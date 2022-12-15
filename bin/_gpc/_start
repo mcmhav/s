@@ -33,7 +33,7 @@ _wait_for_workspace_to_start() {
     if [ -n "$WORKSPACE_ID" ]; then
       break
     fi
-    sleep 15
+    sleep 25
     COUNT=$((COUNT + 1))
   done
 }
