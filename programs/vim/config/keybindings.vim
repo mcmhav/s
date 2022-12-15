@@ -57,11 +57,11 @@ set clipboard=unnamed
 
 " Quoting
 " Matching brackets
-inoremap { {}<Esc>ha
-inoremap ( ()<Esc>ha
-inoremap [ []<Esc>ha
-inoremap " ""<Esc>ha
-inoremap ' ''<Esc>ha
-inoremap ` ``<Esc>ha
+""inoremap { {}<Esc>ha
+""inoremap ( ()<Esc>ha
+""inoremap [ []<Esc>ha
+""inoremap " ""<Esc>ha
+""inoremap ' ''<Esc>ha
+""inoremap ` ``<Esc>ha
 " :s/\%V\(.*\)\%V/"\1"/
 "vnoremap i :s/\%V\(.*\)\%V/"\1"/ <ESC>

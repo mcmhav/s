@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+while [ "$1" != "" ]; do
+  case $1 in
+  kill-port)
+    shift
+    PORT_NUMBER="$1"
+    PORT_PID=$(lsof -i :"$PORT_NUMBER" -t)
+    kill "$PORT_PID"
+    exit
+    ;;
+  *)
+    loggit "Opz"
+    ;;
+  esac
+  shift
+done

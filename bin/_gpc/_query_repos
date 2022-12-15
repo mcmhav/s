@@ -44,7 +44,10 @@ _query_repos() {
 
   # Grep was not enough, give fzf search
   # eager fetch of repolist
-  _fetch_repo_list &
+  (
+    sleep 1
+    _fetch_repo_list
+  ) &
   _fzf_repo_list "$QUERY"
   # We did not find what we wanted on first try
   # But we might have gotten the repo now
