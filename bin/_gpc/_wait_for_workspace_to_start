@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+WORKSPACE_ID=""
+
+_wait_for_workspace_to_start() {
+  GREP_STRING="$1"
+  INVERT_GREP_STRING="$2"
+
+  COUNT=0
+  while [ "$COUNT" -lt 10 ]; do
+    loggit "Waiting for workspace to get ready" >&2
+    RUNNING_WORKSPACES=$("$SCRIPT_PATH/_get_workspace_ids" running)
+
+    loggit dbug "Running workspaces: $RUNNING_WORKSPACES" >&2
+    for workspace in $(echo "$RUNNING_WORKSPACES" | tr ' ' '\n'); do
+      if [ -n "$INVERT_GREP_STRING" ]; then
+        loggit warn "This might never start, if gitpod views the currently running as the same as the newly requested" >&2
+        WORKSPACE_ID="$(echo "$workspace" | grep --invert-match -E "$INVERT_GREP_STRING" | grep "$GREP_STRING")"
+      else
+        WORKSPACE_ID="$(echo "$workspace" | grep "$GREP_STRING")"
+      fi
+
+      if [ -n "$WORKSPACE_ID" ]; then
+        break
+      fi
+    done
+
+    if [ -n "$WORKSPACE_ID" ]; then
+      break
+    fi
+    sleep 25
+    COUNT=$((COUNT + 1))
+  done
+
+  if [ -n "$WORKSPACE_ID" ]; then
+    echo "$WORKSPACE_ID"
+  fi
+}
+
+_wait_for_workspace_to_start "$@"

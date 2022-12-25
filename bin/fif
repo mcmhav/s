@@ -13,7 +13,7 @@ _find_in_files() {
     EXTRA_IGNORE="--ignore $PARAM_I"
   fi
 
-  ag_fzf_result=$(cd "$search_location" && ag --hidden --ignore ".git" "." $EXTRA_IGNORE | fzf -e)
+  ag_fzf_result=$(cd "$search_location" && ag --noheading --hidden --ignore ".git" "." $EXTRA_IGNORE | fzf -e)
 
   ag_fzf_result="$search_location/$ag_fzf_result"
 

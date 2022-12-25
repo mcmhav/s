@@ -47,7 +47,7 @@ _start_previous_workspace() {
   fi
   "$SCRIPT_PATH/_open" --workspace-id "$REQUESTED_WORKSPACE_ID"
 
-  _wait_for_workspace_to_start "$REQUESTED_WORKSPACE_ID"
+  WORKSPACE_ID=$("$SCRIPT_PATH/_wait_for_workspace_to_start" "$REQUESTED_WORKSPACE_ID")
 
   loggit "Trying to ssh into workspace: $WORKSPACE_ID repo: $SELECTED_REPO"
   "$SCRIPT_PATH/_ssh_into_workspace" "$WORKSPACE_ID"
@@ -92,7 +92,7 @@ _get_workspace_id() {
     if [ -n "$MATCHING_RUNNING_WORKSPACE" ]; then
       MATCHING_PIPED="$(echo "$MATCHING_RUNNING_WORKSPACE" | tr '\n' '|' | rev | cut -c2- | rev)"
     fi
-    _wait_for_workspace_to_start "$GITPOD_SHORT_NAME" "$MATCHING_PIPED"
+    WORKSPACE_ID=$("$SCRIPT_PATH/_wait_for_workspace_to_start" "$GITPOD_SHORT_NAME" "$MATCHING_PIPED")
   fi
   echo "$WORKSPACE_ID"
 }
