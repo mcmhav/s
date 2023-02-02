@@ -1,0 +1,50 @@
+#!/bin/bash
+
+OWNER=""
+if [ "$1" == "-r" ]; then
+  shift
+  REPO="$1"
+  shift
+else
+  REPO=""
+fi
+
+list() {
+  gh api -X GET /repos/$OWNER/$REPO/actions/workflows | jq_table '[ .workflows[] | {name, id} ]'
+}
+
+list_runs() {
+  WORKFLOW_ID="$1"
+  if [ -z "$WORKFLOW_ID" ]; then
+    loggit "workflow-id not set"
+    exit
+  fi
+  gh api -X GET "/repos/$OWNER/$REPO/actions/workflows/$WORKFLOW_ID/runs" | jq '.workflow_runs[] | .id'
+}
+
+delete_runs_for_workflow() {
+  WORKFLOW_ID="$1"
+
+  gh api -X GET "/repos/$OWNER/$REPO/actions/workflows/$WORKFLOW_ID/runs" | jq '.workflow_runs[] | .id' | xargs -I{} gh api -X DELETE /repos/$OWNER/$REPO/actions/runs/{}
+}
+
+GITHUB_ACTION="$1"
+shift
+case "$GITHUB_ACTION" in
+list)
+  list "$@"
+  exit
+  ;;
+list_runs)
+  list_runs "$@"
+  exit
+  ;;
+delete_runs_for_workflow)
+  delete_runs_for_workflow "$@"
+  exit
+  ;;
+*)
+  loggit "Action not recognised, $GITHUB_ACTION"
+  exit 1
+  ;;
+esac
