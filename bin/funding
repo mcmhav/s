@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+
+# Find in logged inn cookies
+TOKEN=""
+ACCOUNT_ID=""
+EXTERNAL_USER_ID=""
+
+INVEST_URL="https://api.fundingpartner.no/api/v2/investment-bookings"
+
+TMP_FILE="$CSYS_BASHRC_D/tmp_loans.json"
+# rm -rf "$TMP_FILE"
+sadf='''
+POST /api/v2/investment-bookings HTTP/1.1
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+Content-Length: 114
+Content-Type: application/json
+Cookie: token=; accountId=; externalUserId=
+Host: api.fundingpartner.no
+Origin: https://fundingpartner.no
+Referer: https://fundingpartner.no/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-site
+Sec-GPC: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Brave";v="109", "Chromium";v="109"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+'''
+# Example payload
+#{"isFPSec":false,"token":"","data":{"amount":"4000","totalAmount":"4300000","applicationID":"a7T07000000oR5bEAE"}}
+#{"isFPSec":false,"token":"","data":{"amount":"4000","totalAmount":"2000000","applicationID":"a7T07000000oR4sEAE"}}
+#
+# Get loans:
+# https://api.fundingpartner.no/api/v2/loans
+INVEST_AMOUNT="1000"
+TOTAL_AMOUNT=""
+APPLICATION_ID=""
+_get_invest_options() {
+  LOANS_URL="https://api.fundingpartner.no/api/v2/loans"
+
+  JQ_QUERY='
+  .message.payload |
+    [
+      .[] |
+        select(
+          (.riskClass=="A" or .riskClass=="B")
+          and .fillRate < 100
+          and .opensForInvestment!=null
+        )
+    ]
+  '
+  curl --silent "$LOANS_URL" | jq -r "$JQ_QUERY" >"$TMP_FILE"
+}
+
+_send_invest_request() {
+  APPLICATION_ID="$(echo "$1" | jq -r '.sfId')"
+  TOTAL_AMOUNT="$(echo "$1" | jq '.amount')"
+
+  loggit "Will invest with:"
+  loggit "- Application id: $APPLICATION_ID"
+  loggit "- Total amount: $TOTAL_AMOUNT"
+  loggit "- Amount to invest: $INVEST_AMOUNT"
+  INVEST_DATA="{\"isFPSec\":false,\"token\":\"\",\"data\":{\"amount\":\"$INVEST_AMOUNT\",\"totalAmount\":\"$TOTAL_AMOUNT\",\"applicationID\":\"$APPLICATION_ID\"}}"
+  loggit "Request to send:"
+  echo "$INVEST_DATA" | jq
+  curl "$INVEST_URL" \
+    --verbose \
+    --request "POST" \
+    --cookie "token=$TOKEN" \
+    --header "Content-Type: application/json" \
+    --header "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" \
+    --header 'sec-ch-ua: "Not_A Brand";v="99", "Brave";v="109", "Chromium";v="109"' \
+    --header 'sec-ch-ua-mobile: ?0' \
+    --header 'sec-ch-ua-platform: "macOS"' \
+    --data "$INVEST_DATA"
+}
+
+_get_invest_options
+LOANS=$(cat "$TMP_FILE")
+for loan in $(echo "$LOANS" | jq -r '.[] | .sfId'); do
+  _send_invest_request "$(echo "$LOANS" | jq ".[] | select(.sfId==\"$loan\")")"
+done
