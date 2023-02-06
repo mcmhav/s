@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+COMMAND_OPTIONS=$(printf "
+  install \t install local companion
+  ssh \t ssh into workspace
+  start \t start workspace
+  start-companion \t start companion
+  -h, --help \t show this help text
+" | column -ts $'\t')
+
+HELP_TEXT="usage: $(basename "$0") [-h] --
+
+where:
+$COMMAND_OPTIONS"
+
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 SUB_GPC_PATH="$SCRIPT_PATH/_gpc"
 source "$SUB_GPC_PATH/_env"
@@ -31,9 +44,13 @@ start)
   "$SUB_GPC_PATH/_start" "$@"
   exit
   ;;
-run)
+start-companion)
   shift
-  "$SUB_GPC_PATH/_run" "$@"
+  "$SUB_GPC_PATH/_start-companion" "$@"
+  exit
+  ;;
+-h | --help)
+  echo "$HELP_TEXT"
   exit
   ;;
 esac
