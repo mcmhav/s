@@ -90,3 +90,6 @@ export HOMEBREW_NO_ENV_HINTS=1
 
 # Git
 export GIT_EDITOR="vim"
+
+# aws
+export AWS_PAGER=""
