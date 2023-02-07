@@ -48,8 +48,11 @@ _get_invest_options() {
       .[] |
         select(
           (.riskClass=="A" or .riskClass=="B")
+          and .loanCurrency == "NOK"
           and .fillRate < 100
           and .opensForInvestment!=null
+          and .closesForInvestment > (now | strftime("%Y-%m-%dT%H:%M:%S"))
+          and .opensForInvestment < (now | strftime("%Y-%m-%dT%H:%M:%S"))
         )
     ]
   '
@@ -59,14 +62,28 @@ _get_invest_options() {
 _send_invest_request() {
   APPLICATION_ID="$(echo "$1" | jq -r '.sfId')"
   TOTAL_AMOUNT="$(echo "$1" | jq '.amount')"
+  INTEREST_RATE="$(echo "$1" | jq '.interestRate')"
 
   loggit "Will invest with:"
   loggit "- Application id: $APPLICATION_ID"
   loggit "- Total amount: $TOTAL_AMOUNT"
   loggit "- Amount to invest: $INVEST_AMOUNT"
+  loggit "- Interest rate: $INTEREST_RATE"
   INVEST_DATA="{\"isFPSec\":false,\"token\":\"\",\"data\":{\"amount\":\"$INVEST_AMOUNT\",\"totalAmount\":\"$TOTAL_AMOUNT\",\"applicationID\":\"$APPLICATION_ID\"}}"
   loggit "Request to send:"
   echo "$INVEST_DATA" | jq
+  loggit "Looks ok?"
+  read -r -p "Looks ok? [Y/n] " yn
+  case $yn in
+  [Nn]*)
+    loggit "Will not try to invest"
+    exit
+    ;;
+  *)
+    loggit "Will try to invest"
+    ;;
+  esac
+
   curl "$INVEST_URL" \
     --verbose \
     --request "POST" \
