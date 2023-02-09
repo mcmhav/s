@@ -2,9 +2,15 @@
 
 _build() {
   BUILD_TAG="$1"
+  if [ -z "$BUILD_TAG" ]; then
+    CURRENT_DIR=${PWD##*/}
+    CURRENT_DIR=${CURRENT_DIR:-/}
+    BUILD_TAG="$CURRENT_DIR"
+  fi
   shift
   docker buildx build \
     -t "$BUILD_TAG" \
+    "$@" \
     .
 }
 
