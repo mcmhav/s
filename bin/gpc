@@ -46,7 +46,7 @@ start)
   ;;
 start-companion)
   shift
-  "$SUB_GPC_PATH/_start-companion" "$@"
+  "$SUB_GPC_PATH/_start_companion" "$@"
   exit
   ;;
 -h | --help)

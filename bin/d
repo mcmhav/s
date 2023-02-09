@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+_build() {
+  BUILD_TAG="$1"
+  shift
+  docker buildx build \
+    -t "$BUILD_TAG" \
+    .
+}
+
+case $1 in
+b)
+  shift
+  _build "$@"
+  ;;
+esac
