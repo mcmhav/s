@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 _setup() {
-  loggit "Setting up base"
+  loggit "Base setup"
 }
 
 _setup
