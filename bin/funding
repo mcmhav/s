@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# TODO: login
+# POST
+# https://api.fundingpartner.no/api/v2/login
+# login-token-and info comes in the response-header
+# paload needed
+# ACCOUNT_ID as repsone
+# {"ApplicantUsername":"USER_NAME","ApplicantPassword":"PASSWORD"}
+
 # Find in logged inn cookies
 TOKEN=""
 ACCOUNT_ID=""
@@ -11,7 +19,7 @@ TMP_FILE="$CSYS_BASHRC_D/tmp_loans.json"
 
 # Get loans:
 # https://api.fundingpartner.no/api/v2/loans
-INVEST_AMOUNT="2000"
+INVEST_AMOUNT="4000"
 TOTAL_AMOUNT=""
 APPLICATION_ID=""
 
@@ -96,11 +104,10 @@ _send_invest_requests() {
   done
 }
 
-UPDATE_LOANS=""
 while [ "$1" != "" ]; do
   case $1 in
   -u | --update)
-    UPDATE_LOANS="true"
+    _update_loans_json
     ;;
   -e | --explore)
     _filter_non_investable
@@ -114,7 +121,4 @@ while [ "$1" != "" ]; do
   shift
 done
 
-if [ -n "$UPDATE_LOANS" ]; then
-  _update_loans_json
-fi
 _send_invest_requests

@@ -77,6 +77,12 @@ _install() {
   _unquarantine
   _launchctl_setup
 
+  # setup at
+  sudo launchctl bootstrap system /System/Library/LaunchDaemons/com.apple.atrun.plist
+  sudo launchctl enable system/com.apple.atrun
+  sudo launchctl list com.apple.atrun
+  # might also need to give terminal (Alacritty) or `/usr/libexec/atrun` `Full Disk Access`
+
   # mac update packages
   softwareupdate --all --install --force
 }
