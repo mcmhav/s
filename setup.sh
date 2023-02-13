@@ -12,8 +12,12 @@ inject_bashrc() {
   ln -sf "$CSYS_BASH_HOME/main.bashrc" "$BASHRC_LOCATION"
   # Hacky as shit?
   BASH_RC_SOURCER="[ -f \"$BASHRC_LOCATION/main.bashrc\" ] && source \"$BASHRC_LOCATION/main.bashrc\" || echo \"csys not set up\""
-  if ! grep -q "$BASH_RC_SOURCER" <"$HOME/.bashrc"; then
+  if ! grep -q "$BASH_RC_SOURCER" <"$HOME/.bashrc" >/dev/null; then
     echo "$BASH_RC_SOURCER" >>"$HOME/.bashrc"
+  fi
+  PROFILE_SOURCER="[ -f \"$HOME/.bashrc\" ] && source \"$HOME/.bashrc\" || echo \"csys not set up\""
+  if ! grep -q "$PROFILE_SOURCER" <"$HOME/.profile" >/dev/null; then
+    echo "$PROFILE_SOURCER" >>"$HOME/.profile"
   fi
 }
 
@@ -44,7 +48,8 @@ _setup() {
 
   loggit "Setup using:"
   env | grep 'CSYS_'
-  "$CSYS_HOME/os/$CSYS_OS/setup.sh" &
+  # TODO:  add flagg  for running setup as subprocess
+  "$CSYS_HOME/os/$CSYS_OS/setup.sh"
 }
 
 _setup "$@"

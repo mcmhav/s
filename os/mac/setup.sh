@@ -4,10 +4,13 @@ _unquarantine() {
   xattr -d com.apple.quarantine /Applications/Alacritty.app 2>/dev/null
   xattr -d com.apple.quarantine /Applications/Hyper.app 2>/dev/null
   xattr -d com.apple.quarantine "/Applications/Brave Browser.app" 2>/dev/null
+  xattr -d com.apple.quarantine "/Applications/Dozer.app" 2>/dev/null
 }
 
 _launchctl_setup() {
+  mkdir -p "$HOME/Library/LaunchAgents"
   for file in "$SCRIPT_PATH/configs/LaunchAgents/"*; do
+    loggit dbug "Setting up launchctl-file: $file"
     ln -sf "$file" "$HOME/Library/LaunchAgents/"
     filename=$(basename -- "$file")
     filename_base="${filename%.*}"
@@ -56,6 +59,9 @@ _install() {
   # Dock
   # defaults delete com.apple.dock autohide-delay; killall Dock
   defaults write com.apple.dock static-only -bool false
+  defaults write com.apple.Dock autohide -bool true
+  defaults write com.apple.dock magnification -int 1
+  defaults write com.apple.dock largesize -int 92
   killall Dock
   # defaults write com.apple.dock autohide-delay -float 1000; killall Dock
 
@@ -85,6 +91,23 @@ _install() {
 
   # mac update packages
   softwareupdate --all --install --force
+
+  # TODOs:
+  # - set default browser
+  # - change language
+  # - change touchbar settings
+  # - set theme
+  #   - dark
+  #   - accentcolor: red
+  # - change dock-settinngs
+  #   - defaults write com.apple.dock persistent-apps -array
+  #   - defaults write com.apple.dock persistent-apps -array add what i want
+  # - change trackpad direction
+  # - start programs:
+  #   - amethuys
+  #     - allow amethyst to controll the computer
+  #   - allacritty
+  #     - allow app mannagement
 }
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"

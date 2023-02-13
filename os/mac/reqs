@@ -7,7 +7,6 @@ zlib
 jq
 nodenv
 pyenv
-python
 readline
 shellcheck
 shfmt
@@ -27,15 +26,12 @@ pstree
 poetry
 coreutils
 gsed
-hyper
---cask amethyst
---cask enpass
---cask google-chrome
---cask google-cloud-sdk
---cask google-chrome-canary
---cask brave-browser
---cask menumeters
---cask dozer
+amethyst
+enpass
+google-cloud-sdk
+brave-browser
+menumeters
+dozer
 --cask avibrazil-rdm
 alacritty
 zellij

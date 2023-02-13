@@ -3,6 +3,10 @@
 _setup() {
   if ! command -v brew >/dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    if [ "$?" != 0 ]; then
+      loggit errr "Could not install brew. Exiting"
+      exit 1
+    fi
   fi
 
   BREW_TAPS=$(brew tap)

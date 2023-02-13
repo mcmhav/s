@@ -17,9 +17,13 @@ done
 
 if [ -f "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/setup.sh" ]; then
   if [ -f "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/reqs" ]; then
-    while read -r l; do
+    # TODO: issue with while-loop and brew install?
+    # while read -r l; do
+    for l in $(cat $CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/reqs); do
+      loggit dbug "csys-reqs | Will install $l"
       csys install "$l"
-    done <"$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/reqs"
+    done
+    # done <"$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/reqs"
   fi
   loggit dbug "csys | Setup $PACKAGE_TO_INSTALL"
   "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/setup.sh"
