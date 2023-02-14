@@ -16,6 +16,7 @@ EXTERNAL_USER_ID=""
 INVEST_URL="https://api.fundingpartner.no/api/v2/investment-bookings"
 
 TMP_FILE="$CSYS_BASHRC_D/tmp_loans.json"
+FORCE_UPDATE=""
 
 # Get loans:
 # https://api.fundingpartner.no/api/v2/loans
@@ -24,10 +25,13 @@ TOTAL_AMOUNT=""
 APPLICATION_ID=""
 
 _update_loans_json() {
-  loggit "Updating loans"
-  LOANS_URL="https://api.fundingpartner.no/api/v2/loans"
-  curl --silent "$LOANS_URL" >"$TMP_FILE"
+  if [ -n "$FORCE_UPDATE" ] || [ "$(find "$TMP_FILE" -cmin +720)" != "" ]; then
+    loggit "Updating loans"
+    LOANS_URL="https://api.fundingpartner.no/api/v2/loans"
+    curl --silent "$LOANS_URL" >"$TMP_FILE"
+  fi
 }
+
 _filter_non_investable() {
   JQ_QUERY='
   .message.payload |
@@ -104,16 +108,19 @@ _send_invest_requests() {
   done
 }
 
+
 while [ "$1" != "" ]; do
   case $1 in
   -u | --update)
-    _update_loans_json
+    FORCE_UPDATE="TRUE"
     ;;
   -e | --explore)
+    _update_loans_json
     _filter_non_investable
     exit
     ;;
   -f | --future)
+    _update_loans_json
     _get_invest_options
     exit
     ;;
@@ -121,4 +128,5 @@ while [ "$1" != "" ]; do
   shift
 done
 
+_update_loans_json
 _send_invest_requests

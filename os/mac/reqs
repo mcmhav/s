@@ -41,3 +41,5 @@ podman
 surrealdb/tap/surreal
 viu
 gh
+eksctl
+kubectl

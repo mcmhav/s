@@ -9,7 +9,7 @@ loggit "Reqs to setup: $REQS_COUNT"
 # TODO: issue with while-loop and brew install?
 # while read -ra l; do
 for l in $(cat $REQS_FILE_PATH); do
-  echo "$l"
+  loggit dbug "Installing reqs: $l"
   csys install "${l[@]}"
 done
 # done <"$REQS_FILE_PATH"

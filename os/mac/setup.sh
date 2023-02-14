@@ -67,6 +67,8 @@ _install() {
 
   # Menu bar:
   defaults write com.apple.menuextra.clock.plist DateFormat -string "HH:mm"
+  defaults write com.apple.menuextra.clock.plist ShowDate -int 2
+  defaults write com.apple.menuextra.clock.plist ShowDayOfWeek -int 0
   # menubar? not working tho?
   # defaults write com.apple.controlcenter.plist "NSStatusItem Visible Sound" -bool false
   defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Battery -int 18
@@ -79,6 +81,15 @@ _install() {
 
   # Change computer name (for bluethooth/localhost/network):
   # scutil --set ComputerName c
+  #
+
+  # Set default shell to shell if fish is installed
+  if ! command -v fish >/dev/null; then
+    if ! grep -q fish </etc/shells; then
+      echo "$(which fish)" | sudo tee -a /etc/shells
+    fi
+    chsh -s "$(which fish)"
+  fi
 
   _unquarantine
   _launchctl_setup

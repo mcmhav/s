@@ -1,25 +1,19 @@
 #!/usr/bin/env bash
 
-source param_parser --params "m n" --incomming_params "$@"
+source param_parser --params "m n f" --incomming_params "$@"
 
-KEY_MAIL="mcmhav@gmail.com"
+KEY_MAIL="${PARAM_M:-mcmhav@gmail.com}"
 KEY_TYPE="ed25519"
-KEY_NAME="id_$KEY_TYPE"
-
-if [ -n "$PARAM_M" ]; then
-  KEY_MAIL="$PARAM_M"
-fi
-
-if [ -n "$PARAM_N" ]; then
-  KEY_NAME="$PARAM_N"
-fi
+KEY_NAME="${PARAM_N:-id_$KEY_TYPE}"
+KEY_LOCATION="$HOME/.ssh/$KEY_NAME"
+FORCE_UPDATE="$PARAM_F"
 
 if [ ! -d "$HOME/.ssh" ]; then
   mkdir "$HOME/.ssh"
 fi
 
-if [ ! -f "$HOME/.ssh/$KEY_NAME" ]; then
-  ssh-keygen -t "$KEY_TYPE" -b 4096 -C "$KEY_MAIL" -f "$HOME/.ssh/$KEY_NAME" -N "" -q
+if [ ! -f "$KEY_LOCATION" ] || [ -n "$FORCE_UPDATE" ]; then
+  ssh-keygen -t "$KEY_TYPE" -b 4096 -C "$KEY_MAIL" -f "$KEY_LOCATION" -N "" -q
 else
   loggit "Not forced, $KEY_NAME already exists"
 fi
