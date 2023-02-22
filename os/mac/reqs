@@ -1,5 +1,4 @@
 base
-awscli
 bash
 bash-completion@2
 go

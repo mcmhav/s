@@ -1,26 +1,21 @@
 #!/usr/bin/env bash
 
-# TODO: login
-# POST
-# https://api.fundingpartner.no/api/v2/login
-# login-token-and info comes in the response-header
-# paload needed
-# ACCOUNT_ID as repsone
-# {"ApplicantUsername":"USER_NAME","ApplicantPassword":"PASSWORD"}
+source inject_secrets
 
 # Find in logged inn cookies
-TOKEN=""
-ACCOUNT_ID=""
-EXTERNAL_USER_ID=""
+TOKEN="$FUNDING_TOKEN"
+ACCOUNT_ID="$FUNDING_ACCOUNT_ID"
+EXTERNAL_USER_ID="$FUNDING_EXTERNAL_USER_ID"
 
 INVEST_URL="https://api.fundingpartner.no/api/v2/investment-bookings"
 
 TMP_FILE="$CSYS_BASHRC_D/tmp_loans.json"
 FORCE_UPDATE=""
+PARALLEL=""
 
 # Get loans:
 # https://api.fundingpartner.no/api/v2/loans
-INVEST_AMOUNT="4000"
+INVEST_AMOUNT="1000"
 TOTAL_AMOUNT=""
 APPLICATION_ID=""
 
@@ -60,6 +55,24 @@ _get_invest_options() {
   _filter_non_investable | jq -r "$JQ_QUERY"
 }
 
+_invest_prompt() {
+  if [ -n "$PARALLEL" ]; then
+    return
+  fi
+
+  loggit "Looks ok?"
+  read -r -p "Looks ok? [Y/n] " yn
+  case $yn in
+  [Nn]*)
+    loggit "Will not try to invest"
+    exit
+    ;;
+  *)
+    loggit "Will try to invest"
+    ;;
+  esac
+}
+
 _send_invest_request() {
   APPLICATION_ID="$(echo "$1" | jq -r '.sfId')"
   TOTAL_AMOUNT="$(echo "$1" | jq '.amount')"
@@ -73,20 +86,10 @@ _send_invest_request() {
   INVEST_DATA="{\"isFPSec\":false,\"token\":\"$TOKEN\",\"data\":{\"amount\":\"$INVEST_AMOUNT\",\"totalAmount\":\"$TOTAL_AMOUNT\",\"applicationID\":\"$APPLICATION_ID\"}}"
   loggit "Request to send:"
   echo "$INVEST_DATA" | jq
-  loggit "Looks ok?"
-  read -r -p "Looks ok? [Y/n] " yn
-  case $yn in
-  [Nn]*)
-    loggit "Will not try to invest"
-    exit
-    ;;
-  *)
-    loggit "Will try to invest"
-    ;;
-  esac
+
+  _invest_prompt
 
   curl "$INVEST_URL" \
-    --verbose \
     --request "POST" \
     --cookie "token=$TOKEN;accountid=$ACCOUNT_ID;externalUserId=$EXTERNAL_USER_ID" \
     --header "Content-Type: application/json" \
@@ -95,6 +98,7 @@ _send_invest_request() {
     --header 'sec-ch-ua-mobile: ?0' \
     --header 'sec-ch-ua-platform: "macOS"' \
     --data "$INVEST_DATA"
+  # --verbose
 }
 _send_invest_requests() {
   if [ -z "$TOKEN" ] || [ -z "$ACCOUNT_ID" ] || [ -z "$EXTERNAL_USER_ID" ]; then
@@ -104,10 +108,43 @@ _send_invest_requests() {
   LOANS=$(_get_invest_options)
   loggit "Found loans: $(echo "$LOANS" | jq 'length')"
   for loan in $(echo "$LOANS" | jq -r '.[] | .sfId'); do
-    _send_invest_request "$(echo "$LOANS" | jq ".[] | select(.sfId==\"$loan\")")"
+    if [ -n "$PARALLEL" ]; then
+      _send_invest_request "$(echo "$LOANS" | jq ".[] | select(.sfId==\"$loan\")")" &
+    else
+      _send_invest_request "$(echo "$LOANS" | jq ".[] | select(.sfId==\"$loan\")")"
+    fi
   done
 }
 
+_login() {
+  echo "Logging in"
+  # TODO: login
+  # login-token-and info comes in the response-header
+  # paload needed
+  # ACCOUNT_ID as repsone
+  # {"ApplicantUsername":"USER_NAME","ApplicantPassword":"PASSWORD"}
+  LOGIN_URL="https://api.fundingpartner.no/api/v2/login"
+  USER_NAME=""
+  PASSWORD=""
+  LOGIN_DATA="{\"ApplicantUsername\":\"$USER_NAME\",\"ApplicantPassword\":\"$PASSWORD\"}"
+  echo "$LOGIN_DATA"
+  curl "$LOGIN_URL" \
+    --verbose \
+    --request "POST" \
+    --header "Content-Type: application/json" \
+    --header "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" \
+    --header "Host: api.fundingpartner.no" \
+    --header "Origin: https://fundingpartner.no" \
+    --header "Referer: https://fundingpartner.no/" \
+    --header "Accept: application/json, text/plain, */*" \
+    --header "Accept-Encoding: gzip, deflate, br" \
+    --header "Connection: keep-alive" \
+    --header "Sec-Fetch-Dest: empty" \
+    --header "Sec-Fetch-Mode: cors" \
+    --header "Sec-Fetch-Site: same-site" \
+    --header "Sec-GPC: 1" \
+    --data "$LOGIN_DATA"
+}
 
 while [ "$1" != "" ]; do
   case $1 in
@@ -123,6 +160,13 @@ while [ "$1" != "" ]; do
     _update_loans_json
     _get_invest_options
     exit
+    ;;
+  -l | --login)
+    _login
+    exit
+    ;;
+  -p | --parallel)
+    PARALLEL="TRUE"
     ;;
   esac
   shift
