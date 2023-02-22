@@ -49,7 +49,11 @@ _setup() {
   loggit "Setup using:"
   env | grep 'CSYS_'
   # TODO:  add flagg  for running setup as subprocess
-  "$CSYS_HOME/os/$CSYS_OS/setup.sh"
+  if [ -n "$CSYS_NO_SUBPROCESS_INSTALL" ]; then
+    "$CSYS_HOME/os/$CSYS_OS/setup.sh"
+  else
+    "$CSYS_HOME/os/$CSYS_OS/setup.sh" &
+  fi
 }
 
 _setup "$@"
