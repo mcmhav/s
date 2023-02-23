@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
+if [ -z "$PYENV_ROOT" ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+fi
 
 # go sgit
 export GOPATH="$HOME/.go"
