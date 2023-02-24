@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # pyenv
-if [ -z "$PYENV_ROOT" ]; then
+if [ -z "$PYENV_ROOT" ] || [ ! -d "$PYENV_ROOT" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
 fi
 
