@@ -65,6 +65,10 @@ fix-time-drift)
   _fix_time_drift
   exit
   ;;
+hist)
+  docker history "$1" --no-trunc --format "{{.Size}}\t\t {{.CreatedBy}}"
+  exit
+  ;;
 -h | --help)
   echo "$HELP_TEXT"
   ;;
