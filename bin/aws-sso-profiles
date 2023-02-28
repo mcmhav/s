@@ -5,8 +5,23 @@ AWS_CONFIG_FILE="$AWS_HOME/config"
 export AWS_PROFILE=$(grep "\[" <"$AWS_CONFIG_FILE" | sed 's/\(profile \|\[\|\]\)//g' | head -n 1)
 AWS_SSO_CACHE="$AWS_HOME/sso/cache"
 BOOTSTRAP_FILE="$CSYS_BASHRC_D/bootstrap"
-AWS_SSO_START_URL=$(grep sso_start_url <"$BOOTSTRAP_FILE" | awk '{print $3}')
-AWS_SSO_ROLE_NAME=$(grep sso_role_name <"$BOOTSTRAP_FILE" | awk '{print $3}')
+AWS_SSO_START_URL=""
+AWS_SSO_ROLE_NAME=""
+_bootstrap() {
+  if [ -f "$BOOTSTRAP_FILE" ]; then
+    AWS_SSO_START_URL=$(grep sso_start_url <"$BOOTSTRAP_FILE" | awk '{print $3}')
+    AWS_SSO_ROLE_NAME=$(grep sso_role_name <"$BOOTSTRAP_FILE" | awk '{print $3}')
+    return
+  fi
+
+  AWS_SSO_START_URL=$(grep -m 1 sso_start_url <"$AWS_CONFIG_FILE" | awk '{print $3}')
+  AWS_SSO_ROLE_NAME=$(grep -m 1 sso_role_name <"$AWS_CONFIG_FILE" | awk '{print $3}')
+  if [ -z "$AWS_SSO_START_URL" ] || [ -z "$AWS_SSO_ROLE_NAME" ]; then
+    loggit errr "Did not manage to bootstrap, exiting"
+    exit 1
+  fi
+}
+_bootstrap
 AWS_REGION="eu-north-1"
 
 AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
