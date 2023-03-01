@@ -5,7 +5,7 @@ SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 _run() {
   STDOUT_LOG="$1"
   if [ ! -f "$SCRIPT_PATH/$GITPOD_LOCAL_COMPANION_BIN" ]; then
-    _install
+    "$SCRIPT_PATH/_install"
   fi
   if [ ! -d "$GITPOD_LOCAL_COMPANION_LOG_PATH" ]; then
     mkdir -p "$GITPOD_LOCAL_COMPANION_LOG_PATH"
