@@ -64,7 +64,7 @@ for i in $(seq 0 "$ACCOUNTS_LENGTH"); do
       loggit "Handling: $(jq -r '.roleName' <<<"$ROLE")"
       _create_profile_element "$ROLE" "$ACCOUNT_NAME" >>"$AWS_CONFIG_FILE.tmp"
     done
-  ) &
+  )
 done
 
 while [ "$(grep "profile.*\/$AWS_SSO_ROLE_NAME" -c <"$AWS_CONFIG_FILE.tmp")" -lt "$ACCOUNTS_LENGTH" ]; do
