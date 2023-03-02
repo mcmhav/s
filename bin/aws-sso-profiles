@@ -2,7 +2,7 @@
 
 AWS_HOME="$HOME/.aws"
 AWS_CONFIG_FILE="$AWS_HOME/config"
-export AWS_PROFILE=$(grep "\[" <"$AWS_CONFIG_FILE" | sed 's/\(profile \|\[\|\]\)//g' | head -n 1)
+export AWS_PROFILE=$(grep "\[" <"$AWS_CONFIG_FILE" | sed 's|\[profile ||g' | sed 's|\]||g' | head -n 1)
 AWS_SSO_CACHE="$AWS_HOME/sso/cache"
 BOOTSTRAP_FILE="$CSYS_BASHRC_D/bootstrap"
 AWS_SSO_START_URL=""
@@ -33,15 +33,21 @@ if [ "$IS_SESSION_OLD" == "true" ]; then
 fi
 
 AWS_ACCESS_TOKEN=$(jq -r '.accessToken' <"$AWS_SSO_SESSION")
-
 ACCOUNTS=$(aws sso list-accounts --access-token "$AWS_ACCESS_TOKEN")
 ACCOUNTS_LENGTH=$(jq -r '.accountList | length - 1' <<<"$ACCOUNTS")
+if [ -z "$ACCOUNTS_LENGTH" ]; then
+  loggit errr "No accounts found"
+  exit 1
+fi
 
 _create_profile_element() {
   ROLE="$1"
   ACCOUNT_NAME="$2"
   ROLE_NAME="$(jq -r '.roleName' <<<"$ROLE")"
   ACCOUNT_ID="$(jq -r '.accountId' <<<"$ROLE")"
+  if [ -z "$ACCOUNT_NAME" ] || [ -z "$ROLE_NAME" ]; then
+    return
+  fi
   echo "[profile $ACCOUNT_NAME/$ROLE_NAME]"
   echo "sso_start_url  = $AWS_SSO_START_URL"
   echo "sso_account_id = $ACCOUNT_ID"
