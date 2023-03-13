@@ -79,9 +79,19 @@ _install() {
   defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist UserSwitcher -int 24
   defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist WiFi -int 24
 
+  # Trackpad:
+  # TODO: not working?
+  defaults write -g com.apple.swipescrolldirection -bool FALSE
+
+  # Theme:
+  osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to not dark mode'
+
+  # Loginitems:
+  osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Dozer.app", hidden:true}'
+  osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Amethyst.app", hidden:true}'
+
   # Change computer name (for bluethooth/localhost/network):
   # scutil --set ComputerName c
-  #
 
   # Set default shell to shell if fish is installed
   if ! command -v fish >/dev/null; then
