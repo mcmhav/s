@@ -1,4 +1,6 @@
 base
+enpass
+brave-browser
 bash
 bash-completion@2
 go
@@ -27,12 +29,10 @@ poetry
 coreutils
 gsed
 amethyst
-enpass
 google-cloud-sdk
-brave-browser
 menumeters
 dozer
---cask avibrazil-rdm
+--cask usr-sse2-rdm
 alacritty
 zellij
 visual-studio-code

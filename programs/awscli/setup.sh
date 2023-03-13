@@ -11,6 +11,8 @@ _setup() {
       sudo /tmp/aws/install
       ;;
     "$MAC_OS")
+      # TODO: do something like:
+      # https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
       brew install awscli
       ;;
     "*") ;;
