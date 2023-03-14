@@ -21,6 +21,29 @@ _launchctl_setup() {
   done
 }
 
+_add_app_to_dock() {
+  app="${1}"
+
+  if open -Ra "${app}"; then
+    echo "$app added to the Dock."
+
+    defaults write com.apple.dock persistent-apps -array-add "<dict>
+                <key>tile-data</key>
+                <dict>
+                    <key>file-data</key>
+                    <dict>
+                        <key>_CFURLString</key>
+                        <string>${app}</string>
+                        <key>_CFURLStringType</key>
+                        <integer>0</integer>
+                    </dict>
+                </dict>
+            </dict>"
+  else
+    echo "ERROR: Application $1 not found."
+  fi
+}
+
 _install() {
   loggit "Installing mac stuff"
   while ! xcrun --version 1>/dev/null 2>&1; do
@@ -62,8 +85,22 @@ _install() {
   defaults write com.apple.Dock autohide -bool true
   defaults write com.apple.dock magnification -int 1
   defaults write com.apple.dock largesize -int 92
+  defaults write com.apple.dock persistent-apps -array ""
+  _add_app_to_dock "/Applications/Alacritty.app"
+  _add_app_to_dock "/Applications/Brave Browser.app"
   killall Dock
   # defaults write com.apple.dock autohide-delay -float 1000; killall Dock
+
+  # ControlStrip
+  defaults write com.apple.controlstrip FullCustomized -array \
+    "com.apple.system.group.brightness" \
+    "com.apple.system.group.keyboard-brightness" \
+    "com.apple.system.airplay" \
+    "com.apple.system.screencapture" \
+    "com.apple.system.group.media" \
+    "com.apple.system.group.volume" \
+    "com.apple.system.screen-lock"
+  killall ControlStrip
 
   # Menu bar:
   defaults write com.apple.menuextra.clock.plist DateFormat -string "HH:mm"
@@ -84,6 +121,7 @@ _install() {
   defaults write -g com.apple.swipescrolldirection -bool FALSE
 
   # Theme:
+  # TODO: this is toggeling darkmode
   osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to not dark mode'
 
   # Loginitems:
