@@ -92,6 +92,7 @@ _install() {
   # defaults write com.apple.dock autohide-delay -float 1000; killall Dock
 
   # ControlStrip
+  # TODO: add test if there is no controllstrip
   defaults write com.apple.controlstrip FullCustomized -array \
     "com.apple.system.launchpad" \
     "com.apple.system.group.brightness" \
