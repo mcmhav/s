@@ -93,9 +93,9 @@ _install() {
 
   # ControlStrip
   defaults write com.apple.controlstrip FullCustomized -array \
+    "com.apple.system.launchpad" \
     "com.apple.system.group.brightness" \
     "com.apple.system.group.keyboard-brightness" \
-    "com.apple.system.airplay" \
     "com.apple.system.screencapture" \
     "com.apple.system.group.media" \
     "com.apple.system.group.volume" \
