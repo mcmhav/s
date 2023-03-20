@@ -64,5 +64,9 @@
   "editor.suggest.preview": true,
   "aws.experiments": {
     "CodeWhisperer": false
-  }
+  },
+  "evenBetterToml.formatter.arrayAutoExpand": true,
+  "evenBetterToml.formatter.indentEntries": true,
+  "evenBetterToml.formatter.indentTables": true,
+  "evenBetterToml.formatter.alignComments": true
 }
