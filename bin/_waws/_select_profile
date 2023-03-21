@@ -3,7 +3,8 @@
 AWS_PROFILE_LOCATION="$HOME/.aws/config"
 
 _select_profile() {
-  PROFILES=$(grep "\[" <"$AWS_PROFILE_LOCATION" | sed 's|\[||g' | sed 's|profile ||g' | sed 's|\]||g' | tr '\n' ' ')
+  PRE_SELECTOR="$1"
+  PROFILES=$(grep "\[" <"$AWS_PROFILE_LOCATION" | sed 's|\[||g' | sed 's|profile ||g' | sed 's|\]||g' | grep "$PRE_SELECTOR" | tr '\n' ' ')
   IFS=' ' read -r -a AVAILABLE_PROFILES <<<"$PROFILES"
   SELECTED_PROFILE=""
   select profile in "${AVAILABLE_PROFILES[@]}"; do
@@ -15,4 +16,4 @@ _select_profile() {
   echo "export AWS_PROFILE=$SELECTED_PROFILE"
 }
 
-_select_profile
+_select_profile "$1"

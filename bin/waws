@@ -15,11 +15,11 @@ decode-message)
   ;;
 select-profile)
   shift
-  "$SUB_WAWS_PATH/_select_profile"
+  "$SUB_WAWS_PATH/_select_profile" "$@"
   ;;
 sso-profiles)
   shift
-  "$SUB_WAWS_PATH/_sso_profiles"
+  "$SUB_WAWS_PATH/_sso_profiles" "$@"
   ;;
 *)
   loggit "Not supported"
