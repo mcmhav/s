@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+_decode_message() {
+  MESSAGE="$1"
+  aws sts decode-authorization-message --encoded-message "$MESSAGE" | jq '.DecodedMessage' | jq -r | jq
+}
+
+case $1 in
+decode-message)
+  shift
+  _decode_message "$1"
+  ;;
+
+*)
+  loggit "Not supported"
+  ;;
+esac
