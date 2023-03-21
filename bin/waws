@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+SUB_WAWS_PATH="$SCRIPT_PATH/_waws"
+
 _decode_message() {
   MESSAGE="$1"
   aws sts decode-authorization-message --encoded-message "$MESSAGE" | jq '.DecodedMessage' | jq -r | jq
@@ -10,7 +13,14 @@ decode-message)
   shift
   _decode_message "$1"
   ;;
-
+select-profile)
+  shift
+  "$SUB_WAWS_PATH/_select_profile"
+  ;;
+sso-profiles)
+  shift
+  "$SUB_WAWS_PATH/_sso_profiles"
+  ;;
 *)
   loggit "Not supported"
   ;;
