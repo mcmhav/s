@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+EKS_CLUSTER="$1"
+aws eks update-kubeconfig --region eu-north-1 --name "$EKS_CLUSTER"

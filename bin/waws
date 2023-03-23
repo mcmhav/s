@@ -21,6 +21,10 @@ sso-profiles)
   shift
   "$SUB_WAWS_PATH/_sso_profiles" "$@"
   ;;
+eks-conf)
+  shift
+  "$SUB_WAWS_PATH/_eks" "$@"
+  ;;
 *)
   loggit "Not supported"
   ;;

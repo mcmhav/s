@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+if [ -z "$GITPOD_LOCAL_COMPANION_BIN" ]; then
+  loggit "Mising"
+  exit 1
+fi
