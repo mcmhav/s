@@ -25,6 +25,9 @@ eks-conf)
   shift
   "$SUB_WAWS_PATH/_eks" "$@"
   ;;
+whoami)
+  "$SUB_WAWS_PATH/_sts" "$@"
+  ;;
 *)
   loggit "Not supported"
   ;;
