@@ -25,6 +25,10 @@ _push() {
   loggit "pushing to git"
   git push --quiet
 }
+_pull() {
+  loggit "Pulling"
+  git pull
+}
 
 csysStatus() {
   git status --short --branch
@@ -66,6 +70,9 @@ status)
   ;;
 push)
   _push
+  ;;
+pull)
+  _pull
   ;;
 config-update)
   source "$CSYS_BASH_HOME/main.bashrc"
