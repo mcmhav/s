@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+export GITPOD_LOCAL_COMPANION_BIN="gitpod-companion"
+export GITPOD_LOCAL_COMPANION_LOG_PATH="$CSYS_BASHRC_D/log/gitpod"
+export GITPOD_LCA_AUTO_TUNNEL="true"
+export GITPOD_LCA_VERBOSE="true"
+
+export REPO_OWNER="SET_ME"
+export GITHUB_URL="https://github.com/$REPO_OWNER"
+
+export GITPOD_SUB_DOMAIN="gitpod"
+export GITPOD_BASE_DOMAIN="SET_ME"
+export GITPOD_DOMAIN="$GITPOD_SUB_DOMAIN.$GITPOD_BASE_DOMAIN"
+export GITPOD_HOST="https://$GITPOD_DOMAIN"
