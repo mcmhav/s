@@ -68,5 +68,6 @@
   "evenBetterToml.formatter.arrayAutoExpand": true,
   "evenBetterToml.formatter.indentEntries": true,
   "evenBetterToml.formatter.indentTables": true,
-  "evenBetterToml.formatter.alignComments": true
+  "evenBetterToml.formatter.alignComments": true,
+  "editor.foldingStrategy": "indentation"
 }
