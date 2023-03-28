@@ -41,14 +41,14 @@ colors:
     Cyan: '#68FDFE'
     White: '#FFFFFF'
 
-alt_send_esc: false
+# alt_send_esc: false
 
 key_bindings:
-  - { key: 28,      mods: Alt|Shift, chars: "{" }
-  - { key: 25,      mods: Alt|Shift, chars: "}" }
-  - { key: 37,      mods: Alt, chars: "@" }
-  - { key: 26,      mods: Alt|Shift, chars: "\\" }
-  - { key: 26,      mods: Alt, chars: "|" }
-  - { key: 45,      mods: Alt, chars: "~" }
-  - { key: 23,      mods: Alt, chars: "[" }
-  - { key: 22,      mods: Alt, chars: "]" }
+  - { key: 28, mods: Alt|Shift, chars: '{' }
+  - { key: 25, mods: Alt|Shift, chars: '}' }
+  - { key: 37, mods: Alt, chars: '@' }
+  - { key: 26, mods: Alt|Shift, chars: "\\" }
+  - { key: 26, mods: Alt, chars: '|' }
+  - { key: 45, mods: Alt, chars: '~' }
+  - { key: 23, mods: Alt, chars: '[' }
+  - { key: 22, mods: Alt, chars: ']' }
