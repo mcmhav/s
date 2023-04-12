@@ -37,7 +37,6 @@
   "redhat.telemetry.enabled": false,
   "gitpod.openInStable.neverPrompt": true,
   "explorer.confirmDragAndDrop": false,
-  "pyright.disableLanguageServices": false,
   "git.autofetch": true,
   "aws.telemetry": false,
   "workbench.colorCustomizations": {
@@ -69,5 +68,21 @@
   "evenBetterToml.formatter.indentEntries": true,
   "evenBetterToml.formatter.indentTables": true,
   "evenBetterToml.formatter.alignComments": true,
-  "editor.foldingStrategy": "indentation"
+  "editor.foldingStrategy": "indentation",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["J", "J"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vscode-kubernetes.log-viewer.timestamp": true,
+  "vscode-kubernetes.log-viewer.since": -1,
+  "vscode-kubernetes.log-viewer.tail": -1,
+  "vscode-kubernetes.log-viewer.destination": "Webview",
+  "sqltools.connections": [],
+  "pyright.disableLanguageServices": true
 }
