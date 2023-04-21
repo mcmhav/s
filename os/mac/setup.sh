@@ -4,6 +4,7 @@ _unquarantine() {
   xattr -d com.apple.quarantine /Applications/Alacritty.app 2>/dev/null
   xattr -d com.apple.quarantine /Applications/Hyper.app 2>/dev/null
   xattr -d com.apple.quarantine "/Applications/Brave Browser.app" 2>/dev/null
+  xattr -d com.apple.quarantine "/Applications/Arc.app" 2>/dev/null
   xattr -d com.apple.quarantine "/Applications/Dozer.app" 2>/dev/null
 }
 
@@ -87,7 +88,7 @@ _install() {
   defaults write com.apple.dock largesize -int 92
   defaults write com.apple.dock persistent-apps -array ""
   _add_app_to_dock "/Applications/Alacritty.app"
-  _add_app_to_dock "/Applications/Brave Browser.app"
+  _add_app_to_dock "/Applications/Arc.app"
   killall Dock
   # defaults write com.apple.dock autohide-delay -float 1000; killall Dock
 
