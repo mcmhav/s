@@ -45,7 +45,7 @@ fi
 export PATH=$PATH
 
 # gcloud currently needs python 2
-export CLOUDSDK_PYTHON="$HOME/.pyenv/versions/2.7.16/bin/python"
+export CLOUDSDK_PYTHON="$HOME/.pyenv/shims/python"
 
 # Pipenv
 export PIPENV_YES="yes"
