@@ -49,6 +49,7 @@
   "synthwave84.brightness": 1,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
+  "python.defaultInterpreterPath": "~/.pyenv/shims/python",
   "python.formatting.provider": "black",
   "editor.formatOnSave": true,
   "zenMode.fullScreen": false,
@@ -84,5 +85,12 @@
   "vscode-kubernetes.log-viewer.tail": -1,
   "vscode-kubernetes.log-viewer.destination": "Webview",
   "sqltools.connections": [],
-  "pyright.disableLanguageServices": true
+  "pyright.disableLanguageServices": true,
+  "http.proxyStrictSSL": false,
+  "python.poetryPath": "/home/m/.poetry/bin/poetry",
+  "shellcheck.disableVersionCheck": true,
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "terminal.integrated.defaultProfile.linux": "fish"
 }
