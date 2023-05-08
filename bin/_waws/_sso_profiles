@@ -25,8 +25,9 @@ export AWS_REGION="eu-north-1"
 
 AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
 
-IS_SESSION_OLD=$(jq '.expiresAt < now' <"$AWS_SSO_SESSION")
+IS_SESSION_OLD=$(jq '.expiresAt < (now | strftime("%Y-%m-%d"))' <"$AWS_SSO_SESSION")
 if [ "$IS_SESSION_OLD" == "true" ]; then
+  loggit "Old sso-session, will try to reauth"
   AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login
   AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
 fi
