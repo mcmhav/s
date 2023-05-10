@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+_git_squash_branch() {
+  MESSAGE="$1"
+  if [ "$MESSAGE" == "" ]; then
+    loggit errr "We kinda need a message?"
+    exit 1
+  fi
+  BRANCH_NAME="$2"
+  if [ "$BRANCH_NAME" == "" ]; then
+    # We expect current branch is the branch we want to create 1 commit out of
+    BRANCH_NAME="$(git branch --show-current)"
+  fi
+  MAIN_BRANCH_NAME="$(git config --get init.defaultBranch || echo main)"
+  if [ "$BRANCH_NAME" == "$MAIN_BRANCH_NAME" ]; then
+    loggit errr "Branch is the same as main branch, we might not want to do this"
+    exit 1
+  fi
+
+  git checkout "$BRANCH_NAME"
+  git reset --soft "$(git merge-base main HEAD)"
+  git commit -m "$MESSAGE"
+  EDITOR_COUNT="$(git log --pretty=format:'%an' main.. | sort --unique | wc -l)"
+  if [ "$EDITOR_COUNT" -gt 1 ]; then
+    loggit warn "We have multple editors here, might be unfortunate to force-push?"
+    exit 1
+  fi
+  git push --force
+}
+
+_git_squash_branch "$@"
