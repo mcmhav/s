@@ -23,7 +23,11 @@ _git_squash_branch() {
   EDITOR_COUNT="$(git log --pretty=format:'%an' main.. | sort --unique | wc -l)"
   if [ "$EDITOR_COUNT" -gt 1 ]; then
     loggit warn "We have multple editors here, might be unfortunate to force-push?"
-    exit 1
+    loggit warn "You have to decide"
+    CURRENT_GIT_USER="$(git config --get user.name)"
+    OTHER_EDITORS="$(git log --pretty=format:'%an' main.. | sort --unique | grep --invert-match "$CURRENT_GIT_USER")"
+    loggit want "$OTHER_EDITORS might get disappointed"
+    exit
   fi
   git push --force
 }
