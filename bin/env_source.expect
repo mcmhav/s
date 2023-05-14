@@ -1,0 +1,8 @@
+#!/usr/bin/env expect
+
+set FILE_TO_SOURCE [lindex $argv 0]
+spawn fish -i
+send "source $FILE_TO_SOURCE\r"
+interact
+exit
+

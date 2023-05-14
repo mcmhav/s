@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+NEW_LINE=""
+if [ "$CSYS_SHELL" == "fish" ]; then
+  NEW_LINE="\r"
+fi
+
+export CSYS_ENV_INJECT_COUNT=$((CSYS_ENV_INJECT_COUNT + 1))
+
+FILE_TO_SOURCE="$1"
+
+if [ -n "$FILE_TO_SOURCE" ] && realpath "$FILE_TO_SOURCE" >/dev/null 2>&1; then
+  "$CSYS_BIN/env_source.expect" "$FILE_TO_SOURCE"
+
+  loggit "Inject-count: $CSYS_ENV_INJECT_COUNT"
+fi
