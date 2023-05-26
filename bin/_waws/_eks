@@ -1,9 +1,32 @@
 #!/usr/bin/env bash
 
+AWS_CONFIG_PATH="$HOME/.aws/config"
+
+_list_clusters() {
+  aws eks list-clusters
+}
+
+_list_all_clusters() {
+  # TODO: build a structured object?
+  profiles="$(grep "profile.*Admin" <"$AWS_CONFIG_PATH" | sed 's|\[profile ||g' | sed 's|\]||g')"
+  for profile in $profiles; do
+    export AWS_PROFILE="$profile"
+    clusters="$(_list_clusters)"
+    if [ "$(echo "$clusters" | jq '.clusters | length > 0')" == "true" ]; then
+      echo "cluster in: $profile"
+      echo "$clusters" | jq '.clusters'
+    fi
+  done
+}
+
 case $1 in
 list)
   shift
-  aws eks list-clusters
+  _list_clusters
+  ;;
+list-all)
+  shift
+  _list_all_clusters
   ;;
 conf)
   shift
