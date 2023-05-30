@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+_list_instances() {
+  aws ec2 describe-instances --query 'Reservations[*].Instances[*].{name:Tags[?Key==`Name`]|[0].Value}' --output table
+}
+
+case $1 in
+list)
+  shift
+  _list_instances
+  ;;
+*)
+  loggit "Not supported"
+  ;;
+esac
