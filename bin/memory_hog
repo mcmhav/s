@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+source param_parser --params "f c m" --incomming_params "$@"
+
+echo "$PARAM_F"
+echo "$PARAM_M"
+
+MEMORY_BLOCK_MB="2000"
+COUNT="1"
+if [ -n "$PARAM_M" ]; then
+  MEMORY_BLOCK_MB="$PARAM_M"
+fi
+if [ -n "$PARAM_C" ]; then
+  COUNT="$PARAM_C"
+fi
+
+if [ -z "$PARAM_F" ] && command -v free; then
+  N=$(free -m | grep Mem: | awk '{print int($2/10)}')
+  if [[ $N -lt $MEMORY_BLOCK_MB ]]; then
+    MEMORY_BLOCK_MB=$N
+  fi
+fi
+loggit "Memory to use: $MEMORY_BLOCK_MB"
+loggit "Counts to use: $COUNT"
+
+for i in $(seq 1 "$COUNT"); do
+  sh -c "MEMBLOB=\$(dd if=/dev/urandom bs=1MB count=$MEMORY_BLOCK_MB) ; sleep 600" &
+done
