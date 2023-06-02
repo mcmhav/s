@@ -58,24 +58,35 @@ _create_profile_element() {
   echo ""
 }
 
+_add_account_info_to_file() {
+  ACCOUNT_ID="$1"
+  ACCOUNT_NAME="$2"
+  CONFIG_FILE="$AWS_CONFIG_FILE.$ACCOUNT_ID.tmp"
+  rm "$CONFIG_FILE"
+
+  loggit "Handling: $ACCOUNT_NAME"
+
+  ROLES=$(aws sso list-account-roles --access-token "$AWS_ACCESS_TOKEN" --account-id "$ACCOUNT_ID" | jq '.roleList')
+  for j in $(seq 0 "$(jq 'length -1' <<<"$ROLES")"); do
+    ROLE="$(jq --argjson j "$j" '.[$j]' <<<"$ROLES")"
+    loggit "Handling: $(jq -r '.roleName' <<<"$ROLE")"
+    _create_profile_element "$ROLE" "$ACCOUNT_NAME" >>"$CONFIG_FILE"
+  done
+}
+
 rm -f "$AWS_CONFIG_FILE.tmp"
 touch "$AWS_CONFIG_FILE.tmp"
 for i in $(seq 0 "$ACCOUNTS_LENGTH"); do
   ACCOUNT_ID=$(jq --argjson i "$i" -r '.accountList[$i].accountId' <<<"$ACCOUNTS")
   ACCOUNT_NAME=$(jq --argjson i "$i" -r '.accountList[$i].accountName' <<<"$ACCOUNTS")
-  loggit "Handling: $ACCOUNT_NAME"
-  (
-    ROLES=$(aws sso list-account-roles --access-token "$AWS_ACCESS_TOKEN" --account-id "$ACCOUNT_ID" | jq '.roleList')
-    for j in $(seq 0 "$(jq 'length -1' <<<"$ROLES")"); do
-      ROLE="$(jq --argjson j "$j" '.[$j]' <<<"$ROLES")"
-      loggit "Handling: $(jq -r '.roleName' <<<"$ROLE")"
-      _create_profile_element "$ROLE" "$ACCOUNT_NAME" >>"$AWS_CONFIG_FILE.tmp"
-    done
-  )
+
+  _add_account_info_to_file "$ACCOUNT_ID" "$ACCOUNT_NAME" &
 done
 
-while [ "$(grep "profile.*\/$AWS_SSO_ROLE_NAME" -c <"$AWS_CONFIG_FILE.tmp")" -lt "$ACCOUNTS_LENGTH" ]; do
-  sleep 1
+wait
+
+for file in "$AWS_CONFIG_FILE".*.tmp; do
+  cat "$file" >>"$AWS_CONFIG_FILE.tmp"
 done
 
 mv "$AWS_CONFIG_FILE.tmp" "$AWS_CONFIG_FILE"
