@@ -62,7 +62,7 @@ _add_account_info_to_file() {
   ACCOUNT_ID="$1"
   ACCOUNT_NAME="$2"
   CONFIG_FILE="$AWS_CONFIG_FILE.$ACCOUNT_ID.tmp"
-  rm "$CONFIG_FILE"
+  rm -f "$CONFIG_FILE"
 
   loggit "Handling: $ACCOUNT_NAME"
 
