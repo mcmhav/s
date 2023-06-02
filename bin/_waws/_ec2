@@ -1,13 +1,31 @@
 #!/usr/bin/env bash
 
+AWS_CONFIG_PATH="$HOME/.aws/config"
+
 _list_instances() {
   aws ec2 describe-instances --query 'Reservations[*].Instances[*].{name:Tags[?Key==`Name`]|[0].Value}' --output table
+}
+
+_list_all_instance() {
+  profiles="$(grep "profile.*Admin" <"$AWS_CONFIG_PATH" | sed 's|\[profile ||g' | sed 's|\]||g')"
+  for profile in $profiles; do
+    export AWS_PROFILE="$profile"
+    instances="$(_list_instances)"
+    if [ -n "$instances" ]; then
+      echo "instances in: $profile"
+      echo "$instances"
+    fi
+  done
 }
 
 case $1 in
 list)
   shift
   _list_instances
+  ;;
+list-all)
+  shift
+  _list_all_instance
   ;;
 *)
   loggit "Not supported"
