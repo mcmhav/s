@@ -5,6 +5,8 @@
 
 [ -f /etc/shrc ] && source /etc/shrc
 
+[ -n "$CSYS_AUTO_FISH" ] && fish
+
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 LINK_PATH="$(readlink "$SCRIPT_PATH"/"$(basename "${BASH_SOURCE[0]}")")"
 CONFIG_HOME="$(cd "$(dirname "$LINK_PATH")" >/dev/null 2>&1 && pwd)"
