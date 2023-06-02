@@ -15,6 +15,8 @@ _bootstrap() {
     AWS_SSO_ROLE_NAME=$(grep -m 1 sso_role_name <"$AWS_CONFIG_FILE" | awk '{print $3}')
   elif command -v aws-sso; then
     aws-sso
+    AWS_SSO_START_URL=$(grep -m 1 sso_start_url <"$AWS_CONFIG_FILE" | awk '{print $3}')
+    AWS_SSO_ROLE_NAME=$(grep -m 1 sso_role_name <"$AWS_CONFIG_FILE" | awk '{print $3}')
   fi
 
   if [ -z "$AWS_SSO_START_URL" ] || [ -z "$AWS_SSO_ROLE_NAME" ]; then
