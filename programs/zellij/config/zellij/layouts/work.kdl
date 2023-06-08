@@ -14,8 +14,14 @@ layout {
             }
         }
     }
+    tab_template name="full-view" {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        pane
+    }
     tab name="w1"
-    tab name="w2"
+    full-view name="w2"
     tab name="w3"
     tab name="w4"
     tab name="-"
