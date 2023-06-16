@@ -3,7 +3,9 @@
 AWS_CONFIG_PATH="$HOME/.aws/config"
 
 _list_instances() {
-  aws ec2 describe-instances --query 'Reservations[*].Instances[*].{name:Tags[?Key==`Name`]|[0].Value}' --output table
+  aws ec2 describe-instances \
+    --query 'Reservations[*].Instances[*].{name:Tags[?Key==`Name`]|[0].Value,InstanceId:InstanceId}' \
+    --output table
 }
 
 _list_all_instance() {

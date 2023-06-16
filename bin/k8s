@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+CLUSTER="cluster"
+LOGS_LOCATIONS="logs/$CLUSTER"
+
+mkdir -p "$LOGS_LOCATIONS"
+
+_get_log_for_service() {
+  SERVICE="$1"
+  LOG_PATH="$SERVICE.log"
+  NAMESPACE="${2:-default}"
+  CONTAINER=""
+  if [ -n "$3" ]; then
+    CONTAINER="-c $3"
+  fi
+  kubectl logs --namespace "$NAMESPACE" "deployments/$SERVICE" "$CONTAINER" -f >"$LOGS_LOCATIONS/$LOG_PATH"
+}

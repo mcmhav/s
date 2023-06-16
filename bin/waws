@@ -29,8 +29,12 @@ ec2)
   shift
   "$SUB_WAWS_PATH/_ec2" "$@"
   ;;
-whoami)
+sts)
+  shift
   "$SUB_WAWS_PATH/_sts" "$@"
+  ;;
+whoami)
+  "$SUB_WAWS_PATH/_sts" "whoami"
   ;;
 *)
   loggit "Not supported"
