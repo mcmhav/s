@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+CLUSTER="cluster"
+
+_get_log_for_service() {
+  while [ "$1" != "" ]; do
+    case $1 in
+    -n)
+      shift
+      NAMESPACE="$1"
+      ;;
+    -r)
+      shift
+      RESOURCE="$1"
+      ;;
+    *)
+      loggit "Not supported"
+      ;;
+    esac
+    shift
+  done
+
+  LOG_PATH="$LOGS_LOCATIONS/$RESOURCE.log"
+  CONTAINER=""
+  if [ -n "$3" ]; then
+    CONTAINER="-c $3"
+  fi
+  mkdir -p "$(dirname "$LOG_PATH")"
+
+  kubectl logs --namespace "$NAMESPACE" "$RESOURCE" "$CONTAINER" -f >"$LOG_PATH" &
+}
+
+case $1 in
+-c | --config)
+  shift
+  CONFIG_FILE="$1"
+  ;;
+*)
+  loggit "Not supported"
+  ;;
+esac
+
+if [ -z "$CONFIG_FILE" ]; then
+  loggit errr "Need a configfile, set with -c"
+  exit 1
+fi
+
+NAMESPACE="$(yq '.namespace' <"$CONFIG_FILE")"
+LOGS_LOCATIONS="logs/$CLUSTER"
+RESOURCES="$(yq '.resources.[]' <"$CONFIG_FILE")"
+
+for resource in $RESOURCES; do
+  echo "d: $resource"
+  _get_log_for_service -n "$NAMESPACE" -r "$resource"
+done
+wait
+
