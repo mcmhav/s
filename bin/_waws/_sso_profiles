@@ -99,5 +99,5 @@ fi
 
 mv "$AWS_CONFIG_FILE.tmp" "$AWS_CONFIG_FILE"
 if [ -f "$AWS_CONFIG_FILE.initial" ]; then
-  echo "$AWS_CONFIG_FILE.initial" >>"$AWS_CONFIG_FILE"
+  cat "$AWS_CONFIG_FILE.initial" >>"$AWS_CONFIG_FILE"
 fi
