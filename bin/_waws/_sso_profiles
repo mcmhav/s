@@ -93,4 +93,11 @@ for file in "$AWS_CONFIG_FILE".*.tmp; do
   cat "$file" >>"$AWS_CONFIG_FILE.tmp"
 done
 
+if [ -f "$AWS_CONFIG_FILE" ] && [ ! -f "$AWS_CONFIG_FILE.initial" ]; then
+  cp "$AWS_CONFIG_FILE" "$AWS_CONFIG_FILE.initial"
+fi
+
 mv "$AWS_CONFIG_FILE.tmp" "$AWS_CONFIG_FILE"
+if [ -f "$AWS_CONFIG_FILE.initial" ]; then
+  echo "$AWS_CONFIG_FILE.initial" >>"$AWS_CONFIG_FILE"
+fi
