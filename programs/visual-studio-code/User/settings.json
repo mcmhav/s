@@ -18,7 +18,8 @@
     "editor.defaultFormatter": "fcrespo82.markdown-table-formatter"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python"
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnType": true
   },
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml",

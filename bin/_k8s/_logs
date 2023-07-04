@@ -3,6 +3,7 @@
 CLUSTER="cluster"
 
 _get_log_for_service() {
+  CONTAINER=""
   while [ "$1" != "" ]; do
     case $1 in
     name:)
