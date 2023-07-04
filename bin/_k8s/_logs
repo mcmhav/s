@@ -5,13 +5,17 @@ CLUSTER="cluster"
 _get_log_for_service() {
   while [ "$1" != "" ]; do
     case $1 in
+    name:)
+      shift
+      RESOURCE="$1"
+      ;;
+    container:)
+      shift
+      CONTAINER="--container=$1"
+      ;;
     -n)
       shift
       NAMESPACE="$1"
-      ;;
-    -r)
-      shift
-      RESOURCE="$1"
       ;;
     *)
       loggit "Not supported"
@@ -21,12 +25,9 @@ _get_log_for_service() {
   done
 
   LOG_PATH="$LOGS_LOCATIONS/$RESOURCE.log"
-  CONTAINER=""
-  if [ -n "$3" ]; then
-    CONTAINER="-c $3"
-  fi
   mkdir -p "$(dirname "$LOG_PATH")"
 
+  # --timestamps=true
   kubectl logs --namespace "$NAMESPACE" "$RESOURCE" "$CONTAINER" -f >"$LOG_PATH" &
 }
 
@@ -47,11 +48,13 @@ fi
 
 NAMESPACE="$(yq '.namespace' <"$CONFIG_FILE")"
 LOGS_LOCATIONS="logs/$CLUSTER"
-RESOURCES="$(yq '.resources.[]' <"$CONFIG_FILE")"
+END="$(yq '.resources | length' <"$CONFIG_FILE")"
 
-for resource in $RESOURCES; do
-  echo "d: $resource"
-  _get_log_for_service -n "$NAMESPACE" -r "$resource"
+for ((i = 0; i <= END - 1; i++)); do
+  RESOURCE="$(INDEX="$i" yq '.resources[strenv(INDEX)]' <"$CONFIG_FILE")"
+  echo "Logging:"
+  echo "$RESOURCE"
+  echo ""
+  _get_log_for_service -n "$NAMESPACE" $RESOURCE
 done
 wait
-
