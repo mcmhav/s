@@ -54,7 +54,6 @@ for ((i = 0; i <= END - 1; i++)); do
   RESOURCE="$(INDEX="$i" yq '.resources[strenv(INDEX)]' <"$CONFIG_FILE")"
   echo "Logging:"
   echo "$RESOURCE"
-  echo ""
   _get_log_for_service -n "$NAMESPACE" $RESOURCE
 done
 wait
