@@ -4,6 +4,7 @@ CLUSTER="cluster"
 
 _get_log_for_service() {
   CONTAINER=""
+  NAMESPACE="default"
   while [ "$1" != "" ]; do
     case $1 in
     name:)
@@ -25,7 +26,7 @@ _get_log_for_service() {
     shift
   done
 
-  LOG_PATH="$LOGS_LOCATIONS/$RESOURCE.log"
+  LOG_PATH="$LOGS_LOCATIONS/$NAMESPACE/$RESOURCE.log"
   mkdir -p "$(dirname "$LOG_PATH")"
 
   # --timestamps=true
