@@ -98,5 +98,7 @@
   "merge-conflict.codeLens.enabled": false,
   "autoDocstring.docstringFormat": "sphinx-notypes",
   "autoDocstring.startOnNewLine": true,
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "githubPullRequests.pullBranch": "never",
+  "editor.minimap.enabled": false
 }
