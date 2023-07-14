@@ -20,4 +20,4 @@ set -U fish_color_search_match bryellow --background=brblack
 set -U fish_color_selection white --bold --background=brblack
 set -U fish_color_status red
 set -U fish_color_user brgreen
-set -U fish_color_valid_path --underline
+set -U fish_color_valid_path
