@@ -18,7 +18,7 @@ _setup_vscode_config() {
   mkdir -p "$VS_CODE_SETTINGS_LOCATION"
   loggit "Adding vscode config to machine"
   cp "$SCRIPT_PATH/config/settings.json" "$VS_CODE_SETTINGS_LOCATION"
-  code --install-extension "travis.simple-dark"
+  # code --install-extension "travis.simple-dark"
   code --install-extension "ms-pyright.pyright"
   code --install-extension "vscodevim.vim"
 }
