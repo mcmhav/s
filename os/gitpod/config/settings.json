@@ -31,7 +31,7 @@
   "editor.suggest.showMethods": true,
   "editor.acceptSuggestionOnEnter": "on",
   "editor.snippetSuggestions": "top",
-  "workbench.colorTheme": "Simple Dark",
+  "workbench.colorTheme": "Gitpod Dark",
   "workbench.startupEditor": "newUntitledFile",
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "redhat.telemetry.enabled": false,
