@@ -2,4 +2,7 @@
 
 kubectl get pods -A | fzf \
   --preview "kubectl get pod {+2} -n {+1} -o yaml" \
-  --bind=ctrl-j:preview-down --bind=ctrl-k:preview-up
+  --bind=ctrl-j:preview-down \
+  --bind=ctrl-k:preview-up \
+  --bind=ctrl-d:preview-half-page-down \
+  --bind=ctrl-u:preview-half-page-up
