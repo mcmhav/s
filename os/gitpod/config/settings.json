@@ -100,5 +100,7 @@
   "autoDocstring.startOnNewLine": true,
   "editor.tabSize": 2,
   "githubPullRequests.pullBranch": "never",
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "terminal.integrated.defaultLocation": "editor",
+  "workbench.editor.showTabs": false
 }
