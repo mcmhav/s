@@ -8,6 +8,10 @@ logs)
   shift
   "$SUB_K8S_PATH/_logs" "$@"
   ;;
+pods)
+  shift
+  "$SUB_K8S_PATH/_pods" "$@"
+  ;;
 *)
   loggit "Not supported"
   ;;
