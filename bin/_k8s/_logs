@@ -4,6 +4,7 @@ RESOURCE="${1:-pod}"
 
 kubectl get "$RESOURCE" -A | fzf \
   --preview "kubectl logs {+2} -n {+1} -f| bat --paging=never -l log" \
+  --preview-window "up,80%" \
   --bind=ctrl-j:preview-down \
   --bind=ctrl-k:preview-up \
   --bind=ctrl-d:preview-half-page-down \
