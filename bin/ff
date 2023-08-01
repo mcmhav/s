@@ -3,9 +3,10 @@
 _find_files() {
   search_location="."
 
-  ag_fzf_result=$(cd "$search_location" && ag --unrestricted --hidden --ignore ".git" "." -f -g "" | fzf -e)
+  # search_result=$(cd "$search_location" && ag --unrestricted --hidden --ignore ".git" "." -f -g "" | fzf -e)
+  search_result=$(cd "$search_location" && rg --files --no-heading --hidden "." --glob "!.git/" | fzf -e)
 
-  selected_file="$search_location/$ag_fzf_result"
+  selected_file="$search_location/$search_result"
   if [ -n "$selected_file" ] && [ "$selected_file" != "./" ]; then
     vim "$selected_file"
     echo "$selected_file"
