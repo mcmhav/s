@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-kubectl get pods -A | fzf \
+RESOURCE="${1:-pod}"
+
+kubectl get "$RESOURCE" -A | fzf \
   --preview "kubectl get pod {+2} -n {+1} -o yaml" \
   --bind=ctrl-j:preview-down \
   --bind=ctrl-k:preview-up \
