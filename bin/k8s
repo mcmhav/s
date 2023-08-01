@@ -8,6 +8,10 @@ logs)
   shift
   "$SUB_K8S_PATH/_logs" "$@"
   ;;
+logs-file)
+  shift
+  "$SUB_K8S_PATH/_logs-file" "$@"
+  ;;
 pods)
   shift
   "$SUB_K8S_PATH/_get" "pod"

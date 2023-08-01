@@ -1,61 +1,10 @@
 #!/usr/bin/env bash
 
-CLUSTER="cluster"
+RESOURCE="${1:-pod}"
 
-_get_log_for_service() {
-  CONTAINER=""
-  NAMESPACE="default"
-  while [ "$1" != "" ]; do
-    case $1 in
-    name:)
-      shift
-      RESOURCE="$1"
-      ;;
-    container:)
-      shift
-      CONTAINER="--container=$1"
-      ;;
-    -n)
-      shift
-      NAMESPACE="$1"
-      ;;
-    *)
-      loggit "Not supported"
-      ;;
-    esac
-    shift
-  done
-
-  LOG_PATH="$LOGS_LOCATIONS/$NAMESPACE/$RESOURCE.log"
-  mkdir -p "$(dirname "$LOG_PATH")"
-
-  # --timestamps=true
-  kubectl logs --namespace "$NAMESPACE" "$RESOURCE" "$CONTAINER" -f >"$LOG_PATH" &
-}
-
-case $1 in
--c | --config)
-  shift
-  CONFIG_FILE="$1"
-  ;;
-*)
-  loggit "Not supported"
-  ;;
-esac
-
-if [ -z "$CONFIG_FILE" ]; then
-  loggit errr "Need a configfile, set with -c"
-  exit 1
-fi
-
-NAMESPACE="$(yq '.namespace' <"$CONFIG_FILE")"
-LOGS_LOCATIONS="logs/$CLUSTER"
-END="$(yq '.resources | length' <"$CONFIG_FILE")"
-
-for ((i = 0; i <= END - 1; i++)); do
-  RESOURCE="$(INDEX="$i" yq '.resources[strenv(INDEX)]' <"$CONFIG_FILE")"
-  echo "Logging:"
-  echo "$RESOURCE"
-  _get_log_for_service -n "$NAMESPACE" $RESOURCE
-done
-wait
+kubectl get "$RESOURCE" -A | fzf \
+  --preview "kubectl logs {+2} -n {+1} -f| bat --paging=never -l log" \
+  --bind=ctrl-j:preview-down \
+  --bind=ctrl-k:preview-up \
+  --bind=ctrl-d:preview-half-page-down \
+  --bind=ctrl-u:preview-half-page-up
