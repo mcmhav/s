@@ -4,7 +4,7 @@ set fish_greeting
 set fish_command_timer_enabled 0
 
 if set -q -g csys_fish_up
-  echo "we should be up"
+  # echo "we should be up"
   bass source $CSYS_HOME/programs/bash/bashrc.d/aliases.bashrc
   bass source $CSYS_HOME/programs/bash/bashrc.d/git.bashrc
   exit

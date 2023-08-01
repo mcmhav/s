@@ -3,7 +3,7 @@
 RESOURCE="${1:-pod}"
 
 kubectl get "$RESOURCE" -A | fzf \
-  --preview "kubectl get $RESOURCE {+2} -n {+1} -o yaml" \
+  --preview "kubectl get $RESOURCE {+2} -n {+1} -o yaml | bat --paging=never --color=always -l yml" \
   --bind=ctrl-j:preview-down \
   --bind=ctrl-k:preview-up \
   --bind=ctrl-d:preview-half-page-down \
