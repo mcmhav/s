@@ -10,15 +10,17 @@ _find_in_files() {
 
   EXTRA_IGNORE=""
   if [ -n "$PARAM_I" ]; then
-    EXTRA_IGNORE="--ignore $PARAM_I"
+    # EXTRA_IGNORE="--ignore $PARAM_I" # ag
+    EXTRA_IGNORE="--ignore !$PARAM_I/" # rg
   fi
 
-  ag_fzf_result=$(cd "$search_location" && ag --noheading --hidden --ignore ".git" "." $EXTRA_IGNORE | fzf -e)
+  # ag_fzf_result=$(cd "$search_location" && ag --noheading --hidden --ignore ".git" "." $EXTRA_IGNORE | fzf -e)
+  search_result=$(cd "$search_location" && rg --no-heading --hidden --line-number "." $EXTRA_IGNORE | fzf -e)
 
-  ag_fzf_result="$search_location/$ag_fzf_result"
+  search_result="$search_location/$search_result"
 
-  selected_file=$(echo "$ag_fzf_result" | awk 'BEGIN {FS=":";} { print $1 }')
-  selected_line_num=$(echo "$ag_fzf_result" | awk 'BEGIN {FS=":";} { print $2 }')
+  selected_file=$(echo "$search_result" | awk 'BEGIN {FS=":";} { print $1 }')
+  selected_line_num=$(echo "$search_result" | awk 'BEGIN {FS=":";} { print $2 }')
 
   if [ -n "$selected_file" ] && [ "$selected_file" != "./" ]; then
     vim "$selected_file" +"$selected_line_num"
