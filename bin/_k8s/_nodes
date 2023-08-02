@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-kubectl get nodes -A | fzf \
-  --preview 'kubectl get pods -A --field-selector spec.nodeName={+1}' \
-  --preview-window "up,80%" \
-  --bind=ctrl-b:preview-bottom \
-  --bind=ctrl-j:preview-down \
-  --bind=ctrl-k:preview-up \
-  --bind=ctrl-d:preview-half-page-down \
-  --bind=ctrl-u:preview-half-page-up
+kubectl get nodes \
+  --no-headers \
+  -o custom-columns="NAME":.metadata.name,"NODEGROUP":".metadata.labels.eks\.amazonaws\.com/nodegroup" |
+  fzf \
+    --preview 'kubectl get pods -A --field-selector spec.nodeName={+1}' \
+    --preview-window "up,80%" \
+    --bind=ctrl-b:preview-bottom \
+    --bind=ctrl-j:preview-down \
+    --bind=ctrl-k:preview-up \
+    --bind=ctrl-d:preview-half-page-down \
+    --bind=ctrl-u:preview-half-page-up

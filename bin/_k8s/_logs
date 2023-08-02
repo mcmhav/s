@@ -2,7 +2,7 @@
 
 RESOURCE="${1:-pod}"
 
-kubectl get "$RESOURCE" -A | fzf \
+kubectl get "$RESOURCE" -A --no-headers | fzf \
   --preview "kubectl logs {+2} -n {+1} -f" \
   --preview-window "up,80%,follow,wrap" \
   --bind=ctrl-b:preview-bottom \

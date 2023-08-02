@@ -2,7 +2,7 @@
 
 RESOURCE="${1:-pod}"
 
-kubectl get "$RESOURCE" -A | fzf \
+kubectl get "$RESOURCE" -A --no-headers | fzf \
   --preview "kubectl get $RESOURCE {+2} -n {+1} -o yaml | bat --paging=never --color=always -l yml" \
   --preview-window "up,80%" \
   --bind=ctrl-j:preview-down \
