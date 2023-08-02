@@ -3,8 +3,8 @@
 RESOURCE="${1:-pod}"
 
 kubectl get "$RESOURCE" -A | fzf \
-  --preview "kubectl logs {+2} -n {+1} -f| bat --paging=never -l log" \
-  --preview-window "up,80%,follow" \
+  --preview "kubectl logs {+2} -n {+1} -f" \
+  --preview-window "up,80%,follow,wrap" \
   --bind=ctrl-b:preview-bottom \
   --bind=ctrl-j:preview-down \
   --bind=ctrl-k:preview-up \
