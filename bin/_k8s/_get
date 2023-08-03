@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
 
 RESOURCE="${1:-pod}"
+RESOURCE=$(echo "$RESOURCE" | tr '[:upper:]' '[:lower:]')
+KUBECTL_PREVIEW_CMD="kubectl get $RESOURCE {+2} -n {+1} -o yaml"
+case $RESOURCE in
+clusterrole)
+  KUBECTL_PREVIEW_CMD="kubectl get $RESOURCE {+1} -o yaml"
+  ;;
+esac
+_FZF_PREVIEW="$KUBECTL_PREVIEW_CMD | bat --paging=never --color=always -l yml"
 
 kubectl get "$RESOURCE" -A --no-headers | fzf \
-  --preview "kubectl get $RESOURCE {+2} -n {+1} -o yaml | bat --paging=never --color=always -l yml" \
+  --preview "$_FZF_PREVIEW" \
   --preview-window "up,80%" \
   --bind=ctrl-j:preview-down \
   --bind=ctrl-k:preview-up \
