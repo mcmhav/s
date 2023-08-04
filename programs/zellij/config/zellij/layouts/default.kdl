@@ -14,6 +14,7 @@ layout {
     }
   }
   tab name="a"
+  tab name="b"
 }
 session_name "c"
 attach_to_session true

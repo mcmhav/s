@@ -24,6 +24,10 @@ nodes)
   shift
   "$SUB_K8S_PATH/_nodes" "$@"
   ;;
+port-forward)
+  shift
+  "$SUB_K8S_PATH/_port-forward" "$@"
+  ;;
 *)
   loggit "Not supported"
   ;;
