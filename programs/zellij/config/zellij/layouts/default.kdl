@@ -10,7 +10,6 @@ layout {
       }
       pane split_direction="Horizontal" {
         pane
-        pane
       }
     }
   }
