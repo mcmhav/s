@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+TOKEN="$1"
+
+echo "$TOKEN" | jq -R 'split(".") | .[1] | @base64d | fromjson'
