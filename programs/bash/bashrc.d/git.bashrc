@@ -47,7 +47,7 @@ alias gmv='git mv'
 alias gdl='git pull --no-edit'
 alias gup='git push'
 alias gupf='git push -f'
-alias gcm='git commit -am'
+alias gcm='gaa && git commit -am'
 alias gl='git log --oneline'
 
 alias guia='git update-index --assume-unchanged'
