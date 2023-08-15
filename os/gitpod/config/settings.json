@@ -102,5 +102,9 @@
   "githubPullRequests.pullBranch": "never",
   "editor.minimap.enabled": false,
   "terminal.integrated.defaultLocation": "editor",
-  "workbench.editor.showTabs": false
+  "workbench.editor.showTabs": false,
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#f81ce6",
+    "terminalCursor.foreground": "#f81ce6"
+  }
 }
