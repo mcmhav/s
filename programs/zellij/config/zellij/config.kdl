@@ -147,7 +147,7 @@ keybinds clear-defaults=true {
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
-        bind "Ctrl q" "Ω" { FocusNextPane; }
+        bind "Ω" { FocusNextPane; }
         bind "é" { GoToNextTab; }
     }
     shared_except "normal" "locked" {

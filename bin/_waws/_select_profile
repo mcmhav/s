@@ -3,9 +3,27 @@
 AWS_PROFILE_LOCATION="$HOME/.aws/config"
 
 _select_profile() {
-  PRE_SELECTOR="$1"
-  SELECTED_PROFILE=$(grep "\[" <"$AWS_PROFILE_LOCATION" | sed 's|\[||g' | sed 's|profile ||g' | sed 's|\]||g' | grep "$PRE_SELECTOR" | fzf)
-  echo "export AWS_PROFILE=$SELECTED_PROFILE"
+  PRE_SELECTOR=""
+  NO_FZF=""
+  while [ "$1" != "" ]; do
+    case $1 in
+    --pre-selector)
+      shift
+      PRE_SELECTOR="$1"
+      ;;
+    --no-fzf)
+      NO_FZF="true"
+      ;;
+    esac
+    shift
+  done
+  PROFILES=$(grep "\[" <"$AWS_PROFILE_LOCATION" | sed 's|\[||g' | sed 's|profile ||g' | sed 's|\]||g' | grep "$PRE_SELECTOR")
+  if [ -z "$NO_FZF" ]; then
+    SELECTED_PROFILE=$(echo "$PROFILES" | fzf)
+    echo "export AWS_PROFILE=$SELECTED_PROFILE"
+  else
+    echo "$PROFILES"
+  fi
 }
 
-_select_profile "$1"
+_select_profile "$@"
