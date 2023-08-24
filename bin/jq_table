@@ -2,6 +2,7 @@
 
 # Example:
 # curl https://www.githubstatus.com/api/v2/components.json | jq_table '[ .components[] | select(.id != 0l2p9nhqnxpd) | {name,status,updated_at} ]'
+# terraform validate -json | jq_table '[.diagnostics[] | {address,filename:.range.filename,line:.range.start.line}]'
 
 jq_tabler='
 (.[0] | keys_unsorted | (., map(length*"=")) | @tsv),
