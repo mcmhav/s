@@ -2,10 +2,10 @@
 
 RESOURCE="${1:-pod}"
 RESOURCE=$(echo "$RESOURCE" | tr '[:upper:]' '[:lower:]')
-KUBECTL_PREVIEW_CMD="kubectl describe $RESOURCE {+2} -n {+1} -o yaml"
+KUBECTL_PREVIEW_CMD="kubectl describe $RESOURCE {+2} -n {+1}"
 case $RESOURCE in
 clusterrolebinding | clusterrole)
-  KUBECTL_PREVIEW_CMD="kubectl get $RESOURCE {+1} -o yaml"
+  KUBECTL_PREVIEW_CMD="kubectl get $RESOURCE {+1}"
   ;;
 esac
 _FZF_PREVIEW="$KUBECTL_PREVIEW_CMD | bat --paging=never --color=always -l yml"
