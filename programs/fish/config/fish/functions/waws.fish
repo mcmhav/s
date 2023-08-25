@@ -22,7 +22,7 @@ function ij
 end
 
 function waws
-  switch $argv
+  switch $argv[1]
     case 'select-profile'
       $CSYS_BIN/waws $argv --no-fzf | ij
     case '*'

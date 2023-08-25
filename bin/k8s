@@ -28,6 +28,10 @@ port-forward)
   shift
   "$SUB_K8S_PATH/_port-forward" "$@"
   ;;
+describe)
+  shift
+  "$SUB_K8S_PATH/_describe" "$@"
+  ;;
 *)
   loggit "Not supported"
   ;;
