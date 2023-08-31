@@ -15,6 +15,7 @@ if [ "$(uname -s)" == "Linux" ]; then
   else
     export CSYS_OS="$LIN_OS"
   fi
+  export IS_LIN="1"
 elif [ "$(uname -s)" == "Darwin" ]; then
   export CSYS_OS="$MAC_OS"
 elif [[ "$(uname -s)" =~ MINGW64_NT* ]]; then

@@ -5,7 +5,23 @@ PROCESS_NAME="$1"
 # echo "$PPID"
 # ps -axwwo user,pid,ppid,pgid,command | grep "$$"
 
-ps -axwwo user,pid,ppid,pgid,command |
+MAC_PS_ARGS="-axwwo user,pid,ppid,pgid,command"
+LINUX_PS_ARGS="-eo uid,pid,ppid,pgid,args"
+
+case "$CSYS_OS" in
+"$LIN_OS"*)
+  PS_ARGS=$LINUX_PS_ARGS
+  ;;
+"$MAC_OS")
+  PS_ARGS=$MAC_PS_ARGS
+  ;;
+*)
+  echo "Not supported"
+  exit 1
+  ;;
+esac
+
+ps $PS_ARGS |
   grep --invert-match "$$" |
   awk '{$5="\""$5"\"""//";}1' |
   pstree -f - -s "$PROCESS_NAME" -g 3 |

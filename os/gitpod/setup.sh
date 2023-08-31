@@ -33,6 +33,8 @@ _setup() {
   csys install brew
   loggit "Installing csys-reqs"
   csys reqs-install "$SCRIPT_PATH/reqs"
+
+  sudo apt-get install -y mariadb-client
 }
 
 _setup

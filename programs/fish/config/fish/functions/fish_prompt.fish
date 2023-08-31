@@ -1,5 +1,5 @@
 function fish_prompt
-	set -l __last_command_exit_status $status
+	  set -l __last_command_exit_status $status
 
     if not set -q -g __fish_cake_functions_defined
         set -g __fish_cake_functions_defined
@@ -57,7 +57,18 @@ function fish_prompt
     set -l blue (set_color -o blue)
     set -l normal (set_color normal)
 
-    set -l prev_command_usage "$blue$CMD_DURATION_STR "
+    set -l prev_command_usage
+    if set -q CMD_DURATION_STR[1]
+      set prev_command_usage "$blue$CMD_DURATION_STR "
+    else if not set -q CMD_DURATION_STR[1]
+      and set -q -g csys_fish_up
+      # If csys_fish_up is set and not cmd duration,
+      # we can expect this is a new terminal
+      # with shortcuted sourcing
+      set prev_command_usage "$blue◓ "
+    else
+      set prev_command_usage "$blue◯ "
+    end
 
     set -l arrow "▲ "
     if test "$USER" = 'root'
@@ -96,3 +107,4 @@ function fish_prompt
     echo -n -s $prev_command_usage $arrow $cwd $repo_info $normal ' '
     # echo -n -s ⭓
 end
+
