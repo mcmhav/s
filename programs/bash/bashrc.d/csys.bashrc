@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-export PI_OS="pi"
+export PI_OS="lin-pi"
 export LIN_OS="lin"
 export MAC_OS="mac"
 export WIN_OS="win"
-export GITPOD_OS="gitpod"
+export GITPOD_OS="lin-gitpod"
 
 if [ "$(uname -s)" == "Linux" ]; then
   if [[ "$(uname -m)" =~ armv[0-9]l ]] && [[ "$(uname -n)" =~ pi* ]]; then
