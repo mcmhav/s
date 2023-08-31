@@ -65,7 +65,7 @@ function fish_prompt
       # If csys_fish_up is set and not cmd duration,
       # we can expect this is a new terminal
       # with shortcuted sourcing
-      set prev_command_usage "$blue◓ "
+      set prev_command_usage "$yellow◓ "
     else
       set prev_command_usage "$blue◯ "
     end
