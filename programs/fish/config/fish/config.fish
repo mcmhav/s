@@ -7,8 +7,10 @@ if set -q -g csys_fish_up
   # echo "we should be up"
   bass source $CSYS_HOME/programs/bash/bashrc.d/aliases.bashrc
   bass source $CSYS_HOME/programs/bash/bashrc.d/git.bashrc
+  set --global --export csys_fish_short_circut_setup 1
   exit
 end
+set --global --export csys_fish_short_circut_setup 0
 
 set SCRIPT_LOCATION (readlink (dirname (status --current-filename)))
 set --export CSYS_HOME (realpath "$SCRIPT_LOCATION/../../../..")
