@@ -61,7 +61,8 @@ function fish_prompt
     if set -q CMD_DURATION_STR[1]
       set prev_command_usage "$blue$CMD_DURATION_STR "
     else if not set -q CMD_DURATION_STR[1]
-      and set -q -g csys_fish_short_circut_setup
+      and test $csys_fish_short_circut_setup -eq 1
+      # and set -q -g csys_fish_short_circut_setup
       # If csys_fish_up is set and not cmd duration,
       # we can expect this is a new terminal
       # with shortcuted sourcing
