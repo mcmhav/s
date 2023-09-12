@@ -20,8 +20,8 @@
       "args": ["-i", "2"]
     }
   },
-  "python.formatting.provider": "yapf",
-  "python.formatting.yapfPath": "~/.pyenv/shims/yapf",
+  "python.formatting.provider": "black",
+  "python.formatting.yapfPath": "~/.pyenv/shims/black",
   "python.linting.mypyEnabled": true,
   "go.goplsOptions": {
     "completeUnimported": true
