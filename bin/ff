@@ -4,7 +4,9 @@ _find_files() {
   search_location="."
 
   # search_result=$(cd "$search_location" && ag --unrestricted --hidden --ignore ".git" "." -f -g "" | fzf -e)
-  search_result=$(cd "$search_location" && rg --files --no-heading --hidden "." --glob "!.git/" | fzf -e)
+  # search_result=$(cd "$search_location" && rg --files --no-heading --hidden "." --glob "!.git/" | fzf -e)
+  search_result=$(cd "$search_location" && __file_search | fzf -e)
+  # search_result=$(cd "$search_location" && fzf -e)
 
   selected_file="$search_location/$search_result"
   if [ -n "$selected_file" ] && [ "$selected_file" != "./" ]; then

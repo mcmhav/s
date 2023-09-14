@@ -62,7 +62,7 @@ export LC_ALL="en_US.UTF-8"
 export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 # fzf
-export FZF_DEFAULT_COMMAND='ag --hidden --unrestricted --ignore .git -f -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --no-heading --hidden "." --glob "!.git/"'
 export FZF_DEFAULT_OPTS="--no-mouse"
 
 if command -v bat 1>/dev/null 2>&1; then

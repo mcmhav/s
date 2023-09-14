@@ -23,7 +23,7 @@ nnoremap <silent> ,F :FZF ~<cr>
 inoremap <C-p>,F :FZF ~<cr>
 
 " Search all
-nnoremap <silent> ,s :Ag<cr>
+nnoremap <silent> ,s :Rg<cr>
 
 " Coc
 nmap <silent> gi <Plug>(coc-implementation)
