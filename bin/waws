@@ -36,6 +36,9 @@ sts)
 whoami)
   "$SUB_WAWS_PATH/_sts" "whoami"
   ;;
+secret)
+  "$SUB_WAWS_PATH/_secret" "$@"
+  ;;
 *)
   loggit "Not supported"
   ;;
