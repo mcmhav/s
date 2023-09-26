@@ -23,6 +23,7 @@ export ANDROID_HOME="/usr/local/share/android-sdk"
 # path stuff
 PATHS=(
   # "$HOME/.pyenv/shims"
+  "$CSYS_BIN"
   "/git/tools/bin"
   "$PATH"
   "/usr/local/bin"
@@ -30,7 +31,6 @@ PATHS=(
   "$GOROOT/bin"
   "/usr/local/opt/python/libexec/bin"
   "$PYENV_ROOT/bin"
-  "$CSYS_BIN"
   "$HOME/.poetry/bin"
   "$HOME/.nodenv/bin"
   "$HOME/.nodenv/shims"
