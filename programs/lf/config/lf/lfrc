@@ -1,3 +1,4 @@
+set hidden
 set cursorpreviewfmt "\033[7m"
 set preview
 set previewer "~/.config/lf/preview.sh"
