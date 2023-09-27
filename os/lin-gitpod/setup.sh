@@ -21,6 +21,8 @@ _setup_vscode_config() {
   # code --install-extension "travis.simple-dark"
   code --install-extension "ms-pyright.pyright"
   # code --install-extension "vscodevim.vim"
+  # do something with state like so:
+  # https://stackoverflow.com/questions/58900482/where-does-vs-code-store-its-memory-of-what-notifications-ive-previously-reques
 }
 
 _setup() {
