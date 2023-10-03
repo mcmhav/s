@@ -6,6 +6,9 @@ AWS_SSO_CACHE="$AWS_HOME/sso/cache"
 BOOTSTRAP_FILE="$CSYS_BASHRC_D/bootstrap"
 AWS_SSO_START_URL=""
 AWS_SSO_ROLE_NAME=""
+
+export AWS_REGION="eu-north-1"
+
 _bootstrap() {
   if [ -f "$BOOTSTRAP_FILE" ]; then
     AWS_SSO_START_URL=$(grep sso_start_url <"$BOOTSTRAP_FILE" | awk '{print $3}')
@@ -25,17 +28,18 @@ _bootstrap() {
   fi
 }
 _bootstrap
-export AWS_REGION="eu-north-1"
 
 AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
 
-IS_SESSION_OLD=$(jq '.expiresAt < (now | strftime("%Y-%m-%d"))' <"$AWS_SSO_SESSION")
-if [ "$IS_SESSION_OLD" == "true" ]; then
-  loggit "Old sso-session, will try to reauth"
-  AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login
-  AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
-fi
-# export AWS_PROFILE=$(grep "\[" <"$AWS_CONFIG_FILE" | sed 's|\[||g' | sed 's|profile ||g' | sed 's|\]||g' | head -n 1)
+_update_sso_session() {
+  IS_SESSION_OLD=$(jq '.expiresAt < (now | strftime("%Y-%m-%d"))' <"$AWS_SSO_SESSION")
+  if [ "$IS_SESSION_OLD" == "true" ]; then
+    loggit "Old sso-session, will try to reauth"
+    AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login
+    AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
+  fi
+}
+_update_sso_session
 
 AWS_ACCESS_TOKEN=$(jq -r '.accessToken' <"$AWS_SSO_SESSION")
 ACCOUNTS=$(aws sso list-accounts --access-token "$AWS_ACCESS_TOKEN")
