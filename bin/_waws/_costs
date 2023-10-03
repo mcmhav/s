@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+AWS_COST_METRIC="UNBLENDED_COST"
+# AWS_COST_METRICS="UNBLENDED_COST AMORTIZED_COST BLENDED_COST"
+GRANULARITY="MONTHLY"
+
+date() {
+  gdate "$@"
+}
+
+CURRENT_DATE="$(date +%Y-%m-%d)"
+
+FIRST_DATE_OF_MONTH="$(date +%Y-%m-01)"
+LAST_DATE_OF_MONTH=""$(date -d "$(date +%Y%m01) +1 month -1 day" +%Y-%m-%d)
+
+FIRST_DATE_OF_LAST_MONTH=$(date -d "$(date +%Y%m01) -1 month" +%Y-%m-%d)
+LAST_DATE_OF_LAST_MONTH=$(date -d "$(date +%Y%m01) -1 day" +%Y-%m-%d)
+
+aws ce get-cost-forecast \
+  --time-period "Start=$CURRENT_DATE,End=$LAST_DATE_OF_MONTH" \
+  --metric "$AWS_COST_METRIC" \
+  --granularity "$GRANULARITY" |
+  jq '.Total.Amount'
+
+aws ce get-cost-and-usage \
+  --time-period "Start=$FIRST_DATE_OF_MONTH,End=$CURRENT_DATE" \
+  --metric "$AWS_COST_METRIC" \
+  --granularity "$GRANULARITY" |
+  jq '.ResultsByTime[0].Total.UnblendedCost.Amount'
+
+aws ce get-cost-and-usage \
+  --time-period "Start=2023-09-01,End=2023-09-30" \
+  --time-period "Start=$FIRST_DATE_OF_LAST_MONTH,End=$LAST_DATE_OF_LAST_MONTH" \
+  --metric "$AWS_COST_METRIC" \
+  --granularity "$GRANULARITY" |
+  jq '.ResultsByTime[0].Total.UnblendedCost.Amount'
