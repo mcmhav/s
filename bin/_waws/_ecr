@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+_ecr_login() {
+  if ! aws ecr get-login-password --region "$AWS_REGION" | docker login --username AWS --password-stdin "$REPO_ECR" >/dev/null 2>&1; then
+    echo "not able to login, exiting"
+    exit 1
+  fi
+}

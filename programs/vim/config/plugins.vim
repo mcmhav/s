@@ -39,6 +39,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'airblade/vim-gitgutter'
   " impact, config-issues?
     Plug 'sheerun/vim-polyglot' " high startup-inpact, claims to be low
+    Plug 'github/copilot.vim', {'branch': 'release'}
   endif
 
   " Untested - check if we can remove this, in favour of doing all with coc
