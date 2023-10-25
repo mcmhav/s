@@ -25,7 +25,7 @@ _setup_vscode_config() {
   # https://stackoverflow.com/questions/58900482/where-does-vs-code-store-its-memory-of-what-notifications-ive-previously-reques
   COPILOT_CONFIG="$HOME/.config/github-copilot"
   mkdir -p "$COPILOT_CONFIG"
-  echo "$COPILOT_HOST" | base64 -d >"$COPILOT_CONFIG/host.json"
+  echo "$COPILOT_HOST" | base64 -d >"$COPILOT_CONFIG/hosts.json"
 }
 
 _setup() {
