@@ -26,6 +26,8 @@ _setup_vscode_config() {
   COPILOT_CONFIG="$HOME/.config/github-copilot"
   mkdir -p "$COPILOT_CONFIG"
   echo "$COPILOT_HOST" | base64 -d >"$COPILOT_CONFIG/hosts.json"
+  # Store an updated key
+  # cat ~/.config/github-copilot/hosts.json | base64 -w 0 | xargs -I {} gp env COPILOT_HOST={}
 }
 
 _setup() {

@@ -78,7 +78,7 @@ _install() {
 
   # keyboard input speeds
   defaults write -g KeyRepeat -int 3 # normal minimum is 2
-  defaults write -g InitialKeyRepeat -int 20
+  defaults write -g InitialKeyRepeat -int 25
 
   # Dock
   # defaults delete com.apple.dock autohide-delay; killall Dock
