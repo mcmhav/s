@@ -39,6 +39,13 @@ function error_log() {
 function promt_commands() {
   local curr_exit="$?"
 
+
+  if [ "$CSYS_OS" == "$GITPOD_OS" ]; then
+    if [ -f "$CSYS_BASHRC_D/.setup_done" ] && command -v fish >/dev/null 2>&1; then
+      fish
+    fi
+  fi
+
   timer_stop
   error_log $curr_exit
 }

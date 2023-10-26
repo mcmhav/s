@@ -30,6 +30,7 @@ coreutils
 gsed
 amethyst
 google-cloud-sdk
+awscli
 menumeters
 dozer
 --cask usr-sse2-rdm

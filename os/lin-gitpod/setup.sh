@@ -23,16 +23,17 @@ _setup_vscode_config() {
   # code --install-extension "vscodevim.vim"
   # do something with state like so:
   # https://stackoverflow.com/questions/58900482/where-does-vs-code-store-its-memory-of-what-notifications-ive-previously-reques
-  COPILOT_CONFIG="$HOME/.config/github-copilot"
-  mkdir -p "$COPILOT_CONFIG"
-  echo "$COPILOT_HOST" | base64 -d >"$COPILOT_CONFIG/hosts.json"
-  # Store an updated key
-  # cat ~/.config/github-copilot/hosts.json | base64 -w 0 | xargs -I {} gp env COPILOT_HOST={}
 }
 
 _setup() {
   export CSYS_LOG_LEVEL=5
   export CSYS_SHALLOW_SETUP="true"
+
+  COPILOT_CONFIG="$HOME/.config/github-copilot"
+  mkdir -p "$COPILOT_CONFIG"
+  echo "$COPILOT_HOST" | base64 -d >"$COPILOT_CONFIG/hosts.json"
+  # Store an updated key
+  # cat ~/.config/github-copilot/hosts.json | base64 -w 0 | xargs -I {} gp env COPILOT_HOST={}
 
   _setup_vscode_config &
 

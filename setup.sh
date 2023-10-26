@@ -54,8 +54,12 @@ _setup() {
   # if they can be installed without input, and decide based on that
   if [ -n "$CSYS_NO_SUBPROCESS_INSTALL" ] || ! command -v brew >/dev/null; then
     "$CSYS_HOME/os/$CSYS_OS/setup.sh"
+    touch "$CSYS_BASHRC_D/.setup_done"
   else
-    "$CSYS_HOME/os/$CSYS_OS/setup.sh" &
+    (
+      "$CSYS_HOME/os/$CSYS_OS/setup.sh"
+      touch "$CSYS_BASHRC_D/.setup_done"
+    ) &
   fi
 }
 

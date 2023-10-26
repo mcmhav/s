@@ -1,8 +1,7 @@
 fish
+nvim
 git
 ripgrep
 fzf
 bat
 tree
-nvim
-awscli
