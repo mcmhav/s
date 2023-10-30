@@ -32,8 +32,8 @@ _bootstrap
 AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
 
 _update_sso_session() {
-  IS_SESSION_OLD=$(jq '.expiresAt < (now | strftime("%Y-%m-%d"))' <"$AWS_SSO_SESSION")
-  if [ "$IS_SESSION_OLD" == "true" ]; then
+  SESSION_NOT_EXPIRED=$(jq '.expiresAt > (now | strftime("%FT%T"))' <"$AWS_SSO_SESSION")
+  if [ "$SESSION_NOT_EXPIRED" != "true" ]; then
     loggit "Old sso-session, will try to reauth"
     AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login
     AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
@@ -42,6 +42,7 @@ _update_sso_session() {
 _update_sso_session
 
 AWS_ACCESS_TOKEN=$(jq -r '.accessToken' <"$AWS_SSO_SESSION")
+unset AWS_PROFILE
 ACCOUNTS=$(aws sso list-accounts --access-token "$AWS_ACCESS_TOKEN")
 ACCOUNTS_LENGTH=$(jq -r '.accountList | length - 1' <<<"$ACCOUNTS")
 if [ -z "$ACCOUNTS_LENGTH" ]; then
