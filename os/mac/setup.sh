@@ -45,6 +45,16 @@ _add_app_to_dock() {
   fi
 }
 
+_set_default_shell() {
+  # Set default shell to shell if fish is installed
+  if command -v fish >/dev/null; then
+    if ! grep -q fish </etc/shells; then
+      echo "$(which fish)" | sudo tee -a /etc/shells
+    fi
+    chsh -s "$(which fish)"
+  fi
+}
+
 _install() {
   loggit "Installing mac stuff"
   while ! xcrun --version 1>/dev/null 2>&1; do
@@ -57,7 +67,6 @@ _install() {
   csys install brew
   loggit "Installing csys-reqs"
   csys reqs-install "$SCRIPT_PATH/reqs"
-  exit
 
   loggit "Setting mac preferences"
   # mac-os setup
@@ -133,17 +142,11 @@ _install() {
   # Change computer name (for bluethooth/localhost/network):
   # scutil --set ComputerName c
 
-  # Set default shell to shell if fish is installed
-  if ! command -v fish >/dev/null; then
-    if ! grep -q fish </etc/shells; then
-      echo "$(which fish)" | sudo tee -a /etc/shells
-    fi
-    chsh -s "$(which fish)"
-  fi
-
+  # _set_default_shell # requires sudo
   _unquarantine
   _launchctl_setup
 
+  exit
   # setup at
   sudo launchctl bootstrap system /System/Library/LaunchDaemons/com.apple.atrun.plist
   sudo launchctl enable system/com.apple.atrun
