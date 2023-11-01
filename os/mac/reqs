@@ -29,7 +29,7 @@ poetry
 coreutils
 gsed
 sudo|amethyst
-google-cloud-sdk
+--ignore-dependencies google-cloud-sdk
 awscli
 sudo|menumeters
 sudo|dozer

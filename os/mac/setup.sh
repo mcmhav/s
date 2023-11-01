@@ -124,8 +124,7 @@ _install() {
   defaults write -g com.apple.swipescrolldirection -bool FALSE
 
   # Theme:
-  # TODO: this is toggeling darkmode
-  osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to not dark mode'
+  osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
 
   # Loginitems:
   osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Dozer.app", hidden:true}'
