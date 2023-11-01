@@ -1,6 +1,6 @@
 base
-enpass
-arc
+sudo|enpass # requires sudo
+sudo|arc
 bash
 bash-completion@2
 go
@@ -19,7 +19,7 @@ openssh
 gost
 xclip
 vim
-rust
+# rust
 bottom
 rbenv
 tfenv
@@ -28,15 +28,15 @@ pstree
 poetry
 coreutils
 gsed
-amethyst
+sudo|amethyst
 google-cloud-sdk
 awscli
-menumeters
-dozer
---cask usr-sse2-rdm
-alacritty
+sudo|menumeters
+sudo|dozer
+sudo|--cask usr-sse2-rdm
+sudo|alacritty
 zellij
-visual-studio-code
+sudo|visual-studio-code
 pre-commit
 podman
 surrealdb/tap/surreal

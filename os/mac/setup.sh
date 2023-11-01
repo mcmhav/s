@@ -57,6 +57,7 @@ _install() {
   csys install brew
   loggit "Installing csys-reqs"
   csys reqs-install "$SCRIPT_PATH/reqs"
+  exit
 
   loggit "Setting mac preferences"
   # mac-os setup

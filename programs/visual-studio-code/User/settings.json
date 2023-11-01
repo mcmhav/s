@@ -195,5 +195,5 @@
   "yaml.format.singleQuote": true,
   "zenMode.centerLayout": false,
   "workbench.colorTheme": "csys",
-  "gitpod.host": "https://gitpod.test-dataplattform.sparebank1.no"
+  "gitpod.host": "https://gitpod.io"
 }
