@@ -8,15 +8,15 @@ loggit "Reqs to setup: $REQS_COUNT"
 
 # TODO: issue with while-loop and brew install?
 # while read -ra l; do
-# for l in $(cat $REQS_FILE_PATH); do
-cat "$REQS_FILE_PATH" | while read -r l; do
+export IFS=$'\n'
+for l in $(cat $REQS_FILE_PATH); do
+  # cat "$REQS_FILE_PATH" | while read -r l; do
   loggit dbug "Installing reqs: $l"
   if [ "${l%"${l#?}"}" == "#" ]; then
     loggit dbug "Skipping: ${l[*]}"
     continue
   elif [[ "$l" == sudo\|* ]]; then
     loggit dbug "Needs sudo: $l"
-    echo "echo ${l/sudo|/}"
     if have_sudo_access; then
       sudo csys install "${l[@]/sudo|/}"
     fi

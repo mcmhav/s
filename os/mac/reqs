@@ -1,5 +1,5 @@
 base
-sudo|enpass # requires sudo
+sudo|enpass
 sudo|arc
 bash
 bash-completion@2
