@@ -6,7 +6,8 @@ window:
     y: 5
 
 shell:
-  program: /usr/local/bin/fish
+  # program: /usr/local/bin/fish
+  program: fish
   args:
     - --login
     - -C command -v zellij-work && zellij-work || zellij

@@ -8,14 +8,14 @@ fi
 # go sgit
 export GOPATH="$HOME/.go"
 
-case "$CSYS_OS" in
-"$PI_OS") export GOROOT=/usr/lib/go ;;
-"$LIN_OS") export GOROOT="$HOME/go" ;;
-"$GITPOD_OS") export GOROOT="$HOME/go" ;;
-"$MAC_OS") export GOROOT=/usr/local/opt/go/libexec ;;
-"$WIN_OS") export GOROOT=/usr/local/opt/go/libexec ;;
-*) export GOROOT=/usr/local/opt/go/libexec ;;
-esac
+# case "$CSYS_OS" in
+# "$PI_OS") export GOROOT=/usr/lib/go ;;
+# "$LIN_OS") export GOROOT="$HOME/go" ;;
+# "$GITPOD_OS") export GOROOT="$HOME/go" ;;
+# "$MAC_OS") export GOROOT=/usr/local/opt/go/libexec ;;
+# "$WIN_OS") export GOROOT=/usr/local/opt/go/libexec ;;
+# *) export GOROOT=/usr/local/opt/go/libexec ;;
+# esac
 
 # android
 export ANDROID_HOME="/usr/local/share/android-sdk"
@@ -28,7 +28,7 @@ PATHS=(
   "$PATH"
   "/usr/local/bin"
   "$GOPATH/bin"
-  "$GOROOT/bin"
+  # "$GOROOT/bin"
   "/usr/local/opt/python/libexec/bin"
   "$PYENV_ROOT/bin"
   "$HOME/.poetry/bin"

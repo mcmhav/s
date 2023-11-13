@@ -55,3 +55,8 @@ set foldlevelstart=99
 " Mouse
 set mouse=
 
+" copilot
+let g:copilot_filetypes = {
+  \ 'markdown': v:true,
+  \ }
+
