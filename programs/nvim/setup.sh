@@ -3,9 +3,20 @@
 PACKAGE_NAME="nvim"
 
 _setup() {
-  if ! command -v "$PACKAGE_NAME" >/dev/null; then
-    brew install "$PACKAGE_NAME"
-  fi
+  case $CSYS_OS in
+    "$GITPOD_OS")
+      sudo apt-get install -y neovim
+      ;;
+    "$MAC_OS")
+      if ! command -v "$PACKAGE_NAME" >/dev/null; then
+        brew install "$PACKAGE_NAME"
+      fi
+      ;;
+    *)
+      echo "Unsupported OS: $CSYS_OS"
+      exit 1
+      ;;
+  esac
 
   ln -sf "$SCRIPT_PATH/config/nvim" "$HOME/.config"
 }
