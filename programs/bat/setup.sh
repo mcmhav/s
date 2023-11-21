@@ -7,6 +7,8 @@ _setup() {
   case $CSYS_OS in
     "$GITPOD_OS")
       sudo apt-get install -y "$PACKAGE_NAME"
+      mkdir -p ~/.local/bin
+      ln -s /usr/bin/batcat ~/.local/bin/bat
       ;;
     "$MAC_OS")
       if ! command -v "$PACKAGE_NAME" >/dev/null; then
