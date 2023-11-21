@@ -11,10 +11,10 @@ _setup() {
 
   BREW_TAPS=$(brew tap)
   if ! echo "$BREW_TAPS" | grep -q 'homebrew/cask-fonts'; then
-    brew tap homebrew/cask-fonts
+    brew tap homebrew/cask-fonts &
   fi
   if ! echo "$BREW_TAPS" | grep -q 'homebrew/services'; then
-    brew tap homebrew/services
+    brew tap homebrew/services &
   fi
 
   if [ "$CSYS_SHALLOW_SETUP" != "true" ]; then

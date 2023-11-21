@@ -12,7 +12,7 @@ _setup_vscode_config() {
       loggit warn "Giving up waiting for settings.json-file"
       break
     fi
-    sleep 10
+    sleep 20
     COUNT=$((COUNT + 1))
   done
   mkdir -p "$VS_CODE_SETTINGS_LOCATION"
