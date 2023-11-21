@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PACKAGE_NAME="nodenv"
-DESIRED_NODE_VERSION="16.14.2"
+DESIRED_NODE_VERSION="21.1.0"
 
 _with_nodenv() {
   if ! command -v "$PACKAGE_NAME" >/dev/null; then

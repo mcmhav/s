@@ -96,8 +96,14 @@ wait
 
 for file in "$AWS_CONFIG_FILE".*.tmp; do
   cat "$file" >>"$AWS_CONFIG_FILE.tmp"
+  rm "$file"
 done
 
+if [ ! -f "$AWS_CONFIG_FILE" ] && [ ! -f "$AWS_CONFIG_FILE.initial" ]; then
+  # if we have no config we sould add an inital empty file
+  # to avoid double profiles adding
+  touch "$AWS_CONFIG_FILE.initial"
+fi
 if [ -f "$AWS_CONFIG_FILE" ] && [ ! -f "$AWS_CONFIG_FILE.initial" ]; then
   cp "$AWS_CONFIG_FILE" "$AWS_CONFIG_FILE.initial"
 fi
