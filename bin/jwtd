@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
 TOKEN="$1"
-
+if [ -p /dev/stdin ]; then
+  TOKEN="$(cat -)"
+fi
 echo "$TOKEN" | jq -R 'split(".") | .[1] | @base64d | fromjson'

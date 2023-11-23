@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 
-rg --files --no-heading --hidden "." --glob "!.git/"
+rg \
+  --files \
+  --no-heading \
+  --hidden "." \
+  --glob "!.git/" \
+  --glob "!**/*.pyc" \
+  --no-ignore
