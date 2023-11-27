@@ -6,9 +6,9 @@ GRANULARITY="MONTHLY"
 
 date() {
   case $CSYS_OS in
-    $MAC_OS) gdate "$@" ;;
-    $LIN_OS) date "$@" ;;
-    *) date "$@" ;;
+    "$MAC_OS") gdate "$@" ;;
+    "$LIN_OS") /usr/bin/date "$@" ;;
+    *) /usr/bin/date "$@" ;;
   esac
 }
 
