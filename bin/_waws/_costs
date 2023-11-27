@@ -18,7 +18,7 @@ FIRST_DATE_OF_MONTH="$(date +%Y-%m-01)"
 LAST_DATE_OF_MONTH=""$(date -d "$(date +%Y%m01) +1 month -1 day" +%Y-%m-%d)
 
 FIRST_DATE_OF_LAST_MONTH=$(date -d "$(date +%Y%m01) -1 month" +%Y-%m-%d)
-LAST_DATE_OF_LAST_MONTH=$(date -d "$(date +%Y%m01) -1 day" +%Y-%m-%d)
+LAST_DATE_OF_LAST_MONTH=$(date -d "$(date +%Y%m01)" +%Y-%m-%d)
 
 aws ce get-cost-forecast \
   --time-period "Start=$CURRENT_DATE,End=$LAST_DATE_OF_MONTH" \
