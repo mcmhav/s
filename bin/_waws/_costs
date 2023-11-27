@@ -5,7 +5,10 @@ AWS_COST_METRIC="UNBLENDED_COST"
 GRANULARITY="MONTHLY"
 
 date() {
-  gdate "$@"
+  case $CSYS_OS in
+    $MAC_OS) gdate "$@" ;;
+    $LIN_OS) date "$@" ;;
+  esac
 }
 
 CURRENT_DATE="$(date +%Y-%m-%d)"
