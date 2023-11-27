@@ -8,6 +8,7 @@ date() {
   case $CSYS_OS in
     $MAC_OS) gdate "$@" ;;
     $LIN_OS) date "$@" ;;
+    *) date "$@" ;;
   esac
 }
 
