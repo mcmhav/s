@@ -40,6 +40,10 @@ secret)
   shift
   "$SUB_WAWS_PATH/_secret" "$@"
   ;;
+costs)
+  shift
+  "$SUB_WAWS_PATH/_costs" "$@"
+  ;;
 *)
   loggit "Not supported"
   ;;
