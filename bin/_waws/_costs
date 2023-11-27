@@ -33,7 +33,6 @@ aws ce get-cost-and-usage \
   jq '.ResultsByTime[0].Total.UnblendedCost.Amount'
 
 aws ce get-cost-and-usage \
-  --time-period "Start=2023-09-01,End=2023-09-30" \
   --time-period "Start=$FIRST_DATE_OF_LAST_MONTH,End=$LAST_DATE_OF_LAST_MONTH" \
   --metric "$AWS_COST_METRIC" \
   --granularity "$GRANULARITY" |
