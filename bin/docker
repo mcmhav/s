@@ -43,9 +43,6 @@ where:
 $COMMAND_OPTIONS"
 
 case "$ACTION" in
-build)
-  ACTION="$ACTION --tls-verify=false"
-  ;;
 restart)
   _rm_machine
   podman machine init
