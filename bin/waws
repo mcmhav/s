@@ -44,6 +44,10 @@ costs)
   shift
   "$SUB_WAWS_PATH/_costs" "$@"
   ;;
+ecr)
+  shift
+  "$SUB_WAWS_PATH/_ecr" "$@"
+  ;;
 *)
   loggit "Not supported"
   ;;
