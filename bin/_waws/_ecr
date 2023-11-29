@@ -8,3 +8,5 @@ _ecr_login() {
     exit 1
   fi
 }
+
+_ecr_login "$@"
