@@ -25,6 +25,11 @@ _launchctl_setup() {
 _add_app_to_dock() {
   app="${1}"
 
+  if [ ! -d "$app" ]; then
+    loggit warn "App $app not found."
+    return
+  fi
+
   if open -Ra "${app}"; then
     echo "$app added to the Dock."
 
