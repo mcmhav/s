@@ -17,5 +17,5 @@ kubectl get "$RESOURCE" -A --no-headers | fzf \
   --bind=ctrl-k:preview-up \
   --bind=ctrl-d:preview-half-page-down \
   --bind=ctrl-u:preview-half-page-up \
-  --bind='enter:become(kubectl edit $RESOURCE {+2} -n {+1})' \
+  --bind="enter:execute:kubectl edit $RESOURCE {+2} -n {+1}"
 
