@@ -15,7 +15,14 @@ $COMMAND_OPTIONS"
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 SUB_GPC_PATH="$SCRIPT_PATH/_gpc"
+if [ ! -f "$SUB_GPC_PATH/_env" ]; then
+  loggit errr "Could not find _gpc/_env file"
+  exit 1
+fi
 source "$SUB_GPC_PATH/_env"
+if [ ! -d "$GITPOD_LOCAL_COMPANION_LOG_PATH" ]; then
+  mkdir -p "$GITPOD_LOCAL_COMPANION_LOG_PATH"
+fi
 source inject_secrets || exit
 
 case $1 in
