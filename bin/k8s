@@ -36,6 +36,10 @@ edit)
   shift
   "$SUB_K8S_PATH/_edit" "$@"
   ;;
+exec)
+  shift
+  "$SUB_K8S_PATH/_exec" "$@"
+  ;;
 *)
   loggit "Not supported"
   ;;
