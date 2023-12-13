@@ -6,7 +6,7 @@ VERSION="v0.39.2"
 
 _install() {
   case $CSYS_OS in
-    "$LIN_OS")
+    "$LIN_OS"*)
       curl -fsSL https://github.com/zellij-org/zellij/releases/download/$VERSION/zellij-x86_64-unknown-linux-musl.tar.gz | tar -xz -C /tmp
       sudo mv /tmp/zellij /usr/local/bin
       ;;

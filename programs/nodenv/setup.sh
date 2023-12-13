@@ -15,7 +15,7 @@ _with_nodenv() {
 
 _setup() {
   case "$CSYS_OS" in
-  "$LIN_OS") _with_nodenv ;;
+  "$LIN_OS"*) _with_nodenv ;;
   "$MAC_OS") _with_nodenv ;;
   "*")
     loggit "Node install not implemented for OS: $CSYS_OS"
