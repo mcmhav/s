@@ -8,11 +8,11 @@ _setup_vscode_config() {
   COUNT=0
   while [ ! -f "$VS_CODE_SETTINGS_LOCATION/settings.json" ]; do
     loggit warn "Could not find settings json, waiting"
-    if [ "$COUNT" -gt 10 ]; then
+    if [ "$COUNT" -gt 3 ]; then
       loggit warn "Giving up waiting for settings.json-file"
       break
     fi
-    sleep 20
+    sleep 30
     COUNT=$((COUNT + 1))
   done
   mkdir -p "$VS_CODE_SETTINGS_LOCATION"
