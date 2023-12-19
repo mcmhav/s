@@ -49,6 +49,18 @@ ecr)
   "$SUB_WAWS_PATH/_ecr" "$@"
   ;;
 *)
-  loggit "Not supported"
+  HELP_TEXT="usage: $(basename "$0") -h --
+    decode-message
+    select-profile
+    sso-profiles
+    eks
+    ec2
+    sts
+    whoami
+    secret
+    costs
+    ecr
+  "
+  loggit "$HELP_TEXT"
   ;;
 esac
