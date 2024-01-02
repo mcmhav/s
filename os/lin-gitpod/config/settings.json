@@ -39,9 +39,6 @@
   "explorer.confirmDragAndDrop": false,
   "git.autofetch": true,
   "aws.telemetry": false,
-  "workbench.colorCustomizations": {
-    "notifications.background": "#00000000"
-  },
   "editor.wordWrap": "on",
   "files.trimTrailingWhitespace": true,
   "terminal.integrated.shellIntegration.decorationsEnabled": "never",
@@ -98,13 +95,14 @@
   "merge-conflict.codeLens.enabled": false,
   "autoDocstring.docstringFormat": "sphinx-notypes",
   "autoDocstring.startOnNewLine": true,
-  "editor.tabSize": 2,
+  "editor.tabSize": 4,
   "githubPullRequests.pullBranch": "never",
   "editor.minimap.enabled": false,
   "terminal.integrated.defaultLocation": "editor",
   "workbench.editor.showTabs": false,
   "workbench.colorCustomizations": {
     "editorCursor.foreground": "#f81ce6",
-    "terminalCursor.foreground": "#f81ce6"
+    "terminalCursor.foreground": "#f81ce6",
+    "notifications.background": "#00000000"
   }
 }
