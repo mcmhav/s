@@ -15,9 +15,9 @@ let g:netrw_banner = 0
 set autoread
 
 " Indenting
-set softtabstop=2
-set shiftwidth=2
-set tabstop=2
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
 set expandtab
 set smarttab
 set autoindent
