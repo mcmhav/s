@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+wget -O gitpod https://gitpod.io/static/bin/gitpod-cli-darwin-arm64
+chmod u+x gitpod
+
