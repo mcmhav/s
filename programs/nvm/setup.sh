@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PACKAGE_NAME="nvm"
-DESIRED_NODE_VERSION="20.10.0"
+DESIRED_NODE_VERSION="18.16.0"
 NVM_VERSION="0.39.3"
 
 _with_nvm() {
