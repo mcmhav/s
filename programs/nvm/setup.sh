@@ -11,8 +11,8 @@ _with_nvm() {
     mkdir -p "$NVM_DIR"
     cd "$NVM_DIR" || exit
     curl -fsSL "https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh" | PROFILE=/dev/null bash
-    source "$NVM_DIR/nvm.sh"
   fi
+  source "$NVM_DIR/nvm.sh"
   if ! nvm ls --no-alias | grep -q "$DESIRED_NODE_VERSION"; then
     nvm install --lts "$DESIRED_NODE_VERSION"
     nvm alias default "$DESIRED_NODE_VERSION"
