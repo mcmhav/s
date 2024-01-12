@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+COMMAND_OPTIONS=$(printf "
+  install \t install local companion
+  ssh \t ssh into workspace
+  start \t start workspace
+  start-companion \t start companion
+  -h, --help \t show this help text
+" | column -ts $'\t')
+
+HELP_TEXT="usage: $(basename "$0") [-h] --
+
+where:
+$COMMAND_OPTIONS"
+
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+SUB_GPC_PATH="$SCRIPT_PATH/_gpc"
+if [ ! -f "$SUB_GPC_PATH/_env" ]; then
+  loggit errr "Could not find _gpc/_env file"
+  exit 1
+fi
+source "$SUB_GPC_PATH/_env"
+if [ ! -d "$GITPOD_LOCAL_COMPANION_LOG_PATH" ]; then
+  mkdir -p "$GITPOD_LOCAL_COMPANION_LOG_PATH"
+fi
+source inject_secrets || exit
+
+case $1 in
+i | install)
+  shift
+  "$SUB_GPC_PATH/_install"
+  exit
+  ;;
+ssh)
+  shift
+  WORKSPACE_IDS="$("$SUB_GPC_PATH/_get_workspace_ids" running | tr ' ' '\n')"
+  WORKSPACE_IDS_COUNT="$(echo "$WORKSPACE_IDS" | wc -l)"
+
+  if [ "$WORKSPACE_IDS_COUNT" -eq 1 ]; then
+    WORKSPACE_ID="$WORKSPACE_IDS"
+  elif [ "$WORKSPACE_IDS_COUNT" -gt 1 ]; then
+    WORKSPACE_ID=$(echo "$WORKSPACE_IDS" | fzf)
+  else
+    loggit warn "No running workspaces"
+  fi
+  "$SUB_GPC_PATH/_ssh_into_workspace" "$WORKSPACE_ID"
+  exit
+  ;;
+start)
+  shift
+  "$SUB_GPC_PATH/_start" "$@"
+  exit
+  ;;
+start-companion)
+  shift
+  "$SUB_GPC_PATH/_start_companion" "$@"
+  exit
+  ;;
+-h | --help)
+  echo "$HELP_TEXT"
+  exit
+  ;;
+esac

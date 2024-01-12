@@ -2,6 +2,7 @@
 
 _ecr_login() {
   AWS_REGION="${AWS_REGION:-eu-north-1}"
+  AWS_ACCOUNT_ID="$(waws whoami | jq -r '.Account')"
   REPO_ECR="${REPO_ECR:-$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com}"
   if ! aws ecr get-login-password --region "$AWS_REGION" | docker login --username AWS --password-stdin "$REPO_ECR" >/dev/null 2>&1; then
     echo "not able to login, exiting"

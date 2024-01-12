@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-source "$SCRIPT_PATH/_env"
+source "$SCRIPT_PATH/../_env"
 
 _get_workspace_ids() {
   LATEST_LOG="$(find "$GITPOD_LOCAL_COMPANION_LOG_PATH" -name "*.log" -type file | sort -r | head -n 1)"

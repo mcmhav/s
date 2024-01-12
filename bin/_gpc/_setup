@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+source "$SCRIPT_PATH/_env"
+
+_setup() {
+    # ref: https://github.com/gitpod-io/gitpod/tree/main/components/local-app
+    loggit "Installing gitpod cli"
+    {
+        cd "$SCRIPT_PATH" || exit
+        wget -O "$GITPOD_BIN" https://gitpod.io/static/bin/gitpod-cli-darwin-arm64
+        chmod +x "./$GITPOD_BIN"
+    }
+}
+
+_setup
+

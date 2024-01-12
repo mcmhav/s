@@ -2,11 +2,16 @@
 
 PACKAGE_NAME="nvm"
 DESIRED_NODE_VERSION="20.10.0"
+NVM_VERSION="0.39.3"
 
 _with_nvm() {
-  if ! command -v "$PACKAGE_NAME" >/dev/null; then
-    brew install "$PACKAGE_NAME"
-    source "$(brew --prefix nvm)/nvm.sh"
+  NVM_DIR="$HOME/.nvm"
+  if [ ! -d "$NVM_DIR" ]; then
+    # brew install "$PACKAGE_NAME"
+    mkdir -p "$NVM_DIR"
+    cd "$NVM_DIR" || exit
+    curl -fsSL "https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh" | PROFILE=/dev/null bash
+    source "$NVM_DIR/nvm.sh"
   fi
   if ! nvm ls --no-alias | grep -q "$DESIRED_NODE_VERSION"; then
     nvm install --lts "$DESIRED_NODE_VERSION"
