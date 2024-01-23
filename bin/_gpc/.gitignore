@@ -3,4 +3,5 @@ gitpod
 gitpod-companion*
 logs/*
 .repo-list
+.repo-lists/*
 _env
