@@ -3,7 +3,7 @@
 PACKAGE_NAME="k9s"
 VERSION="v0.31.7"
 
-_intall() {
+_install() {
   case $CSYS_OS in
     "$LIN_OS"*)
       curl -fsSL https://github.com/derailed/k9s/releases/download/$VERSION/k9s_Freebsd_amd64.tar.gz | tar -xz -C /tmp
