@@ -19,5 +19,9 @@ case $1 in
         "$SUB_GPC_PATH"/_ssh "$@"
         exit
         ;;
+    *)
+        "$SUB_GPC_PATH"/gitpod "$@"
+        exit
+        ;;
 esac
 
