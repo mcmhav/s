@@ -9,4 +9,10 @@ GITHUB_REPOS=$("$SCRIPT_PATH/_query_repos" print | sort -u)
 
 SELECTED_REPO=$(echo "$GITPOD_WORKSPACES\n$GITHUB_REPOS" | sort -u | fzf)
 
-"$SCRIPT_PATH/gitpod" workspace create "https://github.com/$SELECTED_REPO" --ssh
+# "$SCRIPT_PATH/gitpod" workspace create "https://github.com/$SELECTED_REPO" --ssh
+TMP_WORKSPACE_START_LOG="/tmp/gitpod_logs"
+#script -q /dev/null "$SCRIPT_PATH/gitpod" workspace create "https://github.com/$SELECTED_REPO" | tee "$TMP_WORKSPACE_START_LOG"
+"$SCRIPT_PATH/gitpod" workspace create "https://github.com/$SELECTED_REPO" | tee "$TMP_WORKSPACE_START_LOG"
+WORKSPACE_ID=$(cat "$TMP_WORKSPACE_START_LOG" | grep "workspaceID=" | sed 's/^.*=//')
+
+"$SCRIPT_PATH/gitpod" workspace ssh "$WORKSPACE_ID"
