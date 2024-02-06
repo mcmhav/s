@@ -15,4 +15,6 @@ TMP_WORKSPACE_START_LOG="/tmp/gitpod_logs"
 "$SCRIPT_PATH/gitpod" workspace create "https://github.com/$SELECTED_REPO" | tee "$TMP_WORKSPACE_START_LOG"
 WORKSPACE_ID=$(cat "$TMP_WORKSPACE_START_LOG" | grep "workspaceID=" | sed 's/^.*=//')
 
-"$SCRIPT_PATH/gitpod" workspace ssh "$WORKSPACE_ID"
+# "$SCRIPT_PATH/gitpod" workspace ssh "$WORKSPACE_ID" -- -vvvvvvvvv
+# "$SCRIPT_PATH/gitpod" workspace ssh "$WORKSPACE_ID" -- -vvvvvvvvvv -t "sh -c 'if which fish >/dev/null ; then exec fish -li; else exec \$SHELL -li; fi'"
+"$SCRIPT_PATH/gitpod" workspace ssh "$WORKSPACE_ID" -- -t "sh -c 'if which fish >/dev/null ; then exec fish -li; else exec \$SHELL -li; fi'"
