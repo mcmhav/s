@@ -4,7 +4,7 @@ AWS_CONFIG_PATH="$HOME/.aws/config"
 
 _list_instances() {
   aws ec2 describe-instances \
-    --query 'Reservations[*].Instances[*].{name:Tags[?Key==`Name`]|[0].Value,InstanceId:InstanceId}' \
+      --query 'sort_by(Reservations[*].Instances[*].{name:Tags[?Key==`Name`]|[0].Value,InstanceId:InstanceId,state:State.Name,LaunchTime:LaunchTime}[] |, &LaunchTime)' \
     --output table
 }
 
