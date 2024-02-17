@@ -10,6 +10,14 @@ inject_bashrc() {
   BASHRC_LOCATION="$HOME/.csys.bashrc.d"
   mkdir -p "$BASHRC_LOCATION"
   ln -sf "$CSYS_BASH_HOME/main.bashrc" "$BASHRC_LOCATION"
+  {
+    echo "export CSYS_HOME=$CSYS_HOME"
+    echo "export CSYS_BASH_HOME=$CSYS_BASH_HOME"
+  } >"$BASHRC_LOCATION/csys_env"
+
+  if [ ! -f "$HOME/.bashrc" ]; then
+    touch "$HOME/.bashrc"
+  fi
   # Hacky as shit?
   BASH_RC_SOURCER="[ -f \"$BASHRC_LOCATION/main.bashrc\" ] && source \"$BASHRC_LOCATION/main.bashrc\" || echo \"csys not set up\""
   if ! grep -q "$BASH_RC_SOURCER" <"$HOME/.bashrc" >/dev/null; then

@@ -10,8 +10,20 @@ Options:
   -f, --force
 "
 
+OPTIND=1
+OPTIONS=h?vsfdbiLn
+LONGOPTS=hard,force
+! PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTS --name "$0" -- "$@")
+if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
+  # e.g. return value is 1
+  #  then getopt has complained about wrong arguments to stdout
+  exit 2
+fi
+# read getopt’s output this way to handle the quoting right:
+eval set -- "$PARSED"
+
 ln_mklink() {
-  source param_parser --params "f hard force" --incomming_params "$@"
+  source param_parser --params "sf s f hard force" --incomming_params "$@"
   IFS=' ' read -r -a LINK_PATHS <<<$PARAM_REST
 
   # link_to="${LINK_PATHS[0]}"
@@ -19,11 +31,6 @@ ln_mklink() {
   link_from_slash_replaced="${link_from//\//\\}"
 
   links_to=${LINK_PATHS[@]::${#LINK_PATHS[@]}-1}
-
-  mklink_flag="/J"
-  if [ ! -z "$PARAM_HARD" ]; then
-    mklink_flag="/h"
-  fi
 
   for link_to in ${links_to[@]}; do
     link_from_win_style="${link_from_slash_replaced/#\\c/C:}"
@@ -49,6 +56,11 @@ ln_mklink() {
 
     if [ ! -z "$PARAM_F" ]; then
       rm -rf "$link_from_win_style"
+    fi
+
+    mklink_flag="/J"
+    if [ ! -z "$PARAM_HARD" ] || [ -f "$link_to_win_style" ]; then
+      mklink_flag="/h"
     fi
 
     cmd.exe /c "mklink "$mklink_flag" "$link_from_win_style" "$link_to_win_style

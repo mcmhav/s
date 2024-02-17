@@ -1,22 +1,16 @@
 #!/usr/bin/env bash
 
-installStuff() {
-  # Todo: Find alternative, issues with git-clone
-  # - https://github.com/nvm-sh/nvm/issues/1643
-  # - https://github.com/coreybutler/nvm-windows
-  # - nodenv seems to be a good alternative, have not tested with windows
+_install() {
+  loggit "Installing win stuff"
 
-  # pyenv
-  if [ ! -d "$HOME/.pyenv" ]; then
-    git clone https://github.com/pyenv-win/pyenv-win.git "$HOME/.pyenv"
-  fi
+  csys reqs-install "$SCRIPT_PATH/reqs"
 }
 
-CONFIG_HOME=$(dirname "${BASH_SOURCE[0]}")
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 RETURN_TO=$(pwd)
 
-cd "$CONFIG_HOME" || exit
+cd "$SCRIPT_PATH" || exit
 
-installStuff
+_install
 
 cd "$RETURN_TO" || exit

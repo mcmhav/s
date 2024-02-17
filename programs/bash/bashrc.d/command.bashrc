@@ -55,7 +55,7 @@ PROMPT_COMMAND=promt_commands
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   IS_SSH_SESSION="1"
 else
-  case $(ps -o comm= -p $PPID) in
+  case $(ps -o comm= -p $PPID 2>/dev/null) in
   sshd | */sshd) IS_SSH_SESSION="1" ;;
   esac
 fi

@@ -28,19 +28,6 @@ while getopts "h-:" optchar; do
   esac
 done
 
-# Format parameters sent into script:
-# TODO: Use PARAMS to set OPTIONS and LONGOPTS
-#OPTIND=1
-#OPTIONS=h?vsfdbiLnkt
-#LONGOPTS=hard,force
-#! PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTS --name "$0" -- $INCOMMING_PARAMS_PRE_FORMAT)
-#if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
-## e.g. return value is 1
-##  then getopt has complained about wrong arguments to stdout
-##exit 2
-#fi
-# read getopt’s output this way to handle the quoting right:
-#eval set -- "$PARSED"
 IFS=' ' read -r -a INCOMMING_PARAMS <<<"$@"
 
 # Export incomming parameters into variables based on name and wanted parameters
