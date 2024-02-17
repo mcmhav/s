@@ -10,10 +10,7 @@ VS_CODE_SETUP_HOME="$CSYS_PROGRAMS/$PACKAGE_NAME"
 
 case "$CSYS_OS" in
 "$MAC_OS") VS_CODE_HOME_USER="$HOME/Library/Application Support/Code/User" ;;
-"$WIN_OS")
-  VS_CODE_HOME_USER="$HOME/AppData/Roaming/Code/User"
-  extra_link_flag="--hard"
-  ;;
+"$WIN_OS") VS_CODE_HOME_USER="$HOME/AppData/Roaming/Code/User" ;;
 *)
   loggit warn "TODO: Not set up for os $CSYS_OS"
   exit 1
@@ -21,8 +18,8 @@ case "$CSYS_OS" in
 esac
 
 handleVSUser() {
-  ln -sf $extra_link_flag "$VS_CODE_SETUP_HOME/User/settings.json" "$VS_CODE_HOME_USER/settings.json"
-  ln -sf $extra_link_flag "$VS_CODE_SETUP_HOME/User/keybindings.json" "$VS_CODE_HOME_USER/keybindins.json"
+  ln -sf "$VS_CODE_SETUP_HOME/User/settings.json" "$VS_CODE_HOME_USER/settings.json"
+  ln -sf "$VS_CODE_SETUP_HOME/User/keybindings.json" "$VS_CODE_HOME_USER/keybindins.json"
   #ln -sf "$VS_CODE_SETUP_HOME/User/snippets" "$VS_CODE_HOME_USER/snippets"
 }
 

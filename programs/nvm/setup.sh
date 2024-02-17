@@ -23,8 +23,8 @@ _setup() {
   case "$CSYS_OS" in
   "$LIN_OS"*) _with_nvm ;;
   "$MAC_OS") _with_nvm ;;
-  "*")
-    loggit "$PACKAGE_NAME install not implemented for OS: $CSYS_OS"
+  *)
+    loggit warn "$PACKAGE_NAME install not implemented for OS: $CSYS_OS"
     ;;
   esac
 }

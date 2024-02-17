@@ -63,7 +63,7 @@ ln_mklink() {
       mklink_flag="/h"
     fi
 
-    cmd.exe /c "mklink "$mklink_flag" "$link_from_win_style" "$link_to_win_style
+    cmd.exe /c "mklink "$mklink_flag" "$link_from_win_style" "$link_to_win_style >/dev/null
   done
 }
 
