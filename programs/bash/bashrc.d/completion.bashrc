@@ -12,10 +12,6 @@ if command -v pyenv 1>/dev/null 2>&1 && [ "$CSYS_OS" != "$WIN_OS" ]; then
   eval "$(pyenv init -)"
 fi
 
-if command -v nodenv 1>/dev/null 2>&1; then
-  eval "$(nodenv init -)"
-fi
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 completionsWD="$CSYS_BASH_HOME/completions"

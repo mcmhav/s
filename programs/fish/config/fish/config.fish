@@ -24,6 +24,5 @@ set --export SHELL (which fish)
 
 status --is-interactive; and type -q pyenv; and source (pyenv init -|psub)
 status --is-interactive; and type -q rbenv; and source (rbenv init -|psub)
-status --is-interactive; and type -q nodenv; and source (nodenv init -|psub)
 
 set --global --export csys_fish_up 1
