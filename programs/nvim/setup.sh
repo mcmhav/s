@@ -5,7 +5,9 @@ PACKAGE_NAME="nvim"
 _setup() {
   case $CSYS_OS in
     "$GITPOD_OS")
-      sudo apt-get install -y neovim
+      if ! command -v "$PACKAGE_NAME" >/dev/null; then
+        sudo apt-get install -y neovim
+      fi
       ;;
     "$MAC_OS")
       if ! command -v "$PACKAGE_NAME" >/dev/null; then
