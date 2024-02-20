@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
-if command -v nvim 1>/dev/null 2>&1; then
-  nvim "$@"
-else
-  /usr/bin/vim "$@"
-fi
+VIM_EXEC="/usr/bin/vim"
+
+case $1 in
++Plug*) ;;
+*)
+	if command -v nvim 1>/dev/null 2>&1; then
+		VIM_EXEC="nvim"
+	fi
+	;;
+esac
+
+"$VIM_EXEC" "$@"
