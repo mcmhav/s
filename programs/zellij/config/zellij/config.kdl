@@ -5,7 +5,8 @@ keybinds clear-defaults=true {
     }
     locked {
         // bind "Ctrl g" { SwitchToMode "Normal"; }
-        bind "¸" { SwitchToMode "normal"; }
+        // bind "¸" { SwitchToMode "normal"; }
+        bind "…" { SwitchToMode "normal"; }
     }
     resize {
         bind "Ctrl n" { SwitchToMode "Normal"; }
@@ -135,8 +136,9 @@ keybinds clear-defaults=true {
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
     }
     shared_except "locked" {
-        bind "¸" { SwitchToMode "locked"; }
+        // bind "¸" { SwitchToMode "locked"; }
         bind "Ctrl g" { SwitchToMode "Locked"; }
+        // bind "Ctrl …" { SwitchToMode "Locked"; }
         // bind "Ctrl q" { Quit; }
         bind "Alt n" { NewPane; }
         // bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }

@@ -38,14 +38,14 @@ setup_plugins() {
 	fi
 
 	{
-		vim +PlugInstall +qall >/dev/null
-		vim +PlugUpgrade +qall
-		vim +PlugUpdate +qall
+		vim +PlugInstall +qall 1>/dev/null 2>&1
+		vim +PlugUpgrade +qall 1>/dev/null 2>&1
+		vim +PlugUpdate +qall 1>/dev/null 2>&1
 		(
 			cd "$COC_HOME" &&
 				npm install --ignore-scripts --no-lockfile --omit=dev --legacy-peer-deps --no-global
 		)
-	}
+	} &
 }
 
 link_config
