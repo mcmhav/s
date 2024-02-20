@@ -114,3 +114,6 @@ if ! command -v nvm >/dev/null; then
         }
     fi
 fi
+
+# prefect
+export PREFECT_CLI_PROMPT=false
