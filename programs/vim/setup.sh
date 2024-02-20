@@ -43,7 +43,7 @@ setup_plugins() {
 		vim +PlugUpdate +qall 1>/dev/null 2>&1
 		(
 			cd "$COC_HOME" &&
-				npm install --global-style --legacy-bundling --legacy-peer-deps --no-package-lock --ignore-scripts --no-lockfile --production --legacy-peer-deps --no-global
+				npm install --ignore-scripts --no-lockfile --omit=dev --legacy-peer-deps --no-global
 		)
 	}
 }
