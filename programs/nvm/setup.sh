@@ -5,7 +5,7 @@ DESIRED_NODE_VERSION="18.16.0"
 NVM_VERSION="0.39.3"
 
 _with_nvm() {
-  NVM_DIR="$HOME/.nvm"
+  export NVM_DIR="$HOME/.nvm"
   if [ ! -d "$NVM_DIR" ] || [ ! -f "$NVM_DIR/nvm.sh" ]; then
     # brew install "$PACKAGE_NAME"
     mkdir -p "$NVM_DIR"
