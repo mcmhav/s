@@ -38,7 +38,8 @@ setup_plugins() {
 	fi
 
 	{
-		vim +'PlugInstall --sync' +qall &>/tmp/log1 </dev/tty
+		tty=$(readlink /proc/$$/fd/2)
+		vim +'PlugInstall --sync' +qall &>/tmp/log1 <"$tty"
 		vim +PlugUpgrade +qall &>/dev/null </dev/tty
 		vim +PlugUpdate +qall &>/dev/null </dev/tty
 		(
