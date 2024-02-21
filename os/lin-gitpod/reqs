@@ -1,5 +1,5 @@
 base
-zellij
-awscli
-terraform-ls
-k9s
+#zellij
+#awscli
+#terraform-ls
+#k9s
