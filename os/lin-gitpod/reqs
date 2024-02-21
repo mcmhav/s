@@ -1,1 +1,5 @@
 base
+zellij
+awscli
+terraform-ls
+k9s

@@ -1,4 +1,9 @@
 fish
 nvim
 shfmt
+ripgrep
+fzf
+git
+bat
+tree
 
