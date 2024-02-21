@@ -38,7 +38,7 @@ setup_plugins() {
 	fi
 
 	{
-		vim -V20/tmp/log +PlugInstall +qall
+		vim -V20/tmp/log +'PlugInstall --sync' +qall &>/dev/null
 		vim +PlugUpgrade +qall
 		vim +PlugUpdate +qall
 		(
