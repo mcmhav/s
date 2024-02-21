@@ -38,7 +38,7 @@ setup_plugins() {
 	fi
 
 	{
-		/usr/bin/vim -V20/tmp/log +'PlugInstall --sync' +qall &>/dev/null </dev/tty
+		/usr/bin/vim +'PlugInstall --sync' +qall &>/dev/null </dev/tty
 		/usr/bin/vim +PlugUpgrade +qall &>/dev/null </dev/tty
 		/usr/bin/vim +PlugUpdate +qall &>/dev/null </dev/tty
 		(
