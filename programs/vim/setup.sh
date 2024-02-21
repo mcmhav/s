@@ -39,8 +39,8 @@ setup_plugins() {
 
 	{
 		/usr/bin/vim -V20/tmp/log +'PlugInstall --sync' +qall &>/dev/null </dev/tty
-		/usr/bin/vim +PlugUpgrade +qall &>/dev/null
-		/usr/bin/vim +PlugUpdate +qall &>/dev/null
+		/usr/bin/vim +PlugUpgrade +qall &>/dev/null </dev/tty
+		/usr/bin/vim +PlugUpdate +qall &>/dev/null </dev/tty
 		(
 			cd "$COC_HOME" &&
 				npm install --ignore-scripts --no-lockfile --omit=dev --legacy-peer-deps --no-global
