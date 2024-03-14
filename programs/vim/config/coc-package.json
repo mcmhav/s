@@ -5,7 +5,6 @@
     "coc-json": ">=1.9.2",
     "coc-markdownlint": ">=1.33.0",
     "coc-prettier": ">=9.3.2",
-    "coc-pyright": ">=1.1.351",
     "coc-sh": ">=1.2.2",
     "coc-yaml": ">=1.9.0",
     "coc-rust-analyzer": ">=0.75.1"
@@ -14,3 +13,4 @@
   "locked": [],
   "lastUpdate": 1676357997572
 }
+

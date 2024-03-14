@@ -2,5 +2,5 @@ coc-json
 coc-prettier
 coc-rls
 coc-diagnostic
-coc-pyright
+coc-ruff
 coc-sh
