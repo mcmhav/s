@@ -20,7 +20,6 @@
       "args": []
     }
   },
-  "python.formatting.provider": "black",
-  "python.formatting.yapfPath": "~/.pyenv/shims/black",
+  "python.formatting.provider": "none",
   "python.linting.mypyEnabled": true
 }
