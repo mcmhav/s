@@ -15,5 +15,4 @@ case $1 in
 	;;
 esac
 
-echo "Using $VIM_EXEC as vim executable."
 "$VIM_EXEC" "$@"

@@ -7,10 +7,11 @@
     "coc-prettier": ">=9.3.2",
     "coc-sh": ">=1.2.2",
     "coc-yaml": ">=1.9.0",
-    "coc-rust-analyzer": ">=0.75.1"
+    "coc-rust-analyzer": ">=0.75.1",
+    "@yaegassy/coc-ruff": ">=0.6.3",
+    "coc-pyright": ">=1.1.351"
   },
   "disabled": [],
   "locked": [],
   "lastUpdate": 1676357997572
 }
-
