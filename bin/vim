@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-VIM_EXEC="/usr/bin/vim"
+if command -v vim.basic 1>/dev/null 2>&1; then
+	VIM_EXEC="/usr/bin/vim.basic"
+elif command -v vim 1>/dev/null 2>&1; then
+	VIM_EXEC="/usr/bin/vim"
+fi
 
 case $1 in
 +Plug*) ;;
