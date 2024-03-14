@@ -48,4 +48,6 @@ call plug#begin('~/.vim/plugged')
   " New untested
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
+
+  Plug 'yaegassy/coc-ruff', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
