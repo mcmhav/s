@@ -1,5 +1,5 @@
 fish
-nvim
+# nvim
 shfmt
 ripgrep
 fzf
