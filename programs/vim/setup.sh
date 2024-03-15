@@ -41,10 +41,8 @@ setup_plugins() {
 		vim +PlugInstall +qall &>/tmp/log1
 		vim +PlugUpgrade +qall &>/dev/null
 		vim +PlugUpdate +qall &>/dev/null
-		(
-			cd "$COC_HOME" &&
-				npm install --ignore-scripts --no-lockfile --omit=dev --legacy-peer-deps --no-global
-		)
+
+		vim -c 'CocInstall -sync coc-diagnostic coc-go coc-json coc-markdownlint coc-prettier coc-sh coc-yaml coc-rust-analyzer @yaegassy/coc-ruff coc-pyright|q'
 	}
 }
 
