@@ -44,7 +44,7 @@ setup_plugins() {
 
 		coc_extensions=$(tr '\n' ' ' <"$LOCAL_CONFIG_PATH/coc-extensions")
 		vim -c "CocInstall -sync $coc_extensions|q"
-	}
+	} &
 }
 
 link_config
