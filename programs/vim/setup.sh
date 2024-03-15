@@ -41,6 +41,9 @@ setup_plugins() {
 		vim +PlugInstall +qall &>/tmp/log1
 		vim +PlugUpgrade +qall &>/dev/null
 		vim +PlugUpdate +qall &>/dev/null
+
+		coc_extensions=$(tr '\n' ' ' <"$LOCAL_CONFIG_PATH/coc-extensions")
+		vim -c "CocInstall -sync $coc_extensions|q"
 	}
 }
 

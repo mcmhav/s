@@ -1,6 +1,10 @@
-coc-json
-coc-prettier
-coc-rls
 coc-diagnostic
-coc-ruff
+coc-go
+coc-json
+coc-markdownlint
+coc-prettier
 coc-sh
+coc-yaml
+coc-rust-analyzer
+@yaegassy/coc-ruff
+coc-pyright|q

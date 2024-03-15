@@ -50,14 +50,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
 
   " Coc extensions:
-  Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'yaegassy/coc-ruff', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'fannheyward/coc-pyright', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'yaegassy/coc-ruff', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'fannheyward/coc-pyright', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
