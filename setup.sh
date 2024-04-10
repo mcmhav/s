@@ -64,16 +64,16 @@ _setup() {
 	if [ -n "$CSYS_NO_SUBPROCESS_INSTALL" ] || ! command -v brew >/dev/null; then
 		"$CSYS_HOME/os/$CSYS_OS/setup.sh"
 		touch "$CSYS_BASHRC_D/.setup_done"
-		loggit "Setup done"
 		DONE_TIME="$(date +%s)"
-		loggit "Setup took $((DONE_TIME - START_TIME)) seconds"
+		echo "$DONE_TIME" >"$CSYS_BASHRC_D/.setup_done"
+		loggit "Setup done, took $((DONE_TIME - START_TIME)) seconds"
 	else
 		(
 			"$CSYS_HOME/os/$CSYS_OS/setup.sh"
 			touch "$CSYS_BASHRC_D/.setup_done"
-			loggit "Setup done"
 			DONE_TIME="$(date +%s)"
-			loggit "Setup took $((DONE_TIME - START_TIME)) seconds"
+			echo "$DONE_TIME" >"$CSYS_BASHRC_D/.setup_done"
+			loggit "Setup done, took $((DONE_TIME - START_TIME)) seconds"
 		) &
 	fi
 }
