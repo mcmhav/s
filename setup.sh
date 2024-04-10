@@ -39,6 +39,7 @@ non_gui_config() {
 }
 
 _setup() {
+	START_TIME="$(date +%s)"
 	source "$CSYS_BASH_HOME/bashrc.d/csys.bashrc"
 	source "$CSYS_BASH_HOME/bashrc.d/sourcer.bashrc"
 
@@ -64,11 +65,15 @@ _setup() {
 		"$CSYS_HOME/os/$CSYS_OS/setup.sh"
 		touch "$CSYS_BASHRC_D/.setup_done"
 		loggit "Setup done"
+		DONE_TIME="$(date +%s)"
+		loggit "Setup took $((DONE_TIME - START_TIME)) seconds"
 	else
 		(
 			"$CSYS_HOME/os/$CSYS_OS/setup.sh"
 			touch "$CSYS_BASHRC_D/.setup_done"
 			loggit "Setup done"
+			DONE_TIME="$(date +%s)"
+			loggit "Setup took $((DONE_TIME - START_TIME)) seconds"
 		) &
 	fi
 }
