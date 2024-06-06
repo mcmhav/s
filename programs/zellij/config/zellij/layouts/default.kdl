@@ -13,8 +13,16 @@ layout {
       }
     }
   }
+  tab_template name="full-view" {
+    pane size=1 borderless=true {
+        plugin location="zellij:tab-bar"
+    }
+    pane
+  }
+
   tab name="a"
   tab name="b"
+  full-view name="c"
 }
 session_name "c"
 attach_to_session true
