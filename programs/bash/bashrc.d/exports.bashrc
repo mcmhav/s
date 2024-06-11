@@ -97,6 +97,8 @@ export GIT_EDITOR="vim"
 
 # aws
 export AWS_PAGER=""
+export AWS_MAX_ATTEMPTS="20"
+export AWS_RETRY_MODE="adaptive"
 
 # nvm
 if ! command -v nvm >/dev/null; then
