@@ -38,7 +38,7 @@ setup_plugins() {
 	fi
 
 	{
-		vim +PlugInstall +qall &>/tmp/log1
+		vim +PlugInstall +qall &>/dev/null
 		vim +PlugUpgrade +qall &>/dev/null
 		vim +PlugUpdate +qall &>/dev/null
 
