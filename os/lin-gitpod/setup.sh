@@ -37,6 +37,7 @@ _setup() {
 
 	_setup_vscode_config &
 
+	sudo apt-get update
 	loggit "Installing brew"
 	csys install brew
 	loggit "Installing csys-reqs"
