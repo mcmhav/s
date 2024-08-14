@@ -13,6 +13,21 @@ layout {
       }
     }
   }
+
+  tab_template name="dev" {
+    pane size=1 borderless=true {
+        plugin location="zellij:tab-bar"
+    }
+    pane split_direction="Horizontal" {
+      pane size="80%"
+      pane split_direction="Vertical" {
+        pane
+        pane
+        pane
+      }
+    }
+  }
+
   tab_template name="full-view" {
     pane size=1 borderless=true {
         plugin location="zellij:tab-bar"
@@ -23,6 +38,7 @@ layout {
   tab name="a"
   tab name="b"
   full-view name="c"
+  full-name name="d"
 }
 session_name "c"
 attach_to_session true
