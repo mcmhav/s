@@ -14,7 +14,7 @@ AWS_SSO_START_URL=""
 export AWS_REGION="eu-north-1"
 
 _bootstrap() {
-	if [ -f "$BOOTSTRAP_FILE" ] || [ -f "" ]; then
+	if [ -f "$BOOTSTRAP_FILE" ]; then
 		AWS_SSO_START_URL=$(grep sso_start_url <"$BOOTSTRAP_FILE" | awk '{print $3}')
 	elif [ -f "$AWS_CONFIG_FILE" ]; then
 		AWS_SSO_START_URL=$(grep -m 1 sso_start_url <"$AWS_CONFIG_FILE" | awk '{print $3}')
@@ -30,13 +30,20 @@ _bootstrap() {
 }
 _bootstrap
 
+if [ ! -d "$AWS_SSO_CACHE" ]; then
+	mkdir -p "$AWS_SSO_CACHE"
+fi
 AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
 
 _update_sso_session() {
 	SESSION_NOT_EXPIRED=$(jq '.expiresAt > (now | strftime("%FT%T"))' <"$AWS_SSO_SESSION")
 	if [ "$SESSION_NOT_EXPIRED" != "true" ]; then
 		loggit "Old sso-session, will try to reauth"
-		AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login
+		if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+			AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login --no-browser
+		else
+			AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login
+		fi
 		AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
 	fi
 }
