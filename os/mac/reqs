@@ -46,3 +46,4 @@ gh
 eksctl
 kubectl
 k9s
+pipx

@@ -39,7 +39,7 @@ _setup() {
 
 	sudo apt-get update
 	loggit "Installing brew"
-	csys install brew
+	# csys install brew
 	loggit "Installing csys-reqs"
 	csys reqs-install "$SCRIPT_PATH/reqs"
 
