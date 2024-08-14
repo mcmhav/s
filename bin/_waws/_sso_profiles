@@ -36,7 +36,7 @@ fi
 AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
 
 _update_sso_session() {
-	SESSION_NOT_EXPIRED=$(jq '.expiresAt > (now | strftime("%FT%T"))' <"$AWS_SSO_SESSION")
+	SESSION_NOT_EXPIRED=$(jq '.expiresAt > (now | strftime("%FT%T")) and .startUrl' <"$AWS_SSO_SESSION")
 	if [ "$SESSION_NOT_EXPIRED" != "true" ]; then
 		loggit "Old sso-session, will try to reauth"
 		if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
