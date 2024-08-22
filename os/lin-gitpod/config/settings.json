@@ -1,121 +1,111 @@
 {
-    "yaml.customTags": [
-        "!And",
-        "!And sequence",
-        "!If",
-        "!If sequence",
-        "!Not",
-        "!Not sequence",
-        "!Equals",
-        "!Equals sequence",
-        "!Or",
-        "!Or sequence",
-        "!FindInMap",
-        "!FindInMap sequence",
-        "!Base64",
-        "!Join",
-        "!Join sequence",
-        "!Cidr",
-        "!Ref",
-        "!Sub",
-        "!Sub sequence",
-        "!GetAtt",
-        "!GetAZs",
-        "!ImportValue",
-        "!ImportValue sequence",
-        "!Select",
-        "!Select sequence",
-        "!Split",
-        "!Split sequence"
-    ],
-    "editor.suggest.showMethods": true,
-    "editor.acceptSuggestionOnEnter": "on",
-    "editor.snippetSuggestions": "top",
-    "workbench.colorTheme": "Gitpod Dark",
-    "workbench.startupEditor": "newUntitledFile",
-    "terminal.integrated.enableMultiLinePasteWarning": false,
-    "redhat.telemetry.enabled": false,
-    "gitpod.openInStable.neverPrompt": true,
-    "explorer.confirmDragAndDrop": false,
-    "git.autofetch": true,
-    "aws.telemetry": false,
-    "editor.wordWrap": "on",
-    "files.trimTrailingWhitespace": true,
-    "terminal.integrated.shellIntegration.decorationsEnabled": "never",
-    "terminal.integrated.shellIntegration.enabled": false,
-    "synthwave84.brightness": 1,
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "python.terminal.activateEnvironment": false,
-    "python.formatting.provider": "black",
-    "editor.formatOnSave": true,
-    "zenMode.fullScreen": false,
-    "zenMode.hideLineNumbers": false,
-    "zenMode.hideStatusBar": false,
-    "zenMode.centerLayout": false,
-    "vscode-kubernetes.log-viewer.autorun": true,
-    "vscode-kubernetes.log-viewer.follow": true,
-    "vscode-kubernetes.log-viewer.wrap": true,
-    "editor.suggest.showStatusBar": true,
-    "editor.suggest.preview": true,
-    "aws.experiments": {
-        "CodeWhisperer": false
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ],
+  "editor.suggest.showMethods": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.snippetSuggestions": "top",
+  "workbench.colorTheme": "Gitpod Dark",
+  "workbench.startupEditor": "newUntitledFile",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "redhat.telemetry.enabled": false,
+  "gitpod.openInStable.neverPrompt": true,
+  "explorer.confirmDragAndDrop": false,
+  "git.autofetch": true,
+  "aws.telemetry": false,
+  "editor.wordWrap": "on",
+  "files.trimTrailingWhitespace": true,
+  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+  "terminal.integrated.shellIntegration.enabled": false,
+  "synthwave84.brightness": 1,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "python.terminal.activateEnvironment": false,
+  "python.formatting.provider": "black",
+  "editor.formatOnSave": true,
+  "zenMode.fullScreen": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideStatusBar": false,
+  "zenMode.centerLayout": false,
+  "vscode-kubernetes.log-viewer.autorun": true,
+  "vscode-kubernetes.log-viewer.follow": true,
+  "vscode-kubernetes.log-viewer.wrap": true,
+  "editor.suggest.showStatusBar": true,
+  "editor.suggest.preview": true,
+  "aws.experiments": {
+    "CodeWhisperer": false
+  },
+  "evenBetterToml.formatter.arrayAutoExpand": true,
+  "evenBetterToml.formatter.indentEntries": true,
+  "evenBetterToml.formatter.indentTables": true,
+  "evenBetterToml.formatter.alignComments": true,
+  "editor.foldingStrategy": "indentation",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
     },
-    "evenBetterToml.formatter.arrayAutoExpand": true,
-    "evenBetterToml.formatter.indentEntries": true,
-    "evenBetterToml.formatter.indentTables": true,
-    "evenBetterToml.formatter.alignComments": true,
-    "editor.foldingStrategy": "indentation",
-    "vim.insertModeKeyBindings": [
-        {
-            "before": [
-                "j",
-                "j"
-            ],
-            "after": [
-                "<Esc>"
-            ]
-        },
-        {
-            "before": [
-                "J",
-                "J"
-            ],
-            "after": [
-                "<Esc>"
-            ]
-        }
-    ],
-    "vscode-kubernetes.log-viewer.timestamp": true,
-    "vscode-kubernetes.log-viewer.since": -1,
-    "vscode-kubernetes.log-viewer.tail": -1,
-    "vscode-kubernetes.log-viewer.destination": "Webview",
-    "sqltools.connections": [],
-    "pyright.disableLanguageServices": true,
-    "shellcheck.disableVersionCheck": true,
-    "[dockerfile]": {
-        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-    },
-    "terminal.integrated.defaultProfile.linux": "fish",
-    "git.confirmSync": false,
-    "[typescript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "merge-conflict.codeLens.enabled": false,
-    "autoDocstring.docstringFormat": "sphinx-notypes",
-    "autoDocstring.startOnNewLine": true,
-    "editor.tabSize": 4,
-    "githubPullRequests.pullBranch": "never",
-    "editor.minimap.enabled": false,
-    "terminal.integrated.defaultLocation": "editor",
-    "workbench.editor.showTabs": "single",
-    "workbench.colorCustomizations": {
-        "editorCursor.foreground": "#f81ce6",
-        "terminalCursor.foreground": "#f81ce6",
-        "notifications.background": "#00000000"
-    },
-    "workbench.activityBar.location": "hidden",
-    "vs-kubernetes": {
-        "vs-kubernetes.crd-code-completion": "disabled"
+    {
+      "before": ["J", "J"],
+      "after": ["<Esc>"]
     }
+  ],
+  "vscode-kubernetes.log-viewer.timestamp": true,
+  "vscode-kubernetes.log-viewer.since": -1,
+  "vscode-kubernetes.log-viewer.tail": -1,
+  "vscode-kubernetes.log-viewer.destination": "Webview",
+  "sqltools.connections": [],
+  "pyright.disableLanguageServices": true,
+  "shellcheck.disableVersionCheck": true,
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "git.confirmSync": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "merge-conflict.codeLens.enabled": false,
+  "autoDocstring.docstringFormat": "sphinx-notypes",
+  "autoDocstring.startOnNewLine": true,
+  "editor.tabSize": 4,
+  "githubPullRequests.pullBranch": "never",
+  "editor.minimap.enabled": false,
+  "terminal.integrated.defaultLocation": "editor",
+  "workbench.editor.showTabs": "single",
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#f81ce6",
+    "terminalCursor.foreground": "#f81ce6",
+    "notifications.background": "#00000000"
+  },
+  "workbench.activityBar.location": "hidden",
+  "vs-kubernetes": {
+    "vs-kubernetes.crd-code-completion": "disabled"
+  }
 }
