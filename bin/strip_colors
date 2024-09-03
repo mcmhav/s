@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [ -p /dev/stdin ]; then
+	cat - | sed -e 's/\x1b\[[0-9;]*m//g'
+else
+	echo "$1" | sed -e 's/\x1b\[[0-9;]*m//g'
+fi
