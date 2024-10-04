@@ -72,11 +72,11 @@ hist)
 esac
 
 _docker() {
-	/opt/homebrew/bin/docker $ACTION $*
-	# if command -v podman; then
-	#   command podman $ACTION $*
-	# else
-	#   /usr/bin/docker $ACTION $*
-	# fi
+	# /opt/homebrew/bin/docker $ACTION $*
+	if command -v podman; then
+		command podman $ACTION $*
+	else
+		/usr/bin/docker $ACTION $*
+	fi
 }
 _docker "$@"
