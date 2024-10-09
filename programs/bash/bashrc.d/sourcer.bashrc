@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck source=/dev/null
 
-SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
+SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]:-${(%):-%x}}")
 
 # adding extra sourcesz
 source "$SCRIPT_DIR/git.bashrc"
@@ -34,3 +34,4 @@ if [ -d "$HOME/.csys.bashrc.d" ]; then
     esac
   done
 fi
+

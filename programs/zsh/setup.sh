@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PACKAGE_NAME="fish"
+PACKAGE_NAME="zsh"
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 _setup() {
@@ -8,10 +8,10 @@ _setup() {
 		brew install "$PACKAGE_NAME"
 	fi
 
-	if ! test -L "$HOME/.config/fish"; then
-		rm -rf "$HOME/.config/fish"
+	if ! test -L "$HOME/.zshrc"; then
+		rm -rf "$HOME/.zshrc"
 	fi
-	ln -sf "$SCRIPT_PATH/config/fish" "$HOME/.config"
+	ln -sf "$SCRIPT_PATH/config/.zshrc" "$HOME/.zshrc"
 }
 
 _setup
