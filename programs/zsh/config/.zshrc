@@ -1,9 +1,13 @@
-PROMPT='%F{green}▲%f %F{blue}%1~%f ⭓ '
+# ᯾ ᯿
+PROMPT='%F{green}▲%f %B%F{#ff55ff}%1~%f%b %F{#0000ff}᯿%f '
 
+# Styles
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# keys
+bindkey '^R' history-incremental-search-backward
 
 SCRIPT_PATH="$(dirname $(realpath ${(%):-%x}))"
 export CSYS_HOME="$(realpath $SCRIPT_PATH/../../..)"
 emulate bash -c 'source $CSYS_HOME/programs/bash/bashrc.d/csys.bashrc zsh'
 emulate bash -c 'source $CSYS_HOME/programs/bash/bashrc.d/sourcer.bashrc'
-
