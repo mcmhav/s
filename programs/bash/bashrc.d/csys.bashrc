@@ -29,7 +29,7 @@ export ZSH_SHELL="zsh"
 case "$1" in
 "$FISH_SHELL") export CSYS_SHELL="$FISH_SHELL" ;;
 "$ZSH_SHELL") export CSYS_SHELL="$ZSH_SHELL" ;;
-"*") export CSYS_SHELL="$BASH_SHELL" ;;
+*) export CSYS_SHELL="$BASH_SHELL" ;;
 esac
 
 export SHALLOW_FLAG_CSYS="--shallow"
