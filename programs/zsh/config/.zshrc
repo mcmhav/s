@@ -3,6 +3,7 @@ PROMPT='%F{green}▲%f %B%F{#ff55ff}%1~%f%b %F{#0000ff}᯿%f '
 
 # Styles
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu select
 
 # keys
 bindkey '^R' history-incremental-search-backward
