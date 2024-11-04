@@ -1,6 +1,6 @@
 set -U fish_color_autosuggestion 555 brblack
 set -U fish_color_cancel -r
-set -U fish_color_command 005fd7
+set -U fish_color_command 19DB85
 set -U fish_color_comment 990000
 set -U fish_color_cwd green
 set -U fish_color_cwd_root red
