@@ -37,6 +37,7 @@ PATHS=(
     "$HOME/.cargo/bin"
     "$HOME/.csys.bashrc.d/bin"
     "/home/linuxbrew/.linuxbrew/bin"
+    "$HOME/.local/bin"
 )
 PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
 if [ -n "$(command -v ruby)" ]; then
