@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ZED_VERSION="0.159.6"
+ZED_VERSION="0.159.10"
 
 _install() {
 	# ref. https://zed.dev/install.sh
