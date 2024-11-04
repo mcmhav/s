@@ -37,4 +37,11 @@
     "diagnostics": false,
     "metrics": false,
   },
+  "project_panel": {
+    "default_width": 240,
+    "indent_size": 10,
+    "indent_guides": {
+      "show": "never"
+    },
+  },
 }
