@@ -1,6 +1,7 @@
 base
 zed_server
 zellij
+delta
 awscli
 terraform-ls
 k9s

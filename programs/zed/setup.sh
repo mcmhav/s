@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 ZED_VERSION="0.159.10"
 
 _install() {
@@ -19,6 +20,9 @@ _setup() {
 	if ! command -v zed &>/dev/null; then
 		_install
 	fi
+
+	ln -sf "$SCRIPT_PATH/config/keymap.json" "$HOME/.config/zed/"
+	ln -sf "$SCRIPT_PATH/config/settings.json" "$HOME/.config/zed/"
 }
 
 _setup
