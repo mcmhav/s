@@ -22,7 +22,7 @@
     },
     "shell": {
       "with_arguments": {
-        "program": "/bin/bash",
+        "program": "/usr/bin/bash",
         "args": [],
       }
     },

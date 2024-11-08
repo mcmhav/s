@@ -44,6 +44,8 @@ _setup() {
 	csys reqs-install "$SCRIPT_PATH/reqs"
 
 	sudo apt-get install -y mariadb-client
+
+	echo 'if [ -f "$HOME/.bashrc" ]; then source "$HOME/.bashrc"; fi' >>"$HOME/.bash_profile"
 }
 
 _setup

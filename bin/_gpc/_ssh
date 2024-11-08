@@ -19,4 +19,4 @@ WORKSPACE_ID=$(grep "workspaceID=" <"$TMP_WORKSPACE_START_LOG" | sed 's/^.*=//')
 sleep 7 # wait for the workspace to be ready
 REPO_REMOTE_DIR="/workspace/$(echo "$SELECTED_REPO" | cut -d '/' -f 2-)"
 zed "ssh://$WORKSPACE_ID@$WORKSPACE_ID.ssh.ws.$GITPOD_DOMAIN/$REPO_REMOTE_DIR"
-"$SCRIPT_PATH/gitpod" workspace ssh "$WORKSPACE_ID" -- -t "sh -c 'if which fish >/dev/null ; then exec fish -li; else exec \$SHELL -li; fi'"
+"$SCRIPT_PATH/gitpod" workspace ssh "$WORKSPACE_ID" -- -t "sh -c 'gp timeout extend; if which fish >/dev/null ; then exec fish -li; else exec \$SHELL -li; fi'"
