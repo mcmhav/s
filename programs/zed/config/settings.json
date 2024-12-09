@@ -26,6 +26,7 @@
         "args": [],
       }
     },
+    "detect_venv": "off",
   },
   "theme": {
     "mode": "system",
@@ -37,7 +38,7 @@
     "metrics": false,
   },
   "project_panel": {
-    "default_width": 240,
+    "default_width": 0,
     "indent_size": 10,
     "indent_guides": {
       "show": "never"

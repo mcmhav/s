@@ -124,3 +124,7 @@ export PREFECT_CLI_PROMPT=false
 # terraform
 export TF_CLI_ARGS_plan="-lock=false"
 # export TF_CLI_ARGS_plan="-refresh=false -lock=false"
+
+# tmpdir
+export TMPDIR=/tmp
+

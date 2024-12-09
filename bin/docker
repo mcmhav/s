@@ -8,7 +8,9 @@ _inject_cert() {
 
 	scp -i "$HOME/.ssh/podman-machine-default" \
 		-P "$PORT" \
-		"$CSYS_BASHRC_D/certificate.cer" root@localhost:/etc/pki/ca-trust/source/anchors/certificate_2.cer
+		"$CSYS_BASHRC_D/cert.pem" root@localhost:/etc/pki/ca-trust/source/anchors/cert.pem
+
+	# "$CSYS_BASHRC_D/certificate.cer" root@localhost:/etc/pki/ca-trust/source/anchors/certificate_2.cer
 
 	podman machine ssh --username root 'update-ca-trust extract'
 }
@@ -72,8 +74,9 @@ hist)
 esac
 
 _docker() {
-	# /opt/homebrew/bin/docker $ACTION $*
-	if command -v podman; then
+	if [ "$MAC_OS" == "$CSYS_OS" ]; then
+		/opt/homebrew/bin/docker $ACTION $*
+	elif command -v podman; then
 		command podman $ACTION $*
 	else
 		/usr/bin/docker $ACTION $*
