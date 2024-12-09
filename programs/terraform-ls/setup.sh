@@ -7,7 +7,7 @@ VERSION="0.36.0"
 _install() {
 	case $CSYS_OS in
 	"$LIN_OS"*)
-		curl -fsSL "https://releases.hashicorp.com/terraform-ls/$VERSION/terraform-ls_${VERSION}_linux_amd64.zip" | tar -xz -C /tmp/tf-ls.zip
+		curl -fsSL "https://releases.hashicorp.com/terraform-ls/$VERSION/terraform-ls_${VERSION}_linux_amd64.zip" -o /tmp/tf-ls.zip
 		unzip -qo /tmp/tf-ls.zip -d /tmp/tf-ls
 		sudo mv /tmp/tf-ls/terraform-ls /usr/local/bin
 		;;
