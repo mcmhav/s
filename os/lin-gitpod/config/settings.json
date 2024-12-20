@@ -107,5 +107,6 @@
   "workbench.activityBar.location": "hidden",
   "vs-kubernetes": {
     "vs-kubernetes.crd-code-completion": "disabled"
-  }
+  },
+  "editor.rulers": [80, 120]
 }

@@ -7,6 +7,7 @@ set termguicolors
 "colorscheme cake
 "colorscheme gruvbox-material
 colorscheme dracula
+let &colorcolumn="80,".join(range(120,999),",")
 
 set number
 set relativenumber
