@@ -6,7 +6,7 @@ ZED_VERSION="0.169.2"
 _install() {
 	# ref. https://zed.dev/install.sh
 	tmp="$(mktemp -d "/tmp/zed-XXXXXX")"
-	curl -sL "https://github.com/zed-industries/zed/releases/download/v$ZED_VERSION/Zed.dmg" -o "$tmp/Zed.dmg"
+	curl -sL "https://github.com/zed-industries/zed/releases/download/v$ZED_VERSION/Zed-x86_64.dmg" -o "$tmp/Zed.dmg"
 	hdiutil attach -quiet "$tmp/Zed.dmg" -mountpoint "$tmp/mount"
 
 	mkdir -p "$HOME/.local/zed/Applications"
