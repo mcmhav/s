@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-ZED_VERSION="0.163.2"
+ZED_VERSION="0.169.2"
 
 _install() {
 	# ref. https://zed.dev/install.sh

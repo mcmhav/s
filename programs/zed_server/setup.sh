@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ZED_SERVER_VERSION="0.163.2"
+ZED_SERVER_VERSION="0.169.2"
 
 _install() {
 	tmp="$(mktemp -d "/tmp/zed-XXXXXX")"
