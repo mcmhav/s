@@ -51,6 +51,16 @@ alarmIn() {
         exit 1
       fi
       ;;
+    --help)
+        echo "Usage: alarmIn [options]"
+        echo "Options:"
+        echo "-s, --seconds <seconds>    Set the alarm in seconds"
+        echo "-m, --minutes <minutes>    Set the alarm in minutes"
+        echo "-h, --hours <hours>        Set the alarm in hours"
+        echo "-msg, --message <message>  Set the alarm message"
+        echo "--help                     Show help"
+        return
+        ;;
     *)
       loggit "Time plz"
       ;;

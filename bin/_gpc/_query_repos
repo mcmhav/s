@@ -3,7 +3,7 @@
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 REPO_LIST_LOCATION="$SCRIPT_PATH/.repo-list"
 REPO_LISTS_PATH="$SCRIPT_PATH/.repo-lists"
-COUNT="200"
+COUNT="1000"
 source "$SCRIPT_PATH/_env"
 
 mkdir -p "$REPO_LISTS_PATH"
