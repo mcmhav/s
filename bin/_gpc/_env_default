@@ -4,6 +4,7 @@ export GITPOD_LOCAL_COMPANION_BIN="gitpod-companion"
 export GITPOD_LOCAL_COMPANION_LOG_PATH="$CSYS_BASHRC_D/log/gitpod"
 export GITPOD_LCA_AUTO_TUNNEL="true"
 export GITPOD_LCA_VERBOSE="true"
+export GITPOD_BIN="gitpod"
 
 export REPO_OWNER="sparebank1utvikling"
 export GITHUB_URL="https://github.com/$REPO_OWNER"

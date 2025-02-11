@@ -1,0 +1,72 @@
+[[keyboard.bindings]]
+chars = "{"
+key = 28
+mods = "Alt|Shift"
+
+[[keyboard.bindings]]
+chars = "}"
+key = 25
+mods = "Alt|Shift"
+
+[[keyboard.bindings]]
+chars = "@"
+key = 37
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = '\'
+key = 26
+mods = "Alt|Shift"
+
+[[keyboard.bindings]]
+chars = "|"
+key = 26
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "~"
+key = 45
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "["
+key = 23
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "]"
+key = 22
+mods = "Alt"
+
+[terminal]
+
+[colors.cursor]
+cursor = "#f81ce6"
+
+[colors.normal]
+black = "#313131"
+blue = "#3eb5ff"
+cyan = "#20C5C6"
+green = "#1DC121"
+magenta = "#C839C5"
+red = "#ff6262"
+white = "#C7C7C7"
+yellow = "#C7C329"
+
+[colors.primary]
+background = "#101010"
+foreground = "#5ee39b"
+
+[terminal.shell]
+args = ["--login", "-C command -v zellij-work && zellij-work || zellij"]
+program = "fish"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = true
+opacity = 0.95
+
+[window.padding]
+y = 5
+
+[keyboard]

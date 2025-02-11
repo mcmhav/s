@@ -47,3 +47,5 @@ eksctl
 kubectl
 k9s
 pipx
+zed
+wget

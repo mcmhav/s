@@ -1,4 +1,18 @@
 {
+  "ssh_connections": [
+    {
+      "host": "sparebank1ut-dopeclient-8pi630mzat1.ssh.ws.gitpod.dataplattform.sparebank1.no",
+      "username": "sparebank1ut-dopeclient-8pi630mzat1",
+      "projects": [
+        {
+          "paths": [
+            "//workspace/dope-client"
+          ]
+        }
+      ],
+      "nickname": "dope-client"
+    }
+  ],
   "vim_mode": true,
   "autosave": "on_focus_change",
   "auto_update": false,
