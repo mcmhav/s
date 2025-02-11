@@ -14,7 +14,7 @@ _setup() {
     case $CSYS_OS in
         "$GITPOD_OS")
             if ! command -v "$PACKAGE_NAME" >/dev/null; then
-                sudo apt-get install -y neovim
+                _install_from_tar
             else
                 CURRENT_VERSION=$(nvim --version | head -n 1 | awk '{print $2}')
                 if ! echo -e "v$NVIM_VERSION\n$CURRENT_VERSION" | sort -V -C; then
