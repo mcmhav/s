@@ -31,3 +31,6 @@
 	rebase = true
 [advice]
 	skippedCherryPicks = false
+[blame]
+    date = relative
+

@@ -48,6 +48,7 @@ call plug#begin('~/.vim/plugged')
   " New untested
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-fugitive'
 
   " Coc extensions:
   " Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'}
