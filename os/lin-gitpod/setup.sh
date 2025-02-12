@@ -44,6 +44,8 @@ _setup() {
 	csys reqs-install "$SCRIPT_PATH/reqs"
 
 	sudo apt-get install -y mariadb-client
+    pip install "uv<1.0.0"
+    uv tool install ruff@latest
 
 	echo 'if [ -f "$HOME/.bashrc" ]; then source "$HOME/.bashrc"; fi' >>"$HOME/.bash_profile"
 }
