@@ -48,6 +48,11 @@ call plug#begin('~/.vim/plugged')
   " New untested
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
+  " something like
+  " :vert lefta 50sp term:////git --no-pager blame --date relative -- % | awk -F'ago ' '{print $1}'
+  " could perhaps do the
+  " trick, but this is more convenient
+  " mostly used for blame
   Plug 'tpope/vim-fugitive'
 
   " Coc extensions:
