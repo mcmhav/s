@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+_git-ls () {
+    for gitfile in $(git ls-tree --name-only HEAD); do
+        echo "$( git log -1 --format="%ad %ae" --date=short -- $gitfile ) $gitfile"
+    done
+}
+git-ls () {
+    _git-ls | column -t
+}
+git-ls
