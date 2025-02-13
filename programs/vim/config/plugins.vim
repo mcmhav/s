@@ -54,6 +54,7 @@ call plug#begin('~/.vim/plugged')
   " trick, but this is more convenient
   " mostly used for blame
   Plug 'tpope/vim-fugitive'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   " Coc extensions:
   " Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'}
@@ -67,3 +68,5 @@ call plug#begin('~/.vim/plugged')
   " Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
   " Plug 'fannheyward/coc-pyright', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
+
+lua require'nvim-treesitter.configs'.setup{highlight={enable=true},ensure_installed={"python","kdl"}}

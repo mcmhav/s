@@ -51,3 +51,4 @@ set foldlevelstart=1
 " highlighting
 au BufNewFile,BufRead,BufReadPost *.bashrc set syntax=sh
 au BufNewFile,BufRead,BufReadPost *.plist set syntax=xml
+au BufNewFile,BufRead,BufReadPost *.kdl set filetype=kdl
