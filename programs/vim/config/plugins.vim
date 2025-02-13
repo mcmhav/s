@@ -69,4 +69,3 @@ call plug#begin('~/.vim/plugged')
   " Plug 'fannheyward/coc-pyright', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
-lua require'nvim-treesitter.configs'.setup{highlight={enable=true},ensure_installed={"python","kdl"}}
