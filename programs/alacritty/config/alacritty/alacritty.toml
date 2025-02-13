@@ -1,43 +1,4 @@
-[[keyboard.bindings]]
-chars = "{"
-key = 28
-mods = "Alt|Shift"
-
-[[keyboard.bindings]]
-chars = "}"
-key = 25
-mods = "Alt|Shift"
-
-[[keyboard.bindings]]
-chars = "@"
-key = 37
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = '\'
-key = 26
-mods = "Alt|Shift"
-
-[[keyboard.bindings]]
-chars = "|"
-key = 26
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "~"
-key = 45
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "["
-key = 23
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "]"
-key = 22
-mods = "Alt"
-
+# https://alacritty.org/config-alacritty-bindings.html
 [terminal]
 
 [colors.cursor]
@@ -70,3 +31,14 @@ opacity = 0.95
 y = 5
 
 [keyboard]
+bindings = [
+  { key= 28, mods= "Alt|Shift", chars= '{' },
+  { key= 25, mods= "Alt|Shift", chars= '}' },
+  { key= 37, mods= "Alt", chars= '@' },
+  { key= 26, mods= "Alt|Shift", chars= "\\" },
+  { key= 26, mods= "Alt", chars= '|' },
+  { key= 45, mods= "Alt", chars= '~' },
+  { key= 23, mods= "Alt", chars= '[' },
+  { key= 22, mods= "Alt", chars= ']' },
+    # { key= "W", mods= "Command", action = "" },
+]
