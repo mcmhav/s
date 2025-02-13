@@ -1,5 +1,7 @@
 inoremap jj <Esc>
 inoremap JJ <Esc>
+tnoremap jj <C-\><C-n>
+tnoremap JJ <C-\><C-n>
 "nnoremap qq :noh<return><Esc>
 "inoremap QQ <Esc>
 
