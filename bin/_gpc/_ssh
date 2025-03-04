@@ -5,13 +5,16 @@ source "$SCRIPT_PATH/_env"
 
 WORKSPACE_ID=""
 REPO_REMOTE_DIR=""
+SELECTED_REPO="$1"
+_get_repo() {
+    if [ -z "$SELECTED_REPO" ]; then
+        GITPOD_WORKSPACES=$("$SCRIPT_PATH/gitpod" workspace list | awk 'NR>1 {print $2}' | sort -u)
+        GITHUB_REPOS=$("$SCRIPT_PATH/_query_repos" print | sort -u)
+        SELECTED_REPO=$(printf "%s\n%s" "$GITPOD_WORKSPACES" "$GITHUB_REPOS" | sort -u | fzf)
+    fi
+}
 
 create_workspace() {
-    # workspace list | awk 'NR>1 {print $2}' | sort -u
-    GITPOD_WORKSPACES=$("$SCRIPT_PATH/gitpod" workspace list | awk 'NR>1 {print $2}' | sort -u)
-    GITHUB_REPOS=$("$SCRIPT_PATH/_query_repos" print | sort -u)
-    SELECTED_REPO=$(printf "%s\n%s" "$GITPOD_WORKSPACES" "$GITHUB_REPOS" | sort -u | fzf)
-
     # "$SCRIPT_PATH/gitpod" workspace create "https://github.com/$SELECTED_REPO" --ssh
     TMP_WORKSPACE_START_LOG="/tmp/gitpod_logs"
     #script -q /dev/null "$SCRIPT_PATH/gitpod" workspace create "https://github.com/$SELECTED_REPO" | tee "$TMP_WORKSPACE_START_LOG"
@@ -19,9 +22,14 @@ create_workspace() {
     WORKSPACE_ID=$(grep "workspaceID=" <"$TMP_WORKSPACE_START_LOG" | sed 's/^.*=//')
 
     sleep 10 # wait for the workspace to be ready
-    REPO_REMOTE_DIR="/workspace/$(echo "$SELECTED_REPO" | cut -d '/' -f 2-)"
+    if [ -z "$WORKSPACE_ID" ]; then
+        echo "Failed to create workspace"
+        exit 1
+    fi
+    REPO_REMOTE_DIR="/workspace/$(echo "$SELECTED_REPO" | cut -d '/' -f 2-2)"
 }
 
+_get_repo
 create_workspace
 
 while [ "$1" != "" ]; do

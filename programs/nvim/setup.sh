@@ -12,7 +12,7 @@ _install_from_tar() {
 
 _setup() {
     case $CSYS_OS in
-        "$GITPOD_OS")
+	    "$LIN_OS"*)
             if ! command -v "$PACKAGE_NAME" >/dev/null; then
                 _install_from_tar
             else

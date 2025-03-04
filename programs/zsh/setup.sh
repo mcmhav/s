@@ -6,7 +6,16 @@ ZSH_CONFIG_HOME="$HOME/.config/zsh"
 
 _setup() {
 	if ! command -v "$PACKAGE_NAME" >/dev/null; then
-		brew install "$PACKAGE_NAME"
+        if command -v yum >/dev/null; then
+            sudo yum install -y "$PACKAGE_NAME"
+        elif command -v apt-get >/dev/null; then
+            sudo apt-get install -y "$PACKAGE_NAME"
+        elif command -v brew >/dev/null; then
+            brew install "$PACKAGE_NAME"
+        else
+            echo "Package manager not found"
+            exit 1
+        fi
 	fi
 
 	if ! test -L "$HOME/.zshrc"; then
