@@ -6,7 +6,7 @@ PACKAGE_NAME="fzf"
 _install() {
 	case $CSYS_OS in
     "$LIN_OS"*)
-		VERSION="0.60.0"
+		VERSION="0.60.3"
         ARCH="amd64"
         if [ uname -m == "aarch64" ]; then
             ARCH="arm64"
