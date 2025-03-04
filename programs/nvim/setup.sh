@@ -7,8 +7,9 @@ _install_from_tar() {
     mkdir -p "$HOME/.local/bin"
     NVIM_HOME="$HOME/.local/nvim"
     mkdir -p "$NVIM_HOME"
-    curl -fsSL "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-linux-x86_64.tar.gz" | tar -xz -C "$NVIM_HOME"
-    ln -sf "$NVIM_HOME/nvim-linux-x86_64/bin/nvim" "$HOME/.local/bin/nvim"
+    ARCH=$(uname -m)
+    curl -fsSL "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-linux-${ARCH}.tar.gz" | tar -xz -C "$NVIM_HOME"
+    ln -sf "$NVIM_HOME/nvim-linux-${ARCH}/bin/nvim" "$HOME/.local/bin/nvim"
 }
 
 _setup() {
