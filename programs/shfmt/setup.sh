@@ -8,6 +8,7 @@ _install() {
 	case $CSYS_OS in
 	"$LIN_OS"*)
 		curl -fsSL "https://github.com/mvdan/sh/releases/download/v$VERSION/shfmt_v${VERSION}_linux_amd64" -o /tmp/shfmt
+        chmod +x /tmp/shfmt
 		sudo mv /tmp/shfmt /usr/local/bin
 		;;
 	"$MAC_OS")
