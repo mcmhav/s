@@ -19,7 +19,7 @@ _install() {
 		brew install "$PACKAGE_NAME"
 		;;
 	*)
-		echo "Unsupported OS: $CSYS_OS"
+		echo "Unsupported OS: $CSYS_OS, pgk: $PACKAGE_NAME"
 		exit 1
 		;;
 	esac

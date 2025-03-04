@@ -34,7 +34,7 @@ _setup() {
             fi
             ;;
         *)
-            echo "Unsupported OS: $CSYS_OS"
+            loggit warn "Unsupported OS: $CSYS_OS"
             exit 1
             ;;
     esac
