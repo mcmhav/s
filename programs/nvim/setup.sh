@@ -4,6 +4,7 @@ PACKAGE_NAME="nvim"
 NVIM_VERSION="0.10.4"
 
 _install_from_tar() {
+    mkdir -p "$HOME/.local/bin"
     NVIM_HOME="$HOME/.local/nvim"
     mkdir -p "$NVIM_HOME"
     curl -fsSL "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-linux-x86_64.tar.gz" | tar -xz -C "$NVIM_HOME"
