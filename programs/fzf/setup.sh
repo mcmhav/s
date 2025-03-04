@@ -5,9 +5,13 @@ PACKAGE_NAME="fzf"
 
 _install() {
 	case $CSYS_OS in
-	"$GITPOD_OS")
-		VERSION="0.55.0"
-		URL="https://github.com/junegunn/fzf/releases/download/v$VERSION/fzf-$VERSION-linux_amd64.tar.gz"
+    "$LIN_OS"*)
+		VERSION="0.60.0"
+        ARCH="amd64"
+        if [ uname -m == "aarch64" ]; then
+            ARCH="arm64"
+        fi
+		URL="https://github.com/junegunn/fzf/releases/download/v$VERSION/fzf-$VERSION-linux_${ARCH}.tar.gz"
 		curl -fsSL "$URL" | tar -xz -C /tmp
 		sudo mv /tmp/fzf /usr/local/bin
 		;;
