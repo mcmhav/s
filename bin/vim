@@ -9,7 +9,7 @@ fi
 case $1 in
 +Plug* | -c) ;;
 *)
-	if command -v nvim 1>/dev/null 2>&1; then
+	if command -v nvim 1>/dev/null 2>&1 && nvim --version 1>/dev/null 2>&1; then
 		VIM_EXEC="nvim"
 	fi
 	;;
