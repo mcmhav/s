@@ -4,7 +4,7 @@ PACKAGE_NAME="git"
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 _install_package() {
-  if ! csys is-package-installed "$PACKAGE_NAME"; then
+  if ! command -v "$PACKAGE_NAME" >/dev/null; then
     brew install "$PACKAGE_NAME"
   fi
 }
