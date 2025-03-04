@@ -15,6 +15,7 @@ _setup() {
               RG_NAME="ripgrep-${VERSION}-x86_64-unknown-linux-musl"
           fi
           curl -fsSL https://github.com/BurntSushi/ripgrep/releases/download/${VERSION}/${RG_NAME}.tar.gz | tar -xz -C /tmp
+          sudo mv /tmp/${RG_NAME}/rg /usr/local/bin
       fi
       ;;
     "$GITPOD_OS")
