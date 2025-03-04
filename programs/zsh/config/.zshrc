@@ -1,5 +1,5 @@
 # ᯾ ᯿
-PROMPT='%F{green}▲%f %B%F{#ff55ff}%1~%f%b %F{#0000ff}᯿%f '
+PROMPT='%F{green}▲%f %B%F{#ff55ff}%1~%f%b %F{#5BB3ff}⭔%f '
 
 # Styles
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
