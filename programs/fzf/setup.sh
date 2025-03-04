@@ -8,7 +8,7 @@ _install() {
     "$LIN_OS"*)
 		VERSION="0.60.3"
         ARCH="amd64"
-        if [ uname -m == "aarch64" ]; then
+        if [ "$(uname -m)" == "aarch64" ]; then
             ARCH="arm64"
         fi
 		URL="https://github.com/junegunn/fzf/releases/download/v$VERSION/fzf-$VERSION-linux_${ARCH}.tar.gz"
