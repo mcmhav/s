@@ -2,7 +2,7 @@
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 PACKAGE_NAME="bat"
-_VERSION="0.24.0"
+_VERSION="0.25.0"
 
 _install() {
 	case $CSYS_OS in
