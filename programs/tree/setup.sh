@@ -5,8 +5,15 @@ PACKAGE_NAME="tree"
 
 _install() {
 	case $CSYS_OS in
-	"$GITPOD_OS")
-		sudo apt-get install -y "$PACKAGE_NAME"
+    "$LIN_OS"*)
+        if command -v yum >/dev/null; then
+            sudo yum install -y "$PACKAGE_NAME"
+        elif command -v apt-get >/dev/null; then
+            sudo apt-get install -y "$PACKAGE_NAME"
+        else
+            echo "Package manager not found"
+            exit 1
+        fi
 		;;
 	"$MAC_OS")
 		brew install "$PACKAGE_NAME"
