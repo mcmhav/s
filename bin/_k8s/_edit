@@ -3,9 +3,11 @@
 RESOURCE="${1:-pod}"
 RESOURCE=$(echo "$RESOURCE" | tr '[:upper:]' '[:lower:]')
 KUBECTL_PREVIEW_CMD="kubectl get $RESOURCE {+2} -n {+1} -o yaml"
+KUBECTL_BIND_CMD="kubectl edit $RESOURCE {+2} -n {+1}"
 case $RESOURCE in
 node | clusterrolebinding | clusterrole | namespace | namespaces)
 	KUBECTL_PREVIEW_CMD="kubectl get $RESOURCE {+1} -o yaml"
+    KUBECTL_BIND_CMD="kubectl edit $RESOURCE {+1}"
 	;;
 esac
 _FZF_PREVIEW="$KUBECTL_PREVIEW_CMD | bat --paging=never --color=always -l yml"
@@ -17,4 +19,4 @@ kubectl get "$RESOURCE" -A --no-headers | fzf \
 	--bind=ctrl-k:preview-up \
 	--bind=ctrl-d:preview-half-page-down \
 	--bind=ctrl-u:preview-half-page-up \
-	--bind="enter:execute:kubectl edit $RESOURCE {+2} -n {+1}"
+	--bind="enter:execute:$KUBECTL_BIND_CMD"
