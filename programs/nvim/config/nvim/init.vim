@@ -4,4 +4,5 @@ source ~/.vimrc
 
 lua require'nvim-treesitter.configs'.setup{highlight={enable=true},ensure_installed={"python","kdl"}}
 
-TermOpen * setlocal nonumber norelativenumber
+autocmd TermOpen * setlocal nonumber norelativenumber
+
