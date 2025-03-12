@@ -2,7 +2,7 @@
 
 tree_function() {
   if command -v bat >/dev/null && command -v tree >/dev/null; then
-    tree -I .git -I .DS_Store -a -C -L 2 "$@" | bat
+    tree -I .git -I .DS_Store -a -C -L 2 "$@" | bat -p
   else
     ls -la --color=auto
   fi

@@ -37,8 +37,8 @@ layout {
 
   tab name="a"
   tab name="b"
-  full-view name="c"
   dev name="d"
+  full-view name="c"
 }
 session_name "c"
 attach_to_session true
