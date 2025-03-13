@@ -25,7 +25,7 @@ create_workspace() {
     "$SCRIPT_PATH/gitpod" workspace create "https://github.com/$SELECTED_REPO" | tee "$TMP_WORKSPACE_START_LOG"
     WORKSPACE_ID=$(grep "workspaceID=" <"$TMP_WORKSPACE_START_LOG" | sed 's/^.*=//')
 
-    sleep 10 # wait for the workspace to be ready
+    sleep 15 # wait for the workspace to be ready
     if [ -z "$WORKSPACE_ID" ]; then
         echo "Failed to create workspace"
         exit 1
@@ -45,7 +45,7 @@ while [ "$1" != "" ]; do
   shift
 done
 
-"$SCRIPT_PATH/gitpod" workspace ssh "$WORKSPACE_ID" -- -t "sh -c 'cd $REPO_REMOTE_DIR; if which fish >/dev/null ; then exec fish -li; else exec \$SHELL -li; fi'"
+"$SCRIPT_PATH/gitpod" workspace ssh "$WORKSPACE_ID" -- -t "sh -c 'cd $REPO_REMOTE_DIR; if command -v zellij >/dev/null ; then exec zellij; elif command -v fish >/dev/null; then exec fish -li; else exec \$SHELL -li; fi'"
 # "$SCRIPT_PATH/gitpod" workspace ssh "$WORKSPACE_ID" -- -t "sh -c 'gp timeout extend; if which fish >/dev/null ; then exec fish -li; else exec \$SHELL -li; fi'"
 #"$SCRIPT_PATH/gitpod" workspace ssh "$WORKSPACE_ID" -- -t "sh -c 'gp timeout extend; if which fish >/dev/null ; then exec fish -li -C \'cd \$REPO_REMOTE_DIR\'; else exec \$SHELL -li; fi'"
 
