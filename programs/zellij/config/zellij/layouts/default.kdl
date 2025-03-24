@@ -35,8 +35,8 @@ layout {
     pane
   }
 
-  tab name="a"
-  tab name="b"
+  // tab name="a"
+  // tab name="b"
   dev name="d"
   full-view name="c"
 }
