@@ -1,3 +1,4 @@
 base
 zellij
 pre-commit
+kubectl

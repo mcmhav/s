@@ -16,7 +16,7 @@ _install() {
         brew install "$PACKAGE_COMMAND"
         ;;
     *)
-        echo "Unsupported OS: $CSYS_OS, pgk: $PACKAGE_COMMAND"
+        loggit warn "Unsupported OS: $CSYS_OS, pgk: $PACKAGE_COMMAND"
         exit 1
         ;;
     esac
