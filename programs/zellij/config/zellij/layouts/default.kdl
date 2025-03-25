@@ -37,7 +37,7 @@ layout {
 
   // tab name="a"
   // tab name="b"
-  dev name="d"
+  // dev name="d"
   full-view name="c"
 }
 session_name "c"
