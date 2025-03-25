@@ -9,8 +9,9 @@ _install() {
         RELEASE_VERSION="$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)"
         curl \
             -fsSL "https://storage.googleapis.com/kubernetes-release/release/$RELEASE_VERSION/bin/linux/amd64/kubectl" \
-            -o /usr/local/bin/kubectl
-        chmod +x /usr/local/bin/kubectl
+            -o /tmp/kubectl &&
+            chmod +x /tmp/kubectl
+        sudo mv /tmp/kubectl /usr/local/bin
         ;;
     "$MAC_OS")
         brew install "$PACKAGE_COMMAND"
