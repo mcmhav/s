@@ -4,27 +4,30 @@ read -ra ORIGINAL_ARGS <<<"$*"
 
 PACKAGE_TO_INSTALL=""
 while [ "$1" != "" ]; do
-  case "$1" in
-  -*) ;;
-  *)
-    if [ -z "$PACKAGE_TO_INSTALL" ]; then
-      PACKAGE_TO_INSTALL="$1"
-    fi
-    ;;
-  esac
-  shift
+    case "$1" in
+    -*) ;;
+    *)
+        if [ -z "$PACKAGE_TO_INSTALL" ]; then
+            PACKAGE_TO_INSTALL="$1"
+        fi
+        ;;
+    esac
+    shift
 done
 
 if [ -f "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/setup.sh" ]; then
-  if [ -f "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/reqs" ]; then
-    loggit dbug "csys | install reqs for package"
-    csys reqs-install "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/reqs"
-  fi
-  loggit dbug "csys | Setup $PACKAGE_TO_INSTALL"
-  "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/setup.sh"
+    if [ -f "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/reqs" ]; then
+        loggit dbug "csys | install reqs for package"
+        csys reqs-install "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/reqs"
+    fi
+    loggit dbug "csys | Setup $PACKAGE_TO_INSTALL"
+    "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/setup.sh"
 else
-  loggit dbug "brew | Setup $PACKAGE_TO_INSTALL"
-  if ! csys is-package-installed "${ORIGINAL_ARGS[@]}"; then
-    brew install "${ORIGINAL_ARGS[@]}"
-  fi
+    loggit dbug "brew | Setup $PACKAGE_TO_INSTALL"
+    if ! csys is-package-installed "${ORIGINAL_ARGS[@]}"; then
+        brew install "${ORIGINAL_ARGS[@]}"
+        if [ $? -ne 0 ]; then
+            loggit error "brew | Failed to install $PACKAGE_TO_INSTALL"
+        fi
+    fi
 fi
