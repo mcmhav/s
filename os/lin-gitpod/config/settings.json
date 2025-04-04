@@ -108,5 +108,7 @@
   "vs-kubernetes": {
     "vs-kubernetes.crd-code-completion": "disabled"
   },
-  "editor.rulers": [80, 120]
+  "editor.rulers": [80, 120],
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false
 }
