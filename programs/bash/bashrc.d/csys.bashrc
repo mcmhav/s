@@ -5,10 +5,14 @@ export LIN_OS="lin"
 export MAC_OS="mac"
 export WIN_OS="win"
 export GITPOD_OS="lin-gitpod"
+export CODER_OS="lin-coder"
 
 if [ "$(uname -s)" == "Linux" ]; then
     if [[ "$(uname -m)" =~ armv[0-9]l ]] && [[ "$(uname -n)" =~ pi* ]]; then
         export CSYS_OS="$PI_OS"
+    elif [ "$CODER" == "true" ]; then
+        # Probably a coder
+        export CSYS_OS="$CODER_OS"
     elif [ -n "$GITPOD_REPO_ROOT" ]; then
         # Probably a gitpod
         export CSYS_OS="$GITPOD_OS"
