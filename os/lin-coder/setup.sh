@@ -15,7 +15,7 @@ _setup() {
     export VS_CODE_SETTINGS_LOCATION="$HOME/.vscode-server/data/Machine/"
     csys install vs-code-server-config &
 
-    export VS_CODE_SETTINGS_LOCATION="$HOME/.local/share/code-server/data/Machine/"
+    export VS_CODE_SETTINGS_LOCATION="$HOME/.local/share/code-server/Machine/"
     csys install vs-code-server-config &
     # sudo apt-get update
     # loggit "Installing brew"
