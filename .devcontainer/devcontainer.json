@@ -1,9 +1,9 @@
 {
-  "image": "codercom/enterprise-base:ubuntu"
-  // "build": {
-  //     "dockerfile": "./Dockerfile",
-  //     "context": "."
-  // },
+  // "image": "codercom/enterprise-base:ubuntu"
+  "build": {
+    "dockerfile": "./Dockerfile",
+    "context": "."
+  }
   // "features": {
   //     "ghcr.io/devcontainers/features/common-utils:2": {
   //         "installZsh": "true",
