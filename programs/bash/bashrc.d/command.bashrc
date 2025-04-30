@@ -40,7 +40,7 @@ function promt_commands() {
   local curr_exit="$?"
 
 
-  if [ "$CSYS_OS" == "$GITPOD_OS" ]; then
+  if [ "$CSYS_OS" == "$GITPOD_OS" ] || [ "$CSYS_OS" == "$CODER_OS" ]; then
     if [ -f "$CSYS_BASHRC_D/.setup_done" ] && command -v fish >/dev/null 2>&1; then
       fish
     fi
