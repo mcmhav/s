@@ -87,7 +87,7 @@ done
 export DO_NOT_TRACK=1
 
 # Bat
-export BAT_THEME="Dracula"
+export BAT_THEME="DarkNeon"
 
 # Brew
 # export HOMEBREW_NO_INSTALL_FROM_API=1

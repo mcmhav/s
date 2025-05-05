@@ -1,25 +1,13 @@
 {
   "ssh_connections": [
-    {
-      "host": "sparebank1ut-dopeclient-8pi630mzat1.ssh.ws.gitpod.dataplattform.sparebank1.no",
-      "username": "sparebank1ut-dopeclient-8pi630mzat1",
-      "projects": [
-        {
-          "paths": [
-            "//workspace/dope-client"
-          ]
-        }
-      ],
-      "nickname": "dope-client"
-    }
   ],
   "vim_mode": true,
   "autosave": "on_focus_change",
   "auto_update": false,
   "format_on_save": "off",
   "line_numbers": true,
-  "ui_font_size": 14,
-  "buffer_font_size": 13,
+  "ui_font_size": 13,
+  "buffer_font_size": 12,
   "buffer_font_family": "Menlo",
   "buffer_font_weight": 500,
   "ui_font_weight": 600,
@@ -45,7 +33,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Ayu Dark",
+    "dark": "One Dark",
   },
   "telemetry": {
     "diagnostics": false,
