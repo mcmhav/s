@@ -9,8 +9,10 @@ _install() {
         if command -v yum >/dev/null; then
             sudo yum install -y "$PACKAGE_NAME"
         elif command -v apt-get >/dev/null; then
-            sudo apt-get update
-            sudo apt-get install -y "$PACKAGE_NAME"
+            sudo apt-get install -y "$PACKAGE_NAME" 2>/dev/null || {
+                sudo apt-get update
+                sudo apt-get install -y "$PACKAGE_NAME"
+            }
         else
             echo "Package manager not found"
             exit 1
