@@ -24,6 +24,7 @@ export ANDROID_HOME="/usr/local/share/android-sdk"
 PATHS=(
     # "$HOME/.pyenv/shims"
     "$CSYS_BIN"
+    "$HOME/.local/bin"
     "/git/tools/bin"
     "$PATH"
     "/usr/local/bin"
@@ -37,7 +38,6 @@ PATHS=(
     "$HOME/.cargo/bin"
     "$HOME/.csys.bashrc.d/bin"
     "/home/linuxbrew/.linuxbrew/bin"
-    "$HOME/.local/bin"
 )
 PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
 if [ -n "$(command -v ruby)" ]; then
