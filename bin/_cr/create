@@ -15,7 +15,7 @@ create_kubernetes_devcontainers_workspace() {
 gitrepo: "$REPO"
 dotfiles_uri: "https://github.com/mcmhav/s"
 
-cpu: 2
+cpu: 3
 memory: 2
 workspaces_volume_size: 2
 github_pat: $GITHUB_CODER_PAT
@@ -23,6 +23,7 @@ env:
     - "{\"name\":\"COPILOT_HOSTS\",\"value\":\"$COPILOT_HOSTS\"}"
     - "{\"name\":\"GITHUB_CODER_PAT\",\"value\":\"$GITHUB_CODER_PAT\"}"
     - "{\"name\":\"GITHUB_TOKEN\",\"value\":\"$GITHUB_CODER_PAT\"}"
+    - "{\"name\":\"GITHUB_PAT\",\"value\":\"$GITHUB_CODER_PAT\"}"
 EOF
     )
     echo "$PARAMETERS_KUBERNETES" >/tmp/parameters.yml
