@@ -62,12 +62,14 @@ _setup() {
 	# Could probably be improved by having programs we want to install tell
 	# if they can be installed without input, and decide based on that
 	if [ -n "$CSYS_NO_SUBPROCESS_INSTALL" ] || ! command -v brew >/dev/null; then
+        loggit "Running setup in the current shell"
 		"$CSYS_HOME/os/$CSYS_OS/setup.sh"
 		touch "$CSYS_BASHRC_D/.setup_done"
 		DONE_TIME="$(date +%s)"
 		echo "$DONE_TIME" >"$CSYS_BASHRC_D/.setup_done"
 		loggit "Setup done, took $((DONE_TIME - START_TIME)) seconds"
 	else
+        loggit "Running setup in a subprocess"
 		(
 			"$CSYS_HOME/os/$CSYS_OS/setup.sh"
 			touch "$CSYS_BASHRC_D/.setup_done"
