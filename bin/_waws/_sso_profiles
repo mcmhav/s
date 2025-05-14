@@ -5,118 +5,128 @@ AWS_CONFIG_FILE="$AWS_HOME/config"
 AWS_SSO_CACHE="$AWS_HOME/sso/cache"
 BOOTSTRAP_FILE=""
 if [ -f "$CSYS_BASHRC_D/bootstrap" ]; then
-	BOOTSTRAP_FILE="$CSYS_BASHRC_D/bootstrap"
+    BOOTSTRAP_FILE="$CSYS_BASHRC_D/bootstrap"
 elif [ -f "/usr/local/bin/bootstrap" ]; then
-	BOOTSTRAP_FILE="/usr/local/bin/bootstrap"
+    BOOTSTRAP_FILE="/usr/local/bin/bootstrap"
 fi
 AWS_SSO_START_URL=""
 
+unset AWS_PROFILE
 export AWS_REGION="eu-north-1"
 
 _bootstrap() {
-	if [ -f "$BOOTSTRAP_FILE" ]; then
-		AWS_SSO_START_URL=$(grep sso_start_url <"$BOOTSTRAP_FILE" | awk '{print $3}')
-	elif [ -f "$AWS_CONFIG_FILE" ]; then
-		AWS_SSO_START_URL=$(grep -m 1 sso_start_url <"$AWS_CONFIG_FILE" | awk '{print $3}')
-	elif command -v aws-sso; then
-		aws-sso
-		AWS_SSO_START_URL=$(grep -m 1 sso_start_url <"$AWS_CONFIG_FILE" | awk '{print $3}')
-	fi
+    if [ -f "$BOOTSTRAP_FILE" ]; then
+        AWS_SSO_START_URL=$(grep sso_start_url <"$BOOTSTRAP_FILE" | awk '{print $3}')
+    elif [ -f "$AWS_CONFIG_FILE" ]; then
+        AWS_SSO_START_URL=$(grep -m 1 sso_start_url <"$AWS_CONFIG_FILE" | awk '{print $3}')
+    elif command -v aws-sso; then
+        aws-sso
+        AWS_SSO_START_URL=$(grep -m 1 sso_start_url <"$AWS_CONFIG_FILE" | awk '{print $3}')
+    fi
 
-	if [ -z "$AWS_SSO_START_URL" ]; then
-		loggit errr "Did not manage to bootstrap, exiting"
-		exit 1
-	fi
+    if [ -z "$AWS_SSO_START_URL" ]; then
+        loggit errr "Did not manage to bootstrap, exiting"
+        exit 1
+    fi
 }
 _bootstrap
 
-if [ ! -d "$AWS_SSO_CACHE" ]; then
-	mkdir -p "$AWS_SSO_CACHE"
-fi
-AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
+AWS_SSO_SESSION=""
 
 _update_sso_session() {
-	SESSION_NOT_EXPIRED=$(jq '.expiresAt > (now | strftime("%FT%T")) and .startUrl' <"$AWS_SSO_SESSION")
-	if [ "$SESSION_NOT_EXPIRED" != "true" ]; then
-		loggit "Old sso-session, will try to reauth"
-		if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-			AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login --no-browser
-		else
-			AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login
-		fi
-		AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
-	fi
+    if [ ! -d "$AWS_SSO_CACHE" ]; then
+        mkdir -p "$AWS_SSO_CACHE"
+    fi
+    AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
+
+    SESSION_NOT_EXPIRED=$(jq '.expiresAt > (now | strftime("%FT%T")) and .startUrl' <"$AWS_SSO_SESSION")
+
+    if [ "$SESSION_NOT_EXPIRED" != "true" ]; then
+        loggit "Old sso-session, will try to reauth"
+        if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+            AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login --no-browser
+        else
+            AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login
+        fi
+        AWS_SSO_SESSION="$AWS_SSO_CACHE/$(ls -Art "$AWS_SSO_CACHE" | tail -n 1)"
+    fi
 }
 _update_sso_session
 
 AWS_ACCESS_TOKEN=$(jq -r '.accessToken' <"$AWS_SSO_SESSION")
-unset AWS_PROFILE
 ACCOUNTS=$(aws sso list-accounts --access-token "$AWS_ACCESS_TOKEN")
 ACCOUNTS_LENGTH=$(jq -r '.accountList | length - 1' <<<"$ACCOUNTS")
 if [ -z "$ACCOUNTS_LENGTH" ]; then
-	loggit errr "No accounts found"
-	exit 1
+    rm -rf "$AWS_SSO_CACHE"
+    _update_sso_session
+    AWS_ACCESS_TOKEN=$(jq -r '.accessToken' <"$AWS_SSO_SESSION")
+    ACCOUNTS=$(aws sso list-accounts --access-token "$AWS_ACCESS_TOKEN")
+    ACCOUNTS_LENGTH=$(jq -r '.accountList | length - 1' <<<"$ACCOUNTS")
+    if [ -z "$ACCOUNTS_LENGTH" ]; then
+        loggit errr "No accounts found"
+        exit 1
+    fi
 fi
 
 _create_profile_element() {
-	ROLE="$1"
-	ACCOUNT_NAME="$2"
-	ROLE_NAME="$(jq -r '.roleName' <<<"$ROLE")"
-	ACCOUNT_ID="$(jq -r '.accountId' <<<"$ROLE")"
-	if [ -z "$ACCOUNT_NAME" ] || [ -z "$ROLE_NAME" ]; then
-		return
-	fi
-	echo "[profile $ACCOUNT_NAME/$ROLE_NAME]"
-	echo "sso_start_url  = $AWS_SSO_START_URL"
-	echo "sso_account_id = $ACCOUNT_ID"
-	echo "sso_role_name  = $ROLE_NAME"
-	echo "sso_region     = $AWS_REGION"
-	echo "region         = $AWS_REGION"
-	echo ""
+    ROLE="$1"
+    ACCOUNT_NAME="$2"
+    ROLE_NAME="$(jq -r '.roleName' <<<"$ROLE")"
+    ACCOUNT_ID="$(jq -r '.accountId' <<<"$ROLE")"
+    if [ -z "$ACCOUNT_NAME" ] || [ -z "$ROLE_NAME" ]; then
+        return
+    fi
+    echo "[profile $ACCOUNT_NAME/$ROLE_NAME]"
+    echo "sso_start_url  = $AWS_SSO_START_URL"
+    echo "sso_account_id = $ACCOUNT_ID"
+    echo "sso_role_name  = $ROLE_NAME"
+    echo "sso_region     = $AWS_REGION"
+    echo "region         = $AWS_REGION"
+    echo ""
 }
 
 _add_account_info_to_file() {
-	ACCOUNT_ID="$1"
-	ACCOUNT_NAME="$2"
-	CONFIG_FILE="$AWS_CONFIG_FILE.$ACCOUNT_ID.tmp"
-	rm -f "$CONFIG_FILE"
+    ACCOUNT_ID="$1"
+    ACCOUNT_NAME="$2"
+    CONFIG_FILE="$AWS_CONFIG_FILE.$ACCOUNT_ID.tmp"
+    rm -f "$CONFIG_FILE"
 
-	loggit "Handling: $ACCOUNT_NAME"
+    loggit "Handling: $ACCOUNT_NAME"
 
-	ROLES=$(aws sso list-account-roles --access-token "$AWS_ACCESS_TOKEN" --account-id "$ACCOUNT_ID" | jq '.roleList')
-	for j in $(seq 0 "$(jq 'length -1' <<<"$ROLES")"); do
-		ROLE="$(jq --argjson j "$j" '.[$j]' <<<"$ROLES")"
-		loggit "Handling: $(jq -r '.roleName' <<<"$ROLE")"
-		_create_profile_element "$ROLE" "$ACCOUNT_NAME" >>"$CONFIG_FILE"
-	done
+    ROLES=$(aws sso list-account-roles --access-token "$AWS_ACCESS_TOKEN" --account-id "$ACCOUNT_ID" | jq '.roleList')
+    for j in $(seq 0 "$(jq 'length -1' <<<"$ROLES")"); do
+        ROLE="$(jq --argjson j "$j" '.[$j]' <<<"$ROLES")"
+        loggit "Handling: $(jq -r '.roleName' <<<"$ROLE")"
+        _create_profile_element "$ROLE" "$ACCOUNT_NAME" >>"$CONFIG_FILE"
+    done
 }
 
 rm -f "$AWS_CONFIG_FILE.tmp"
 touch "$AWS_CONFIG_FILE.tmp"
 for i in $(seq 0 "$ACCOUNTS_LENGTH"); do
-	ACCOUNT_ID=$(jq --argjson i "$i" -r '.accountList[$i].accountId' <<<"$ACCOUNTS")
-	ACCOUNT_NAME=$(jq --argjson i "$i" -r '.accountList[$i].accountName' <<<"$ACCOUNTS")
+    ACCOUNT_ID=$(jq --argjson i "$i" -r '.accountList[$i].accountId' <<<"$ACCOUNTS")
+    ACCOUNT_NAME=$(jq --argjson i "$i" -r '.accountList[$i].accountName' <<<"$ACCOUNTS")
 
-	_add_account_info_to_file "$ACCOUNT_ID" "$ACCOUNT_NAME" &
+    _add_account_info_to_file "$ACCOUNT_ID" "$ACCOUNT_NAME" &
 done
 
 wait
 
 for file in "$AWS_CONFIG_FILE".*.tmp; do
-	cat "$file" >>"$AWS_CONFIG_FILE.tmp"
-	rm "$file"
+    cat "$file" >>"$AWS_CONFIG_FILE.tmp"
+    rm "$file"
 done
 
 if [ ! -f "$AWS_CONFIG_FILE" ] && [ ! -f "$AWS_CONFIG_FILE.initial" ]; then
-	# if we have no config we sould add an inital empty file
-	# to avoid double profiles adding
-	touch "$AWS_CONFIG_FILE.initial"
+    # if we have no config we sould add an inital empty file
+    # to avoid double profiles adding
+    touch "$AWS_CONFIG_FILE.initial"
 fi
 if [ -f "$AWS_CONFIG_FILE" ] && [ ! -f "$AWS_CONFIG_FILE.initial" ]; then
-	cp "$AWS_CONFIG_FILE" "$AWS_CONFIG_FILE.initial"
+    cp "$AWS_CONFIG_FILE" "$AWS_CONFIG_FILE.initial"
 fi
 
 mv "$AWS_CONFIG_FILE.tmp" "$AWS_CONFIG_FILE"
 if [ -f "$AWS_CONFIG_FILE.initial" ]; then
-	cat "$AWS_CONFIG_FILE.initial" >>"$AWS_CONFIG_FILE"
+    cat "$AWS_CONFIG_FILE.initial" >>"$AWS_CONFIG_FILE"
 fi
