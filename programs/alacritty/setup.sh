@@ -8,7 +8,13 @@ _setup() {
     # brew install --cask alacritty
   fi
 
-  ln -sf "$SCRIPT_PATH/config/alacritty" "$HOME/.config"
+  case "$CSYS_OS" in
+  "$LIN_OS"*) _with_nvm ;;
+  "$MAC_OS") _with_nvm ;;
+  *)
+    loggit warn "$PACKAGE_NAME install not implemented for OS: $CSYS_OS"
+    ;;
+  esac
 }
 
 _setup
