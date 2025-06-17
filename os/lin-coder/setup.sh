@@ -12,11 +12,11 @@ _setup() {
     # Store an updated key
     # cat ~/.config/github-copilot/hosts.json | base64 -w 0 | xargs -I {} gp env COPILOT_HOST={}
 
-    # export VS_CODE_SETTINGS_LOCATION="$HOME/.vscode-server/data/Machine/"
-    # csys install vs-code-server-config &
+    export VS_CODE_SETTINGS_LOCATION="$HOME/.vscode-server/data/Machine/"
+    csys install vs-code-server-config &
 
-    # export VS_CODE_SETTINGS_LOCATION="$HOME/.local/share/code-server/Machine/"
-    # csys install vs-code-server-config &
+    export VS_CODE_SETTINGS_LOCATION="$HOME/.local/share/code-server/Machine/"
+    csys install vs-code-server-config &
     # sudo apt-get update
     # loggit "Installing brew"
     # csys install brew
