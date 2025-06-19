@@ -1,6 +1,5 @@
 {
-  "ssh_connections": [
-  ],
+  "ssh_connections": [],
   "vim_mode": true,
   "autosave": "on_focus_change",
   "auto_update": false,
@@ -12,43 +11,49 @@
   "buffer_font_weight": 500,
   "ui_font_weight": 600,
   "soft_wrap": "editor_width",
-  "upload_binary_over_ssh":true,
+  "upload_binary_over_ssh": true,
   "tab_bar": {
-    "show": false,
+    "show": false
   },
   "terminal": {
     "font_family": "Menlo",
     "line_height": {
       // 618 / 4 (https://zed.dev/docs/configuring-zed#terminal-line-height)
-      "custom": 1.1545,
+      "custom": 1.1545
     },
     "shell": {
       "with_arguments": {
         "program": "/usr/bin/bash",
-        "args": [],
+        "args": []
       }
     },
-    "detect_venv": "off",
+    "detect_venv": "off"
   },
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "One Dark",
+    "dark": "One Dark"
   },
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
+    "metrics": false
   },
   "project_panel": {
-    "default_width": 0,
+    "default_width": 200,
+    // "default_width": 10,
     "indent_size": 10,
     "indent_guides": {
       "show": "never"
-    },
+    }
   },
   "git": {
     "inline_blame": {
-      "enabled": false,
+      "enabled": false
     }
   },
+  "languages": {
+    "YAML": {
+      "tab_size": 2
+    }
+  }
 }

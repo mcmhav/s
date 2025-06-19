@@ -112,6 +112,7 @@
   "window.commandCenter": false,
   "workbench.layoutControl.enabled": false,
   "security.workspace.trust.enabled": false,
+  "security.workspace.trust.startupPrompt": "never",
   "git.useIntegratedAskPass": false,
   "github.gitAuthentication": false
 }

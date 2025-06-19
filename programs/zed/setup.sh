@@ -2,7 +2,7 @@
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 ZED_APP_PATH="$HOME/.local/zed/Applications"
-ZED_VERSION="0.183.11"
+ZED_VERSION="0.190.6"
 
 _install() {
     # ref. https://zed.dev/install.sh

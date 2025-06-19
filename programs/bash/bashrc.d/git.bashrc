@@ -13,6 +13,7 @@ alias gnb='makeNewRemoteAAndLocalBranch'
 alias gnt='makeNewRemoteAAndLocalTag'
 alias gdb='deleteRemoteAndLocalBranch'
 alias gdt='deleteRemoteAndLocalTag'
+alias gplb='pruneLocalBranches'
 # bins end
 
 alias g='git'
