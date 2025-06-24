@@ -4,31 +4,31 @@ ACTION="$1"
 shift
 
 _inject_cert() {
-	PORT="$(podman machine ls --format json | jq '.[].Port')"
+    PORT="$(podman machine ls --format json | jq '.[].Port')"
 
-	scp -i "$HOME/.ssh/podman-machine-default" \
-		-P "$PORT" \
-		"$CSYS_BASHRC_D/cert.pem" root@localhost:/etc/pki/ca-trust/source/anchors/cert.pem
+    scp -i "$HOME/.ssh/podman-machine-default" \
+        -P "$PORT" \
+        "$CSYS_BASHRC_D/cert.pem" root@localhost:/etc/pki/ca-trust/source/anchors/cert.pem
 
-	# "$CSYS_BASHRC_D/certificate.cer" root@localhost:/etc/pki/ca-trust/source/anchors/certificate_2.cer
+    # "$CSYS_BASHRC_D/certificate.cer" root@localhost:/etc/pki/ca-trust/source/anchors/certificate_2.cer
 
-	podman machine ssh --username root 'update-ca-trust extract'
+    podman machine ssh --username root 'update-ca-trust extract'
 }
 
 _fix_time_drift() {
-	if [ "$(podman machine list --format json | jq 'length')" == 0 ]; then
-		podman machine init
-	fi
-	if [ "$(podman machine list --format json | jq '.[].Running')" == "false" ]; then
-		podman machine start
-	fi
-	podman machine ssh --username root date --set "$(date -Iseconds)"
+    if [ "$(podman machine list --format json | jq 'length')" == 0 ]; then
+        podman machine init
+    fi
+    if [ "$(podman machine list --format json | jq '.[].Running')" == "false" ]; then
+        podman machine start
+    fi
+    podman machine ssh --username root date --set "$(date -Iseconds)"
 }
 
 _rm_machine() {
-	podman machine stop
-	podman machine rm -f
-	# rm -rf "$HOME/.local/share/containers/podman/machine/qemu"
+    podman machine stop
+    podman machine rm -f
+    # rm -rf "$HOME/.local/share/containers/podman/machine/qemu"
 }
 
 COMMAND_OPTIONS=$(printf "
@@ -46,40 +46,40 @@ $COMMAND_OPTIONS"
 
 case "$ACTION" in
 restart)
-	_rm_machine
-	podman machine init
-	podman machine start
-	_inject_cert
-	exit
-	;;
+    _rm_machine
+    podman machine init
+    podman machine start
+    _inject_cert
+    exit
+    ;;
 rm-machine)
-	_rm_machine
-	exit
-	;;
+    _rm_machine
+    exit
+    ;;
 inject-cert)
-	_inject_cert
-	exit
-	;;
+    _inject_cert
+    exit
+    ;;
 fix-time-drift)
-	_fix_time_drift
-	exit
-	;;
+    _fix_time_drift
+    exit
+    ;;
 hist)
-	docker history "$1" --no-trunc --format "{{.Size}}\t\t {{.CreatedBy}}"
-	exit
-	;;
+    docker history "$1" --no-trunc --format "{{.Size}}\t\t {{.CreatedBy}}"
+    exit
+    ;;
 -h | --help)
-	echo "$HELP_TEXT"
-	;;
+    echo "$HELP_TEXT"
+    ;;
 esac
 
 _docker() {
-	if [ "$MAC_OS" == "$CSYS_OS" ]; then
-		/opt/homebrew/bin/docker $ACTION $*
-	elif command -v podman; then
-		command podman $ACTION $*
-	else
-		/usr/bin/docker $ACTION $*
-	fi
+    if [ "$MAC_OS" == "$CSYS_OS" ]; then
+        /opt/homebrew/bin/docker $ACTION $*
+    elif command -v podman >/dev/null 2>&1; then
+        command podman $ACTION $*
+    else
+        /usr/bin/docker $ACTION $*
+    fi
 }
 _docker "$@"

@@ -1,4 +1,15 @@
 {
+  "experimental.theme_overrides": {
+    "syntax": {
+      "comment": {
+        "font_style": "italic",
+        "color": "#633333",
+      },
+      "comment.doc": {
+        "font_style": "italic"
+      }
+    }
+  },
   "ssh_connections": [],
   "vim_mode": true,
   "autosave": "on_focus_change",
@@ -33,7 +44,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "One Dark"
+    "dark": "Ayu Dark"
   },
   "telemetry": {
     "diagnostics": false,
