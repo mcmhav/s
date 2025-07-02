@@ -10,7 +10,12 @@
       }
     }
   },
-  "ssh_connections": [],
+  "ssh_connections": [
+    {
+      "host": "github.com-mcmhav",
+      "projects": []
+    }
+  ],
   "vim_mode": true,
   "autosave": "on_focus_change",
   "auto_update": false,
@@ -51,7 +56,7 @@
     "metrics": false
   },
   "project_panel": {
-    "default_width": 200,
+    "default_width": 175,
     // "default_width": 10,
     "indent_size": 10,
     "indent_guides": {

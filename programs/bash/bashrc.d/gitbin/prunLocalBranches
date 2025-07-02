@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-BRANCH="${1:-main}"
-git checkout "$BRANCH"
-git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D

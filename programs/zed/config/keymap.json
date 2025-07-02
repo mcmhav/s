@@ -11,5 +11,11 @@
     "bindings": {
       "j j": "vim::NormalBefore"
     }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-/": "editor::ToggleComments"
+    }
   }
 ]
