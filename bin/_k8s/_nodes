@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 kubectl get nodes \
-  --no-headers \
-  -o custom-columns="NAME":.metadata.name,"NODEGROUP":".metadata.labels.eks\.amazonaws\.com/nodegroup" |
-  fzf \
+    --no-headers \
+    -o custom-columns="NAME":.metadata.name,"NODEROLE":"metadata.labels.sb1u/node-role","NODEGROUP":".metadata.labels.eks\.amazonaws\.com/nodegroup" \
+    fzf \
     --preview 'kubectl get pods -A --field-selector spec.nodeName={+1}' \
     --preview-window "up,80%" \
     --bind=ctrl-b:preview-bottom \
