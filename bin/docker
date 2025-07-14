@@ -77,7 +77,9 @@ _docker() {
     if [ "$MAC_OS" == "$CSYS_OS" ]; then
         /opt/homebrew/bin/docker $ACTION $*
     elif command -v podman >/dev/null 2>&1; then
-        command podman $ACTION $*
+        if podman image ls >/dev/null 2>&1; then
+            podman $ACTION $*
+        fi
     else
         /usr/bin/docker $ACTION $*
     fi
