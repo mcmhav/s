@@ -9,6 +9,11 @@ create)
     "$SUB_PATH"/create "$@"
     exit
     ;;
+delete)
+    shift
+    "$SUB_PATH"/create "$@"
+    exit
+    ;;
 *)
     coder "$@"
     exit

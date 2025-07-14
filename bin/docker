@@ -76,10 +76,8 @@ esac
 _docker() {
     if [ "$MAC_OS" == "$CSYS_OS" ]; then
         /opt/homebrew/bin/docker $ACTION $*
-    elif command -v podman >/dev/null 2>&1; then
-        if podman image ls >/dev/null 2>&1; then
-            podman $ACTION $*
-        fi
+    elif command -v podman >/dev/null 2>&1 && podman image ls >/dev/null 2>&1; then
+        podman $ACTION $*
     else
         /usr/bin/docker $ACTION $*
     fi
