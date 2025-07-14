@@ -16,7 +16,7 @@ dotfiles_uri: "https://github.com/mcmhav/s"
 
 cpu: 3
 memory: 2
-workspaces_volume_size: 2
+workspace_volume_size: 2
 env:
     - "{\"name\":\"COPILOT_HOSTS\",\"value\":\"$COPILOT_HOSTS\"}"
 EOF
