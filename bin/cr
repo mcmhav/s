@@ -11,7 +11,7 @@ create)
     ;;
 delete)
     shift
-    "$SUB_PATH"/create "$@"
+    "$SUB_PATH"/delete "$@"
     exit
     ;;
 *)
