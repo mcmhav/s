@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 ZED_SERVER_VERSION="0.193.3"
 
 _install() {
@@ -13,6 +14,10 @@ _install() {
     chmod +x "$tmp/zed-remote-server-stable-linux-x86_64"
     mkdir -p "$HOME/.zed_server"
     cp "$tmp/zed-remote-server-stable-linux-x86_64" "$HOME/.zed_server"
+
+    mkdir -p "$HOME/.config/zed"
+
+    ln -sf "$SCRIPT_PATH/config/settings.json" "$HOME/.config/zed/settings.json"
 }
 
 _setup() {
