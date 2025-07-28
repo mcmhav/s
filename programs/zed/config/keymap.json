@@ -17,5 +17,12 @@
     "bindings": {
       "cmd-/": "editor::ToggleComments"
     }
+  },
+  {
+    "context": "BufferSearchBar",
+    "use_key_equivalents": true,
+    "bindings": {
+      "cmd-shift-alt-f": "search::ToggleReplace"
+    }
   }
 ]

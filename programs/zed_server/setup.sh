@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-ZED_SERVER_VERSION="0.193.3"
+ZED_SERVER_VERSION="0.196.6"
 
 _install() {
     tmp="$(mktemp -d "/tmp/zed-XXXXXX")"
