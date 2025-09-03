@@ -6,7 +6,6 @@
       "provider": "copilot_chat",
       "model": "gemini-2.5-pro"
     },
-    "version": "2"
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -105,6 +104,9 @@
   "file_types": {
     "TOML": [
       "**/*.conf",
+    ],
+    "YAML": [
+      "**/*.yaml.j2"
     ]
   },
 }
