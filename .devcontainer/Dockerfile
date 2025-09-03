@@ -8,7 +8,8 @@ RUN apt-get update && \
         locales \
         git \
         util-linux \
-        curl
+        curl \
+        htop
 
 RUN locale-gen en_US.UTF-8
 
