@@ -4,6 +4,7 @@ FROM public.ecr.aws/docker/library/ubuntu:noble
 # RUN apt-get update && apt-get install -y git util-linux curl
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
+        ca-certificates \
         locales \
         git \
         util-linux \
