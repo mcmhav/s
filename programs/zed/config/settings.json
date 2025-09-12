@@ -1,11 +1,13 @@
 {
   "agent": {
-    "default_profile": "ask",
     "model_parameters": [],
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gemini-2.5-pro"
+      "model": "gpt-4.1"
     },
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
   },
   "experimental.theme_overrides": {
     "syntax": {
