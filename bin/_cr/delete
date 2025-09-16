@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-coder list -o json | jq '.[] | .name' -r | grep -v -x "$CODER_WORKSPACE_NAME" | parallel -j 5 coder delete {} -y
+coder list -o json | jq '.[] | .name' -r | grep -v -x "$CODER_WORKSPACE_NAME" | parallel -j 4 coder delete {} -y
