@@ -11,6 +11,9 @@
   },
   "coc.preferences.formatOnSave": true,
   "coc.preferences.willSaveHandlerTimeout": 2000,
+  "[python]": {
+    "coc.preferences.formatOnSave": true
+  },
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
   },
