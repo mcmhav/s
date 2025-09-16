@@ -3,7 +3,7 @@
     "context": "Workspace",
     "bindings": {
       // "shift shift": "file_finder::Toggle"
-      "alt-e": "terminal_panel::ToggleFocus",
+      "alt-e": "terminal_panel::ToggleFocus"
     }
   },
   {

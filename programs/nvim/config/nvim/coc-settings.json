@@ -23,7 +23,6 @@
       "args": []
     }
   },
-  "python.formatting.provider": "none",
   "python.linting.mypyEnabled": true,
   "inlayHint.enable": false
 }
