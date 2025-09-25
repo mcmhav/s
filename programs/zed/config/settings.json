@@ -4,8 +4,23 @@
     "default_model": {
       "provider": "copilot_chat",
       "model": "gpt-4.1"
-    },
+    }
   },
+  "debugger": {
+    "button": false
+  },
+  "git_panel": {
+    "button": false
+  },
+  "status_bar": {
+    "active_language_button": true,
+    "cursor_position_button": true
+  },
+  "show_call_status_icon": false,
+  "collaboration_panel": {
+    "button": false
+  },
+  "use_smartcase_search": true,
   "features": {
     "edit_prediction_provider": "copilot"
   },
@@ -13,7 +28,7 @@
     "syntax": {
       "comment": {
         "font_style": "italic",
-        "color": "#633333",
+        "color": "#633333"
       },
       "comment.doc": {
         "font_style": "italic"
@@ -29,9 +44,7 @@
       "host": "coder.a-coder.main",
       "projects": [
         {
-          "paths": [
-            "/workspace",
-          ]
+          "paths": ["/workspace"]
         }
       ]
     }
@@ -39,8 +52,10 @@
   "vim_mode": true,
   "autosave": "on_focus_change",
   "auto_update": false,
-  "format_on_save": "off",
-  "line_numbers": true,
+  "format_on_save": "on",
+  "gutter": {
+    "line_numbers": true
+  },
   "ui_font_size": 13,
   "buffer_font_size": 12,
   "buffer_font_family": "Menlo",
@@ -91,7 +106,7 @@
   "languages": {
     "YAML": {
       "tab_size": 2,
-      "formatter": "language_server",
+      "formatter": "language_server"
     }
   },
   "lsp": {
@@ -104,11 +119,7 @@
     }
   },
   "file_types": {
-    "TOML": [
-      "**/*.conf",
-    ],
-    "YAML": [
-      "**/*.yaml.j2"
-    ]
-  },
+    "TOML": ["**/*.conf"],
+    "YAML": ["**/*.yaml.j2"]
+  }
 }
