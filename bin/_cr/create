@@ -8,6 +8,8 @@ WORKSPACE_NAME="auto-$(
 )"
 REPO="https://github.com/mch-sb/debug"
 
+# env:
+# - "{\"name\":\"COPILOT_HOSTS\",\"value\":\"$COPILOT_HOSTS\"}"
 create_kubernetes_devcontainers_workspace() {
     PARAMETERS_KUBERNETES=$(
         cat <<-EOF
@@ -15,8 +17,6 @@ gitrepo: "$REPO"
 dotfiles_uri: "https://github.com/mcmhav/s"
 
 workspace_volume_size: 2
-env:
-    - "{\"name\":\"COPILOT_HOSTS\",\"value\":\"$COPILOT_HOSTS\"}"
 EOF
     )
     echo "$PARAMETERS_KUBERNETES" >/tmp/parameters.yml
