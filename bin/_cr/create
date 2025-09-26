@@ -16,6 +16,7 @@ create_kubernetes_devcontainers_workspace() {
 gitrepo: "$REPO"
 dotfiles_uri: "https://github.com/mcmhav/s"
 
+accept_vscode_license: false
 workspace_volume_size: 2
 EOF
     )
