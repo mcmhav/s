@@ -24,7 +24,7 @@ EOF
     echo "$PARAMETERS_KUBERNETES" >/tmp/parameters.yml
 
     coder create \
-        --template kubernetes \
+        --template standard \
         --yes \
         --rich-parameter-file /tmp/parameters.yml \
         "$WORKSPACE_NAME"
