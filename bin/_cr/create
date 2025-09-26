@@ -17,6 +17,7 @@ gitrepo: "$REPO"
 dotfiles_uri: "https://github.com/mcmhav/s"
 
 accept_vscode_license: false
+show_advanced: true
 workspace_volume_size: 2
 EOF
     )
