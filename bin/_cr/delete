@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 PARALLEL_JOBS=${1:-4}
-coder list -o json | jq '.[] | .name' -r | grep -v -x "$CODER_WORKSPACE_NAME" | parallel -j "$PARALLEL_JOBS" coder delete {} -y
+coder list -o json | jq '.[] | select(.favorite != true) | .name' -r | grep -v -x "$CODER_WORKSPACE_NAME" | parallel -j "$PARALLEL_JOBS" coder delete {} -y
