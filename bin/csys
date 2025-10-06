@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-COMMAND_OPTIONS=$(printf "
+_FILE_NAME="$0"
+
+_help() {
+    COMMAND_OPTIONS=$(printf "
   install \t install a package
   reqs-install \t install requirements
   update \t update system
@@ -10,38 +13,41 @@ COMMAND_OPTIONS=$(printf "
   -h, --help \t show this help text
 " | column -ts $'\t')
 
-HELP_TEXT="usage: $(basename "$0") [-h] --
+    HELP_TEXT="usage: $(basename "$_FILE_NAME") [-h] --
 
 where:
 $COMMAND_OPTIONS"
 
+    echo "$HELP_TEXT"
+}
+
 _push() {
-  loggit "adding to git"
-  git add --all
+    loggit "adding to git"
+    git add --all
 
-  loggit "commiting to git"
-  git commit -am "AUTO: update system configs" --quiet
+    loggit "commiting to git"
+    git commit -am "AUTO: update system configs" --quiet
 
-  loggit "pushing to git"
-  git push --quiet
+    loggit "pushing to git"
+    git push --quiet
 }
 _pull() {
-  loggit "Pulling"
-  git pull
+    loggit "Pulling"
+    git pull
 }
 
 csysStatus() {
-  git status --short --branch
+    git status --short --branch
 }
 
 csysDiff() {
-  git diff
+    git diff
 }
 
 # bash_completion
 # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
 _csys() {
-  echo ""
+    echo ""
 }
 
 CONFIG_HOME="$CSYS_HOME"
@@ -54,43 +60,43 @@ cd "$CONFIG_HOME" || exit
 
 case $1 in
 install)
-  shift
-  "$SCRIPT_DIR/_csys/_csys_install" "$@"
-  ;;
+    shift
+    "$SCRIPT_DIR/_csys/_csys_install" "$@"
+    ;;
 reqs-install)
-  shift
-  "$SCRIPT_DIR/_csys/_csys_reqs_install" "$@"
-  ;;
+    shift
+    "$SCRIPT_DIR/_csys/_csys_reqs_install" "$@"
+    ;;
 update)
-  shift
-  "$SCRIPT_DIR/_csys/_csys_update" "$@"
-  ;;
+    shift
+    "$SCRIPT_DIR/_csys/_csys_update" "$@"
+    ;;
 status)
-  csysStatus
-  ;;
+    csysStatus
+    ;;
 push)
-  _push
-  ;;
+    _push
+    ;;
 pull)
-  _pull
-  ;;
+    _pull
+    ;;
 config-update)
-  source "$CSYS_BASH_HOME/main.bashrc"
-  ;;
+    source "$CSYS_BASH_HOME/main.bashrc"
+    ;;
 is-package-installed)
-  shift
-  "$SCRIPT_DIR/_csys/_csys_is_package_installed" "$@"
-  exit $?
-  ;;
+    shift
+    "$SCRIPT_DIR/_csys/_csys_is_package_installed" "$@"
+    exit $?
+    ;;
 --diff)
-  csysDiff
-  ;;
+    csysDiff
+    ;;
 -h | --help)
-  echo "$HELP_TEXT"
-  ;;
+    _help
+    ;;
 *)
-  loggit "no work"
-  ;;
+    loggit "no work"
+    ;;
 esac
 
 cd "$RETURN_TO" || exit
