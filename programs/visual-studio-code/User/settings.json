@@ -85,11 +85,7 @@
   "editor.minimap.renderCharacters": false,
   "editor.minimap.showSlider": "always",
   "editor.multiCursorModifier": "ctrlCmd",
-  "editor.rulers": [
-    80,
-    100,
-    120
-  ],
+  "editor.rulers": [80, 100, 120],
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
@@ -138,7 +134,8 @@
   "python.linting.mypyArgs": [],
   "python.linting.mypyCategorySeverity.note": "Warning",
   "python.linting.mypyEnabled": true,
-  "python.linting.pydocstyleArgs": [ // "--verbose",
+  "python.linting.pydocstyleArgs": [
+    // "--verbose",
     // "--debug",
     // "--config=/Users/mch/.pydocstylerc"
     // "--config=$HOME/.pydocstylerc"
@@ -153,15 +150,11 @@
   "python.pythonPath": "~/.pyenv/shims/python",
   "python.venvPath": "~/.pyenv",
   "redhat.telemetry.enabled": false,
-  "remote.SSH.defaultExtensions": [
-    "gitpod.gitpod-remote-ssh"
-  ],
+  "remote.SSH.defaultExtensions": ["gitpod.gitpod-remote-ssh"],
   "security.workspace.trust.enabled": false,
   "security.workspace.trust.startupPrompt": "never",
   "security.workspace.trust.untrustedFiles": "open",
-  "shellcheck.customArgs": [
-    "-x"
-  ],
+  "shellcheck.customArgs": ["-x"],
   "shellcheck.disableVersionCheck": true,
   "tab-groups.gitBranchGroups": false,
   "tab-groups.saveGlobally": false,
@@ -169,9 +162,7 @@
   "terminal.integrated.profiles.osx": {
     "fish": {
       // overriding
-      "args": [
-        "-l"
-      ],
+      "args": ["-l"],
       "path": "/usr/local/bin/fish"
     }
   },
