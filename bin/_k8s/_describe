@@ -7,7 +7,7 @@ case $RESOURCE in
 clusterrolebinding | clusterrole)
     KUBECTL_PREVIEW_CMD="kubectl get $RESOURCE {+1}"
     ;;
-storageclass | nodes | node)
+namespace | ns | storageclass | nodes | node)
     KUBECTL_PREVIEW_CMD="kubectl describe $RESOURCE {+1}"
     ;;
 esac
