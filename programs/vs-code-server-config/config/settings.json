@@ -97,7 +97,7 @@
   "editor.tabSize": 4,
   "githubPullRequests.pullBranch": "never",
   "editor.minimap.enabled": false,
-  "terminal.integrated.defaultLocation": "editor",
+  "terminal.integrated.defaultLocation": "panel",
   "workbench.editor.showTabs": "single",
   "workbench.colorCustomizations": {
     "editorCursor.foreground": "#f81ce6",
