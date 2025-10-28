@@ -18,7 +18,7 @@ _describe_simplified() {
         --no-headers \
         -o custom-columns="NAME":.metadata.name,"NODEROLE":"metadata.labels.sb1u/node-role","NODEGROUP":".metadata.labels.eks\.amazonaws\.com/nodegroup" |
         fzf \
-            --preview 'kubectl describe node {+1} | awk "/Non-terminated Pods:/, /Events:/ { if ($0 !~ /Events:/) print }"' \
+            --preview "kubectl describe node {+1} | awk '/Non-terminated Pods:/, /Events:/ { if ($0 !~ /Events:/) print }'" \
             --preview-window "up,80%" \
             --bind=ctrl-b:preview-bottom \
             --bind=ctrl-j:preview-down \
