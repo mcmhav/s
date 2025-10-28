@@ -1,13 +1,40 @@
 #!/usr/bin/env bash
 
-kubectl get nodes \
-    --no-headers \
-    -o custom-columns="NAME":.metadata.name,"NODEROLE":"metadata.labels.sb1u/node-role","NODEGROUP":".metadata.labels.eks\.amazonaws\.com/nodegroup" |
-    fzf \
-        --preview 'kubectl get pods -A --field-selector spec.nodeName={+1}' \
-        --preview-window "up,80%" \
-        --bind=ctrl-b:preview-bottom \
-        --bind=ctrl-j:preview-down \
-        --bind=ctrl-k:preview-up \
-        --bind=ctrl-d:preview-half-page-down \
-        --bind=ctrl-u:preview-half-page-up
+_list_pods() {
+    kubectl get nodes \
+        --no-headers \
+        -o custom-columns="NAME":.metadata.name,"NODEROLE":"metadata.labels.sb1u/node-role","NODEGROUP":".metadata.labels.eks\.amazonaws\.com/nodegroup" |
+        fzf \
+            --preview 'kubectl get pods -A --field-selector spec.nodeName={+1}' \
+            --preview-window "up,80%" \
+            --bind=ctrl-b:preview-bottom \
+            --bind=ctrl-j:preview-down \
+            --bind=ctrl-k:preview-up \
+            --bind=ctrl-d:preview-half-page-down \
+            --bind=ctrl-u:preview-half-page-up
+}
+_describe_simplified() {
+    kubectl describe node ip-10-110-9-67.eu-north-1.compute.internal | awk '/Non-terminated Pods:/, /Events:/ { if ($0 !~ /Events:/) print }' |
+        fzf \
+            --preview 'kubectl get pods -A --field-selector spec.nodeName={+1}' \
+            --preview-window "up,80%" \
+            --bind=ctrl-b:preview-bottom \
+            --bind=ctrl-j:preview-down \
+            --bind=ctrl-k:preview-up \
+            --bind=ctrl-d:preview-half-page-down \
+            --bind=ctrl-u:preview-half-page-up
+}
+
+while [ "$1" != "" ]; do
+    case $1 in
+    pods)
+        _list_pods
+        exit
+        ;;
+    decscribe | *)
+        _describe_simplified
+        exit
+        ;;
+    esac
+    shift
+done
