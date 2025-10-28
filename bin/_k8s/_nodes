@@ -27,16 +27,13 @@ _describe_simplified() {
             --bind=ctrl-u:preview-half-page-up
 }
 
-while [ "$1" != "" ]; do
-    case $1 in
-    ds | describe-simplified)
-        _describe_simplified
-        exit
-        ;;
-    pods | *)
-        _list_pods
-        exit
-        ;;
-    esac
-    shift
-done
+case $1 in
+ds | describe-simplified)
+    _describe_simplified
+    exit
+    ;;
+pods | *)
+    _list_pods
+    exit
+    ;;
+esac
