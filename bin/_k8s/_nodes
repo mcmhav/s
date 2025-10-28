@@ -27,12 +27,12 @@ _describe_simplified() {
 
 while [ "$1" != "" ]; do
     case $1 in
-    pods)
-        _list_pods
+    ds | describe-simplified)
+        _describe_simplified
         exit
         ;;
-    decscribe | *)
-        _describe_simplified
+    pods | *)
+        _list_pods
         exit
         ;;
     esac
