@@ -5,7 +5,7 @@ RESOURCE=$(echo "$RESOURCE" | tr '[:upper:]' '[:lower:]')
 KUBECTL_PREVIEW_CMD="kubectl get $RESOURCE {+2} -n {+1} -o yaml"
 KUBECTL_BIND_CMD="kubectl edit $RESOURCE {+2} -n {+1}"
 case $RESOURCE in
-nodeclaim | node | clusterrolebinding | clusterrole | namespace | namespaces)
+ec2nodeclass | ec2nodeclasses | nodeclaim | node | clusterrolebinding | clusterrole | namespace | namespaces)
     KUBECTL_PREVIEW_CMD="kubectl get $RESOURCE {+1} -o yaml"
     KUBECTL_BIND_CMD="kubectl edit $RESOURCE {+1}"
     ;;
