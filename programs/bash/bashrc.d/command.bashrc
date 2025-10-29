@@ -41,7 +41,7 @@ function promt_commands() {
 
 
   if [ "$CSYS_OS" == "$GITPOD_OS" ] || [ "$CSYS_OS" == "$CODER_OS" ]; then
-    if [ -f "$CSYS_BASHRC_D/.setup_done" ] && command -v fish >/dev/null 2>&1; then
+    if [ -f "$CSYS_BASHRC_D/.setup_done" ] && [ -z "$CSYS_DISABLE_AUTO_FISH" ] && command -v fish >/dev/null 2>&1; then
       fish
     fi
   fi
