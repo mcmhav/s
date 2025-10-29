@@ -3,6 +3,9 @@
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 SUB_PATH="$SCRIPT_PATH/_cr"
 
+if ! command -v coder >/dev/null 2>&1; then
+    brew install coder
+fi
 case $1 in
 create)
     shift
