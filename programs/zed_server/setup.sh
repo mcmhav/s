@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-ZED_SERVER_VERSION="0.208.4"
+ZED_SERVER_VERSION="$(cat "$SCRIPT_PATH/../zed/config/.zed-version")"
 
 _ZED_REMOTE_BIN="$HOME/.zed_server/zed-remote-server-stable-$ZED_SERVER_VERSION"
+
 _install() {
     tmp="$(mktemp -d "/tmp/zed-XXXXXX")"
 
