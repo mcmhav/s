@@ -3,6 +3,7 @@
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 ZED_SERVER_VERSION="0.208.4"
 
+_ZED_REMOTE_BIN="$HOME/.zed_server/zed-remote-server-stable-$ZED_SERVER_VERSION"
 _install() {
     tmp="$(mktemp -d "/tmp/zed-XXXXXX")"
 
@@ -13,7 +14,7 @@ _install() {
     gzip -d "$tmp/zed-remote-server-stable-linux-x86_64.gz"
     chmod +x "$tmp/zed-remote-server-stable-linux-x86_64"
     mkdir -p "$HOME/.zed_server"
-    cp "$tmp/zed-remote-server-stable-linux-x86_64" "$HOME/.zed_server"
+    cp "$tmp/zed-remote-server-stable-linux-x86_64" "$_ZED_REMOTE_BIN"
 
     mkdir -p "$HOME/.config/zed"
 
@@ -22,7 +23,7 @@ _install() {
 
 _setup() {
     # https://zed.dev/docs/remote-development?highlight=ssh#initializing-the-remote-server
-    if [ ! -f "$HOME/.zed_server/zed-remote-server-stable-linux-x86_64" ]; then
+    if [ ! -f "$_ZED_REMOTE_BIN" ]; then
         _install
     fi
 }
