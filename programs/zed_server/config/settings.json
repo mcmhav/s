@@ -7,6 +7,9 @@
   "languages": {
     "YAML": {
       "tab_size": 2
+    },
+    "Dockerfile": {
+      "tab_size": 2
     }
   },
   "telemetry": {
