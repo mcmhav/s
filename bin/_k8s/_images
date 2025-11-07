@@ -5,7 +5,7 @@ _list_images() {
 }
 
 _list_images_detailed() {
-    kubectl get pods --all-namespaces -o 'custom-columns=POD:.metadata.name,IMAGES:.spec.containers[*].image'
+    kubectl get pods --all-namespaces -o 'custom-columns=POD:.metadata.name,CONTAINERS:.spec.containers[*].image,INIT-CONTAINERS:.spec.initContainers[*].image'
 }
 
 case $1 in
