@@ -4,9 +4,17 @@ _list_images() {
     kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec['initContainers','containers'][*].image}" | tr -s '[[:space:]]' '\n' | sort | uniq
 }
 
+_list_images_detailed() {
+    kubectl get pods --all-namespaces -o 'custom-columns=POD:.metadata.name,IMAGES:.spec.containers[*].image'
+}
+
 case $1 in
 list)
     _list_images
+    exit
+    ;;
+list-detailed)
+    _list_images_detailed
     exit
     ;;
 *)
