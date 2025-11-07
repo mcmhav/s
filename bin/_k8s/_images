@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+_list_images() {
+    kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec['initContainers','containers'][*].image}" | tr -s '[[:space:]]' '\n' | sort | uniq
+}
+
+case $1 in
+list)
+    _list_images
+    exit
+    ;;
+*)
+    _list_images
+    exit
+    ;;
+esac

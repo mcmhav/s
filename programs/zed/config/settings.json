@@ -73,7 +73,7 @@
   "ui_font_weight": 600,
   "soft_wrap": "editor_width",
   "upload_binary_over_ssh": true,
-  "tab_size": 4,
+  "tab_size": 2,
   "tab_bar": {
     "show": false
   },
