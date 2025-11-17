@@ -9,9 +9,10 @@ _match_major_version() {
     local expected_major="$2"
 
     local clean_version="${version#v}"
+    local clean_expected_major_version="${expected_major#v}"
     local actual_major="${clean_version%%.*}"
 
-    if [[ "$actual_major" == "$expected_major" ]]; then
+    if [[ "$actual_major" == "$clean_expected_major_version" ]]; then
         return 0
     else
         return 1
@@ -29,8 +30,8 @@ _with_nvm() {
     source "$NVM_DIR/nvm.sh"
     _node_version=$(nvm version)
     if ! _match_major_version "$_node_version" "${DESIRED_NODE_VERSION%%.*}" && ! _match_major_version "$_node_version" "${DESIRED_NODE_VERSION%%.*}"; then
-        nvm install "v$NVM_VERSION"
-        nvm alias default "v$NVM_VERSION"
+        nvm install --lts "$DESIRED_NODE_VERSION"
+        nvm alias default "$DESIRED_NODE_VERSION"
     fi
 }
 
