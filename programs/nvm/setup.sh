@@ -4,6 +4,20 @@ PACKAGE_NAME="nvm"
 DESIRED_NODE_VERSION="v22.20.0"
 NVM_VERSION="0.39.7"
 
+_match_major_version() {
+    local version="$1"
+    local expected_major="$2"
+
+    local clean_version="${version#v}"
+    local actual_major="${clean_version%%.*}"
+
+    if [[ "$actual_major" == "$expected_major" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 _with_nvm() {
     export NVM_DIR="$HOME/.nvm"
     if [ ! -d "$NVM_DIR" ] || [ ! -f "$NVM_DIR/nvm.sh" ]; then
@@ -13,9 +27,10 @@ _with_nvm() {
         curl -fsSL "https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh" | PROFILE=/dev/null bash
     fi
     source "$NVM_DIR/nvm.sh"
-    if ! nvm ls --no-alias | grep -q "$DESIRED_NODE_VERSION"; then
-        nvm install --lts "$DESIRED_NODE_VERSION"
-        nvm alias default "$DESIRED_NODE_VERSION"
+    _node_version=$(nvm version)
+    if ! _match_major_version "$_node_version" "${DESIRED_NODE_VERSION%%.*}" && ! _match_major_version "$_node_version" "${DESIRED_NODE_VERSION%%.*}"; then
+        nvm install "v$NVM_VERSION"
+        nvm alias default "v$NVM_VERSION"
     fi
 }
 

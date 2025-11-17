@@ -55,6 +55,22 @@
         {
           "local_port": 8000,
           "remote_port": 8000
+        },
+        {
+          "local_port": 8001,
+          "remote_port": 8001
+        },
+        {
+          "local_port": 8002,
+          "remote_port": 8002
+        },
+        {
+          "local_port": 8003,
+          "remote_port": 8003
+        },
+        {
+          "local_port": 8004,
+          "remote_port": 8004
         }
       ]
     }
