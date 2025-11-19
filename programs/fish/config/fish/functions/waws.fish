@@ -2,7 +2,8 @@ function waws
   switch $argv[1]
     case 'select-profile'
       set -g IJ_TEMPLATE '{print "export AWS_PROFILE="$0}'
-      $CSYS_BIN/waws $argv --no-fzf | ij
+      set fz_output ($CSYS_BIN/waws $argv)
+      commandline -- "$fz_output"
     case '*'
       $CSYS_BIN/waws $argv
   end

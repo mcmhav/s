@@ -21,7 +21,11 @@ _select_profile() {
     if [ -z "$NO_FZF" ]; then
         SELECTED_PROFILE=$(echo "$PROFILES" | fzf)
         echo "export AWS_PROFILE=$SELECTED_PROFILE"
-        echo "export AWS_PROFILE=$SELECTED_PROFILE" >"$HOME/.bashrc.d/999-aws_profile"
+        BASHRC_D="$HOME/.bashrc.d"
+        if [ ! -d "$BASHRC_D" ]; then
+            mkdir -p "$BASHRC_D"
+        fi
+        echo "export AWS_PROFILE=$SELECTED_PROFILE" >"$BASHRC_D/999-aws_profile"
     else
         echo "$PROFILES"
     fi

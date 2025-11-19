@@ -4,52 +4,52 @@ SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 SUB_WAWS_PATH="$SCRIPT_PATH/_waws"
 
 _decode_message() {
-  MESSAGE="$1"
-  aws sts decode-authorization-message --encoded-message "$MESSAGE" | jq '.DecodedMessage' | jq -r | jq
+    MESSAGE="$1"
+    aws sts decode-authorization-message --encoded-message "$MESSAGE" | jq '.DecodedMessage' | jq -r | jq
 }
 
 case $1 in
 decode-message)
-  shift
-  _decode_message "$1"
-  ;;
+    shift
+    _decode_message "$1"
+    ;;
 select-profile)
-  shift
-  "$SUB_WAWS_PATH/_select_profile" "$@"
-  ;;
+    shift
+    "$SUB_WAWS_PATH/_select_profile" "$@"
+    ;;
 sso-profiles)
-  shift
-  "$SUB_WAWS_PATH/_sso_profiles" "$@"
-  ;;
+    shift
+    "$SUB_WAWS_PATH/_sso_profiles" "$@"
+    ;;
 eks)
-  shift
-  "$SUB_WAWS_PATH/_eks" "$@"
-  ;;
+    shift
+    "$SUB_WAWS_PATH/_eks" "$@"
+    ;;
 ec2)
-  shift
-  "$SUB_WAWS_PATH/_ec2" "$@"
-  ;;
+    shift
+    "$SUB_WAWS_PATH/_ec2" "$@"
+    ;;
 sts)
-  shift
-  "$SUB_WAWS_PATH/_sts" "$@"
-  ;;
+    shift
+    "$SUB_WAWS_PATH/_sts" "$@"
+    ;;
 whoami)
-  "$SUB_WAWS_PATH/_sts" "whoami"
-  ;;
+    "$SUB_WAWS_PATH/_sts" "whoami"
+    ;;
 secret)
-  shift
-  "$SUB_WAWS_PATH/_secret" "$@"
-  ;;
+    shift
+    "$SUB_WAWS_PATH/_secret" "$@"
+    ;;
 costs)
-  shift
-  "$SUB_WAWS_PATH/_costs" "$@"
-  ;;
+    shift
+    "$SUB_WAWS_PATH/_costs" "$@"
+    ;;
 ecr)
-  shift
-  "$SUB_WAWS_PATH/_ecr" "$@"
-  ;;
+    shift
+    "$SUB_WAWS_PATH/_ecr" "$@"
+    ;;
 *)
-  HELP_TEXT="usage: $(basename "$0") -h --
+    HELP_TEXT="usage: $(basename "$0") -h --
     decode-message
     select-profile
     sso-profiles
@@ -61,6 +61,6 @@ ecr)
     costs
     ecr
   "
-  loggit "$HELP_TEXT"
-  ;;
+    loggit "$HELP_TEXT"
+    ;;
 esac
