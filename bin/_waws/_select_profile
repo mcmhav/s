@@ -3,27 +3,28 @@
 AWS_PROFILE_LOCATION="$HOME/.aws/config"
 
 _select_profile() {
-  PRE_SELECTOR=""
-  NO_FZF=""
-  while [ "$1" != "" ]; do
-    case $1 in
-    --pre-selector)
-      shift
-      PRE_SELECTOR="$1"
-      ;;
-    --no-fzf)
-      NO_FZF="true"
-      ;;
-    esac
-    shift
-  done
-  PROFILES=$(grep "\[" <"$AWS_PROFILE_LOCATION" | sed 's|\[||g' | sed 's|profile ||g' | sed 's|\]||g' | grep "$PRE_SELECTOR")
-  if [ -z "$NO_FZF" ]; then
-    SELECTED_PROFILE=$(echo "$PROFILES" | fzf)
-    echo "export AWS_PROFILE=$SELECTED_PROFILE"
-  else
-    echo "$PROFILES"
-  fi
+    PRE_SELECTOR=""
+    NO_FZF=""
+    while [ "$1" != "" ]; do
+        case $1 in
+        --pre-selector)
+            shift
+            PRE_SELECTOR="$1"
+            ;;
+        --no-fzf)
+            NO_FZF="true"
+            ;;
+        esac
+        shift
+    done
+    PROFILES=$(grep "\[" <"$AWS_PROFILE_LOCATION" | sed 's|\[||g' | sed 's|profile ||g' | sed 's|\]||g' | grep "$PRE_SELECTOR")
+    if [ -z "$NO_FZF" ]; then
+        SELECTED_PROFILE=$(echo "$PROFILES" | fzf)
+        echo "export AWS_PROFILE=$SELECTED_PROFILE"
+        echo "export AWS_PROFILE=$SELECTED_PROFILE" >"$HOME/.bashrc.d/999-aws_profile"
+    else
+        echo "$PROFILES"
+    fi
 }
 
 _select_profile "$@"
