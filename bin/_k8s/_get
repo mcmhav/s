@@ -4,7 +4,7 @@ RESOURCE="${1:-pod}"
 RESOURCE=$(echo "$RESOURCE" | tr '[:upper:]' '[:lower:]')
 KUBECTL_PREVIEW_CMD="kubectl get $RESOURCE {+2} -n {+1} -o yaml"
 case $RESOURCE in
-nodeclaim | ec2nodeclasses | nodepool | pv | sc | storageclass | namespace | clusterissuer | node | nodes | clusterrolebinding | clusterrole | crd | customresourcedefinition)
+ns | nodeclaim | ec2nodeclasses | nodepool | pv | sc | storageclass | namespace | clusterissuer | node | nodes | clusterrolebinding | clusterrole | crd | customresourcedefinition)
     KUBECTL_PREVIEW_CMD="kubectl get $RESOURCE {+1} -o yaml"
     ;;
 esac
