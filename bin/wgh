@@ -11,7 +11,10 @@ _my_prs() {
         --owner "$CSYS_GITHUB_OWNER" \
         --author "@me" \
         --json title,url,number,createdAt \
-        -- -is:draft -label:blocked |
+        -- \
+        -is:draft \
+        -label:blocked \
+        -review:approved |
         jq '"- " + .[].url' -r
 }
 
