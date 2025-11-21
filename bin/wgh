@@ -12,7 +12,7 @@ _my_prs() {
         --author "@me" \
         --json title,url,number,createdAt \
         -- -is:draft -label:blocked |
-        jq '.[].url' -r
+        jq '"- " + .[].url' -r
 }
 
 while [ "$1" != "" ]; do
