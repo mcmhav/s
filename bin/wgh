@@ -14,7 +14,7 @@ _my_prs() {
         -- \
         -is:draft \
         -label:blocked \
-        -review:approved |
+        review:none |
         jq '"- " + .[].url' -r
 }
 
