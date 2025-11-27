@@ -24,7 +24,7 @@ while [ "$1" != "" ]; do
         _gh_status
         exit
         ;;
-    my-prs)
+    mp | my-prs)
         _my_prs
         exit
         ;;
