@@ -28,7 +28,7 @@ while [ "$1" != "" ]; do
         _my_prs
         exit
         ;;
-    pr-create)
+    pc | pr-create)
         gh pr create -f
         ;;
     *)
