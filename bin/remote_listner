@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+PORT=9999
+
+echo "[$(date +%T)] Starting Remote Listener on Port $PORT..."
+
+while true; do
+    raw_input=$(nc -l $PORT)
+    clean_input=$(echo "$raw_input" | tr -d '\r\n')
+
+    echo "[$(date +%T)] Received Input: $clean_input"
+
+    if [ -n "$clean_input" ]; then
+        command_part=$(echo "$clean_input" | awk '{print $1}')
+        command_arg_1=$(echo "$clean_input" | awk '{print $2}')
+
+        if [ "$command_part" == "TUNNEL" ]; then
+            remote_host="$command_arg_1"
+
+            # Extract the port number
+            target_port=$(echo "$clean_input" | awk '{print $3}')
+
+            echo "[$(date +%T)] Building tunnel for Port $target_port..."
+
+            # Create the SSH tunnel in the background
+            # -f: Go to background
+            # -N: Do not execute a remote command
+            # -L: Local Forwarding
+            echo "[$(date +%T)] using ssh -f -N -L \"$target_port:localhost:$target_port\" \"$remote_host\""
+            ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 -f -N -L "$target_port:localhost:$target_port" "$remote_host" &
+
+            echo "[$(date +%T)]   -> Tunnel Active: localhost:$target_port -> Remote"
+
+        elif [ "$command_part" == "COPY" ]; then
+            # --- HANDLE CLIPBOARD COPY ---
+            # Format: HOSTNAME COPY <BASE64_STRING>
+
+            # Extract the 3rd column (the base64 string)
+            encoded_content=$(echo "$clean_input" | awk '{print $2}')
+
+            if [ -n "$encoded_content" ]; then
+                # Decode and pipe to macOS clipboard
+                echo "$encoded_content" | base64 --decode | pbcopy
+                echo "[$(date +%T)] Copied text to Clipboard from $remote_host"
+            fi
+        else
+            # It's just a regular URL, open it
+            echo "[$(date +%T)] Opening URL: $clean_input"
+            url="$command_arg_1"
+            open "$url"
+        fi
+    else
+        sleep 0.5
+    fi
+done

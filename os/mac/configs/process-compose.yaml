@@ -1,0 +1,6 @@
+version: '0.5'
+processes:
+  remote_listener:
+    command: 'remote_listner'
+    availability:
+      restart: 'always'

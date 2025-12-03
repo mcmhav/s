@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Read input from Stdin (Vim pipes text into this)
+input=$(cat)
+
+if [ -z "$input" ]; then
+    exit 0
+fi
+
+# Base64 encode
+encoded=$(echo -n "$input" | base64 -w0)
+
+# Send to Mac Listener
+echo "COPY $encoded" | nc -q 0 localhost 9999
