@@ -28,6 +28,9 @@ _setup() {
     # uv tool install ruff@latest
 
     echo 'if [ -f "$HOME/.bashrc" ]; then source "$HOME/.bashrc"; fi' >>"$HOME/.bash_profile"
+
+    cat "$SCRIPT_PATH/config/browser-open" >"/usr/local/bin/browser-override"
+    cat "$SCRIPT_PATH/config/browser-open" >"/usr/local/bin/xdg-open"
 }
 
 _setup

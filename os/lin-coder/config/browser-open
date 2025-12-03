@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "$@" | nc -q 0 localhost 9999
+
