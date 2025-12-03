@@ -1,18 +1,21 @@
 #!/usr/bin/env bash
 
-# echo "$@" | nc -q 0 localhost 9999
-
 URL="$1"
 
+# 1. Extract Port (Your logic here is good)
 PORT=$(echo "$URL" | grep -oE 'localhost(%3A|:)[0-9]+' | sed -E 's/localhost(%3A|:)//')
 
 HOSTNAME="$CODER_WORKSPACE_AGENT_NAME.$CODER_WORKSPACE_NAME.$CODER_WORKSPACE_OWNER_NAME.coder"
-
+# 2. If Port exists, send TUNNEL command
 if [ -n "$PORT" ]; then
     echo "Extracted port: $PORT"
+    # Format: HOSTNAME TUNNEL PORT
     echo "$HOSTNAME TUNNEL $PORT" | nc -q 0 localhost 9999
 
-    sleep 0.5
+    # Tiny sleep to ensure tunnel is ready before browser opens
+    sleep 1
 fi
 
+# 3. Send Open URL command
+# Format: HOSTNAME URL
 echo "$HOSTNAME $URL" | nc -q 0 localhost 9999
