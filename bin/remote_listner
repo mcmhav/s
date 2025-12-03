@@ -49,7 +49,5 @@ while true; do
             url="$command_arg_1"
             open "$url"
         fi
-    else
-        sleep 0.5
     fi
 done

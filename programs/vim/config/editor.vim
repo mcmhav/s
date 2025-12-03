@@ -61,3 +61,20 @@ let g:copilot_filetypes = {
   \ 'yaml': v:true,
   \ }
 
+if !empty($SSH_TTY) && executable('rcopy')
+  let g:clipboard = {
+        \   'name': 'remote-rcopy',
+        \   'copy': {
+        \      '+': 'rcopy',
+        \      '*': 'rcopy',
+        \    },
+        \   'paste': {
+        \      '+': 'echo "Use Cmd+V to paste"',
+        \      '*': 'echo "Use Cmd+V to paste"',
+        \   },
+        \   'cache_enabled': 1,
+        \ }
+
+  " Automatically use this for "y" operations in SSH
+  set clipboard+=unnamedplus
+endif
