@@ -44,7 +44,8 @@ _update_sso_session() {
     if [ "$SESSION_NOT_EXPIRED" != "true" ]; then
         loggit "Old sso-session, will try to reauth"
         if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-            AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login --no-browser
+            AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login
+            # AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login --no-browser
         else
             AWS_CONFIG_FILE=$BOOTSTRAP_FILE AWS_PROFILE=bootstrap aws sso login
         fi
