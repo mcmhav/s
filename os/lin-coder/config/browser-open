@@ -1,4 +1,18 @@
 #!/usr/bin/env bash
 
-echo "$@" | nc -q 0 localhost 9999
+# echo "$@" | nc -q 0 localhost 9999
 
+URL="$1"
+
+PORT=$(echo "$URL" | grep -oE 'localhost(%3A|:)[0-9]+' | sed -E 's/localhost(%3A|:)//')
+
+HOSTNAME="$CODER_WORKSPACE_AGENT_NAME.$CODER_WORKSPACE_NAME.$CODER_WORKSPACE_OWNER_NAME.coder"
+
+if [ -n "$PORT" ]; then
+    echo "Extracted port: $PORT"
+    echo "$HOSTNAME TUNNEL $PORT" | nc -q 0 localhost 9999
+
+    sleep 0.5
+fi
+
+echo "$HOSTNAME $URL" | nc -q 0 localhost 9999
