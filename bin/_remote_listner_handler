@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+if ! read -r header; then
+    exit 0
+fi
+
+# Sanitize
+header=$(echo "$header" | tr -d '\r')
+
+# -------------------------------------------------
+# 2. PARSE HEADER
+# -------------------------------------------------
+# Split by space into an array
+read -r remote_host remote_command command_arg_1 <<<"$header"
+
+echo "[$(date +%T)] Received command: $remote_command from $remote_host"
+
+if [ "$remote_command" == "TUNNEL" ]; then
+    # Extract the port number
+    target_port="$command_arg_1"
+    echo "[$(date +%T)] Building tunnel for Port $target_port..."
+
+    # Create the SSH tunnel in the background
+    # -f: Go to background
+    # -N: Do not execute a remote command
+    # -L: Local Forwarding
+    echo "[$(date +%T)] using ssh -f -N -L \"$target_port:localhost:$target_port\" \"$remote_host\""
+    ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 -f -N -L "$target_port:localhost:$target_port" "$remote_host" &
+
+    echo "[$(date +%T)]   -> Tunnel Active: localhost:$target_port -> Remote"
+
+elif [ "$remote_command" == "COPY" ]; then
+    # --- HANDLE CLIPBOARD COPY ---
+    # Format: HOSTNAME COPY <BASE64_STRING>
+    cat | base64 --decode | pbcopy
+    echo "[$(date +%T)] Copied text to Clipboard from $remote_host"
+elif [ "$remote_command" == "OPEN" ]; then
+    # It's just a regular URL, open it
+    echo "[$(date +%T)] Opening URL: $command_arg_1"
+    url="$command_arg_1"
+    open "$url"
+else
+    echo "[$(date +%T)] Unhandable command: $remote_command from $remote_host"
+fi

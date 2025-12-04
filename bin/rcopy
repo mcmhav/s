@@ -8,7 +8,7 @@ if [ -z "$input" ]; then
 fi
 
 # Base64 encode
-encoded=$(echo -n "$input" | base64 -w0)
+encoded=$(echo -n "$input" | base64)
 
 # Send to Mac Listener
-echo "COPY $encoded" | nc -q 0 localhost 9999
+echo -e "$HOSTNAME COPY\n$encoded" | nc -q 0 localhost 9999
