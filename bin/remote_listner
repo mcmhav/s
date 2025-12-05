@@ -4,4 +4,4 @@ PORT=9999
 
 echo "[$(date +%T)] Starting Remote Listener on Port $PORT..."
 
-socat TCP-LISTEN:$PORT,reuseaddr,fork SYSTEM:"_remote_listner_handler >&2"
+socat TCP-LISTEN:$PORT,reuseaddr,fork SYSTEM:"_remote_listner_handler"

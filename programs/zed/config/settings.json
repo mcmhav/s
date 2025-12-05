@@ -24,16 +24,56 @@
   "features": {
     "edit_prediction_provider": "copilot"
   },
+  // https://zed.dev/schema/themes/v0.2.0.json
   "experimental.theme_overrides": {
+    "toolbar.background": "#14151b",
+    "tab_bar.background": "#14151b",
+    "tab.active_background": "#14151b",
+    "editor.background": "#14151b",
+    "editor.gutter.background": "#14151b",
+    "editor.active_line.background": "#b3377377",
+    "scrollbar.thumb.background": "#b3377377",
+    "scrollbar.thumb.hover_background": "#fd32503d",
+    "scrollbar.track.background": "#0000",
+    "scrollbar.track.border": "#0000",
+    "panel.background": "#120d0d",
+
+    // "ghost_element.selected": "#b3377377",
+    // "ghost_element.hover": "#8d32501a", // Slightly lighter for hover
+    // "ghost_element.active": "#b3377377",
+
+    // This controls other UI elements (lists, dropdowns)
+    "element.selected": "#b3377377",
+    "element.active": "#b3377377",
+    // "elevated_surface.background": "#14151b",
+    // NOTE: can see that they do shit
+    // "tab.inactive_background": "#14151b",
+    // "editor.document_highlight.bracket_background": "#14151b",
+    // "editor.highlighted_line.background": "#14151b",
+    // "editor.subheader.background": "#14151b",
+    // "surface.background": "#14151b",
+    // "element.background": "#14151b",
+    // "pane.focused_border": "#14151b",
+    // "pane_group.border": "#14151b",
+    // "panel.focused_border": "#14151b",
+    // "background": "#14151b",
+
     "syntax": {
       "comment": {
         "font_style": "italic",
-        "color": "#633333"
+        "color": "#644444"
       },
       "comment.doc": {
         "font_style": "italic"
       }
-    }
+    },
+    "players": [
+      {
+        "cursor": "#f81ce6",
+        "background": "#f81ce6",
+        "selection": "#b3377377"
+      }
+    ]
   },
   "ssh_connections": [
     {
@@ -114,7 +154,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Ayu Dark"
+    "dark": "Dracula Solid"
   },
   "telemetry": {
     "diagnostics": false,

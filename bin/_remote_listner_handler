@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+exec 3>&1
+
+# Redirect all future standard 'echo' calls to stderr (Screen)
+exec 1>&2
+
 if ! read -r header; then
     exit 0
 fi
@@ -28,7 +33,11 @@ if [ "$remote_command" == "TUNNEL" ]; then
     ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 -f -N -L "$target_port:localhost:$target_port" "$remote_host" &
 
     echo "[$(date +%T)]   -> Tunnel Active: localhost:$target_port -> Remote"
-
+elif [ "$remote_command" == "PING" ]; then
+    # --- HANDLE WATCHDOG PING ---
+    # We write explicitly to FD 3 (The Network)
+    # We do NOT log this to screen (too noisy)
+    echo "PONG" >&3
 elif [ "$remote_command" == "COPY" ]; then
     # --- HANDLE CLIPBOARD COPY ---
     # Format: HOSTNAME COPY <BASE64_STRING>
