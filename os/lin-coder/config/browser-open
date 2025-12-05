@@ -10,7 +10,7 @@ HOSTNAME="$CODER_WORKSPACE_AGENT_NAME.$CODER_WORKSPACE_NAME.$CODER_WORKSPACE_OWN
 if [ -n "$PORT" ]; then
     echo "Extracted port: $PORT"
     # Format: HOSTNAME TUNNEL PORT
-    echo "$HOSTNAME TUNNEL $HOSTNAME $PORT" | nc -q 0 localhost 9999
+    echo "$HOSTNAME TUNNEL $PORT" | nc -q 0 localhost 9999
 
     # Tiny sleep to ensure tunnel is ready before browser opens
     sleep 1
