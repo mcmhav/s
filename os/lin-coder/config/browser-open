@@ -13,7 +13,7 @@ if [ -n "$PORT" ]; then
     echo "$HOSTNAME TUNNEL $PORT" | nc -q 0 localhost 9999
 
     # Tiny sleep to ensure tunnel is ready before browser opens
-    sleep 1
+    sleep 1.5
 fi
 
 # 3. Send Open URL command
