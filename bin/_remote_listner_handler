@@ -31,8 +31,7 @@ if [ "$remote_command" == "TUNNEL" ]; then
     # -L: Local Forwarding
     echo "[$(date +%T)] using ssh -f -N -L \"$target_port:localhost:$target_port\" \"$remote_host\""
     ssh -o StrictHostKeyChecking=no \
-        -o ConnectTimeout=5 \
-        -o ClearAllForwardings=yes \
+        -o ConnectTimeout=10 \
         -o ExitOnForwardFailure=no \
         -f -N -L "$target_port:localhost:$target_port" "$remote_host" &
 

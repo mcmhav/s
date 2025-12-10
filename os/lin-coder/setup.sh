@@ -9,6 +9,7 @@ _setup() {
     COPILOT_CONFIG="$HOME/.config/github-copilot"
     mkdir -p "$COPILOT_CONFIG"
     echo "$COPILOT_HOSTS" | base64 -d >"$COPILOT_CONFIG/hosts.json"
+    echo "$COPILOT_APPS" | base64 -d >"$COPILOT_CONFIG/apps.json"
     # Store an updated key
     # cat ~/.config/github-copilot/hosts.json | base64 -w 0 | xargs -I {} gp env COPILOT_HOST={}
 
