@@ -23,7 +23,7 @@ args = ["--login", "-C command -v zellij-work && zellij-work || zellij"]
 program = "fish"
 
 [window]
-decorations = "buttonless"
+decorations = "Buttonless"
 dynamic_padding = true
 opacity = 0.95
 

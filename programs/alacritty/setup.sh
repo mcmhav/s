@@ -17,6 +17,8 @@ _setup() {
     loggit warn "$PACKAGE_NAME install not implemented for OS: $CSYS_OS"
     ;;
   esac
+
+  ln -sf "$SCRIPT_PATH/config/alacritty" "$HOME/.config"
 }
 
 _setup
