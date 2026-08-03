@@ -6,8 +6,12 @@ ZED_VERSION="$(cat "$SCRIPT_PATH/config/.zed-version")"
 
 _install() {
     # ref. https://zed.dev/install.sh
+    ZED_ARCH_PATH="x86_64"
+    if [ "$CSYS_ARCH" == "$MAC_ARCH_ARM" ]; then
+        ZED_ARCH_PATH="aarch64"
+    fi
     tmp="$(mktemp -d "/tmp/zed-XXXXXX")"
-    curl -sL "https://github.com/zed-industries/zed/releases/download/v$ZED_VERSION/Zed-x86_64.dmg" -o "$tmp/Zed.dmg"
+    curl -sL "https://github.com/zed-industries/zed/releases/download/v$ZED_VERSION/Zed-$ZED_ARCH_PATH.dmg" -o "$tmp/Zed.dmg"
     hdiutil attach -quiet "$tmp/Zed.dmg" -mountpoint "$tmp/mount"
 
     mkdir -p "$ZED_APP_PATH"

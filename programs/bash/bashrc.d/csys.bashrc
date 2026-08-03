@@ -3,6 +3,8 @@
 export PI_OS="lin-pi"
 export LIN_OS="lin"
 export MAC_OS="mac"
+export MAC_ARCH_ARM="arm64"
+export MAC_ARCH_INTEL=""
 export WIN_OS="win"
 export GITPOD_OS="lin-gitpod"
 export CODER_OS="lin-coder"
@@ -22,6 +24,9 @@ if [ "$(uname -s)" == "Linux" ]; then
     export IS_LIN="1"
 elif [ "$(uname -s)" == "Darwin" ]; then
     export CSYS_OS="$MAC_OS"
+    if [ "$(uname -m)" == "arm64" ]; then
+        export CSYS_ARCH="$MAC_ARCH_ARM"
+    fi
 elif [[ "$(uname -s)" =~ MINGW64_NT* ]]; then
     export CSYS_OS="$WIN_OS"
 fi

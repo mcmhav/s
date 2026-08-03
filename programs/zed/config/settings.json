@@ -1,5 +1,12 @@
 {
+  "edit_predictions": {
+    "provider": "copilot"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
   "agent": {
+    "dock": "right",
     "model_parameters": [],
     "default_model": {
       "provider": "copilot_chat",
@@ -10,6 +17,7 @@
     "button": false
   },
   "git_panel": {
+    "dock": "left",
     "button": false
   },
   "status_bar": {
@@ -18,12 +26,10 @@
   },
   "show_call_status_icon": false,
   "collaboration_panel": {
+    "dock": "left",
     "button": false
   },
   "use_smartcase_search": true,
-  "features": {
-    "edit_prediction_provider": "copilot"
-  },
   // https://zed.dev/schema/themes/v0.2.0.json
   "experimental.theme_overrides": {
     "toolbar.background": "#14151b",
@@ -78,13 +84,17 @@
   "ssh_connections": [
     {
       "host": "github.com-mcmhav",
+      "args": [],
       "projects": []
     },
     {
-      "host": "coder.a-coder.main",
+      "host": "main.main.mch-sb.coder",
+      "args": [],
       "projects": [
         {
-          "paths": ["/workspace"]
+          "paths": [
+            "/workspace"
+          ]
         }
       ],
       "port_forwards": [
@@ -161,6 +171,7 @@
     "metrics": false
   },
   "project_panel": {
+    "dock": "left",
     "default_width": 200,
     // "default_width": 10,
     "indent_size": 10,
