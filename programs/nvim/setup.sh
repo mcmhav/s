@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PACKAGE_NAME="nvim"
-NVIM_VERSION="0.10.4"
+NVIM_VERSION="0.12.4"
 
 _install_from_tar() {
     mkdir -p "$HOME/.local/bin"
