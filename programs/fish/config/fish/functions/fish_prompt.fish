@@ -48,6 +48,14 @@ function fish_prompt
           end
           return 1
         end
+
+
+        function _is_prod
+            if test -n "$CSYS_IS_PROD"
+                return 0
+            end
+            return 1
+        end
     end
 
     set -l cyan (set_color -o cyan)
@@ -86,7 +94,14 @@ function fish_prompt
         # giphy explosion
     end
 
-    set -l cwd (basename (prompt_pwd))
+    # set -l cwd (basename (prompt_pwd))
+    set cwd_parts (string split / (prompt_pwd))
+    if test (count $cwd_parts) -ge 2; and _is_git_repo
+        set cwd $cwd_parts[-2]/$cwd_parts[-1]
+    else
+        set cwd (basename (prompt_pwd))
+    end
+
     if _is_ssh
       set cwd "$red$cwd"
     else
@@ -104,8 +119,12 @@ function fish_prompt
             set repo_info "$yellow ❱"
         end
     end
+    set -l is_prod ""
+    if _is_prod
+        set is_prod "$red ⚠"
+    end
 
-    echo -n -s $prev_command_usage $arrow $cwd $repo_info $normal ' '
+    echo -n -s $prev_command_usage $arrow $cwd $repo_info $is_prod $normal ' '
     # echo -n -s ⭓
 end
 
