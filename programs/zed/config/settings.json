@@ -1,35 +1,80 @@
 {
+  "disable_ai": false,
   "edit_predictions": {
-    "provider": "copilot",
+    "allow_data_collection": "no",
+    "provider": "copilot"
   },
   "outline_panel": {
-    "dock": "left",
+    "dock": "left"
   },
   "agent": {
+    "sidebar_side": "right",
+    "enable_feedback": false,
+    "favorite_models": [
+      {
+        "provider": "copilot_chat",
+        "model": "gpt-5.6-terra",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "gpt-5.6-sol",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "gpt-5.6-luna",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "claude-opus-4.8",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "claude-sonnet-4.6",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "claude-haiku-4.5",
+        "enable_thinking": true
+      }
+    ],
     "dock": "right",
     "model_parameters": [],
     "default_model": {
       "effort": "high",
       "enable_thinking": true,
       "provider": "copilot_chat",
-      "model": "gpt-5.3-codex",
+      "model": "gpt-5.6-terra"
     },
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5.6-luna"
+    }
   },
   "debugger": {
-    "button": false,
+    "button": false
   },
   "git_panel": {
     "dock": "left",
-    "button": false,
+    "button": false
   },
   "status_bar": {
     "active_language_button": true,
-    "cursor_position_button": true,
+    "cursor_position_button": true
   },
   "show_call_status_icon": false,
   "collaboration_panel": {
     "dock": "left",
-    "button": false,
+    "button": false
   },
   "use_smartcase_search": true,
   // https://zed.dev/schema/themes/v0.2.0.json
@@ -69,84 +114,186 @@
     "syntax": {
       "comment": {
         "font_style": "italic",
-        "color": "#644444",
+        "color": "#644444"
       },
       "comment.doc": {
-        "font_style": "italic",
-      },
+        "font_style": "italic"
+      }
     },
     "players": [
       {
         "cursor": "#f81ce6",
         "background": "#f81ce6",
-        "selection": "#b3377377",
-      },
-    ],
+        "selection": "#b3377377"
+      }
+    ]
   },
   "ssh_connections": [
     {
       "host": "github.com-mcmhav",
       "args": [],
-      "projects": [],
+      "projects": []
     },
     {
       "host": "main.main.mch-sb.coder",
       "args": [],
       "projects": [
         {
-          "paths": ["/workspace"],
-        },
+          "paths": ["/workspace"]
+        }
       ],
       "port_forwards": [
         {
           "local_port": 8080,
-          "remote_port": 8080,
+          "remote_port": 8080
         },
         {
           "local_port": 8081,
-          "remote_port": 8081,
+          "remote_port": 8081
         },
         {
           "local_port": 8082,
-          "remote_port": 8082,
+          "remote_port": 8082
         },
         {
           "local_port": 8083,
-          "remote_port": 8083,
+          "remote_port": 8083
         },
         {
           "local_port": 8000,
-          "remote_port": 8000,
+          "remote_port": 8000
         },
         {
           "local_port": 8001,
-          "remote_port": 8001,
+          "remote_port": 8001
         },
         {
           "local_port": 8002,
-          "remote_port": 8002,
+          "remote_port": 8002
         },
         {
           "local_port": 8003,
-          "remote_port": 8003,
+          "remote_port": 8003
         },
         {
           "local_port": 8004,
-          "remote_port": 8004,
+          "remote_port": 8004
         },
         {
           "local_port": 9000,
-          "remote_port": 9000,
-        },
-      ],
+          "remote_port": 9000
+        }
+      ]
     },
+    {
+      "host": "main.main-2.mch-sb.coder",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/workspace"]
+        }
+      ],
+      "port_forwards": [
+        {
+          "local_port": 8080,
+          "remote_port": 8080
+        },
+        {
+          "local_port": 8081,
+          "remote_port": 8081
+        },
+        {
+          "local_port": 8082,
+          "remote_port": 8082
+        },
+        {
+          "local_port": 8083,
+          "remote_port": 8083
+        },
+        {
+          "local_port": 8000,
+          "remote_port": 8000
+        },
+        {
+          "local_port": 8001,
+          "remote_port": 8001
+        },
+        {
+          "local_port": 8002,
+          "remote_port": 8002
+        },
+        {
+          "local_port": 8003,
+          "remote_port": 8003
+        },
+        {
+          "local_port": 8004,
+          "remote_port": 8004
+        },
+        {
+          "local_port": 9000,
+          "remote_port": 9000
+        }
+      ]
+    },
+    {
+      "host": "main.main-3.mch-sb.coder",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/workspace"]
+        }
+      ],
+      "port_forwards": [
+        {
+          "local_port": 8080,
+          "remote_port": 8080
+        },
+        {
+          "local_port": 8081,
+          "remote_port": 8081
+        },
+        {
+          "local_port": 8082,
+          "remote_port": 8082
+        },
+        {
+          "local_port": 8083,
+          "remote_port": 8083
+        },
+        {
+          "local_port": 8000,
+          "remote_port": 8000
+        },
+        {
+          "local_port": 8001,
+          "remote_port": 8001
+        },
+        {
+          "local_port": 8002,
+          "remote_port": 8002
+        },
+        {
+          "local_port": 8003,
+          "remote_port": 8003
+        },
+        {
+          "local_port": 8004,
+          "remote_port": 8004
+        },
+        {
+          "local_port": 9000,
+          "remote_port": 9000
+        }
+      ]
+    }
   ],
   "vim_mode": true,
   "autosave": "on_focus_change",
   "auto_update": false,
   "format_on_save": "on",
   "gutter": {
-    "line_numbers": true,
+    "line_numbers": true
   },
   "ui_font_size": 13,
   "buffer_font_size": 12,
@@ -157,30 +304,30 @@
   "upload_binary_over_ssh": true,
   "tab_size": 4,
   "tab_bar": {
-    "show": false,
+    "show": false
   },
   "terminal": {
     "font_family": "Menlo",
     "line_height": {
       // 618 / 4 (https://zed.dev/docs/configuring-zed#terminal-line-height)
-      "custom": 1.1545,
+      "custom": 1.1545
     },
     "shell": {
       "with_arguments": {
         "program": "/usr/bin/bash",
-        "args": [],
-      },
+        "args": []
+      }
     },
-    "detect_venv": "off",
+    "detect_venv": "off"
   },
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Dracula Solid",
+    "dark": "Dracula Solid"
   },
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
+    "metrics": false
   },
   "project_panel": {
     "dock": "left",
@@ -188,34 +335,34 @@
     // "default_width": 10,
     "indent_size": 10,
     "indent_guides": {
-      "show": "never",
-    },
+      "show": "never"
+    }
   },
   "git": {
     "inline_blame": {
-      "enabled": false,
-    },
+      "enabled": false
+    }
   },
   "languages": {
     "YAML": {
       "tab_size": 2,
-      "formatter": "language_server",
+      "formatter": "language_server"
     },
     "Dockerfile": {
-      "tab_size": 4,
-    },
+      "tab_size": 4
+    }
   },
   "lsp": {
     "terraform-ls": {
       "initialization_options": {
         "experimentalFeatures": {
-          "prefillRequiredFields": true,
-        },
-      },
-    },
+          "prefillRequiredFields": true
+        }
+      }
+    }
   },
   "file_types": {
     "TOML": ["**/*.conf"],
-    "YAML": ["**/*.yaml.j2"],
-  },
+    "YAML": ["**/*.yaml.j2"]
+  }
 }
