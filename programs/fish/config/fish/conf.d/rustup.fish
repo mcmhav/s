@@ -1,1 +1,1 @@
-source "$HOME/.cargo/env.fish"
+test -d "$HOME/.cargo/env.fish"; and source "$HOME/.cargo/env.fish"
