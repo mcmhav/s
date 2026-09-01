@@ -38,7 +38,9 @@ _git_diff() {
     shift
   done
 
-  if command -v bat 1>/dev/null 2>&1; then
+  if command -v delta 1>/dev/null 2>&1; then
+      git diff | delta --line-numbers --syntax-theme Dracula
+  elif command -v bat 1>/dev/null 2>&1; then
     _batdiff
   else
     git diff
