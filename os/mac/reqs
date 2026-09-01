@@ -49,3 +49,4 @@ k9s
 pipx
 zed
 wget
+parallel

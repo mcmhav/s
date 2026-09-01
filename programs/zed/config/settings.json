@@ -8,6 +8,16 @@
     "dock": "left"
   },
   "agent": {
+    "sandbox_permissions": {
+      "network_hosts": [
+        "docs.github.com",
+        "docs.renovatebot.com",
+        "github.com",
+        "raw.githubusercontent.com",
+        "docs.prefect.io",
+        "docs.snowflake.com"
+      ]
+    },
     "sidebar_side": "right",
     "enable_feedback": false,
     "favorite_models": [
@@ -53,7 +63,7 @@
       "effort": "high",
       "enable_thinking": true,
       "provider": "copilot_chat",
-      "model": "gpt-5.6-terra"
+      "model": "gpt-5.6-sol"
     },
     "inline_assistant_model": {
       "provider": "copilot_chat",

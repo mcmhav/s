@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source param_parser --params "l i" --incomming_params "$@"
+source param_parser --params "l i u" --incomming_params "$@"
 
 _find_in_files() {
   search_location="."
@@ -13,9 +13,13 @@ _find_in_files() {
     # EXTRA_IGNORE="--ignore $PARAM_I" # ag
     EXTRA_IGNORE="--ignore !$PARAM_I/" # rg
   fi
+  UNRESTRICTED=""
+  if [ -n "$PARAM_U" ]; then
+    UNRESTRICTED="-u"
+  fi
 
   # ag_fzf_result=$(cd "$search_location" && ag --noheading --hidden --ignore ".git" "." $EXTRA_IGNORE | fzf -e)
-  search_result=$(cd "$search_location" && rg --no-heading --hidden --line-number "." $EXTRA_IGNORE | fzf -e)
+  search_result=$(cd "$search_location" && rg --no-heading --hidden --line-number "." $EXTRA_IGNORE "$UNRESTRICTED" | fzf -e)
 
   search_result="$search_location/$search_result"
 
