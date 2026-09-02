@@ -15,7 +15,10 @@
         "github.com",
         "raw.githubusercontent.com",
         "docs.prefect.io",
-        "docs.snowflake.com"
+        "docs.snowflake.com",
+        "api.github.com",
+        "zed.dev",
+        "grep.app"
       ]
     },
     "sidebar_side": "right",
@@ -373,6 +376,7 @@
   },
   "file_types": {
     "TOML": ["**/*.conf"],
-    "YAML": ["**/*.yaml.j2"]
+    "YAML": ["**/*.yaml.j2"],
+    "Jinja2": ["j2"]
   }
 }

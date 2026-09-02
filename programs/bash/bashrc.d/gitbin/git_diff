@@ -27,6 +27,28 @@ _batdiff() {
 
   cd "$return_to" || exit
 }
+_delta_diff() {
+  if ! git rev-parse --is-inside-work-tree 1>/dev/null; then
+    exit 1
+  fi
+
+  repo_root=$(git rev-parse --show-toplevel)
+  return_to=$(pwd)
+
+  cd "$repo_root" || exit
+
+  if [ -z "$IGNORE_NEW" ]; then
+    git add --intent-to-add .
+  fi
+
+  git diff | delta --line-numbers --syntax-theme Dracula
+
+  if [ -z "$IGNORE_NEW" ]; then
+    git reset --mixed 1>/dev/null
+  fi
+
+  cd "$return_to" || exit
+}
 
 _git_diff() {
   while [ "$1" != "" ]; do
@@ -39,7 +61,7 @@ _git_diff() {
   done
 
   if command -v delta 1>/dev/null 2>&1; then
-      git diff | delta --line-numbers --syntax-theme Dracula
+    _delta_diff
   elif command -v bat 1>/dev/null 2>&1; then
     _batdiff
   else
