@@ -4,3 +4,4 @@ kubectl
 zed_server
 terraform-ls
 delta
+yq

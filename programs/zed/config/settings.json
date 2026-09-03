@@ -18,7 +18,8 @@
         "docs.snowflake.com",
         "api.github.com",
         "zed.dev",
-        "grep.app"
+        "grep.app",
+        "pypi.org"
       ]
     },
     "sidebar_side": "right",
