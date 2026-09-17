@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+_add_worktree_with_branch() {
+    branch_name="mch/$1"
+    dir_name="$1"
+    git worktree add -b "$branch_name" "../$dir_name" main
+    cd "../$dir_name" || exit
+    git push -u origin "$branch_name"
+}
+
+_add_worktree_with_branch "$1"

@@ -8,6 +8,53 @@
     "dock": "left"
   },
   "agent": {
+    "limit_content_width": true,
+    "max_content_width": 800,
+    "default_width": 640,
+    "tool_permissions": {
+      "tools": {
+        "fetch": {
+          "always_allow": [
+            {
+              "pattern": "^https?://api\\.github\\.com"
+            },
+            {
+              "pattern": "^https?://github\\.com"
+            },
+            {
+              "pattern": "^https?://raw\\.githubusercontent\\.com"
+            },
+            {
+              "pattern": "^https?://zed\\.dev"
+            },
+            {
+              "pattern": "^https?://docs\\.prefect\\.io"
+            },
+            {
+              "pattern": "^https?://docs\\.aws\\.amazon\\.com"
+            },
+            {
+              "pattern": "^https?://pypi\\.org"
+            },
+            {
+              "pattern": "^https?://aws\\.amazon\\.com"
+            },
+            {
+              "pattern": "^https?://docs\\.streamlit\\.io"
+            },
+            {
+              "pattern": "^https?://docs\\.snowflake\\.com"
+            },
+            {
+              "pattern": "^https?://docs\\.sqlalchemy\\.org"
+            },
+            {
+              "pattern": "^https?://docs\\.docker\\.com"
+            }
+          ]
+        }
+      }
+    },
     "sandbox_permissions": {
       "network_hosts": [
         "docs.github.com",
@@ -19,7 +66,21 @@
         "api.github.com",
         "zed.dev",
         "grep.app",
-        "pypi.org"
+        "pypi.org",
+        "reference.prefect.io",
+        "peps.python.org",
+        "docs.python.org",
+        "devguide.python.org",
+        "docs.aws.amazon.com",
+        "aws.amazon.com",
+        "deepmerge.readthedocs.io",
+        "docs.astral.sh",
+        "python-oracledb.readthedocs.io",
+        "docs.sqlalchemy.org",
+        "dlthub.com",
+        "docs.streamlit.io",
+        "docs.docker.com",
+        "chardet.readthedocs.io"
       ]
     },
     "sidebar_side": "right",
@@ -89,6 +150,10 @@
   "collaboration_panel": {
     "dock": "left",
     "button": false
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": false
   },
   "use_smartcase_search": true,
   // https://zed.dev/schema/themes/v0.2.0.json
@@ -312,8 +377,11 @@
   "ui_font_size": 13,
   "buffer_font_size": 12,
   "buffer_font_family": "Menlo",
+  // "buffer_font_family": "Monocraft",
   "buffer_font_weight": 500,
   "ui_font_weight": 600,
+  // "ui_font_family": "Monocraft",
+  // "ui_font_family": "Menlo",
   "soft_wrap": "editor_width",
   "upload_binary_over_ssh": true,
   "tab_size": 4,
@@ -322,6 +390,7 @@
   },
   "terminal": {
     "font_family": "Menlo",
+    // "font_family": "Monocraft",
     "line_height": {
       // 618 / 4 (https://zed.dev/docs/configuring-zed#terminal-line-height)
       "custom": 1.1545
