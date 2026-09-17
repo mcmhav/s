@@ -9,6 +9,7 @@ alias gtat=git_graph_all_with_timestamp
 alias gl7c=get_get_my_7days_last_commits
 alias gplb=git_purge_local_branches
 alias gtloc=git_line_count
+alias gnwt='_git_add_worktree_with_branch'
 alias gnb='makeNewRemoteAAndLocalBranch'
 alias gnt='makeNewRemoteAAndLocalTag'
 alias gdb='deleteRemoteAndLocalBranch'
