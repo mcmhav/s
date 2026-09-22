@@ -50,6 +50,9 @@
             },
             {
               "pattern": "^https?://docs\\.docker\\.com"
+            },
+            {
+              "pattern": "^https?://www\\.snowflake\\.com"
             }
           ]
         }
@@ -80,7 +83,9 @@
         "dlthub.com",
         "docs.streamlit.io",
         "docs.docker.com",
-        "chardet.readthedocs.io"
+        "chardet.readthedocs.io",
+        "www.snowflake.com",
+        "ai.snowflake.com"
       ]
     },
     "sidebar_side": "right",
@@ -433,6 +438,17 @@
     },
     "Dockerfile": {
       "tab_size": 4
+    },
+    "Python": {
+      "language_servers": [
+        // Enable ty, disable basedpyright, and enable all
+        // other registered language servers (ruff, pylsp, pyright).
+        "ty",
+        "ruff"
+        // "basedpyright"
+        // "!pyright",
+        // "..."
+      ]
     }
   },
   "lsp": {
@@ -440,6 +456,16 @@
       "initialization_options": {
         "experimentalFeatures": {
           "prefillRequiredFields": true
+        }
+      }
+    },
+    "basedpyright": {
+      "settings": {
+        "python": {
+          "analysis": {
+            "typeCheckingMode": "off",
+            "diagnosticMode": "openFilesOnly"
+          }
         }
       }
     }

@@ -1,0 +1,7 @@
+{
+    "compactMode": true,
+    "autoUpdate": false,
+    "theme": "dark",
+    "cortexAgentConnectionName": "default",
+    "sqlConnectionName": "default"
+}

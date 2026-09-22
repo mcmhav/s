@@ -1,0 +1,9 @@
+{
+  "securityNoticeAccepted": true,
+  "projects": {
+    "/workspace": {
+      "hasTrustDialogAccepted": true
+    }
+  }
+}
+
