@@ -19,7 +19,7 @@ link_config() {
     ln -sf "$LOCAL_CONFIG_PATH/c-pluggs" "$HOME/.vim"
     ln -sf "$LOCAL_CONFIG_PATH/.vimrc" "$HOME/.vimrc"
 
-    ln -sf "$LOCAL_CONFIG_PATH/coc-package.json" "$COC_EXTENSIONS_HOME/extensions/package.json"
+    ln -sf "$LOCAL_CONFIG_PATH/coc-package.json" "$COC_EXTENSIONS_HOME/package.json"
     ln -sf "$LOCAL_CONFIG_PATH/coc-settings.json" "$COC_HOME/coc-settings.json"
 }
 
