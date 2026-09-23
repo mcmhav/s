@@ -2,16 +2,16 @@
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
+_setup_copilot() {
+    mkdir -p "$HOME/.config"
+    mkdir -p "/workspace/.copilot"
+    ln -sfn /workspace/.copilot "$HOME/.config/github-copilot"
+}
 _setup() {
     export CSYS_LOG_LEVEL=5
     export CSYS_SHALLOW_SETUP="true"
 
-    COPILOT_CONFIG="$HOME/.config/github-copilot"
-    mkdir -p "$COPILOT_CONFIG"
-    echo "$COPILOT_HOSTS" | base64 -d >"$COPILOT_CONFIG/hosts.json"
-    echo "$COPILOT_APPS" | base64 -d >"$COPILOT_CONFIG/apps.json"
-    # Store an updated key
-    # cat ~/.config/github-copilot/hosts.json | base64 -w 0 | xargs -I {} gp env COPILOT_HOST={}
+    _setup_copilot
 
     export VS_CODE_SETTINGS_LOCATION="$HOME/.vscode-server/data/Machine/"
     csys install vs-code-server-config &
