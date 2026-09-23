@@ -31,7 +31,7 @@ _setup() {
     echo 'if [ -f "$HOME/.bashrc" ]; then source "$HOME/.bashrc"; fi' >>"$HOME/.bash_profile"
 
     cat "$SCRIPT_PATH/config/browser-open" >"/usr/local/bin/browser-override"
-    cat "$SCRIPT_PATH/config/browser-open" >"/usr/local/bin/xdg-open"
+    sudo tee -a "/usr/local/bin/xdg-open" < "$SCRIPT_PATH/config/browser-open" > /dev/null
 
     sudo apt-get install netcat-openbsd
 }
