@@ -48,5 +48,18 @@ setup_plugins() {
     } &
 }
 
+setup_coc_extensions() {
+    command -v npm >/dev/null 2>&1 || {
+        printf '%s\n' "npm is required to install CoC extensions" >&2
+        return 1
+    }
+
+    npm --prefix "$COC_EXTENSIONS_HOME" install \
+        --omit=dev \
+        --no-audit \
+        --no-fund &
+}
+
 link_config
 setup_plugins
+setup_coc_extensions
