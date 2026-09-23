@@ -6,7 +6,7 @@ SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 _install() {
   case $CSYS_OS in
     "$LIN_OS"*)
-      uv tool install ruff
+      uv tool install "$PACKAGE_NAME"
       ;;
     *)
       echo "Unsupported OS: $CSYS_OS, pgk: $PACKAGE_NAME"
