@@ -9,11 +9,31 @@
       "settings": {}
     }
   },
+
   "coc.preferences.formatOnSave": true,
   "coc.preferences.willSaveHandlerTimeout": 2000,
+
   "[python]": {
-    "coc.preferences.formatOnSave": true
+    "coc.preferences.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+    "source.organizeImports.ruff": "always",
+    "source.fixAll.ruff": "always"
+  }
   },
+
+  "python.formatting.provider": "none",
+  "python.linting.ruffEnabled": false,
+
+  "ruff.enable": true,
+  "ruff.nativeServer": true,
+  "ruff.useDetectRuffCommand": true,
+  "ruff.configurationPreference": "filesystemFirst",
+  "ruff.lint.enable": true,
+  "ruff.organizeImports": true,
+  "ruff.fixAll": true,
+  "ruff.autoFixOnSave": true,
+  "ruff.disableHover": true,
+
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
   },
@@ -23,6 +43,6 @@
       "args": []
     }
   },
-  "python.linting.mypyEnabled": true,
+
   "inlayHint.enable": false
 }
