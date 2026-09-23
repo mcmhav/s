@@ -2,6 +2,7 @@
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 COC_HOME="$HOME/.config/coc"
+COC_EXTENSIONS_HOME="$COC_HOME/extensions"
 VIM_HOME="$HOME/.vim"
 LOCAL_CONFIG_PATH="$SCRIPT_PATH/config"
 
@@ -29,7 +30,7 @@ link_config() {
     ln -sf "$LOCAL_CONFIG_PATH/.vimrc" "$HOME/.vimrc"
 
     mkdir -p "$COC_HOME"
-    ln -sf "$LOCAL_CONFIG_PATH/coc-package.json" "$COC_HOME/extensions/package.json"
+    ln -sf "$LOCAL_CONFIG_PATH/coc-package.json" "$COC_EXTENSIONS_HOME/extensions/package.json"
     ln -sf "$LOCAL_CONFIG_PATH/coc-settings.json" "$COC_HOME/coc-settings.json"
 }
 
