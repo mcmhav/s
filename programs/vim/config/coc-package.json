@@ -9,7 +9,8 @@
     "coc-yaml": ">=1.9.1",
     "coc-rust-analyzer": ">=0.81.0",
     "@yaegassy/coc-ruff": ">=0.8.0",
-    "coc-pyright": ">=1.1.395"
+    "coc-pyright": ">=1.1.395",
+    "@yaegassy/coc-ty": ">=0.3.2"
   },
   "disabled": [],
   "locked": [],
