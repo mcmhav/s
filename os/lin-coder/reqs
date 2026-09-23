@@ -6,3 +6,5 @@ terraform-ls
 delta
 yq
 cortex
+uv
+ruff
