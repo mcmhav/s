@@ -7,29 +7,18 @@ VIM_HOME="$HOME/.vim"
 LOCAL_CONFIG_PATH="$SCRIPT_PATH/config"
 
 link_config() {
-    if [ ! -d "$VIM_HOME" ]; then
-        mkdir "$VIM_HOME"
-    fi
+     mkdir -p \
+        "$VIM_HOME/autoload" \
+        "$VIM_HOME/colors" \
+        "$VIM_HOME/after/syntax" \
+        "$VIM_HOME/sessions" \
+        "$COC_EXTENSIONS_HOME"
 
     ln -sf "$LOCAL_CONFIG_PATH"/*.vim "$VIM_HOME"
-
-    if [ ! -d "$VIM_HOME/colors" ]; then
-        mkdir "$VIM_HOME/colors"
-    fi
-    if [ ! -d "$VIM_HOME/after/syntax" ]; then
-        mkdir -p "$VIM_HOME/after/syntax"
-    fi
-    if [ ! -d "$VIM_HOME/sessions" ]; then
-        mkdir "$VIM_HOME/sessions"
-    fi
-    if [ ! -d "$VIM_HOME/autoload" ]; then
-        mkdir "$VIM_HOME/autoload"
-    fi
     ln -sf "$LOCAL_CONFIG_PATH/colors/"* "$VIM_HOME/colors/"
     ln -sf "$LOCAL_CONFIG_PATH/c-pluggs" "$HOME/.vim"
     ln -sf "$LOCAL_CONFIG_PATH/.vimrc" "$HOME/.vimrc"
 
-    mkdir -p "$COC_HOME"
     ln -sf "$LOCAL_CONFIG_PATH/coc-package.json" "$COC_EXTENSIONS_HOME/extensions/package.json"
     ln -sf "$LOCAL_CONFIG_PATH/coc-settings.json" "$COC_HOME/coc-settings.json"
 }
