@@ -1,48 +1,56 @@
 {
-  "http.proxyStrictSSL": false,
-  "languageserver": {
-    "terraform": {
-      "command": "terraform-ls",
-      "args": ["serve"],
-      "filetypes": ["terraform", "tf"],
-      "initializationOptions": {},
-      "settings": {}
-    }
-  },
-
-  "coc.preferences.formatOnSave": true,
-  "coc.preferences.willSaveHandlerTimeout": 2000,
-
-  "[python]": {
+    "http.proxyStrictSSL": false,
+    "languageserver": {
+        "terraform": {
+            "command": "terraform-ls",
+            "args": [
+                "serve"
+            ],
+            "filetypes": [
+                "terraform",
+                "tf"
+            ],
+            "initializationOptions": {},
+            "settings": {}
+        }
+    },
     "coc.preferences.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-    "source.organizeImports.ruff": "always",
-    "source.fixAll.ruff": "always"
-  }
-  },
-
-  "python.formatting.provider": "none",
-  "python.linting.ruffEnabled": false,
-
-  "ruff.enable": true,
-  "ruff.nativeServer": true,
-  "ruff.useDetectRuffCommand": true,
-  "ruff.configurationPreference": "filesystemFirst",
-  "ruff.lint.enable": true,
-  "ruff.organizeImports": true,
-  "ruff.fixAll": true,
-  "ruff.autoFixOnSave": true,
-  "ruff.disableHover": true,
-
-  "diagnostic-languageserver.formatFiletypes": {
-    "sh": "shfmt"
-  },
-  "diagnostic-languageserver.formatters": {
-    "shfmt": {
-      "command": "shfmt",
-      "args": []
+    "coc.preferences.willSaveHandlerTimeout": 2000,
+    "[python]": {
+        "coc.preferences.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports.ruff": "always",
+            "source.fixAll.ruff": "always"
+        }
+    },
+    "pyright.enable": false,
+    "ty.enable": true,
+    "ty.path": "/home/dp/.local/bin/ty",
+    "python.formatting.provider": "none",
+    "python.linting.ruffEnabled": false,
+    "ruff.enable": true,
+    "ruff.nativeServer": true,
+    "ruff.useDetectRuffCommand": true,
+    "ruff.configurationPreference": "filesystemFirst",
+    "ruff.lint.enable": true,
+    "ruff.organizeImports": true,
+    "ruff.fixAll": true,
+    "ruff.autoFixOnSave": true,
+    "ruff.disableHover": true,
+    "diagnostic-languageserver.formatFiletypes": {
+        "sh": "shfmt"
+    },
+    "diagnostic-languageserver.formatters": {
+        "shfmt": {
+            "command": "shfmt",
+            "args": []
+        }
+    },
+    "inlayHint.enable": false,
+    "[json]": {
+        "coc.preferences.formatterExtension": "coc-prettier"
+    },
+    "[jsonc]": {
+        "coc.preferences.formatterExtension": "coc-prettier"
     }
-  },
-
-  "inlayHint.enable": false
 }
