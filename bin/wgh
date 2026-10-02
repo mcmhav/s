@@ -29,7 +29,8 @@ while [ "$1" != "" ]; do
         exit
         ;;
     pc | pr-create)
-        gh pr create -f
+        shift
+        gh pr create -f "$@"
         ;;
     *)
         gh "$@"

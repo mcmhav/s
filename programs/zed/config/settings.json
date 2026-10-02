@@ -53,6 +53,9 @@
             },
             {
               "pattern": "^https?://www\\.snowflake\\.com"
+            },
+            {
+              "pattern": "^https?://docs\\.python\\.org"
             }
           ]
         }
@@ -100,13 +103,13 @@
       },
       {
         "provider": "copilot_chat",
-        "model": "gpt-6-sol",
+        "model": "gpt-6-luna",
         "enable_thinking": true,
         "effort": "high"
       },
       {
         "provider": "copilot_chat",
-        "model": "gpt-6-luna",
+        "model": "gpt-6.1-sol",
         "enable_thinking": true,
         "effort": "high"
       }
