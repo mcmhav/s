@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+_make_pr() {
+    gh pr create -f "$@"
+    gh pr merge --auto
+}
+
+_my_prs() {
+    gh search prs \
+        --state open \
+        --owner "$CSYS_GITHUB_OWNER" \
+        --author "@me" \
+        --json title,url,number,createdAt \
+        --limit 1000 \
+        -- \
+        -is:draft \
+        -label:blocked \
+        review:none |
+        jq '"- " + .[].url' -r
+}
+
+case $1 in
+mk | make)
+    shift
+    _make_pr "$@"
+    ;;
+my | mine)
+    _my_prs
+    ;;
+*)
+    loggit "Not supported"
+    ;;
+esac

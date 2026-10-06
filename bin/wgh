@@ -1,21 +1,11 @@
 #!/usr/bin/env bash
 
+SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+SUB_WGH_PATH="$SCRIPT_PATH/_wgh"
 GH_STATUS_API="https://www.githubstatus.com/api/v2/components.json"
+
 _gh_status() {
     curl -s "$GH_STATUS_API" | jq_table '[ .components[] | select(.id != "0l2p9nhqnxpd") | {name,status,updated_at} ]'
-}
-
-_my_prs() {
-    gh search prs \
-        --state open \
-        --owner "$CSYS_GITHUB_OWNER" \
-        --author "@me" \
-        --json title,url,number,createdAt \
-        -- \
-        -is:draft \
-        -label:blocked \
-        review:none |
-        jq '"- " + .[].url' -r
 }
 
 while [ "$1" != "" ]; do
@@ -24,13 +14,10 @@ while [ "$1" != "" ]; do
         _gh_status
         exit
         ;;
-    mp | my-prs)
-        _my_prs
-        exit
-        ;;
-    pc | pr-create)
+    pr | pull-request)
         shift
-        gh pr create -f "$@"
+        "$SUB_WGH_PATH/_pr" "$@"
+        exit
         ;;
     *)
         gh "$@"
