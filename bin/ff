@@ -1,18 +1,30 @@
 #!/usr/bin/env bash
 
 _find_files() {
-  search_location="."
+    search_location="."
 
-  # search_result=$(cd "$search_location" && ag --unrestricted --hidden --ignore ".git" "." -f -g "" | fzf -e)
-  # search_result=$(cd "$search_location" && rg --files --no-heading --hidden "." --glob "!.git/" | fzf -e)
-  search_result=$(cd "$search_location" && __file_search | fzf -e)
-  # search_result=$(cd "$search_location" && fzf -e)
+    # search_result=$(cd "$search_location" && ag --unrestricted --hidden --ignore ".git" "." -f -g "" | fzf -e)
+    # search_result=$(cd "$search_location" && rg --files --no-heading --hidden "." --glob "!.git/" | fzf -e)
 
-  selected_file="$search_location/$search_result"
-  if [ -n "$selected_file" ] && [ "$selected_file" != "./" ]; then
-    vim "$selected_file"
-    echo "$selected_file"
-  fi
+    _FZF_PREVIEW="bat --style=numbers --color=always --line-range :500 {}"
+
+    search_result=$(
+        cd "$search_location" && __file_search | fzf -e \
+            --preview "$_FZF_PREVIEW" \
+            --preview-window=right:50%:wrap \
+            --bind "ctrl-j:preview-down" \
+            --bind "ctrl-k:preview-up" \
+            --bind "ctrl-d:preview-half-page-down" \
+            --bind "ctrl-u:preview-half-page-up"
+
+    )
+    # search_result=$(cd "$search_location" && fzf -e)
+
+    selected_file="$search_location/$search_result"
+    if [ -n "$selected_file" ] && [ "$selected_file" != "./" ]; then
+        vim "$selected_file"
+        echo "$selected_file"
+    fi
 }
 
 _find_files "$@"

@@ -56,6 +56,9 @@
             },
             {
               "pattern": "^https?://docs\\.python\\.org"
+            },
+            {
+              "pattern": "^https?://docs\\.github\\.com"
             }
           ]
         }
@@ -112,6 +115,12 @@
         "model": "gpt-6.1-sol",
         "enable_thinking": true,
         "effort": "high"
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "claude-sonnet-5.5",
+        "enable_thinking": true,
+        "effort": "high"
       }
     ],
     "dock": "right",
@@ -120,7 +129,7 @@
       "effort": "high",
       "enable_thinking": true,
       "provider": "copilot_chat",
-      "model": "gpt-6-astra"
+      "model": "claude-sonnet-5.5"
     },
     "inline_assistant_model": {
       "provider": "copilot_chat",
