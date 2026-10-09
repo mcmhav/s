@@ -23,6 +23,7 @@ _my_conflicts() {
     gh pr list \
         --author @me \
         --state open \
+        --limit 1000 \
         --json number,title,headRefName,baseRefName,mergeable \
         --jq '.[] | select(.mergeable == "CONFLICTING") | "#\(.number)\t\(.headRefName) -> \(.baseRefName)\t\(.title)"'
 }
