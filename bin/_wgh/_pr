@@ -19,6 +19,14 @@ _my_prs() {
         jq '"- " + .[].url' -r
 }
 
+_my_conflicts() {
+    gh pr list \
+        --author @me \
+        --state open \
+        --json number,title,headRefName,baseRefName,mergeable \
+        --jq '.[] | select(.mergeable == "CONFLICTING") | "#\(.number)\t\(.headRefName) -> \(.baseRefName)\t\(.title)"'
+}
+
 case $1 in
 mk | make)
     shift
@@ -26,6 +34,9 @@ mk | make)
     ;;
 my | mine)
     _my_prs
+    ;;
+mc | my-conflicts)
+    _my_conflicts
     ;;
 *)
     loggit "Not supported"

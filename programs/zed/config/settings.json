@@ -92,7 +92,8 @@
         "chardet.readthedocs.io",
         "www.snowflake.com",
         "ai.snowflake.com",
-        "learn.microsoft.com"
+        "learn.microsoft.com",
+        "filesystem-spec.readthedocs.io"
       ]
     },
     "sidebar_side": "right",
