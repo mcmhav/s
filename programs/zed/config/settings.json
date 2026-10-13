@@ -13,6 +13,28 @@
     "default_width": 640,
     "tool_permissions": {
       "tools": {
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "^grep\\b"
+            },
+            {
+              "pattern": "^head\\b"
+            },
+            {
+              "pattern": "^find\\s+tests(\\s|$)"
+            },
+            {
+              "pattern": "^cat\\s+\\.gitignore(\\s|$)"
+            },
+            {
+              "pattern": "^sed\\b"
+            },
+            {
+              "pattern": "^sort\\b"
+            }
+          ]
+        },
         "fetch": {
           "always_allow": [
             {
