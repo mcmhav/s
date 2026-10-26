@@ -7,6 +7,10 @@ _setup_copilot() {
     mkdir -p "/workspace/.copilot"
     ln -sfn /workspace/.copilot "$HOME/.config/github-copilot"
 }
+_setup_cortex() {
+    mkdir -p "/workspace/.cortex/conversations"
+    ln -sf "/workspace/.cortex/conversations" "$HOME/.config/cortex"
+}
 _setup() {
     export CSYS_LOG_LEVEL=5
     export CSYS_SHALLOW_SETUP="true"
@@ -31,7 +35,7 @@ _setup() {
     echo 'if [ -f "$HOME/.bashrc" ]; then source "$HOME/.bashrc"; fi' >>"$HOME/.bash_profile"
 
     cat "$SCRIPT_PATH/config/browser-open" >"/usr/local/bin/browser-override"
-    sudo tee -a "/usr/local/bin/xdg-open" < "$SCRIPT_PATH/config/browser-open" > /dev/null
+    sudo tee -a "/usr/local/bin/xdg-open" <"$SCRIPT_PATH/config/browser-open" >/dev/null
 
     sudo apt-get install netcat-openbsd
 }
