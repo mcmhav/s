@@ -1,0 +1,12 @@
+{
+    "working_dirs": {
+        "/workspace/awt-dp-dg-psa/div-2": {
+            "cache": {
+                "{\"bash_type\":\"base_command\",\"command\":\"mkdir\",\"type\":\"bash\"}": {
+                    "result": "granted",
+                    "created_at": "2026-10-26T08:39:59.710Z"
+                }
+            }
+        }
+    }
+}
