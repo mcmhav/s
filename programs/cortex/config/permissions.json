@@ -5,6 +5,22 @@
                 "{\"bash_type\":\"base_command\",\"command\":\"mkdir\",\"type\":\"bash\"}": {
                     "result": "granted",
                     "created_at": "2026-10-26T08:39:59.710Z"
+                },
+                "{\"bash_type\":\"base_command\",\"command\":\"cortex\",\"type\":\"bash\"}": {
+                    "result": "granted",
+                    "created_at": "2026-10-26T08:45:14.599Z"
+                },
+                "{\"bash_type\":\"base_command\",\"command\":\"cortex mcp get prefect-mcp\",\"type\":\"bash\"}": {
+                    "result": "granted",
+                    "created_at": "2026-10-26T08:47:40.085Z"
+                },
+                "{\"directory\":\"/home/dp\",\"type\":\"file_read_dir\"}": {
+                    "result": "granted",
+                    "created_at": "2026-10-26T08:48:06.205Z"
+                },
+                "{\"directory\":\"/workspace\",\"type\":\"file_read_dir\"}": {
+                    "result": "granted",
+                    "created_at": "2026-10-26T08:48:06.205Z"
                 }
             }
         }

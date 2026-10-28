@@ -9,7 +9,7 @@ _setup_copilot() {
 }
 _setup_cortex() {
     mkdir -p "/workspace/.cortex/conversations"
-    ln -sf "/workspace/.cortex/conversations" "$HOME/.config/cortex"
+    ln -sf "/workspace/.cortex/conversations" "$HOME/.snowflake/cortex"
 }
 _setup() {
     export CSYS_LOG_LEVEL=5

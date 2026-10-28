@@ -32,6 +32,24 @@
         "default_width": 640,
         "tool_permissions": {
             "tools": {
+                "mcp:prefect:get_task_runs": {
+                    "default": "allow"
+                },
+                "mcp:prefect:get_flow_run_logs": {
+                    "default": "allow"
+                },
+                "mcp:prefect:get_identity": {
+                    "default": "allow"
+                },
+                "mcp:prefect:get_flow_runs": {
+                    "default": "allow"
+                },
+                "mcp:prefect:get_deployments": {
+                    "default": "allow"
+                },
+                "copy_path": {
+                    "default": "allow"
+                },
                 "mcp:prefect:orientation": {
                     "default": "allow"
                 },
@@ -75,6 +93,12 @@
                         },
                         {
                             "pattern": "^wc\\b"
+                        },
+                        {
+                            "pattern": "^rg\\b"
+                        },
+                        {
+                            "pattern": "^xargs\\s+grep(\\s|$)"
                         }
                     ]
                 },
