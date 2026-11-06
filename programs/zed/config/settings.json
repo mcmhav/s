@@ -8,6 +8,20 @@
         "dock": "left"
     },
     "context_servers": {
+        // "prefect": {
+        //     "enabled": true,
+        //     "command": "ssh",
+        //     "args": [
+        //         "-T",
+        //         "-o",
+        //         "BatchMode=yes",
+        //         "main.main.mch-sb.coder",
+        //         "/home/dp/.pyenv/shims/uvx",
+        //         "--from",
+        //         "prefect-mcp",
+        //         "prefect-mcp-server"
+        //     ]
+        // },
         "prefect": {
             "enabled": true,
             "command": "ssh",
@@ -15,11 +29,10 @@
                 "-T",
                 "-o",
                 "BatchMode=yes",
+                "-o",
+                "ServerAliveInterval=30",
                 "main.main.mch-sb.coder",
-                "/home/dp/.pyenv/shims/uvx",
-                "--from",
-                "prefect-mcp",
-                "prefect-mcp-server"
+                "/workspace/bin/prefect-mcp"
             ]
         }
     },
@@ -29,9 +42,31 @@
         },
         "limit_content_width": true,
         "max_content_width": 800,
-        "default_width": 640,
+        "default_width": 460,
+        "flexible": false,
         "tool_permissions": {
             "tools": {
+                "mcp:prefect:get_automations": {
+                    "default": "allow"
+                },
+                "mcp:prefect:get_dashboard": {
+                    "default": "allow"
+                },
+                "mcp:prefect:read_events": {
+                    "default": "allow"
+                },
+                "delete_path": {
+                    "default": "allow"
+                },
+                "move_path": {
+                    "default": "allow"
+                },
+                "mcp:prefect:get_work_pools": {
+                    "default": "allow"
+                },
+                "write_file": {
+                    "default": "allow"
+                },
                 "mcp:prefect:get_task_runs": {
                     "default": "allow"
                 },
@@ -71,6 +106,9 @@
                             "pattern": "^cat\\b"
                         },
                         {
+                            "pattern": "^yq\\b"
+                        },
+                        {
                             "pattern": "^sed\\b"
                         },
                         {
@@ -98,7 +136,73 @@
                             "pattern": "^rg\\b"
                         },
                         {
-                            "pattern": "^xargs\\s+grep(\\s|$)"
+                            "pattern": "^cd\\b"
+                        },
+                        {
+                            "pattern": "^cut\\b"
+                        },
+                        {
+                            "pattern": "^uniq\\b"
+                        },
+                        {
+                            "pattern": "^xargs\\s+(grep|cat)(\\s|$)"
+                        },
+                        {
+                            "pattern": "^uv\\s+run\\s+(--?[\\w-]+(=\\S+)?\\s+)*(ty|ruff|pytest|pyright)(\\s|$)"
+                        },
+                        {
+                            "pattern": "^uv\\s+pip\\s+compile\\b"
+                        },
+                        {
+                            "pattern": "^pip\\s+(show)(\\s|$)"
+                        },
+                        {
+                            "pattern": "^(\\./)?\\.venv/bin/python3?\\s+-m\\s+pytest\\b"
+                        },
+                        {
+                            "pattern": "^which\\s+docker(\\s|$)"
+                        },
+                        {
+                            "pattern": "^uv\\s+lock(\\s|$)"
+                        },
+                        {
+                            "pattern": "^rm\\b"
+                        },
+                        {
+                            "pattern": "^mkdir\\b"
+                        },
+                        {
+                            "pattern": "^cp\\b"
+                        },
+                        {
+                            "pattern": "^uv\\s+build(\\s|$)"
+                        },
+                        {
+                            "pattern": "^uv\\s+sync(\\s|$)"
+                        },
+                        {
+                            "pattern": "^docker\\s+(images|info|ps|buildx)(\\s|$)"
+                        },
+                        {
+                            "pattern": "^git\\s+archive(\\s|$)"
+                        },
+                        {
+                            "pattern": "^tar\\b"
+                        },
+                        {
+                            "pattern": "^gh\\s+(pr|issue|release)\\s+(list|view)(\\s|$)"
+                        },
+                        {
+                            "pattern": "^dope\\s+workspace\\s+get(\\s|$)"
+                        },
+                        {
+                            "pattern": "^get_django_config\\b"
+                        },
+                        {
+                            "pattern": "^pgrep\\b"
+                        },
+                        {
+                            "pattern": "^ps\\b"
                         }
                     ]
                 },

@@ -11,11 +11,20 @@ _setup_cortex() {
     mkdir -p "/workspace/.cortex/conversations"
     ln -sf "/workspace/.cortex/conversations" "$HOME/.snowflake/cortex"
 }
+_setup_buildx_cache() {
+    # Keep the buildx "builders" layer cache on /workspace (see /workspace/bin/buildx-persist).
+    # Docker (DinD) may still be starting, so wait for it in the background.
+    if [ -x /workspace/bin/buildx-persist ]; then
+        mkdir -p /workspace/.buildkit
+        nohup /workspace/bin/buildx-persist --wait 300 >/workspace/.buildkit/startup.log 2>&1 &
+    fi
+}
 _setup() {
     export CSYS_LOG_LEVEL=5
     export CSYS_SHALLOW_SETUP="true"
 
     _setup_copilot
+    _setup_buildx_cache
 
     export VS_CODE_SETTINGS_LOCATION="$HOME/.vscode-server/data/Machine/"
     csys install vs-code-server-config &
