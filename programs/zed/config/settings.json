@@ -148,7 +148,7 @@
                             "pattern": "^xargs\\s+(grep|cat)(\\s|$)"
                         },
                         {
-                            "pattern": "^uv\\s+run\\s+(--?[\\w-]+(=\\S+)?\\s+)*(ty|ruff|pytest|pyright)(\\s|$)"
+                            "pattern": "^uv\\s+run\\s+(--?[\\w-]+(=\\S+)?\\s+)*(prek|ty|ruff|pytest|pyright)(\\s|$)"
                         },
                         {
                             "pattern": "^uv\\s+pip\\s+compile\\b"
@@ -190,7 +190,7 @@
                             "pattern": "^tar\\b"
                         },
                         {
-                            "pattern": "^gh\\s+(pr|issue|release)\\s+(list|view)(\\s|$)"
+                            "pattern": "^gh\\s+(pr|run|issue|release)\\s+(list|view)(\\s|$)"
                         },
                         {
                             "pattern": "^dope\\s+workspace\\s+get(\\s|$)"
