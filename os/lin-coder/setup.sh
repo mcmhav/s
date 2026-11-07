@@ -2,14 +2,47 @@
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
-_setup_copilot() {
-    mkdir -p "$HOME/.config"
-    mkdir -p "/workspace/.copilot"
-    ln -sfn /workspace/.copilot "$HOME/.config/github-copilot"
+# Tool state that should survive workspace rebuilds lives on the persistent volume under
+# /workspace/.home, mirroring the paths under $HOME (~/<path> -> /workspace/.home/<path>).
+PERSIST_HOME="/workspace/.home"
+
+_persist() {
+    # Link ~/<path> to /workspace/.home/<path>. Links the directory, not single files: tools like fish
+    # save by renaming a temp file over the original, which would replace a file symlink.
+    local rel="$1"
+    local persist="$PERSIST_HOME/$rel"
+    local target="$HOME/$rel"
+    mkdir -p "$persist" "$(dirname "$target")"
+    if [ -d "$target" ] && [ ! -L "$target" ]; then
+        # Keep anything written before the link existed; already persisted files win.
+        cp -a --update=none "$target/." "$persist/" 2>/dev/null || true
+        rm -rf "$target"
+    fi
+    ln -sfn "$persist" "$target"
 }
-_setup_cortex() {
-    mkdir -p "/workspace/.cortex/conversations"
-    ln -sf "/workspace/.cortex/conversations" "$HOME/.snowflake/cortex"
+_setup_persisted_state() {
+    _persist ".config/github-copilot"        # Copilot (editor/LSP) auth
+    _persist ".copilot"                      # Copilot CLI home (config.json, logs/)
+    _persist ".local/share/fish"             # fish_history
+    _persist ".snowflake/cortex/conversations" # Cortex Code conversations
+    chmod 700 "$PERSIST_HOME/.local/share/fish"
+}
+_setup_fish_history() {
+    # Keep fish's data dir (fish_history) on /workspace so history survives workspace rebuilds.
+    # Link the whole dir, not the file: fish saves history by renaming a temp file over
+    # fish_history, which would replace a file symlink with a regular file.
+    local persist="/workspace/.local/share/fish"
+    local data="$HOME/.local/share/fish"
+    mkdir -p "$persist" "$HOME/.local/share"
+    chmod 700 "$persist"
+    if [ -d "$data" ] && [ ! -L "$data" ]; then
+        # Keep history recorded before the link existed (e.g. a shell opened during setup).
+        for f in "$data"/*_history; do
+            [ -f "$f" ] && cat "$f" >>"$persist/$(basename "$f")"
+        done
+        rm -rf "$data"
+    fi
+    ln -sfn "$persist" "$data"
 }
 _setup_fish_history() {
     # Keep fish's data dir (fish_history) on /workspace so history survives workspace rebuilds.
@@ -29,18 +62,20 @@ _setup_fish_history() {
     ln -sfn "$persist" "$data"
 }
 _setup_buildx_cache() {
-    # Keep the buildx "builders" layer cache on /workspace (see /workspace/bin/buildx-persist).
+    # Keep the buildx "builders" layer cache on /workspace (see /workspace/.home/bin/buildx-persist).
     # Docker (DinD) may still be starting, so wait for it in the background.
-    if [ -x /workspace/bin/buildx-persist ]; then
-        mkdir -p /workspace/.buildkit
-        nohup /workspace/bin/buildx-persist --wait 300 >/workspace/.buildkit/startup.log 2>&1 &
+    local bin="$PERSIST_HOME/bin/buildx-persist"
+    local dir="$PERSIST_HOME/.local/share/buildkit"
+    if [ -x "$bin" ]; then
+        mkdir -p "$dir"
+        nohup "$bin" --wait 300 >"$dir/startup.log" 2>&1 &
     fi
 }
 _setup() {
     export CSYS_LOG_LEVEL=5
     export CSYS_SHALLOW_SETUP="true"
 
-    _setup_copilot
+    _setup_persisted_state
     _setup_buildx_cache
     _setup_fish_history
 

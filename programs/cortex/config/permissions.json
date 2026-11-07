@@ -1,6 +1,6 @@
 {
     "working_dirs": {
-        "/workspace/awt-dp-dg-psa/div-2": {
+        "/workspace/r/awt-dp-dg-psa/div-2": {
             "cache": {
                 "{\"bash_type\":\"base_command\",\"command\":\"mkdir\",\"type\":\"bash\"}": {
                     "result": "granted",

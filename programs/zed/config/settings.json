@@ -32,7 +32,7 @@
                 "-o",
                 "ServerAliveInterval=30",
                 "main.main.mch-sb.coder",
-                "/workspace/bin/prefect-mcp"
+                "/workspace/.home/bin/prefect-mcp"
             ]
         }
     },
