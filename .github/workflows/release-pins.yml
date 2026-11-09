@@ -1,0 +1,32 @@
+name: release pins
+
+# Installs the programs whose pinned release version changed (e.g. Renovate PRs) on x86_64 and arm64,
+# so a renamed release asset fails here instead of at workspace startup.
+on:
+  pull_request:
+    paths:
+      - "programs/*/setup.sh"
+      - "bin/_csys/**"
+      - ".github/workflows/release-pins.yml"
+      - ".github/scripts/check-release-pins.sh"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Install and run changed release binaries
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: .github/scripts/check-release-pins.sh
