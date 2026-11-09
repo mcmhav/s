@@ -2,7 +2,7 @@
 
 PACKAGE_NAME="nvim"
 # renovate: datasource=github-releases depName=neovim/neovim extractVersion=^v(?<version>.+)$
-NVIM_VERSION="0.12.4"
+NVIM_VERSION="0.12.6"
 
 _install_from_tar() {
   local arch
