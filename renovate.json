@@ -1,19 +1,18 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Bumps the versions pinned in programs/*/setup.sh (see the # renovate: comments there), the prek hook revs and the GitHub Actions.",
+  "description": "Bumps the versions pinned in programs/*/setup.sh and workflows (see the # renovate: comments there), the prek hook revs and the GitHub Actions. Runs from .github/workflows/renovate.yml, which also sets the schedule.",
   "extends": ["config:recommended"],
   "enabledManagers": ["custom.regex", "pre-commit", "github-actions"],
   "pre-commit": { "enabled": true },
   "timezone": "Europe/Oslo",
-  "schedule": ["before 7am on monday"],
   "minimumReleaseAge": "3 days",
   "customManagers": [
     {
       "customType": "regex",
-      "description": "VERSION=\"x.y.z\" lines annotated with: # renovate: datasource=<ds> depName=<name> [extractVersion=<regex>]",
-      "managerFilePatterns": ["/(^|/)setup\\.sh$/"],
+      "description": "VERSION=\"x.y.z\" (shell) or VERSION: \"x.y.z\" (workflow env) lines annotated with: # renovate: datasource=<ds> depName=<name> [extractVersion=<regex>]",
+      "managerFilePatterns": ["/(^|/)setup\\.sh$/", "/^\\.github/workflows/[^/]+\\.ya?ml$/"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( extractVersion=(?<extractVersion>\\S+))?\\s+[A-Z_]*VERSION=\"(?<currentValue>[^\"]+)\""
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( extractVersion=(?<extractVersion>\\S+))?\\s+[A-Z_]*VERSION(=|: )\"(?<currentValue>[^\"]+)\""
       ]
     }
   ]
