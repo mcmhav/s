@@ -2,7 +2,7 @@
 
 PACKAGE_NAME="process-compose"
 # renovate: datasource=github-releases depName=F1bonacc1/process-compose
-VERSION="v1.78.0"
+VERSION="v1.124.0"
 
 _install() {
   case $CSYS_OS in
