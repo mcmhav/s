@@ -8,8 +8,9 @@ VERSION="v1.78.0"
 _install() {
     case $CSYS_OS in
     "$LIN_OS"*)
-        curl -fsSL https://github.com/F1bonacc1/process-compose/releases/download/$VERSION/process-compose_linux_amd64.tar.gz | tar -xz -C /tmp
-        sudo mv /tmp/process-compose /usr/local/bin
+        # linux_arm is built with GOARM=6, so it also runs on a Pi Zero
+        csys release process-compose "$VERSION" \
+            "https://github.com/F1bonacc1/process-compose/releases/download/{version}/process-compose_linux_{goarch}.tar.gz"
         ;;
     "$MAC_OS")
         curl -fsSL https://github.com/F1bonacc1/process-compose/releases/download/$VERSION/process-compose_darwin_amd64.tar.gz | tar -xz -C /tmp

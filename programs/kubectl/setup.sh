@@ -2,16 +2,25 @@
 
 PACKAGE_COMMAND="kubectl"
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
+# renovate: datasource=github-releases depName=kubernetes/kubernetes
+VERSION="v1.37.2"
+
+_install_release() {
+    case "$(csys release --arch)" in
+    armv6)
+        # linux/arm is built with GOARM=7
+        loggit warn "$PACKAGE_COMMAND: no prebuilt release for $(uname -m), skipping"
+        return
+        ;;
+    esac
+    csys release kubectl "$VERSION" \
+        "https://dl.k8s.io/release/{version}/bin/linux/{goarch}/kubectl"
+}
 
 _install() {
     case $CSYS_OS in
     "$LIN_OS"*)
-        RELEASE_VERSION="$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)"
-        curl \
-            -fsSL "https://storage.googleapis.com/kubernetes-release/release/$RELEASE_VERSION/bin/linux/amd64/kubectl" \
-            -o /tmp/kubectl &&
-            chmod +x /tmp/kubectl
-        sudo mv /tmp/kubectl /usr/local/bin
+        _install_release
         ;;
     "$MAC_OS")
         brew install "$PACKAGE_COMMAND"
