@@ -6,6 +6,7 @@ _help() {
     COMMAND_OPTIONS=$(printf "
   install \t install a package
   reqs-install \t install requirements
+  release \t install a pinned release binary (see bin/_csys/_csys_release)
   update \t update system
   push \t push system config to remote
   status \t status of the system config
@@ -66,6 +67,12 @@ install)
 reqs-install)
     shift
     "$SCRIPT_DIR/_csys/_csys_reqs_install" "$@"
+    ;;
+release)
+    shift
+    cd "$RETURN_TO" || exit
+    "$SCRIPT_DIR/_csys/_csys_release" "$@"
+    exit $?
     ;;
 update)
     shift

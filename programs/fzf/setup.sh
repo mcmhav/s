@@ -2,18 +2,23 @@
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 PACKAGE_NAME="fzf"
+VERSION="0.60.3"
 
 _install() {
 	case $CSYS_OS in
     "$LIN_OS"*)
-		VERSION="0.60.3"
-        ARCH="amd64"
-        if [ "$(uname -m)" == "aarch64" ]; then
-            ARCH="arm64"
-        fi
-		URL="https://github.com/junegunn/fzf/releases/download/v$VERSION/fzf-$VERSION-linux_${ARCH}.tar.gz"
-		curl -fsSL "$URL" | tar -xz -C /tmp
-		sudo mv /tmp/fzf /usr/local/bin
+        local arch
+        case "$(csys release --arch)" in
+        x86_64) arch="amd64" ;;
+        aarch64) arch="arm64" ;;
+        armv7 | armv6) arch="$(csys release --arch)" ;;
+        *)
+            loggit warn "$PACKAGE_NAME: no prebuilt release for $(uname -m), skipping"
+            return 0
+            ;;
+        esac
+		csys release fzf "$VERSION" \
+			"https://github.com/junegunn/fzf/releases/download/v{version}/fzf-{version}-linux_$arch.tar.gz"
 		;;
 	"$MAC_OS")
 		brew install "$PACKAGE_NAME"

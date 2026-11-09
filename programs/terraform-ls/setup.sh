@@ -7,9 +7,8 @@ VERSION="0.36.0"
 _install() {
 	case $CSYS_OS in
 	"$LIN_OS"*)
-		curl -fsSL "https://releases.hashicorp.com/terraform-ls/$VERSION/terraform-ls_${VERSION}_linux_amd64.zip" -o /tmp/tf-ls.zip
-		unzip -qo /tmp/tf-ls.zip -d /tmp/tf-ls
-		sudo mv /tmp/tf-ls/terraform-ls /usr/local/bin
+		csys release terraform-ls "$VERSION" \
+			"https://releases.hashicorp.com/terraform-ls/{version}/terraform-ls_{version}_linux_{goarch}.zip"
 		;;
 	"$MAC_OS")
 		brew install "$PACKAGE_NAME"

@@ -1,0 +1,161 @@
+#!/usr/bin/env bash
+# Install a prebuilt binary from a pinned release URL. No package manager, no sudo.
+#
+#   csys release <name> <version> <url> [<path-in-archive>] [--as <link-name>]
+#   csys release --arch     # x86_64 | aarch64 | armv7 | armv6 | i686 (else `uname -m`)
+#   csys release --goarch   # amd64  | arm64   | arm   | arm   | 386
+#
+# <url> and <path-in-archive> may contain {version}, {arch} and {goarch}.
+# Archives: .tar.gz/.tgz, .tar.xz, .zip, .gz (single file); anything else is a raw binary.
+# <path-in-archive> defaults to <name>; the link name defaults to its basename.
+#
+# Each release is unpacked once into $CSYS_STORE/<name>/<version>/ and linked into $CSYS_LOCAL_BIN,
+# so installing an already downloaded version is just a symlink. Other versions of <name> are pruned.
+
+CSYS_STORE="${CSYS_STORE:-${XDG_DATA_HOME:-$HOME/.local/share}/csys/store}"
+CSYS_LOCAL_BIN="${CSYS_LOCAL_BIN:-$HOME/.local/bin}"
+
+_arch() {
+    case "$(uname -m)" in
+    x86_64 | amd64) echo "x86_64" ;;
+    aarch64 | arm64) echo "aarch64" ;;
+    armv7*) echo "armv7" ;;
+    armv6*) echo "armv6" ;;
+    i?86) echo "i686" ;;
+    *) uname -m ;;
+    esac
+}
+
+_goarch() {
+    case "$(_arch)" in
+    x86_64) echo "amd64" ;;
+    aarch64) echo "arm64" ;;
+    armv7 | armv6) echo "arm" ;;
+    i686) echo "386" ;;
+    *) _arch ;;
+    esac
+}
+
+_expand() {
+    local s="$1"
+    s="${s//\{version\}/$VERSION}"
+    s="${s//\{arch\}/$(_arch)}"
+    s="${s//\{goarch\}/$(_goarch)}"
+    echo "$s"
+}
+
+_curl() {
+    # --retry covers timeouts and transient HTTP errors (408, 429, 5xx), not 404s.
+    curl -fsSL --retry 3 --retry-delay 2 --connect-timeout 15 --max-time 300 "$@"
+}
+
+_curl_github_api() {
+    # Use a token when available (5000 instead of 60 requests/hour). Passed on stdin to keep it out of `ps`.
+    local token="${GH_TOKEN:-${GITHUB_TOKEN:-}}"
+    if [ -n "$token" ]; then
+        printf 'Authorization: Bearer %s\n' "$token" | _curl -H @- "$@"
+    else
+        _curl "$@"
+    fi
+}
+
+_github_asset_api_url() {
+    # https://github.com/<owner>/<repo>/releases/download/<tag>/<file> -> API URL of that asset
+    local url="$1" rest repo tag
+    case "$url" in
+    https://github.com/*/*/releases/download/*/*) ;;
+    *) return 1 ;;
+    esac
+    rest="${url#https://github.com/}"
+    repo="${rest%%/releases/download/*}"
+    tag="${rest#*/releases/download/}"
+    tag="${tag%%/*}"
+    # Only the asset's own "url" (…/releases/assets/<id>); nested ones like uploader.url come in between.
+    _curl_github_api "https://api.github.com/repos/$repo/releases/tags/$tag" |
+        grep -oE '"(url|browser_download_url)": *"[^"]*"' |
+        awk -F'"' -v want="$url" '
+            $2 == "url" && $4 ~ /\/releases\/assets\/[0-9]+$/ { u = $4 }
+            $2 == "browser_download_url" && $4 == want { print u; exit }'
+}
+
+_download() {
+    # github.com/<repo>/releases/download is often slow (~10 s) or answers 504, while the API serves the
+    # same asset in well under a second. Try the API first and fall back to the plain URL.
+    local url="$1" out="$2" api
+    api="$(_github_asset_api_url "$url")"
+    if [ -n "$api" ]; then
+        _curl_github_api -H 'Accept: application/octet-stream' -o "$out" "$api" && return 0
+        loggit dbug "release | GitHub API download failed, falling back to $url"
+    fi
+    _curl -o "$out" "$url"
+}
+
+_unpack() {
+    local archive="$1" url="$2" out="$3" path="$4"
+    mkdir -p "$out" "$(dirname "$out/$path")"
+    case "$url" in
+    *.tar.gz | *.tgz) tar -xzf "$archive" -C "$out" ;;
+    *.tar.xz) tar -xJf "$archive" -C "$out" ;;
+    *.zip) unzip -qo "$archive" -d "$out" ;;
+    *.gz) gzip -dc "$archive" >"$out/$path" ;;
+    *) mv "$archive" "$out/$path" ;;
+    esac
+}
+
+_release() {
+    local name="" url="" path="" link="" positional=()
+    while [ "$#" -gt 0 ]; do
+        case "$1" in
+        --as)
+            link="$2"
+            shift
+            ;;
+        *) positional+=("$1") ;;
+        esac
+        shift
+    done
+    if [ "${#positional[@]}" -lt 3 ]; then
+        echo "usage: csys release <name> <version> <url> [<path-in-archive>] [--as <link-name>]" >&2
+        return 2
+    fi
+    name="${positional[0]}"
+    VERSION="${positional[1]}"
+    url="$(_expand "${positional[2]}")"
+    path="$(_expand "${positional[3]:-$name}")"
+    link="${link:-$(basename "$path")}"
+
+    local dir="$CSYS_STORE/$name"
+    local dest="$dir/$VERSION"
+    if [ ! -f "$dest/.complete" ]; then
+        mkdir -p "$dir"
+        # Stage inside the store so the final mv is a rename on the same filesystem.
+        local tmp
+        tmp="$(mktemp -d "$dir/.tmp-XXXXXX")"
+        # shellcheck disable=SC2064
+        trap "rm -rf '$tmp'" EXIT
+
+        loggit dbug "release | $name $VERSION <- $url"
+        if ! _download "$url" "$tmp/download"; then
+            loggit errr "release | $name $VERSION: download failed: $url"
+            return 1
+        fi
+        if ! _unpack "$tmp/download" "$url" "$tmp/out" "$path" || [ ! -f "$tmp/out/$path" ]; then
+            loggit errr "release | $name $VERSION: '$path' not found after unpacking $url"
+            return 1
+        fi
+        chmod +x "$tmp/out/$path"
+        touch "$tmp/out/.complete"
+        rm -rf "$dest"
+        mv "$tmp/out" "$dest"
+        find "$dir" -mindepth 1 -maxdepth 1 ! -name "$VERSION" -exec rm -rf {} +
+    fi
+
+    mkdir -p "$CSYS_LOCAL_BIN"
+    ln -sfn "$dest/$path" "$CSYS_LOCAL_BIN/$link"
+}
+
+case "$1" in
+--arch) _arch ;;
+--goarch) _goarch ;;
+*) _release "$@" ;;
+esac

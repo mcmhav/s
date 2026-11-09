@@ -2,14 +2,20 @@
 
 PACKAGE_NAME="zellij"
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-VERSION="v0.39.2"
+VERSION="0.39.2"
 
 _install() {
   case $CSYS_OS in
     "$LIN_OS"*)
-      ARCH=$(uname -m)
-      curl -fsSL https://github.com/zellij-org/zellij/releases/download/$VERSION/zellij-${ARCH}-unknown-linux-musl.tar.gz | tar -xz -C /tmp
-      sudo mv /tmp/zellij /usr/local/bin
+      case "$(csys release --arch)" in
+        x86_64 | aarch64)
+          csys release zellij "$VERSION" \
+            "https://github.com/zellij-org/zellij/releases/download/v{version}/zellij-{arch}-unknown-linux-musl.tar.gz"
+          ;;
+        *)
+          loggit warn "$PACKAGE_NAME: no prebuilt release for $(uname -m), skipping"
+          ;;
+      esac
       ;;
     "$MAC_OS")
       brew install "$PACKAGE_NAME"

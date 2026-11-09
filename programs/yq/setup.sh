@@ -8,9 +8,8 @@ VERSION="4.53.6"
 _install() {
 	case $CSYS_OS in
 	"$LIN_OS"*)
-		curl -fsSL "https://github.com/mikefarah/yq/releases/download/v$VERSION/yq_linux_amd64" -o /tmp/yq
-        chmod +x "/tmp/yq"
-		sudo mv "/tmp/yq" /usr/local/bin
+		csys release yq "$VERSION" \
+			"https://github.com/mikefarah/yq/releases/download/v{version}/yq_linux_{goarch}"
 		;;
 	"$MAC_OS")
 		brew install "$PACKAGE_NAME"

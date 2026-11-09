@@ -2,6 +2,13 @@
 
 REQS_FILE_PATH="$1"
 
+# Shared with the `csys install` calls below, so each package is set up once per run.
+if [ -z "$CSYS_RUN_DIR" ]; then
+  CSYS_RUN_DIR="$(mktemp -d "${TMPDIR:-/tmp}/csys-run-XXXXXX")"
+  export CSYS_RUN_DIR
+  trap 'rm -rf "$CSYS_RUN_DIR"' EXIT
+fi
+
 REQS_COUNT=$(wc -l "$REQS_FILE_PATH" | awk '{print $1}')
 
 loggit "Reqs to setup: $REQS_COUNT"

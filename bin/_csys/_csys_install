@@ -15,6 +15,18 @@ while [ "$1" != "" ]; do
     shift
 done
 
+# Set up each package once per run, even when several packages list it in their reqs.
+if [ -z "$CSYS_RUN_DIR" ]; then
+    CSYS_RUN_DIR="$(mktemp -d "${TMPDIR:-/tmp}/csys-run-XXXXXX")"
+    export CSYS_RUN_DIR
+    trap 'rm -rf "$CSYS_RUN_DIR"' EXIT
+fi
+if [ -e "$CSYS_RUN_DIR/$PACKAGE_TO_INSTALL" ]; then
+    loggit dbug "csys | $PACKAGE_TO_INSTALL already set up in this run"
+    exit 0
+fi
+touch "$CSYS_RUN_DIR/$PACKAGE_TO_INSTALL"
+
 if [ -f "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/setup.sh" ]; then
     if [ -f "$CSYS_PROGRAMS/$PACKAGE_TO_INSTALL/reqs" ]; then
         loggit dbug "csys | install reqs for package"

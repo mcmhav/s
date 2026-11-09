@@ -4,16 +4,18 @@ PACKAGE_NAME="nvim"
 NVIM_VERSION="0.12.4"
 
 _install_from_tar() {
-    mkdir -p "$HOME/.local/bin"
-    NVIM_HOME="$HOME/.local/nvim"
-    mkdir -p "$NVIM_HOME"
-    if [ "$(uname -m)" == "x86_64" ]; then
-        ARCH="x86_64"
-    else
-        ARCH="arm64"
-    fi
-    curl -fsSL "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-linux-${ARCH}.tar.gz" | tar -xz -C "$NVIM_HOME"
-    ln -sf "$NVIM_HOME/nvim-linux-${ARCH}/bin/nvim" "$HOME/.local/bin/nvim"
+    local arch
+    case "$(csys release --arch)" in
+    x86_64) arch="x86_64" ;;
+    aarch64) arch="arm64" ;;
+    *)
+        loggit warn "$PACKAGE_NAME: no prebuilt release for $(uname -m), skipping"
+        return 0
+        ;;
+    esac
+    csys release nvim "$NVIM_VERSION" \
+        "https://github.com/neovim/neovim/releases/download/v{version}/nvim-linux-$arch.tar.gz" \
+        "nvim-linux-$arch/bin/nvim"
 }
 
 _setup() {
@@ -45,4 +47,3 @@ _setup() {
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 _setup
-
