@@ -1,0 +1,20 @@
+name: lint
+
+# Runs the prek hooks from .pre-commit-config.yaml (shellcheck, shfmt, fish -n, ...) on all files.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prek:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install fish
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends fish
+      - uses: j178/prek-action@v3

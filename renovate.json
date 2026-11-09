@@ -1,8 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Only bumps the versions pinned in programs/*/setup.sh (see the # renovate: comments there).",
+  "description": "Bumps the versions pinned in programs/*/setup.sh (see the # renovate: comments there), the prek hook revs and the GitHub Actions.",
   "extends": ["config:recommended"],
-  "enabledManagers": ["custom.regex"],
+  "enabledManagers": ["custom.regex", "pre-commit", "github-actions"],
+  "pre-commit": { "enabled": true },
   "timezone": "Europe/Oslo",
   "schedule": ["before 7am on monday"],
   "minimumReleaseAge": "3 days",

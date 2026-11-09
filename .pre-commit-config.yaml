@@ -1,0 +1,47 @@
+# Hooks for prek (https://github.com/j178/prek), also run in CI (.github/workflows/lint.yml).
+#   prek install          # run on every commit (programs/prek/setup.sh does this for the dotfiles)
+#   prek run --all-files
+# Shell style comes from .editorconfig, shellcheck settings from .shellcheckrc.
+repos:
+  - repo: builtin
+    hooks:
+      - id: check-merge-conflict
+      - id: check-added-large-files
+      - id: check-yaml
+
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.11.0.1
+    hooks:
+      - id: shellcheck
+        args: [--severity=warning]
+        # shellcheck doesn't support zsh (prek doesn't tag .zshrc/.zsh as zsh, so exclude them by path).
+        exclude: ^programs/zsh/
+      # prek only tags *.sh and executable shebang scripts as shell, not the sourced *.bashrc files.
+      - id: shellcheck
+        alias: shellcheck-bashrc
+        name: shellcheck (*.bashrc)
+        args: [--severity=warning, --shell=bash]
+        types: [text]
+        files: \.bashrc$
+
+  - repo: https://github.com/MaxWinterstein/shfmt-py
+    rev: v4.2.0
+    hooks:
+      - id: shfmt
+        exclude: ^programs/zsh/
+      - id: shfmt
+        alias: shfmt-bashrc
+        name: shfmt (*.bashrc)
+        args: [-w, -ln=bash]
+        types: [text]
+        files: \.bashrc$
+        # Has a zsh-only fallback that doesn't parse as bash.
+        exclude: ^programs/bash/bashrc\.d/sourcer\.bashrc$
+
+  - repo: local
+    hooks:
+      - id: fish-syntax
+        name: fish -n
+        language: system
+        entry: .github/scripts/check-fish-syntax.sh
+        types: [fish]

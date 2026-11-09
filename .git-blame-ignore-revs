@@ -1,0 +1,5 @@
+# Bulk formatting commits, skipped by `git blame` (GitHub does this automatically; locally:
+#   git config blame.ignoreRevsFile .git-blame-ignore-revs).
+
+# style(shell): format with shfmt, 2-space indent
+a9d9fa6257eaf24c1344b75792ca444b2a322b4a

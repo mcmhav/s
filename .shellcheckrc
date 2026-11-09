@@ -1,0 +1,2 @@
+# Sources are resolved at runtime ($CSYS_HOME, $HOME, ...), so shellcheck can't follow them.
+disable=SC1090,SC1091
