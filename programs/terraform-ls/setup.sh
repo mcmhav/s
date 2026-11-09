@@ -2,7 +2,7 @@
 
 PACKAGE_NAME="terraform-ls"
 # renovate: datasource=github-releases depName=hashicorp/terraform-ls extractVersion=^v(?<version>.+)$
-VERSION="0.36.0"
+VERSION="0.39.1"
 
 _install() {
   case $CSYS_OS in
