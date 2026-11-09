@@ -184,7 +184,7 @@
                             "pattern": "^docker\\s+(images|info|ps|buildx)(\\s|$)"
                         },
                         {
-                            "pattern": "^git\\s+archive(\\s|$)"
+                            "pattern": "^git\\s+(archive|rm)(\\s|$)"
                         },
                         {
                             "pattern": "^tar\\b"
@@ -203,6 +203,9 @@
                         },
                         {
                             "pattern": "^ps\\b"
+                        },
+                        {
+                            "pattern": "^md5sum\\b"
                         }
                     ]
                 },
