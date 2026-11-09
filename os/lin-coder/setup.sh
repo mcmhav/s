@@ -64,7 +64,7 @@ _setup() {
     cat "$SCRIPT_PATH/config/browser-open" >"/usr/local/bin/browser-override"
     sudo tee -a "/usr/local/bin/xdg-open" <"$SCRIPT_PATH/config/browser-open" >/dev/null
 
-    sudo apt-get install netcat-openbsd
+    sudo apt-get install -y netcat-openbsd
 }
 
 _setup
