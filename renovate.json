@@ -6,6 +6,7 @@
   "pre-commit": { "enabled": true },
   "timezone": "Europe/Oslo",
   "minimumReleaseAge": "3 days",
+  "prHourlyLimit": 0,
   "customManagers": [
     {
       "customType": "regex",
