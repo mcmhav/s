@@ -14,7 +14,7 @@ jobs:
   prek:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Install fish
         run: sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends fish
       - uses: j178/prek-action@44924fe9ef4a6f88253c4b6b1bf11c689d3ce53d # v3.1.0
