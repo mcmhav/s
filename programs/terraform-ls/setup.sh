@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 PACKAGE_NAME="terraform-ls"
-SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 # renovate: datasource=github-releases depName=hashicorp/terraform-ls extractVersion=^v(?<version>.+)$
 VERSION="0.36.0"
 

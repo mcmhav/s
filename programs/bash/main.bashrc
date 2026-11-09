@@ -11,7 +11,8 @@ SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 LINK_PATH="$(readlink "$SCRIPT_PATH"/"$(basename "${BASH_SOURCE[0]}")")"
 CSYS_BASH_HOME="$(cd "$(dirname "$LINK_PATH")" >/dev/null 2>&1 && pwd)"
 
-export CSYS_HOME="$(realpath "$CSYS_BASH_HOME"/../..)"
+CSYS_HOME="$(realpath "$CSYS_BASH_HOME"/../..)"
+export CSYS_HOME
 
 if [ -f "$SCRIPT_PATH/csys_env" ]; then
   source "$SCRIPT_PATH/csys_env"

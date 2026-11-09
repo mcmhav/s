@@ -8,13 +8,13 @@ _csys_completions()
 
   COMPREPLY=()   # Array variable storing the possible completions.
   cur=${COMP_WORDS[COMP_CWORD]}
-  prev=${COMP_WORDS[COMP_CWORD-1]}
 
   case "$cur" in
     # -*)
     #   COMPREPLY=($(compgen -W "$CSYS_FLAGS" -- $cur))
     #   ;;
     *)
+      # shellcheck disable=SC2207 # standard compgen idiom
       COMPREPLY=($(compgen -W "$CSYS_FLAGS" -- $cur))
       ;;
   esac

@@ -10,7 +10,8 @@ cb() {
 
 alias brewUpdate='brew update && brew upgrade && brew cask upgrade'
 
-# java versions-helpers
+# java versions-helpers (resolved once, when the alias is defined)
+# shellcheck disable=SC2139,SC2046
 if [[ $(/usr/libexec/java_home -V 2>/dev/null) ]]; then
   alias j8="export JAVA_HOME=$(/usr/libexec/java_home -v 1.8); java -version"
   alias j10="export JAVA_HOME=$(/usr/libexec/java_home -v 10); java -version"
@@ -21,7 +22,8 @@ if [[ $(/usr/libexec/java_home -V 2>/dev/null) ]]; then
   fi
 
   # Set java 8 as default
-  export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+  JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+  export JAVA_HOME
 fi
 
 if ! xcrun --version &>/dev/null; then
@@ -36,7 +38,8 @@ if ! xcrun --version &>/dev/null; then
     esac
   done
 fi
-export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+export CFLAGS
 
 # Added for python c-building issues, due to big sur? https://github.com/pyenv/pyenv/issues/1643#issuecomment-695350501
 export SYSTEM_VERSION_COMPAT=1

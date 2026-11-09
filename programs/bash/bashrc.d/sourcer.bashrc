@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # shellcheck source=/dev/null
 
+# ${(%):-%x} is the zsh way to get the sourced file
+# shellcheck disable=SC2296
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]:-${(%):-%x}}")
 
 # adding extra sourcesz

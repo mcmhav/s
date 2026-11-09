@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 PACKAGE_NAME="ripgrep"
 PACKAGE_COMMAND="rg"
 # renovate: datasource=github-releases depName=BurntSushi/ripgrep

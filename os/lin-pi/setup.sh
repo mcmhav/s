@@ -12,7 +12,8 @@ readyApt() {
 installAptKeys() {
   loggit "Installing tools"
   if [ -z "$(which gcloud)" ]; then
-    export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+    CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+    export CLOUD_SDK_REPO
     echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
     sudo apt-get update
@@ -70,9 +71,9 @@ installDocker() {
   if ! command -v docker &>/dev/null; then
     sudo apt-get install apt-transport-https ca-certificates software-properties-common -y
     mkdir -p "$HOME/tmp"
-    cd "$HOME/tmp"
+    cd "$HOME/tmp" || return
     curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh
-    cd "$HOME"
+    cd "$HOME" || return
     sudo usermod -aG docker pi
     sudo curl https://download.docker.com/linux/raspbian/gpg
     rm -rf tmp

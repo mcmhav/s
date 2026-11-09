@@ -100,6 +100,7 @@ while [ "$1" != "" ]; do
     exit
     ;;
   -v | --verbose)
+    # shellcheck disable=SC2034 # accepted but not used yet
     verbose="true"
     ;;
   -i | --install)

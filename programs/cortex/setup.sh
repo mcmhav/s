@@ -6,7 +6,6 @@ SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 _install() {
     case $CSYS_OS in
     "$LIN_OS"*)
-        ARCH=$(uname -m)
         curl -LsS https://ai.snowflake.com/static/cc-scripts/install.sh | sh
         ;;
     *)

@@ -39,7 +39,7 @@ _memory_hog() {
     loggit "Memory to use: $MEMORY_BLOCK_MB"
     loggit "Counts to use: $COUNT"
 
-    for i in $(seq 1 "$COUNT"); do
+    for _ in $(seq 1 "$COUNT"); do
         sh -c "MEMBLOB=\$(dd if=/dev/urandom bs=1MB count=$MEMORY_BLOCK_MB) ; sleep 600" &
     done
 

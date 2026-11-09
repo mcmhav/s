@@ -63,6 +63,7 @@ NUM=${NUM-10}                        # default to 10 lines
 INTERACTIVE=${INTERACTIVE-1}         # default to interactive
 CHECK_EXISTENCE=${CHECK_EXISTENCE-0} # default to *not* checking existence (faster)
 
+# shellcheck disable=SC2207 # branch names have no spaces
 BRANCHES=(
   $(
     git reflog |

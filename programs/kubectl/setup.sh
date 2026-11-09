@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 PACKAGE_COMMAND="kubectl"
-SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
 VERSION="v1.37.2"
 

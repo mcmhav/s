@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-VERBOSE=0
 
+# shellcheck disable=SC2034 # not wired up to -h yet
 HELP_TEXT="Usage: $(basename $0) [OPTIONS]
 
 Options:
@@ -11,7 +11,7 @@ Options:
 "
 
 OPTIND=1
-OPTIONS=h?vsfdbiLn
+OPTIONS="h?vsfdbiLn"
 LONGOPTS=hard,force
 ! PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTS --name "$0" -- "$@")
 if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
@@ -30,9 +30,9 @@ ln_mklink() {
   link_from="${LINK_PATHS[-1]}"
   link_from_slash_replaced="${link_from//\//\\}"
 
-  links_to=${LINK_PATHS[@]::${#LINK_PATHS[@]}-1}
+  links_to=("${LINK_PATHS[@]::${#LINK_PATHS[@]}-1}")
 
-  for link_to in ${links_to[@]}; do
+  for link_to in "${links_to[@]}"; do
     link_from_win_style="${link_from_slash_replaced/#\\c/C:}"
 
     link_to_slash_replaced="${link_to//\//\\}"
@@ -63,6 +63,7 @@ ln_mklink() {
       mklink_flag="/h"
     fi
 
+    # shellcheck disable=SC2027 # cmd.exe gets the whole mklink command as one string
     cmd.exe /c "mklink "$mklink_flag" "$link_from_win_style" "$link_to_win_style >/dev/null
   done
 }

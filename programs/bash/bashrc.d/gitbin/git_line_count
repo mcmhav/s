@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC2046 # one argument per file
 wc -l $(git ls-files)

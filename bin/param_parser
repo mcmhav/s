@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-INCOMMING_PARAMS_PRE_FORMAT=""
 # Split incomming parameters to:
 #  - Wanted parameters
 #  - Parameters sent into script
@@ -10,7 +9,6 @@ while getopts "h-:" optchar; do
     case "${OPTARG}" in
     incomming_params)
       shift $((OPTIND - 1))
-      INCOMMING_PARAMS_PRE_FORMAT="$@"
       break
       ;;
     params)
@@ -39,22 +37,22 @@ for param in "${PARAMS[@]}"; do
   while [ "$INCOMMING_PARAM" != "" ]; do
     tmp_incomming_param=$(printf "%s" "$INCOMMING_PARAM" | tr '[:lower:]' '[:upper:]')
     case "$tmp_incomming_param" in
-    -$param | --$param)
+    -"$param" | --"$param")
       if
         [[ ${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]} != -* ]] &&
           [[ ${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]} != "" ]]
       then
         tmp_name="PARAM_$param"
         printf -v $tmp_name "${INCOMMING_PARAMS[$((INCOMMING_PARAMS_COUNT + 1))]}"
-        export $tmp_name
+        export "${tmp_name?}"
         INCOMMING_PARAMS_COUNT=$((INCOMMING_PARAMS_COUNT + 1))
       else
         tmp_name="PARAM_$param"
         printf -v $tmp_name 1
-        export $tmp_name
+        export "${tmp_name?}"
       fi
       ;;
-    --) export PARAM_REST="${INCOMMING_PARAMS[@]:$((INCOMMING_PARAMS_COUNT + 1))}" ;;
+    --) export PARAM_REST="${INCOMMING_PARAMS[*]:$((INCOMMING_PARAMS_COUNT + 1))}" ;;
     *) ;;
     esac
     INCOMMING_PARAMS_COUNT=$((INCOMMING_PARAMS_COUNT + 1))

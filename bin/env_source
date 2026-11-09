@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-NEW_LINE=""
-if [ "$CSYS_SHELL" == "fish" ]; then
-  NEW_LINE="\r"
-fi
-
 export CSYS_ENV_INJECT_COUNT=$((CSYS_ENV_INJECT_COUNT + 1))
 
 FILE_TO_SOURCE="$1"
