@@ -2,7 +2,7 @@
 
 PACKAGE_NAME="bat"
 # renovate: datasource=github-releases depName=sharkdp/bat extractVersion=^v(?<version>.+)$
-_VERSION="0.25.0"
+_VERSION="0.26.1"
 
 _install() {
   case $CSYS_OS in
