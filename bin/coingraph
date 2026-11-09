@@ -8,7 +8,7 @@ if ! command -v asciigraph 1>/dev/null 2>&1; then
 fi
 
 end_time=$(date +%s000)
-start_time=$((end_time-10800000))
+start_time=$((end_time - 10800000))
 limit=200
 
 CURRENCY="USD"

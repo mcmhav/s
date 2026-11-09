@@ -2,7 +2,7 @@
 
 # pyenv
 if [ -z "$PYENV_ROOT" ] || [ ! -d "$PYENV_ROOT" ]; then
-    export PYENV_ROOT="$HOME/.pyenv"
+	export PYENV_ROOT="$HOME/.pyenv"
 fi
 
 # go sgit
@@ -22,26 +22,26 @@ export ANDROID_HOME="/usr/local/share/android-sdk"
 
 # path stuff
 PATHS=(
-    # "$HOME/.pyenv/shims"
-    "$CSYS_BIN"
-    "$HOME/.local/bin"
-    "/git/tools/bin"
-    "$PATH"
-    "/usr/local/bin"
-    "$GOPATH/bin"
-    # "$GOROOT/bin"
-    "/usr/local/opt/python/libexec/bin"
-    "$PYENV_ROOT/bin"
-    "$HOME/.poetry/bin"
-    # "$HOME/.nodenv/bin"
-    # "$HOME/.nodenv/shims"
-    "$HOME/.cargo/bin"
-    "$HOME/.csys.bashrc.d/bin"
-    "/home/linuxbrew/.linuxbrew/bin"
+	# "$HOME/.pyenv/shims"
+	"$CSYS_BIN"
+	"$HOME/.local/bin"
+	"/git/tools/bin"
+	"$PATH"
+	"/usr/local/bin"
+	"$GOPATH/bin"
+	# "$GOROOT/bin"
+	"/usr/local/opt/python/libexec/bin"
+	"$PYENV_ROOT/bin"
+	"$HOME/.poetry/bin"
+	# "$HOME/.nodenv/bin"
+	# "$HOME/.nodenv/shims"
+	"$HOME/.cargo/bin"
+	"$HOME/.csys.bashrc.d/bin"
+	"/home/linuxbrew/.linuxbrew/bin"
 )
 PATH=$(printf '%s:' "${PATHS[@]%}" | sed 's/:$//')
 if [ -n "$(command -v ruby)" ]; then
-    PATH=$PATH:"$(ruby -r rubygems -e "puts Gem.user_dir")/bin"
+	PATH=$PATH:"$(ruby -r rubygems -e "puts Gem.user_dir")/bin"
 fi
 export PATH=$PATH
 
@@ -67,20 +67,20 @@ export FZF_DEFAULT_COMMAND='__file_search'
 export FZF_DEFAULT_OPTS="--no-mouse"
 
 if command -v bat 1>/dev/null 2>&1; then
-    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
 potential_editors=(
-    "nvim"
-    "vim"
-    "vi"
-    "nano"
+	"nvim"
+	"vim"
+	"vi"
+	"nano"
 )
 for potential_editor in "${potential_editors[@]}"; do
-    if command -v "$potential_editor" 1>/dev/null 2>&1; then
-        export EDITOR="$potential_editor"
-        break
-    fi
+	if command -v "$potential_editor" 1>/dev/null 2>&1; then
+		export EDITOR="$potential_editor"
+		break
+	fi
 done
 
 # Notrack
@@ -103,19 +103,19 @@ export AWS_RETRY_MODE="adaptive"
 
 # nvm
 if ! command -v nvm >/dev/null; then
-    export NVM_DIR="$HOME/.nvm"
-    node_versions=("$NVM_DIR"/versions/node/*)
-    if [[ "${#node_versions[@]}" -gt 0 ]]; then
-        PATH="$PATH:${node_versions[$((${#node_versions[@]} - 1))]}/bin"
-    fi
-    if [ -d "$NVM_DIR/nvm.sh" ]; then
-        # load the real nvm on first use
-        nvm() {
-            # shellcheck disable=SC1090,SC1091
-            source "$NVM_DIR"/nvm.sh
-            nvm "$@"
-        }
-    fi
+	export NVM_DIR="$HOME/.nvm"
+	node_versions=("$NVM_DIR"/versions/node/*)
+	if [[ "${#node_versions[@]}" -gt 0 ]]; then
+		PATH="$PATH:${node_versions[$((${#node_versions[@]} - 1))]}/bin"
+	fi
+	if [ -d "$NVM_DIR/nvm.sh" ]; then
+		# load the real nvm on first use
+		nvm() {
+			# shellcheck disable=SC1090,SC1091
+			source "$NVM_DIR"/nvm.sh
+			nvm "$@"
+		}
+	fi
 fi
 
 # prefect
@@ -127,4 +127,3 @@ export TF_CLI_ARGS_plan="-lock=false"
 
 # tmpdir
 export TMPDIR=/tmp
-

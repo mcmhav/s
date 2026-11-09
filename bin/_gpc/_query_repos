@@ -9,10 +9,10 @@ source "$SCRIPT_PATH/_env"
 mkdir -p "$REPO_LISTS_PATH"
 
 _update_repo_list() {
-    rm "$REPO_LIST_LOCATION"
-    for file in "$REPO_LISTS_PATH"/*; do
-        cat "$file" >> "$REPO_LIST_LOCATION"
-    done
+  rm "$REPO_LIST_LOCATION"
+  for file in "$REPO_LISTS_PATH"/*; do
+    cat "$file" >>"$REPO_LIST_LOCATION"
+  done
 }
 
 _fetch_repo_list() {
@@ -70,14 +70,14 @@ _query_repos() {
 }
 
 _print_repo_list() {
-    loggit dbug "printing repo list"
-    if [ ! -f "$REPO_LIST_LOCATION" ]; then
-        loggit dbug "fetching repo list"
-        _fetch_repo_list
-        _fetch_repo_list "mch-sb"
-    fi
+  loggit dbug "printing repo list"
+  if [ ! -f "$REPO_LIST_LOCATION" ]; then
+    loggit dbug "fetching repo list"
+    _fetch_repo_list
+    _fetch_repo_list "mch-sb"
+  fi
 
-    cat "$REPO_LIST_LOCATION"
+  cat "$REPO_LIST_LOCATION"
 }
 
 while [ "$1" != "" ]; do

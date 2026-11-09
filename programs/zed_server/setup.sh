@@ -6,8 +6,8 @@
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 _setup() {
-    mkdir -p "$HOME/.config/zed"
-    ln -sf "$SCRIPT_PATH/config/settings.json" "$HOME/.config/zed/settings.json"
+  mkdir -p "$HOME/.config/zed"
+  ln -sf "$SCRIPT_PATH/config/settings.json" "$HOME/.config/zed/settings.json"
 }
 
 _setup

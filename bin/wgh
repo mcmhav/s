@@ -5,23 +5,23 @@ SUB_WGH_PATH="$SCRIPT_PATH/_wgh"
 GH_STATUS_API="https://www.githubstatus.com/api/v2/components.json"
 
 _gh_status() {
-    curl -s "$GH_STATUS_API" | jq_table '[ .components[] | select(.id != "0l2p9nhqnxpd") | {name,status,updated_at} ]'
+  curl -s "$GH_STATUS_API" | jq_table '[ .components[] | select(.id != "0l2p9nhqnxpd") | {name,status,updated_at} ]'
 }
 
 while [ "$1" != "" ]; do
-    case $1 in
-    status)
-        _gh_status
-        exit
-        ;;
-    pr | pull-request)
-        shift
-        "$SUB_WGH_PATH/_pr" "$@"
-        exit
-        ;;
-    *)
-        gh "$@"
-        ;;
-    esac
+  case $1 in
+  status)
+    _gh_status
+    exit
+    ;;
+  pr | pull-request)
     shift
+    "$SUB_WGH_PATH/_pr" "$@"
+    exit
+    ;;
+  *)
+    gh "$@"
+    ;;
+  esac
+  shift
 done

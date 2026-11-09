@@ -4,24 +4,23 @@ SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 SUB_GPC_PATH="$SCRIPT_PATH/_gpc"
 
 case $1 in
-    login)
-        shift
-        "$SUB_GPC_PATH"/_login "$@"
-        exit
-        ;;
-    setup)
-        shift
-        "$SUB_GPC_PATH"/_setup "$@"
-        exit
-        ;;
-    ssh)
-        shift
-        "$SUB_GPC_PATH"/_ssh "$@"
-        exit
-        ;;
-    *)
-        "$SUB_GPC_PATH"/gitpod "$@"
-        exit
-        ;;
+login)
+  shift
+  "$SUB_GPC_PATH"/_login "$@"
+  exit
+  ;;
+setup)
+  shift
+  "$SUB_GPC_PATH"/_setup "$@"
+  exit
+  ;;
+ssh)
+  shift
+  "$SUB_GPC_PATH"/_ssh "$@"
+  exit
+  ;;
+*)
+  "$SUB_GPC_PATH"/gitpod "$@"
+  exit
+  ;;
 esac
-

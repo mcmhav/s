@@ -4,13 +4,13 @@ PACKAGE_NAME="uv"
 
 _install() {
   case $CSYS_OS in
-    "$LIN_OS"*)
-      pip install uv
-      ;;
-    *)
-      echo "Unsupported OS: $CSYS_OS, pgk: $PACKAGE_NAME"
-      exit 1
-      ;;
+  "$LIN_OS"*)
+    pip install uv
+    ;;
+  *)
+    echo "Unsupported OS: $CSYS_OS, pgk: $PACKAGE_NAME"
+    exit 1
+    ;;
   esac
 }
 _setup() {

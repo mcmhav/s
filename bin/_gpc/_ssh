@@ -9,49 +9,49 @@ SELECTED_REPO=""
 ZED_SESSION=""
 
 _get_repo() {
-    if [ -z "$SELECTED_REPO" ]; then
-        GITPOD_WORKSPACES=$("$SCRIPT_PATH/gitpod" workspace list | awk 'NR>1 {print $2}' | sort -u)
-        GITHUB_REPOS=$("$SCRIPT_PATH/_query_repos" print | sort -u)
-        SELECTED_REPO=$(printf "%s\n%s" "$GITPOD_WORKSPACES" "$GITHUB_REPOS" | sort -u | fzf)
-    fi
+  if [ -z "$SELECTED_REPO" ]; then
+    GITPOD_WORKSPACES=$("$SCRIPT_PATH/gitpod" workspace list | awk 'NR>1 {print $2}' | sort -u)
+    GITHUB_REPOS=$("$SCRIPT_PATH/_query_repos" print | sort -u)
+    SELECTED_REPO=$(printf "%s\n%s" "$GITPOD_WORKSPACES" "$GITHUB_REPOS" | sort -u | fzf)
+  fi
 }
 
 create_workspace() {
-    if [ -z "$SELECTED_REPO" ]; then
-        echo "No repo selected"
-        exit 1
-    fi
-    # "$SCRIPT_PATH/gitpod" workspace create "https://github.com/$SELECTED_REPO" --ssh
-    TMP_WORKSPACE_START_LOG="/tmp/gitpod_logs"
-    #script -q /dev/null "$SCRIPT_PATH/gitpod" workspace create "https://github.com/$SELECTED_REPO" | tee "$TMP_WORKSPACE_START_LOG"
-    "$SCRIPT_PATH/gitpod" workspace create "https://github.com/$SELECTED_REPO" | tee "$TMP_WORKSPACE_START_LOG"
-    WORKSPACE_ID=$(grep "workspaceID=" <"$TMP_WORKSPACE_START_LOG" | sed 's/^.*=//')
+  if [ -z "$SELECTED_REPO" ]; then
+    echo "No repo selected"
+    exit 1
+  fi
+  # "$SCRIPT_PATH/gitpod" workspace create "https://github.com/$SELECTED_REPO" --ssh
+  TMP_WORKSPACE_START_LOG="/tmp/gitpod_logs"
+  #script -q /dev/null "$SCRIPT_PATH/gitpod" workspace create "https://github.com/$SELECTED_REPO" | tee "$TMP_WORKSPACE_START_LOG"
+  "$SCRIPT_PATH/gitpod" workspace create "https://github.com/$SELECTED_REPO" | tee "$TMP_WORKSPACE_START_LOG"
+  WORKSPACE_ID=$(grep "workspaceID=" <"$TMP_WORKSPACE_START_LOG" | sed 's/^.*=//')
 
-    sleep 15 # wait for the workspace to be ready
-    if [ -z "$WORKSPACE_ID" ]; then
-        echo "Failed to create workspace"
-        exit 1
-    fi
-    REPO_REMOTE_DIR="/workspace/$(echo "$SELECTED_REPO" | cut -d '/' -f 2-2)"
+  sleep 15 # wait for the workspace to be ready
+  if [ -z "$WORKSPACE_ID" ]; then
+    echo "Failed to create workspace"
+    exit 1
+  fi
+  REPO_REMOTE_DIR="/workspace/$(echo "$SELECTED_REPO" | cut -d '/' -f 2-2)"
 }
 
 while [ "$1" != "" ]; do
-    case $1 in
-    -z | --zed)
-        ZED_SESSION="true"
-        ;;
-    *)
-        SELECTED_REPO="$1"
-        ;;
-    esac
-    shift
+  case $1 in
+  -z | --zed)
+    ZED_SESSION="true"
+    ;;
+  *)
+    SELECTED_REPO="$1"
+    ;;
+  esac
+  shift
 done
 
 _get_repo
 create_workspace
 
 if [ -n "$ZED_SESSION" ]; then
-    zed "ssh://$WORKSPACE_ID@$WORKSPACE_ID.ssh.ws.$GITPOD_DOMAIN/$REPO_REMOTE_DIR"
+  zed "ssh://$WORKSPACE_ID@$WORKSPACE_ID.ssh.ws.$GITPOD_DOMAIN/$REPO_REMOTE_DIR"
 fi
 
 "$SCRIPT_PATH/gitpod" workspace ssh "$WORKSPACE_ID" -- -t "sh -c 'cd $REPO_REMOTE_DIR; if command -v zellij >/dev/null ; then exec zellij; elif command -v fish >/dev/null; then exec fish -li; else exec \$SHELL -li; fi'"

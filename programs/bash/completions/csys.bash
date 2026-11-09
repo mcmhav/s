@@ -2,21 +2,20 @@
 
 # https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
 # https://www.tldp.org/LDP/abs/html/tabexpansion.html
-_csys_completions()
-{
+_csys_completions() {
   CSYS_FLAGS="--diff --download --upload --status"
 
-  COMPREPLY=()   # Array variable storing the possible completions.
+  COMPREPLY=() # Array variable storing the possible completions.
   cur=${COMP_WORDS[COMP_CWORD]}
 
   case "$cur" in
-    # -*)
-    #   COMPREPLY=($(compgen -W "$CSYS_FLAGS" -- $cur))
-    #   ;;
-    *)
-      # shellcheck disable=SC2207 # standard compgen idiom
-      COMPREPLY=($(compgen -W "$CSYS_FLAGS" -- $cur))
-      ;;
+  # -*)
+  #   COMPREPLY=($(compgen -W "$CSYS_FLAGS" -- $cur))
+  #   ;;
+  *)
+    # shellcheck disable=SC2207 # standard compgen idiom
+    COMPREPLY=($(compgen -W "$CSYS_FLAGS" -- $cur))
+    ;;
   esac
 }
 

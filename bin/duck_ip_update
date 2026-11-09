@@ -8,7 +8,7 @@ if [ ! -f "$FILE" ]; then
   touch "$LATEST_IP_LOCAION"
 fi
 latest_ip=$(cat "$LATEST_IP_LOCAION")
-curl -s ifconfig.me/ip > "$LATEST_IP_LOCAION"
+curl -s ifconfig.me/ip >"$LATEST_IP_LOCAION"
 current_ip=$(cat "$LATEST_IP_LOCAION")
 
 if [ "$latest_ip" != "$current_ip" ]; then

@@ -1,0 +1,10 @@
+# Read by editors and by shfmt (the [[shell]] section also covers extensionless scripts with a shell shebang).
+root = true
+
+[*.{sh,bash,bashrc}]
+indent_style = space
+indent_size = 2
+
+[[shell]]
+indent_style = space
+indent_size = 2

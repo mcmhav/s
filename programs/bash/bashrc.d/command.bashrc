@@ -8,56 +8,55 @@ HISTCONTROL=ignoreboth
 unset PROMPT_COMMAND
 
 function timer_start() {
-  timer=${timer:-$SECONDS}
+	timer=${timer:-$SECONDS}
 }
 
 function timer_stop() {
-  timer_show=$((SECONDS - timer))
+	timer_show=$((SECONDS - timer))
 
-  if [ "$timer_show" -gt "900" ]; then
-    notifyer "Done!!!"
-  fi
+	if [ "$timer_show" -gt "900" ]; then
+		notifyer "Done!!!"
+	fi
 
-  unset timer
+	unset timer
 }
 trap 'timer_start' DEBUG
 
 function error_log() {
-  promt_message=""
-  promt_message_spacer=""
-  if [[ $1 != 0 && $1 != 130 ]]; then
-    # http://www.tldp.org/LDP/abs/html/exitcodes.html
-    # no error
-    # Ctrl + C - exit
-    promt_message="▼"
-    promt_message_spacer="|"
-  else
-    printf ""
-  fi
+	promt_message=""
+	promt_message_spacer=""
+	if [[ $1 != 0 && $1 != 130 ]]; then
+		# http://www.tldp.org/LDP/abs/html/exitcodes.html
+		# no error
+		# Ctrl + C - exit
+		promt_message="▼"
+		promt_message_spacer="|"
+	else
+		printf ""
+	fi
 }
 
 function promt_commands() {
-  local curr_exit="$?"
+	local curr_exit="$?"
 
+	if [ "$CSYS_OS" == "$GITPOD_OS" ] || [ "$CSYS_OS" == "$CODER_OS" ]; then
+		if [ -f "$CSYS_BASHRC_D/.setup_done" ] && [ -z "$CSYS_DISABLE_AUTO_FISH" ] && command -v fish >/dev/null 2>&1; then
+			fish
+		fi
+	fi
 
-  if [ "$CSYS_OS" == "$GITPOD_OS" ] || [ "$CSYS_OS" == "$CODER_OS" ]; then
-    if [ -f "$CSYS_BASHRC_D/.setup_done" ] && [ -z "$CSYS_DISABLE_AUTO_FISH" ] && command -v fish >/dev/null 2>&1; then
-      fish
-    fi
-  fi
-
-  timer_stop
-  error_log $curr_exit
+	timer_stop
+	error_log $curr_exit
 }
 
 PROMPT_COMMAND=promt_commands
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  IS_SSH_SESSION="1"
+	IS_SSH_SESSION="1"
 else
-  case $(ps -o comm= -p $PPID 2>/dev/null) in
-  sshd | */sshd) IS_SSH_SESSION="1" ;;
-  esac
+	case $(ps -o comm= -p $PPID 2>/dev/null) in
+	sshd | */sshd) IS_SSH_SESSION="1" ;;
+	esac
 fi
 
 PS1=''
@@ -67,17 +66,17 @@ PS1=$PS1'\[\e[1;35m\]${timer_show}\[\e[m\]'
 PS1=$PS1'|'
 PS1=$PS1'\[\e['
 if [ -n "$IS_SSH_SESSION" ]; then
-  PS1=$PS1'1;31m'
+	PS1=$PS1'1;31m'
 else
-  PS1=$PS1'1;32m'
+	PS1=$PS1'1;32m'
 fi
 PS1=$PS1'\]\W\[\e[m\]'
 # ❮ ❯ ❰ ❱ ◼ ▶ ▴ ▲ ▼ ⬘ ⌔ ∴ ⭓ ⭔ း ಃ 〓 💩
 PS1=$PS1'\[\e['
 if [ -n "$IS_SSH_SESSION" ]; then
-  PS1=$PS1'0;34m'
+	PS1=$PS1'0;34m'
 else
-  PS1=$PS1'0;31m'
+	PS1=$PS1'0;31m'
 fi
 PS1=$PS1'\]⭓\[\e[m\] '
 

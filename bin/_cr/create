@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
 
-
 WORKSPACE_NAME="auto-$(
-    LC_ALL=C tr -dc A-Za-z0-9 </dev/urandom | head -c 13
-    echo
+  LC_ALL=C tr -dc A-Za-z0-9 </dev/urandom | head -c 13
+  echo
 )"
 REPO="https://github.com/mch-sb/debug"
 
 # env:
 # - "{\"name\":\"COPILOT_HOSTS\",\"value\":\"$COPILOT_HOSTS\"}"
 create_kubernetes_devcontainers_workspace() {
-    PARAMETERS_KUBERNETES=$(
-        cat <<-EOF
+  PARAMETERS_KUBERNETES=$(
+    cat <<-EOF
 gitrepo: "$REPO"
 dotfiles_uri: "https://github.com/mcmhav/s"
 
@@ -19,29 +18,29 @@ accept_vscode_license: false
 show_advanced: true
 workspace_volume_size: 2
 EOF
-    )
-    echo "$PARAMETERS_KUBERNETES" >/tmp/parameters.yml
+  )
+  echo "$PARAMETERS_KUBERNETES" >/tmp/parameters.yml
 
-    coder create \
-        --template standard \
-        --yes \
-        --rich-parameter-file /tmp/parameters.yml \
-        "$WORKSPACE_NAME"
+  coder create \
+    --template standard \
+    --yes \
+    --rich-parameter-file /tmp/parameters.yml \
+    "$WORKSPACE_NAME"
 }
 
 while [ "$1" != "" ]; do
-    case $1 in
-    --name | -n)
-        shift
-        WORKSPACE_NAME="$1"
-        ;;
-    --repo | -r)
-        shift
-        REPO="$1"
-        ;;
-    *) ;;
-    esac
+  case $1 in
+  --name | -n)
     shift
+    WORKSPACE_NAME="$1"
+    ;;
+  --repo | -r)
+    shift
+    REPO="$1"
+    ;;
+  *) ;;
+  esac
+  shift
 done
 
 create_kubernetes_devcontainers_workspace

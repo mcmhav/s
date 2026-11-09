@@ -1,45 +1,45 @@
 #!/usr/bin/env bash
 
 _make_pr() {
-    gh pr create -f "$@"
-    gh pr merge --auto
+  gh pr create -f "$@"
+  gh pr merge --auto
 }
 
 _my_prs() {
-    gh search prs \
-        --state open \
-        --owner "$CSYS_GITHUB_OWNER" \
-        --author "@me" \
-        --json title,url,number,createdAt \
-        --limit 1000 \
-        -- \
-        -is:draft \
-        -label:blocked \
-        review:none |
-        jq '"- " + .[].url' -r
+  gh search prs \
+    --state open \
+    --owner "$CSYS_GITHUB_OWNER" \
+    --author "@me" \
+    --json title,url,number,createdAt \
+    --limit 1000 \
+    -- \
+    -is:draft \
+    -label:blocked \
+    review:none |
+    jq '"- " + .[].url' -r
 }
 
 _my_conflicts() {
-    gh pr list \
-        --author @me \
-        --state open \
-        --limit 1000 \
-        --json number,title,headRefName,baseRefName,mergeable \
-        --jq '.[] | select(.mergeable == "CONFLICTING") | "#\(.number)\t\(.headRefName) -> \(.baseRefName)\t\(.title)"'
+  gh pr list \
+    --author @me \
+    --state open \
+    --limit 1000 \
+    --json number,title,headRefName,baseRefName,mergeable \
+    --jq '.[] | select(.mergeable == "CONFLICTING") | "#\(.number)\t\(.headRefName) -> \(.baseRefName)\t\(.title)"'
 }
 
 case $1 in
 mk | make)
-    shift
-    _make_pr "$@"
-    ;;
+  shift
+  _make_pr "$@"
+  ;;
 my | mine)
-    _my_prs
-    ;;
+  _my_prs
+  ;;
 mc | my-conflicts)
-    _my_conflicts
-    ;;
+  _my_conflicts
+  ;;
 *)
-    loggit "Not supported"
-    ;;
+  loggit "Not supported"
+  ;;
 esac

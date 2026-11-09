@@ -15,7 +15,7 @@ CSYS_HOME="$(realpath "$CSYS_BASH_HOME"/../..)"
 export CSYS_HOME
 
 if [ -f "$SCRIPT_PATH/csys_env" ]; then
-  source "$SCRIPT_PATH/csys_env"
+	source "$SCRIPT_PATH/csys_env"
 fi
 
 source "$CSYS_BASH_HOME/bashrc.d/csys.bashrc"
