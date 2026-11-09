@@ -27,10 +27,30 @@ _setup_persisted_state() {
     _persist ".snowflake/cortex/conversations" # Cortex Code conversations
     _persist ".local/share/csys"             # `csys release` downloads, so restarts skip GitHub
     _persist ".zed_server"                   # remote server Zed installs on connect
+    _persist ".local/share/uv/tools"         # `uv tool install` venvs (see _link_uv_tools)
     chmod 700 "$PERSIST_HOME/.local/share/fish"
     # Each Zed version leaves a ~110 MB server behind; keep the two newest.
     find "$PERSIST_HOME/.zed_server" -maxdepth 1 -type f -name 'zed-remote-server-*' -printf '%T@ %p\n' |
         sort -rn | tail -n +3 | cut -d' ' -f2- | xargs -r -d '\n' rm -f
+    _link_uv_tools
+}
+_link_uv_tools() {
+    # The persisted tool venvs survive restarts, but their executables in ~/.local/bin don't.
+    # Recreate them from each tool's receipt, like `uv tool install` does.
+    local tools="$HOME/.local/share/uv/tools" receipt tool name dest
+    for receipt in "$tools"/*/uv-receipt.toml; do
+        [ -f "$receipt" ] || continue
+        tool="$(basename "$(dirname "$receipt")")"
+        if [ ! -e "$tools/$tool/bin/python" ]; then
+            # Venvs use the image's pyenv Python; a new image version can remove it.
+            loggit warn "uv tool $tool: Python is gone, run: uv tool install --reinstall $tool"
+        fi
+        sed -nE 's/.*name = "([^"]+)", install-path = "([^"]+)".*/\1 \2/p' "$receipt" |
+            while read -r name dest; do
+                mkdir -p "$(dirname "$dest")"
+                ln -sfn "$tools/$tool/bin/$name" "$dest"
+            done
+    done
 }
 _setup_buildx_cache() {
     # Keep the buildx "builders" layer cache on /workspace (see /workspace/.home/bin/buildx-persist).
