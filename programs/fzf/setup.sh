@@ -2,7 +2,7 @@
 
 PACKAGE_NAME="fzf"
 # renovate: datasource=github-releases depName=junegunn/fzf extractVersion=^v(?<version>.+)$
-VERSION="0.60.3"
+VERSION="0.74.5"
 
 _install() {
   case $CSYS_OS in
