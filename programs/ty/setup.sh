@@ -6,7 +6,8 @@ SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 _install() {
   case $CSYS_OS in
     "$LIN_OS"*)
-      uv tool install "$PACKAGE_NAME"
+      # uv's cache can be on another filesystem (Coder: /workspace), where hardlinking fails
+      UV_LINK_MODE=copy uv tool install "$PACKAGE_NAME"
       ;;
     *)
       echo "Unsupported OS: $CSYS_OS, pgk: $PACKAGE_NAME"

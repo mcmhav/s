@@ -25,7 +25,12 @@ _setup_persisted_state() {
     _persist ".copilot"                      # Copilot CLI home (config.json, logs/)
     _persist ".local/share/fish"             # fish_history
     _persist ".snowflake/cortex/conversations" # Cortex Code conversations
+    _persist ".local/share/csys"             # `csys release` downloads, so restarts skip GitHub
+    _persist ".zed_server"                   # remote server Zed installs on connect
     chmod 700 "$PERSIST_HOME/.local/share/fish"
+    # Each Zed version leaves a ~110 MB server behind; keep the two newest.
+    find "$PERSIST_HOME/.zed_server" -maxdepth 1 -type f -name 'zed-remote-server-*' -printf '%T@ %p\n' |
+        sort -rn | tail -n +3 | cut -d' ' -f2- | xargs -r -d '\n' rm -f
 }
 _setup_buildx_cache() {
     # Keep the buildx "builders" layer cache on /workspace (see /workspace/.home/bin/buildx-persist).
@@ -64,7 +69,9 @@ _setup() {
     cat "$SCRIPT_PATH/config/browser-open" >"/usr/local/bin/browser-override"
     sudo tee -a "/usr/local/bin/xdg-open" <"$SCRIPT_PATH/config/browser-open" >/dev/null
 
-    sudo apt-get install -y netcat-openbsd
+    if ! command -v nc >/dev/null; then
+        sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq netcat-openbsd >/dev/null
+    fi
 }
 
 _setup
