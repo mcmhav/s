@@ -2,7 +2,7 @@
 
 PACKAGE_NAME="k9s"
 # renovate: datasource=github-releases depName=derailed/k9s
-VERSION="v0.31.7"
+VERSION="v0.51.0"
 
 _install_release() {
   local arch
