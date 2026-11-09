@@ -5,7 +5,7 @@ PACKAGE_NAME="nvm"
 # only when nothing new enough is installed does this exact version get installed.
 MIN_NODE_VERSION="v22.20.0"
 # renovate: datasource=github-releases depName=nvm-sh/nvm extractVersion=^v(?<version>.+)$
-NVM_VERSION="0.39.7"
+NVM_VERSION="0.41.0"
 
 _version_gte() {
   # _version_gte <a> <b>: true when a >= b. Versions look like vX.Y.Z; anything else (e.g. N/A) is false.
