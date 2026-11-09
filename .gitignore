@@ -13,3 +13,7 @@ update-notifier-*.json
 #  2. Whitelist insted of blacklist .dotfiles-conent
 # 1. looks best
 */sys-setup/*
+
+# fish: machine-local universal variables and 4.3 migration leftovers (theme lives in conf.d/theme.fish)
+programs/fish/config/fish/fish_variables
+programs/fish/config/fish/conf.d/fish_frozen_*.fish
