@@ -1,38 +1,46 @@
 #!/usr/bin/env bash
 
 PACKAGE_NAME="nvm"
-DESIRED_NODE_VERSION="v22.20.0"
+# Minimum node version. If nvm already has this or newer (e.g. the Coder base image), that is used as is;
+# only when nothing new enough is installed does this exact version get installed.
+MIN_NODE_VERSION="v22.20.0"
 NVM_VERSION="0.39.7"
 
-_match_major_version() {
-    local version="$1"
-    local expected_major="$2"
-
-    local clean_version="${version#v}"
-    local clean_expected_major_version="${expected_major#v}"
-    local actual_major="${clean_version%%.*}"
-
-    if [[ "$actual_major" == "$clean_expected_major_version" ]]; then
-        return 0
-    else
-        return 1
-    fi
+_version_gte() {
+    # _version_gte <a> <b>: true when a >= b. Versions look like vX.Y.Z; anything else (e.g. N/A) is false.
+    [[ "$1" == v[0-9]* ]] || return 1
+    [ "$(printf '%s\n%s\n' "${2#v}" "${1#v}" | sort -V | head -n 1)" = "${2#v}" ]
 }
 
 _with_nvm() {
     export NVM_DIR="$HOME/.nvm"
-    if [ ! -d "$NVM_DIR" ] || [ ! -f "$NVM_DIR/nvm.sh" ]; then
-        # brew install "$PACKAGE_NAME"
+    if [ ! -f "$NVM_DIR/nvm.sh" ]; then
         mkdir -p "$NVM_DIR"
-        cd "$NVM_DIR" || exit
         curl -fsSL "https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh" | PROFILE=/dev/null bash
     fi
     source "$NVM_DIR/nvm.sh"
-    _node_version=$(nvm version)
-    if ! _match_major_version "$_node_version" "${DESIRED_NODE_VERSION%%.*}" && ! _match_major_version "$_node_version" "${DESIRED_NODE_VERSION%%.*}"; then
-        nvm install --lts "$DESIRED_NODE_VERSION"
-        nvm alias default "$DESIRED_NODE_VERSION"
+
+    local default newest
+    default="$(nvm version default)"
+    if _version_gte "$default" "$MIN_NODE_VERSION"; then
+        loggit dbug "$PACKAGE_NAME: using default node $default (>= $MIN_NODE_VERSION)"
+        return
     fi
+
+    newest="$(nvm version node)"
+    if _version_gte "$newest" "$MIN_NODE_VERSION"; then
+        loggit dbug "$PACKAGE_NAME: default node $default < $MIN_NODE_VERSION, switching default to installed $newest"
+        nvm alias default "$newest" >/dev/null
+        return
+    fi
+
+    if [[ "$(uname -m)" == armv6* ]]; then
+        # nodejs.org has no armv6l (Pi Zero) builds
+        export NVM_NODEJS_ORG_MIRROR="https://unofficial-builds.nodejs.org/download/release"
+    fi
+    # -b: binaries only; without it nvm falls back to compiling node from source (hours on a Pi)
+    nvm install -b "$MIN_NODE_VERSION"
+    nvm alias default "$MIN_NODE_VERSION"
 }
 
 _setup() {
