@@ -3,7 +3,7 @@
 PACKAGE_NAME="yq"
 PACKAGE_COMMAND="yq"
 # renovate: datasource=github-releases depName=mikefarah/yq extractVersion=^v(?<version>.+)$
-VERSION="4.53.6"
+VERSION="4.54.2"
 
 _install() {
   case $CSYS_OS in
