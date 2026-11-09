@@ -42,7 +42,7 @@ jobs:
           echo "author=${SLUG}[bot] <${id}+${SLUG}[bot]@users.noreply.github.com>" >>"$GITHUB_OUTPUT"
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 24
+          node-version: 26
       - name: Run Renovate
         env:
           RENOVATE_TOKEN: ${{ steps.app-token.outputs.token }}
