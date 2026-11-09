@@ -2,7 +2,7 @@
 
 PACKAGE_NAME="shfmt"
 # renovate: datasource=github-releases depName=mvdan/sh extractVersion=^v(?<version>.+)$
-VERSION="3.10.0"
+VERSION="3.14.1"
 
 _install() {
   case $CSYS_OS in
