@@ -1,13 +1,24 @@
 #!/usr/bin/env bash
 
 PACKAGE_NAME="ty"
-SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+VERSION="0.0.99"
 
 _install() {
   case $CSYS_OS in
     "$LIN_OS"*)
-      # uv's cache can be on another filesystem (Coder: /workspace), where hardlinking fails
-      UV_LINK_MODE=copy uv tool install "$PACKAGE_NAME"
+      local target
+      case "$(csys release --arch)" in
+        x86_64 | aarch64 | i686) target="$(csys release --arch)-unknown-linux-musl" ;;
+        armv7) target="armv7-unknown-linux-musleabihf" ;;
+        armv6) target="arm-unknown-linux-musleabihf" ;;
+        *)
+          loggit warn "$PACKAGE_NAME: no prebuilt release for $(uname -m), skipping"
+          return 0
+          ;;
+      esac
+      csys release "$PACKAGE_NAME" "$VERSION" \
+        "https://github.com/astral-sh/ty/releases/download/{version}/ty-$target.tar.gz" \
+        "ty-$target/ty"
       ;;
     *)
       echo "Unsupported OS: $CSYS_OS, pgk: $PACKAGE_NAME"
