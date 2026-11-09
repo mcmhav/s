@@ -39,6 +39,7 @@ sudo|alacritty
 zellij
 sudo|visual-studio-code
 pre-commit
+prek
 podman
 surrealdb/tap/surreal
 viu
