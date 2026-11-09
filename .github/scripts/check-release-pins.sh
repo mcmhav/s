@@ -53,6 +53,8 @@ for tool in bash sh env curl tar gzip xz unzip mktemp find sed grep awk uname di
     if path="$(command -v "$tool")" && [ -x "$path" ]; then ln -s "$path" "$SANDBOX/bin/$tool"; fi
 done
 export HOME="$SANDBOX/home"
+# Keep everything inside the sandbox, including where csys release keeps its store.
+unset XDG_CONFIG_HOME XDG_DATA_HOME XDG_STATE_HOME XDG_CACHE_HOME CSYS_STORE CSYS_LOCAL_BIN CSYS_RUN_DIR
 
 # After HOME is switched: csys.bashrc derives paths like CSYS_BASHRC_D from it. It isn't `set -u` safe.
 export CSYS_HOME="$ROOT"
@@ -61,6 +63,22 @@ source "$ROOT/programs/bash/bashrc.d/csys.bashrc"
 set -u
 export CSYS_LOG_LEVEL=5
 export PATH="$HOME/.local/bin:$CSYS_BIN:$SANDBOX/bin"
+
+# Not every tool has --version (kubectl, k9s, process-compose use a `version` subcommand), and some
+# exit 0 on an unknown flag (k9s), so an attempt only counts if it also prints a version number.
+_version() {
+    local out
+    for args in "--version" "version --client" "version"; do
+        # shellcheck disable=SC2086
+        if out="$("$1" $args 2>&1)" && grep -qE '[0-9]+\.[0-9]+' <<<"$out" &&
+            ! grep -qiE 'unknown (flag|command|shorthand)' <<<"$out"; then
+            echo "$out"
+            return 0
+        fi
+    done
+    echo "$out"
+    return 1
+}
 
 failed=()
 for p in "${PROGRAMS[@]}"; do
@@ -74,8 +92,8 @@ for p in "${PROGRAMS[@]}"; do
         ok=0
     fi
     for bin in $new; do
-        if ! "$HOME/.local/bin/$bin" --version; then
-            echo "::error::$p: '$bin --version' failed"
+        if ! _version "$HOME/.local/bin/$bin"; then
+            echo "::error::$p: '$bin' does not run (tried --version, version --client, version)"
             ok=0
         fi
     done
