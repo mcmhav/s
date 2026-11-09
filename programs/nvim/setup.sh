@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 PACKAGE_NAME="nvim"
+# renovate: datasource=github-releases depName=neovim/neovim extractVersion=^v(?<version>.+)$
 NVIM_VERSION="0.12.4"
 
 _install_from_tar() {

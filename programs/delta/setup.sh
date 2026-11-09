@@ -3,6 +3,7 @@
 PACKAGE_NAME="git-delta"
 PACKAGE_COMMAND="delta"
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+# renovate: datasource=github-releases depName=dandavison/delta
 VERSION="0.19.2"
 
 _install() {

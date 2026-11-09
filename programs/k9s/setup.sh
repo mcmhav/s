@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 PACKAGE_NAME="k9s"
+# renovate: datasource=github-releases depName=derailed/k9s
 VERSION="v0.31.7"
 
 _install() {

@@ -3,6 +3,7 @@
 PACKAGE_NAME="yq"
 PACKAGE_COMMAND="yq"
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+# renovate: datasource=github-releases depName=mikefarah/yq extractVersion=^v(?<version>.+)$
 VERSION="4.53.6"
 
 _install() {

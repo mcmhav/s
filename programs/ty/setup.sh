@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 PACKAGE_NAME="ty"
+# renovate: datasource=github-releases depName=astral-sh/ty
 VERSION="0.0.99"
 
 _install() {

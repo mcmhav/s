@@ -4,6 +4,7 @@ PACKAGE_NAME="nvm"
 # Minimum node version. If nvm already has this or newer (e.g. the Coder base image), that is used as is;
 # only when nothing new enough is installed does this exact version get installed.
 MIN_NODE_VERSION="v22.20.0"
+# renovate: datasource=github-releases depName=nvm-sh/nvm extractVersion=^v(?<version>.+)$
 NVM_VERSION="0.39.7"
 
 _version_gte() {

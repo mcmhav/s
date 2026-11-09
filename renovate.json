@@ -1,0 +1,19 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Only bumps the versions pinned in programs/*/setup.sh (see the # renovate: comments there).",
+  "extends": ["config:recommended"],
+  "enabledManagers": ["custom.regex"],
+  "timezone": "Europe/Oslo",
+  "schedule": ["before 7am on monday"],
+  "minimumReleaseAge": "3 days",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "VERSION=\"x.y.z\" lines annotated with: # renovate: datasource=<ds> depName=<name> [extractVersion=<regex>]",
+      "managerFilePatterns": ["/(^|/)setup\\.sh$/"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( extractVersion=(?<extractVersion>\\S+))?\\s+[A-Z_]*VERSION=\"(?<currentValue>[^\"]+)\""
+      ]
+    }
+  ]
+}

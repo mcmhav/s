@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 PACKAGE_NAME="ruff"
+# renovate: datasource=github-releases depName=astral-sh/ruff
 VERSION="0.17.4"
 
 _install() {

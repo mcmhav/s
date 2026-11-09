@@ -2,6 +2,7 @@
 
 PACKAGE_NAME="shfmt"
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+# renovate: datasource=github-releases depName=mvdan/sh extractVersion=^v(?<version>.+)$
 VERSION="3.10.0"
 
 _install() {

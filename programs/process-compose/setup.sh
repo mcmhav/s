@@ -2,6 +2,7 @@
 
 PACKAGE_NAME="process-compose"
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+# renovate: datasource=github-releases depName=F1bonacc1/process-compose
 VERSION="v1.78.0"
 
 _install() {
