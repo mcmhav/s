@@ -46,6 +46,9 @@
         "flexible": false,
         "tool_permissions": {
             "tools": {
+                "mcp:prefect:get_flows": {
+                    "default": "allow"
+                },
                 "mcp:prefect:get_automations": {
                     "default": "allow"
                 },
@@ -190,7 +193,7 @@
                             "pattern": "^tar\\b"
                         },
                         {
-                            "pattern": "^gh\\s+(pr|run|issue|release)\\s+(list|view)(\\s|$)"
+                            "pattern": "^gh\\s+(pr|run|issue|release)\\s+(list|view|diff)(\\s|$)"
                         },
                         {
                             "pattern": "^dope\\s+workspace\\s+get(\\s|$)"
@@ -206,6 +209,12 @@
                         },
                         {
                             "pattern": "^md5sum\\b"
+                        },
+                        {
+                            "pattern": "^ln\\b"
+                        },
+                        {
+                            "pattern": "^diff\\b"
                         }
                     ]
                 },
