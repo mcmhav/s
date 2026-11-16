@@ -127,6 +127,9 @@
                             "pattern": "^echo\\b"
                         },
                         {
+                            "pattern": "^printf\\b"
+                        },
+                        {
                             "pattern": "^git\\b"
                         },
                         {
@@ -193,6 +196,9 @@
                             "pattern": "^tar\\b"
                         },
                         {
+                            "pattern": "^tr\\b"
+                        },
+                        {
                             "pattern": "^gh\\s+(pr|run|issue|release)\\s+(list|view|diff)(\\s|$)"
                         },
                         {
@@ -215,6 +221,30 @@
                         },
                         {
                             "pattern": "^diff\\b"
+                        },
+                        {
+                            "pattern": "^which\\s+pdftotext(\\s|$)"
+                        },
+                        {
+                            "pattern": "^env\\b"
+                        },
+                        {
+                            "pattern": "^uv\\s+tree(\\s|$)"
+                        },
+                        {
+                            "pattern": "^curl\\b"
+                        },
+                        {
+                            "pattern": "^which\\s+uv(\\s|$)"
+                        },
+                        {
+                            "pattern": "^uv\\b"
+                        },
+                        {
+                            "pattern": "^uv\\s+pip(\\s|$)"
+                        },
+                        {
+                            "pattern": "^true\\b"
                         }
                     ]
                 },
@@ -267,6 +297,9 @@
                         },
                         {
                             "pattern": "^https?://docs\\.aiohttp\\.org"
+                        },
+                        {
+                            "pattern": "^https?://docs\\.renovatebot\\.com"
                         }
                     ]
                 }
@@ -301,7 +334,9 @@
                 "www.snowflake.com",
                 "ai.snowflake.com",
                 "learn.microsoft.com",
-                "filesystem-spec.readthedocs.io"
+                "filesystem-spec.readthedocs.io",
+                "fluxcd.io",
+                "gitlab.com"
             ]
         },
         "enable_feedback": false,
