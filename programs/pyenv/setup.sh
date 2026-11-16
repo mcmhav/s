@@ -2,7 +2,7 @@
 
 PACKAGE_NAME="pyenv"
 # renovate: datasource=python-version depName=python
-INSTALL_PY_VERSION="3.11.12"
+INSTALL_PY_VERSION="3.11.18"
 
 _setup() {
   if ! command -v "$PACKAGE_NAME" >/dev/null; then
