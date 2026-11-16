@@ -2,7 +2,7 @@
 
 PACKAGE_NAME="ty"
 # renovate: datasource=github-releases depName=astral-sh/ty
-VERSION="0.0.99"
+VERSION="0.0.102"
 
 _install() {
   case $CSYS_OS in
