@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 PACKAGE_COMMAND="tfenv"
+# renovate: datasource=github-releases depName=hashicorp/terraform extractVersion=^v(?<version>.+)$
 INSTALL_TF_VERSION="1.3.7"
 
 _setup() {

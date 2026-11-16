@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 PACKAGE_NAME="pyenv"
+# renovate: datasource=python-version depName=python
 INSTALL_PY_VERSION="3.11.12"
 
 _setup() {

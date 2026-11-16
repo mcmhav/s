@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Bumps the versions pinned in programs/*/setup.sh and workflows (see the # renovate: comments there), the prek hook revs and the GitHub Actions. Runs from .github/workflows/renovate.yml, which also sets the schedule.",
+  "description": "Bumps the versions pinned in programs/*/setup.sh and workflows (see the # renovate: comments there), programs/zed/config/.zed-version, the prek hook revs and the GitHub Actions. Runs from .github/workflows/renovate.yml, which also sets the schedule.",
   "extends": ["config:recommended"],
   "enabledManagers": ["custom.regex", "pre-commit", "github-actions"],
   "pre-commit": { "enabled": true },
@@ -15,6 +15,23 @@
       "matchStrings": [
         "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( extractVersion=(?<extractVersion>\\S+))?\\s+[A-Z_]*VERSION(=|: )\"(?<currentValue>[^\"]+)\""
       ]
+    },
+    {
+      "customType": "regex",
+      "description": "Zed app version: a bare x.y.z in its own file, read by programs/zed/setup.sh. Release tags are vX.Y.Z; the vX.Y.Z-pre previews don't match extractVersion and are skipped.",
+      "managerFilePatterns": ["/^programs/zed/config/\\.zed-version$/"],
+      "matchStrings": ["^(?<currentValue>\\d+\\.\\d+\\.\\d+)\\s*$"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "zed-industries/zed",
+      "extractVersionTemplate": "^v(?<version>\\d+\\.\\d+\\.\\d+)$"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Only patch bumps for the pyenv Python; move to a new minor series by hand.",
+      "matchDepNames": ["python"],
+      "matchFileNames": ["programs/pyenv/setup.sh"],
+      "allowedVersions": "<3.12"
     }
   ]
 }
