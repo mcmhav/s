@@ -300,6 +300,12 @@
                         },
                         {
                             "pattern": "^https?://docs\\.renovatebot\\.com"
+                        },
+                        {
+                            "pattern": "^https?://releases\\.herdr\\.dev"
+                        },
+                        {
+                            "pattern": "^https?://registry\\.npmjs\\.org"
                         }
                     ]
                 }
@@ -336,7 +342,11 @@
                 "learn.microsoft.com",
                 "filesystem-spec.readthedocs.io",
                 "fluxcd.io",
-                "gitlab.com"
+                "gitlab.com",
+                "herdr.dev",
+                "tailscale.com",
+                "releases.herdr.dev",
+                "registry.npmjs.org"
             ]
         },
         "enable_feedback": false,
