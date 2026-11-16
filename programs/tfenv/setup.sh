@@ -2,7 +2,7 @@
 
 PACKAGE_COMMAND="tfenv"
 # renovate: datasource=github-releases depName=hashicorp/terraform extractVersion=^v(?<version>.+)$
-INSTALL_TF_VERSION="1.3.7"
+INSTALL_TF_VERSION="1.17.2"
 
 _setup() {
   if ! command -v "$PACKAGE_COMMAND" >/dev/null; then
