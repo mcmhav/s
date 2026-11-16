@@ -52,5 +52,8 @@
     },
     "[jsonc]": {
         "coc.preferences.formatterExtension": "coc-prettier"
+    },
+    "json.schemaDownload.trustedDomains": {
+      "https://docs.renovatebot.com": true
     }
 }
