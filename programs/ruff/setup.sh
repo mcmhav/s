@@ -2,7 +2,7 @@
 
 PACKAGE_NAME="ruff"
 # renovate: datasource=github-releases depName=astral-sh/ruff
-VERSION="0.17.4"
+VERSION="0.17.5"
 
 _install() {
   case $CSYS_OS in
