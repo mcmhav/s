@@ -5,3 +5,4 @@ if [ ! -d "$TF_PLUGIN_CACHE_DIR" ]; then
 	mkdir -p "$TF_PLUGIN_CACHE_DIR"
 fi
 export PATH="/workspace/.home/bin:$PATH"
+export ANSIBLE_COLLECTIONS_PATH=/workspace/scratch/pi-cluster-probe/collections

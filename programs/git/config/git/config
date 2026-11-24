@@ -34,3 +34,5 @@
 [blame]
     date = relative
 
+[gpg]
+	format = ssh

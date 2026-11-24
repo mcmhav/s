@@ -121,6 +121,9 @@
                             "pattern": "^ls\\b"
                         },
                         {
+                            "pattern": "^mv\\b"
+                        },
+                        {
                             "pattern": "^awk\\b"
                         },
                         {
@@ -187,7 +190,7 @@
                             "pattern": "^uv\\s+sync(\\s|$)"
                         },
                         {
-                            "pattern": "^docker\\s+(images|info|ps|buildx)(\\s|$)"
+                            "pattern": "^docker\\s+(image|images|info|ps|buildx|create|cp|rm|start|rmi)(\\s|$)"
                         },
                         {
                             "pattern": "^git\\s+(archive|rm)(\\s|$)"
@@ -199,7 +202,7 @@
                             "pattern": "^tr\\b"
                         },
                         {
-                            "pattern": "^gh\\s+(pr|run|issue|release)\\s+(list|view|diff)(\\s|$)"
+                            "pattern": "^gh\\s+(pr|run|issue|release|search)\\s+(list|view|diff|code)(\\s|$)"
                         },
                         {
                             "pattern": "^dope\\s+workspace\\s+get(\\s|$)"
@@ -245,6 +248,30 @@
                         },
                         {
                             "pattern": "^true\\b"
+                        },
+                        {
+                            "pattern": "^fd\\b"
+                        },
+                        {
+                            "pattern": "^gh\\s+pr(\\s|$)"
+                        },
+                        {
+                            "pattern": "^snowfind\\b"
+                        },
+                        {
+                            "pattern": "^git\\s+remote(\\s|$)"
+                        },
+                        {
+                            "pattern": "^which\\s+kubectl(\\s|$)"
+                        },
+                        {
+                            "pattern": "^kubectl\\s+get(\\s|$)"
+                        },
+                        {
+                            "pattern": "^aws\\s+logs(\\s|$)"
+                        },
+                        {
+                            "pattern": "^date\\b"
                         }
                     ]
                 },
@@ -306,6 +333,36 @@
                         },
                         {
                             "pattern": "^https?://registry\\.npmjs\\.org"
+                        },
+                        {
+                            "pattern": "^https?://herdr\\.dev"
+                        },
+                        {
+                            "pattern": "^https?://developers\\.openai\\.com"
+                        },
+                        {
+                            "pattern": "^https?://nodejs\\.org"
+                        },
+                        {
+                            "pattern": "^https?://code\\.claude\\.com"
+                        },
+                        {
+                            "pattern": "^https?://docs\\.anthropic\\.com"
+                        },
+                        {
+                            "pattern": "^https?://tailscale\\.com"
+                        },
+                        {
+                            "pattern": "^https?://docs\\.k3s\\.io"
+                        },
+                        {
+                            "pattern": "^https?://coder\\.com"
+                        },
+                        {
+                            "pattern": "^https?://kagent\\.dev"
+                        },
+                        {
+                            "pattern": "^https?://cloudnative-pg\\.io"
                         }
                     ]
                 }
@@ -346,7 +403,21 @@
                 "herdr.dev",
                 "tailscale.com",
                 "releases.herdr.dev",
-                "registry.npmjs.org"
+                "registry.npmjs.org",
+                "nodejs.org",
+                "developers.openai.com",
+                "learn.chatgpt.com",
+                "code.claude.com",
+                "docs.anthropic.com",
+                "coder.com",
+                "docs.k3s.io",
+                "api.opentofu.org",
+                "developers.cloudflare.com",
+                "kagent.dev",
+                "cloudnative-pg.io",
+                "registry.opentofu.org",
+                "hn.algolia.com",
+                "www.home-assistant.io"
             ]
         },
         "enable_feedback": false,
