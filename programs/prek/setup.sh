@@ -2,7 +2,7 @@
 
 PACKAGE_NAME="prek"
 # renovate: datasource=github-releases depName=j178/prek extractVersion=^v(?<version>.+)$
-VERSION="0.5.10"
+VERSION="0.5.11"
 
 _install() {
   case $CSYS_OS in
