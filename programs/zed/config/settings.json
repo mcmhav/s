@@ -272,6 +272,42 @@
                         },
                         {
                             "pattern": "^date\\b"
+                        },
+                        {
+                            "pattern": "^ruff\\b"
+                        },
+                        {
+                            "pattern": "^ruff\\s+format(\\s|$)"
+                        },
+                        {
+                            "pattern": "^awk\\s+length(\\s|$)"
+                        },
+                        {
+                            "pattern": "^helm\\s+show(\\s|$)"
+                        },
+                        {
+                            "pattern": "^helm\\s+pull(\\s|$)"
+                        },
+                        {
+                            "pattern": "^prek\\s+run(\\s|$)"
+                        },
+                        {
+                            "pattern": "^docker\\s+version(\\s|$)"
+                        },
+                        {
+                            "pattern": "^docker\\s+network(\\s|$)"
+                        },
+                        {
+                            "pattern": "^docker\\s+create(\\s|$)"
+                        },
+                        {
+                            "pattern": "^docker\\s+cp(\\s|$)"
+                        },
+                        {
+                            "pattern": "^docker\\s+start(\\s|$)"
+                        },
+                        {
+                            "pattern": "^docker\\s+logs(\\s|$)"
                         }
                     ]
                 },
@@ -363,6 +399,12 @@
                         },
                         {
                             "pattern": "^https?://cloudnative-pg\\.io"
+                        },
+                        {
+                            "pattern": "^https?://fluxcd\\.io"
+                        },
+                        {
+                            "pattern": "^https?://docs\\.k8up\\.io"
                         }
                     ]
                 }
@@ -417,7 +459,10 @@
                 "cloudnative-pg.io",
                 "registry.opentofu.org",
                 "hn.algolia.com",
-                "www.home-assistant.io"
+                "www.home-assistant.io",
+                "docs.k8up.io",
+                "geminicli.com",
+                "kubernetes.io"
             ]
         },
         "enable_feedback": false,

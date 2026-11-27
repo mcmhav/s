@@ -5,7 +5,9 @@ name: renovate
 # Needs repo variable RENOVATE_APP_CLIENT_ID and repo secret RENOVATE_APP_PRIVATE_KEY.
 on:
   schedule:
-    - cron: "0 4 * * 1" # Mondays 04:00 UTC
+    # Off the hour: GitHub delays scheduled runs under load (worst at the start
+    # of each hour, often by hours here) and may drop them.
+    - cron: "23 2 * * 1" # Mondays 02:23 UTC
   workflow_dispatch:
     inputs:
       log-level:
