@@ -3,7 +3,7 @@
 PACKAGE_NAME="git-delta"
 PACKAGE_COMMAND="delta"
 # renovate: datasource=github-releases depName=dandavison/delta
-VERSION="0.21.2"
+VERSION="0.22.0"
 
 _install() {
   case $CSYS_OS in
