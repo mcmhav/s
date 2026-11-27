@@ -3,7 +3,7 @@
 PACKAGE_NAME="zellij"
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 # renovate: datasource=github-releases depName=zellij-org/zellij extractVersion=^v(?<version>.+)$
-VERSION="0.46.0"
+VERSION="0.46.1"
 
 _install() {
   case $CSYS_OS in
