@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # renovate: datasource=npm depName=renovate
-      RENOVATE_VERSION: "44.257.0"
+      RENOVATE_VERSION: "44.261.1"
     steps:
       - uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
         id: app-token
