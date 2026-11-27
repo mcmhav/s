@@ -3,7 +3,7 @@
 PACKAGE_NAME="ripgrep"
 PACKAGE_COMMAND="rg"
 # renovate: datasource=github-releases depName=BurntSushi/ripgrep
-VERSION="15.2.0"
+VERSION="16.0.0"
 
 _install_release() {
   local target
