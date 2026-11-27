@@ -405,6 +405,9 @@
                         },
                         {
                             "pattern": "^https?://docs\\.k8up\\.io"
+                        },
+                        {
+                            "pattern": "^https?://kubernetes\\.io"
                         }
                     ]
                 }
